@@ -11,7 +11,8 @@ const ROICalculatorPage = () => {
   const [formData, setFormData] = useState({
     hoursPerWeek: "10",
     hourlyRate: "40",
-    employees: "5"
+    employees: "5",
+    investissement: "7500"
   });
 
   const [showResults, setShowResults] = useState(false);
@@ -33,6 +34,7 @@ const ROICalculatorPage = () => {
     const hoursPerWeek = parseFloat(formData.hoursPerWeek) || 0;
     const hourlyRate = parseFloat(formData.hourlyRate) || 0;
     const employees = parseFloat(formData.employees) || 0;
+    const investissement = parseFloat(formData.investissement) || 0;
     
     // Phase 1 - Levier 1 : Économies Directes
     const economies_directes = hoursPerWeek * hourlyRate * 46 * employees;
@@ -44,15 +46,6 @@ const ROICalculatorPage = () => {
     // Phase 2 - Calculs stratégiques complets
     const heures_annuelles_liberees = hoursPerWeek * 46 * employees;
     const gains_indirects = heures_annuelles_liberees * 0.25 * (hourlyRate * 1.5);
-    
-    let investissement;
-    if (employees === 1) {
-      investissement = 2500;
-    } else if (employees > 1 && employees <= 10) {
-      investissement = 7500;
-    } else {
-      investissement = 15000;
-    }
     
     const gain_total = economies_directes + gains_indirects;
     const roi_strategique = ((gain_total - investissement) / investissement) * 100;
@@ -117,7 +110,7 @@ const ROICalculatorPage = () => {
               }}
             >
               <CardContent className="p-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 items-end">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 items-end">
                   {/* Heures automatisables */}
                   <div>
                     <Label 
@@ -198,6 +191,33 @@ const ROICalculatorPage = () => {
                         }}
                         min="1"
                         max="1000"
+                      />
+                    </div>
+                  </div>
+                  {/* Investissement estimé */}
+                  <div>
+                    <Label 
+                      className="text-base font-medium mb-3 block"
+                      style={{ color: '#F5F5F5', minHeight: '48px' }}
+                    >
+                      Investissement<br />estimé (€)
+                    </Label>
+                    <div className="relative">
+                      <Input
+                        type="number"
+                        value={formData.investissement}
+                        onChange={(e) => handleInputChange('investissement', e.target.value)}
+                        onFocus={handleInputFocus}
+                        className="text-left text-xl font-medium py-5 px-5 border-2 focus:ring-2 focus:ring-primary/50 w-full"
+                        style={{ 
+                          backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                          color: '#F5F5F5',
+                          borderColor: 'rgba(74, 158, 255, 0.4)',
+                          borderRadius: '8px',
+                          height: '64px'
+                        }}
+                        min="1"
+                        max="100000"
                       />
                     </div>
                   </div>
