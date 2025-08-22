@@ -11,11 +11,11 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
-              <div className="w-14 h-14 rounded-lg flex items-center justify-center">
+              <div className="w-16 h-16 rounded-lg flex items-center justify-center glow-hover">
                 <img 
                   src="/lovable-uploads/8d8704c1-3e0c-4716-b520-20779aef37e0.png" 
                   alt="Maia Elange Logo" 
-                  className="w-full h-full rounded-lg" 
+                  className="w-full h-full rounded-lg transition-transform duration-300 hover:scale-110" 
                 />
               </div>
               <h1 className="text-2xl font-bold text-heading">Maia Elange</h1>
@@ -24,31 +24,31 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <a href="#solutions" className="text-text-secondary hover:text-primary transition-colors">
+            <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Solutions
             </a>
-            <a href="#integrations" className="text-text-secondary hover:text-primary transition-colors">
+            <a href="#integrations" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Intégrations
             </a>
-            <a href="#processus" className="text-text-secondary hover:text-primary transition-colors">
+            <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Processus
             </a>
-            <a href="#resultats" className="text-text-secondary hover:text-primary transition-colors">
+            <a href="#resultats" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Résultats
             </a>
-            <a href="#simulateur" className="text-text-secondary hover:text-primary transition-colors">
+            <a href="#simulateur" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Simulateur ROI
             </a>
-            <a href="#faq" className="text-text-secondary hover:text-primary transition-colors">
+            <a href="#faq" className="nav-link text-text-secondary hover:text-primary transition-colors">
               FAQ
             </a>
-            <a href="#contact" className="text-text-secondary hover:text-primary transition-colors">
+            <a href="#contact" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Contact
             </a>
-            <a href="#questions" className="text-text-secondary hover:text-primary transition-colors">
+            <a href="#questions" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Questions fréquentes
             </a>
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+            <Button className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white">
               diagnostic gratuit
             </Button>
           </div>
@@ -67,34 +67,34 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div className="md:hidden py-4 border-t border-border mobile-menu-enter">
             <div className="flex flex-col space-y-4">
-              <a href="#solutions" className="text-text-secondary hover:text-primary transition-colors">
+              <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Solutions
               </a>
-              <a href="#integrations" className="text-text-secondary hover:text-primary transition-colors">
+              <a href="#integrations" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Intégrations
               </a>
-              <a href="#processus" className="text-text-secondary hover:text-primary transition-colors">
+              <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Processus
               </a>
-              <a href="#resultats" className="text-text-secondary hover:text-primary transition-colors">
+              <a href="#resultats" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Résultats
               </a>
-              <a href="#simulateur" className="text-text-secondary hover:text-primary transition-colors">
+              <a href="#simulateur" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Simulateur ROI
               </a>
-              <a href="#faq" className="text-text-secondary hover:text-primary transition-colors">
+              <a href="#faq" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 FAQ
               </a>
-              <a href="#contact" className="text-text-secondary hover:text-primary transition-colors">
+              <a href="#contact" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Contact
               </a>
-              <a href="#questions" className="text-text-secondary hover:text-primary transition-colors">
+              <a href="#questions" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Questions fréquentes
               </a>
               <div className="flex flex-col gap-2 pt-2">
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                <Button className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white">
                   diagnostic gratuit
                 </Button>
               </div>
