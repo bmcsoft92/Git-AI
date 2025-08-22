@@ -108,12 +108,12 @@ const ROICalculatorPage = () => {
               }}
             >
               <CardContent className="p-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 items-end">
                   {/* Heures automatisables */}
                   <div>
                     <Label 
-                      className="text-sm font-medium mb-2 block"
-                      style={{ color: '#F5F5F5' }}
+                      className="text-base font-medium mb-3 block"
+                      style={{ color: '#F5F5F5', minHeight: '24px' }}
                     >
                       Heures/sem. automatisables
                     </Label>
@@ -122,13 +122,13 @@ const ROICalculatorPage = () => {
                         type="number"
                         value={formData.hoursPerWeek}
                         onChange={(e) => handleInputChange('hoursPerWeek', e.target.value)}
-                        className="text-left text-lg font-medium py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
+                        className="text-left text-xl font-medium py-5 px-5 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                         style={{ 
                           backgroundColor: 'rgba(31, 41, 55, 0.9)',
                           color: '#F5F5F5',
                           borderColor: 'rgba(74, 158, 255, 0.4)',
                           borderRadius: '8px',
-                          height: '56px'
+                          height: '64px'
                         }}
                         min="1"
                         max="40"
@@ -139,8 +139,8 @@ const ROICalculatorPage = () => {
                   {/* Coût horaire */}
                   <div>
                     <Label 
-                      className="text-sm font-medium mb-2 block"
-                      style={{ color: '#F5F5F5' }}
+                      className="text-base font-medium mb-3 block"
+                      style={{ color: '#F5F5F5', minHeight: '24px' }}
                     >
                       Coût horaire moyen (€)
                     </Label>
@@ -149,13 +149,13 @@ const ROICalculatorPage = () => {
                         type="number"
                         value={formData.hourlyRate}
                         onChange={(e) => handleInputChange('hourlyRate', e.target.value)}
-                        className="text-left text-lg font-medium py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
+                        className="text-left text-xl font-medium py-5 px-5 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                         style={{ 
                           backgroundColor: 'rgba(31, 41, 55, 0.9)',
                           color: '#F5F5F5',
                           borderColor: 'rgba(74, 158, 255, 0.4)',
                           borderRadius: '8px',
-                          height: '56px'
+                          height: '64px'
                         }}
                         min="1"
                         max="200"
@@ -166,8 +166,8 @@ const ROICalculatorPage = () => {
                   {/* Nombre d'employés */}
                   <div>
                     <Label 
-                      className="text-sm font-medium mb-2 block"
-                      style={{ color: '#F5F5F5' }}
+                      className="text-base font-medium mb-3 block"
+                      style={{ color: '#F5F5F5', minHeight: '24px' }}
                     >
                       Nombre d'employés
                     </Label>
@@ -176,13 +176,13 @@ const ROICalculatorPage = () => {
                         type="number"
                         value={formData.employees}
                         onChange={(e) => handleInputChange('employees', e.target.value)}
-                        className="text-left text-lg font-medium py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
+                        className="text-left text-xl font-medium py-5 px-5 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                         style={{ 
                           backgroundColor: 'rgba(31, 41, 55, 0.9)',
                           color: '#F5F5F5',
                           borderColor: 'rgba(74, 158, 255, 0.4)',
                           borderRadius: '8px',
-                          height: '56px'
+                          height: '64px'
                         }}
                         min="1"
                         max="1000"
