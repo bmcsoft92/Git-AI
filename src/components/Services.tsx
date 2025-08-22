@@ -17,7 +17,7 @@ const Services = () => {
       id: "growth",
       icon: TrendingUp,
       title: "Accélérer la Croissance Commerciale",
-      description: "Automatisez votre cycle de vente, de la génération de leads à la fidélisation client, pour ne plus jamais manquer une opportunité.",
+      description: "Automatisez votre cycle de vente pour transformer plus de prospects en clients et augmenter votre chiffre d'affaires de 30%.",
       services: [
         "Génération de Leads",
         "CRM & Suivi des Clients", 
@@ -30,7 +30,7 @@ const Services = () => {
       id: "efficiency", 
       icon: Settings,
       title: "Optimiser l'Efficacité Opérationnelle",
-      description: "Libérez vos équipes des tâches administratives et répétitives pour qu'elles puissent se concentrer sur ce qui compte vraiment : l'innovation et la valeur ajoutée.",
+      description: "Libérez jusqu'à 15h par semaine par employé en automatisant les tâches répétitives pour qu'ils se concentrent sur l'innovation et la valeur ajoutée.",
       services: [
         "Gestion de Projet",
         "Recrutement & Onboarding",
@@ -42,7 +42,7 @@ const Services = () => {
       id: "marketing",
       icon: Target, 
       title: "Augmenter l'Impact Marketing",
-      description: "Déployez des campagnes intelligentes, gérez votre présence en ligne et prenez des décisions basées sur des données claires et automatisées.",
+      description: "Multipliez par 3 votre portée digitale avec des campagnes intelligentes et des décisions basées sur des données automatisées en temps réel.",
       services: [
         "Gestion des Réseaux Sociaux",
         "Analyse & Reporting Automatisés"
@@ -86,27 +86,37 @@ const Services = () => {
               return (
                 <Card 
                   key={pillar.id}
-                  className={`cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 ${
+                  className={`group cursor-pointer transition-all duration-500 transform hover:scale-[1.02] ${
                     isActive 
-                      ? 'bg-card/80 border-primary/50 shadow-lg shadow-primary/20' 
-                      : 'bg-card/50 border-border/50 hover:border-primary/30'
+                      ? 'bg-card/90 border-primary/60 shadow-xl shadow-primary/25 scale-[1.02]' 
+                      : 'bg-card/50 border-border/50 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/15'
                   }`}
                   onClick={() => setActiveTab(pillar.id)}
                 >
                   <CardHeader className="text-center pb-4">
                     <div className="flex justify-center mb-4">
-                      <div className={`p-4 rounded-lg transition-colors duration-300 ${
-                        isActive ? 'bg-primary/20' : 'bg-primary/10'
+                      <div className={`p-4 rounded-lg transition-all duration-300 group-hover:scale-110 ${
+                        isActive 
+                          ? 'bg-primary/25 shadow-lg shadow-primary/20' 
+                          : 'bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-md group-hover:shadow-primary/15'
                       }`}>
-                        <Icon className="h-8 w-8 text-primary" />
+                        <Icon className={`h-8 w-8 transition-all duration-300 ${
+                          isActive 
+                            ? 'text-primary drop-shadow-md' 
+                            : 'text-primary group-hover:text-primary group-hover:drop-shadow-sm'
+                        }`} />
                       </div>
                     </div>
-                    <CardTitle className="text-lg font-semibold text-heading mb-3">
+                    <CardTitle className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
+                      isActive 
+                        ? 'text-heading' 
+                        : 'text-heading group-hover:text-primary'
+                    }`}>
                       {pillar.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="text-center pt-0">
-                    <p className="text-sm text-text-secondary leading-relaxed">
+                    <p className="text-sm text-text-secondary leading-relaxed group-hover:text-text-secondary/90">
                       {pillar.description}
                     </p>
                   </CardContent>
@@ -119,13 +129,16 @@ const Services = () => {
           {strategicPillars.map((pillar) => (
             <div 
               key={pillar.id}
-              className={`transition-all duration-300 ${
-                activeTab === pillar.id ? 'block animate-fade-in' : 'hidden'
+              className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                activeTab === pillar.id 
+                  ? 'max-h-[500px] opacity-100 translate-y-0' 
+                  : 'max-h-0 opacity-0 -translate-y-4'
               }`}
             >
-              <Card className="bg-card/50 backdrop-blur-sm border border-border/50">
+              <Card className="bg-card/60 backdrop-blur-sm border border-primary/20 shadow-lg shadow-primary/10">
                 <CardHeader>
-                  <CardTitle className="text-xl font-semibold text-heading">
+                  <CardTitle className="text-xl font-semibold text-heading flex items-center gap-2">
+                    <Check className="h-5 w-5 text-primary" />
                     Services inclus :
                   </CardTitle>
                 </CardHeader>
@@ -134,10 +147,14 @@ const Services = () => {
                     {pillar.services.map((service, index) => (
                       <div 
                         key={index}
-                        className="flex items-center space-x-3 p-3 bg-background/50 rounded-lg"
+                        className="flex items-center space-x-3 p-3 bg-background/60 rounded-lg border border-primary/10 
+                                 hover:bg-background/80 hover:border-primary/20 transition-all duration-200"
+                        style={{
+                          animationDelay: `${index * 50}ms`
+                        }}
                       >
-                        <Check className="h-5 w-5 text-primary flex-shrink-0" />
-                        <span className="text-text-secondary">{service}</span>
+                        <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                        <span className="text-text-secondary font-medium text-sm">{service}</span>
                       </div>
                     ))}
                   </div>
