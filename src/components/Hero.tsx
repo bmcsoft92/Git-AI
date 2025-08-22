@@ -1,17 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import heroAiBg from "@/assets/hero-ai-brain-bg.jpg";
 
 const Hero = () => {
 
   return (
     <section className="relative bg-background overflow-hidden min-h-screen flex items-center">
+      {/* Subtle AI Background */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `url(${heroAiBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-16 animate-fade-in-up">
             <div className="mb-12">
               <span className="inline-flex items-center px-6 py-3 rounded-full text-lg font-semibold bg-primary/20 text-primary border border-primary/30">
-                Innovation • IA Avancée
+                Expertise Technique • Excellence IA
               </span>
             </div>
             
@@ -32,7 +43,7 @@ const Hero = () => {
                 size="lg" 
                 className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground"
               >
-                Mon diagnostic gratuit
+                Diagnostic gratuit
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
