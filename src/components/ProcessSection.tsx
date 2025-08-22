@@ -169,7 +169,7 @@ const ProcessSection = () => {
                     <h3 
                       className="text-xl font-semibold mb-1 transition-colors duration-300"
                       style={{ 
-                        color: selectedPhase === index ? phase.color : '#F5F5F5'
+                        color: selectedPhase === index ? '#0F7F7B' : '#F5F5F5'
                       }}
                     >
                       {phase.title}
@@ -188,7 +188,7 @@ const ProcessSection = () => {
                       <Icon 
                         className="flex-shrink-0 h-6 w-6 transition-all duration-300 group-hover:scale-110"
                         style={{ 
-                          color: selectedPhase === index ? phase.color : '#F5F5F5',
+                          color: selectedPhase === index ? '#0F7F7B' : '#F5F5F5',
                           filter: selectedPhase === index ? `drop-shadow(0 0 8px ${phase.color}80)` : 'none'
                         }}
                       />
@@ -218,7 +218,7 @@ const ProcessSection = () => {
                         <Icon 
                           className="h-8 w-8 animate-pulse"
                           style={{ 
-                            color: phases[selectedPhase].color,
+                            color: '#0F7F7B',
                             filter: `drop-shadow(0 0 10px ${phases[selectedPhase].color}60)`
                           }}
                         />
@@ -227,7 +227,7 @@ const ProcessSection = () => {
                     <h3 
                       className="text-2xl font-bold transition-colors duration-500"
                       style={{ 
-                        color: phases[selectedPhase].color,
+                        color: '#0F7F7B',
                         textShadow: `0 0 15px ${phases[selectedPhase].color}40`
                       }}
                     >
@@ -248,7 +248,7 @@ const ProcessSection = () => {
                     <strong 
                       className="transition-colors duration-300 hover:animate-pulse"
                       style={{ 
-                        color: phases[selectedPhase].color,
+                        color: '#0F7F7B',
                         textShadow: `0 0 8px ${phases[selectedPhase].color}60`
                       }}
                     >
@@ -272,7 +272,7 @@ const ProcessSection = () => {
                           <Icon 
                             className="h-5 w-5 animate-pulse"
                             style={{ 
-                              color: phases[selectedPhase].color,
+                              color: '#0F7F7B',
                               filter: `drop-shadow(0 0 6px ${phases[selectedPhase].color}60)`
                             }}
                           />
@@ -281,7 +281,7 @@ const ProcessSection = () => {
                       <span 
                         className="text-sm font-medium transition-colors duration-300"
                         style={{ 
-                          color: phases[selectedPhase].color,
+                          color: '#0F7F7B',
                           textShadow: `0 0 8px ${phases[selectedPhase].color}40`
                         }}
                       >
