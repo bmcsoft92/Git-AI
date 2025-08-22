@@ -7,7 +7,7 @@ const Integrations = () => {
       id: "google-workspace",
       name: "Google Workspace",
       description: "Docs / Sheets / Gmail",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+      logo: "https://developers.google.com/workspace/images/workspace-logo.png"
     },
     {
       id: "outlook",
