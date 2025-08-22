@@ -11,12 +11,12 @@ const Hero = () => {
           <div className="mb-10 lg:mb-0 animate-fade-in-up">
             <div className="mb-6">
               <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-primary/20 text-primary border border-primary/30">
-                Innovation Premium • IA Avancée
+                Innovation • IA Avancée
               </span>
             </div>
             
             <h1 className="text-4xl lg:text-6xl font-bold text-heading mb-6 leading-tight">
-              Solutions IA Premium
+              Solutions IA
               <span className="text-primary block">
                 pour Entreprises Visionnaires
               </span>
@@ -25,7 +25,7 @@ const Hero = () => {
             <p className="text-xl text-text-secondary mb-8 leading-relaxed">
               <strong className="text-heading">Maia Elange</strong> révolutionne votre organisation avec des 
               <strong className="text-primary"> agents IA sur mesure</strong> et une automatisation intelligente. 
-              Excellence technologique, design premium, résultats mesurables.
+              Excellence technologique, résultats mesurables.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8 animate-fade-in-up-delay">
@@ -38,35 +38,6 @@ const Hero = () => {
               </Button>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center sm:text-left animate-fade-in-up-delay-2">
-              <div className="bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border card-hover">
-                <div className="flex flex-col items-center sm:items-start">
-                  <Settings className="w-6 h-6 text-primary mb-2" />
-                  <div className="text-2xl font-bold text-primary mb-1">
-                    <AnimatedCounter target="500+" duration={2000} />
-                  </div>
-                  <div className="text-sm text-text-secondary">Projets IA Réalisés</div>
-                </div>
-              </div>
-              <div className="bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border card-hover">
-                <div className="flex flex-col items-center sm:items-start">
-                  <TrendingUp className="w-6 h-6 text-primary mb-2" />
-                  <div className="text-2xl font-bold text-primary mb-1">
-                    <AnimatedCounter target="98%" duration={2000} />
-                  </div>
-                  <div className="text-sm text-text-secondary">Excellence Client</div>
-                </div>
-              </div>
-              <div className="bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border card-hover">
-                <div className="flex flex-col items-center sm:items-start">
-                  <Star className="w-6 h-6 text-primary mb-2" />
-                  <div className="text-2xl font-bold text-primary mb-1">
-                    <AnimatedCounter target="24/7" duration={2000} />
-                  </div>
-                  <div className="text-sm text-text-secondary">Support Premium</div>
-                </div>
-              </div>
-            </div>
           </div>
           
           <div className="relative animate-fade-in-up-delay">
@@ -78,7 +49,7 @@ const Hero = () => {
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-card border border-border rounded-lg p-4 shadow-xl backdrop-blur-sm">
-              <div className="text-2xl font-bold text-primary">Premium</div>
+              <div className="text-2xl font-bold text-primary">Excellence</div>
               <div className="text-sm text-text-secondary">Design & IA</div>
             </div>
           </div>
