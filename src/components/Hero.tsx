@@ -1,15 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import heroImage from "@/assets/hero-ai-automation.jpg";
 
 const Hero = () => {
 
   return (
     <section className="relative bg-background overflow-hidden min-h-screen flex items-center">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-          <div className="mb-12 lg:mb-0 animate-fade-in-up">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-12 animate-fade-in-up">
             <div className="mb-8">
               <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-primary/20 text-primary border border-primary/30">
                 Innovation • IA Avancée
@@ -23,14 +22,14 @@ const Hero = () => {
               </span>
             </h1>
             
-            <p className="text-xl text-text-secondary mb-10 leading-relaxed max-w-2xl">
+            <p className="text-xl text-text-secondary mb-10 leading-relaxed max-w-2xl mx-auto">
               Nous libérons vos équipes des tâches répétitives en <strong className="text-primary">2 semaines</strong> grâce à une 
               automatisation sans code, vous permettant de <strong className="text-primary">réduire vos coûts de 40%</strong> et 
               d'augmenter votre productivité.
             </p>
 
             
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2">
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2 justify-center">
               <Button 
                 size="lg" 
                 className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground"
@@ -48,7 +47,7 @@ const Hero = () => {
             </div>
 
             {/* Garanties */}
-            <div className="flex flex-wrap gap-4 mt-6 animate-fade-in-up-delay-2">
+            <div className="flex flex-wrap gap-4 mt-6 animate-fade-in-up-delay-2 justify-center">
               <Badge variant="outline" className="text-success border-success/30 bg-success/10">
                 ✓ Sans engagement
               </Badge>
@@ -58,16 +57,6 @@ const Hero = () => {
               <Badge variant="outline" className="text-success border-success/30 bg-success/10">
                 ✓ Sur devis personnalisé
               </Badge>
-            </div>
-          </div>
-          
-          <div className="relative animate-fade-in-up-delay lg:justify-self-end">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-border">
-              <img
-                src={heroImage}
-                alt="Intelligence artificielle et automatisation organisationnelle de pointe"
-                className="w-full h-full object-cover"
-              />
             </div>
           </div>
         </div>
