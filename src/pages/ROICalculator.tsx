@@ -559,12 +559,12 @@ const ROICalculatorPage = () => {
                         <div className="text-sm mb-3" style={{ color: '#F5F5F5', opacity: 0.8 }}>
                           Coût Estimé
                         </div>
-                        <div className="text-3xl font-bold mb-2" style={{ 
-                          color: '#EF4444',
-                          textShadow: '0 0 10px rgba(239, 68, 68, 0.3)'
-                        }}>
-                          -{results.investissement.toLocaleString()} €
-                        </div>
+                         <div className="text-3xl font-bold mb-2" style={{ 
+                           color: '#EF4444',
+                           textShadow: '0 0 10px rgba(239, 68, 68, 0.3)'
+                         }}>
+                           {results.investissement.toLocaleString()} €
+                         </div>
                         <div className="text-sm" style={{ color: '#F5F5F5' }}>par an</div>
                       </div>
                       <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-800 border border-gray-600 text-white p-6 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30 shadow-2xl" 
