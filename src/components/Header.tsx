@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,9 +25,9 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <a href="/" className="nav-link text-text-secondary hover:text-primary transition-colors">
+            <Link to="/" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Accueil
-            </a>
+            </Link>
             <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Solutions
             </a>
@@ -66,9 +67,9 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border mobile-menu-enter">
             <div className="flex flex-col space-y-4">
-              <a href="/" className="nav-link text-text-secondary hover:text-primary transition-colors">
+              <Link to="/" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Accueil
-              </a>
+              </Link>
               <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Solutions
               </a>
