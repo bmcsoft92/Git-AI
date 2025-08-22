@@ -540,7 +540,7 @@ const ROICalculatorPage = () => {
                         }}>
                           -{results.investissement.toLocaleString()} €
                         </div>
-                        <div className="text-sm" style={{ color: '#F5F5F5' }}>investissement unique</div>
+                        <div className="text-sm" style={{ color: '#F5F5F5' }}>par an</div>
                       </div>
                       <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-800 border border-gray-600 text-white p-6 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30 shadow-2xl" 
                            style={{ 
