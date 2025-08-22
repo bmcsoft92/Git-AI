@@ -49,12 +49,11 @@ const ROICalculatorPage = () => {
       };
     }
     
-    // Heures annuelles totales économisées
+    // Heures annuelles totales économisées (formule directe)
     const heures_annuelles_totales = hoursPerWeek * 46 * employees;
     
-    // Phase 1 - Levier 1 : Économies Directes (75% du temps = vraies économies)
-    const heures_economisees = heures_annuelles_totales * 0.75;
-    const economies_directes = heures_economisees * hourlyRate;
+    // Économies Directes (formule standard)
+    const economies_directes = heures_annuelles_totales * hourlyRate;
     
     // Phase 2 - Levier 2 : Gains de Croissance (25% du temps réinvesti à plus forte valeur)
     const heures_reinvesties = heures_annuelles_totales * 0.25;
@@ -240,20 +239,45 @@ const ROICalculatorPage = () => {
                   </div>
                 </div>
 
-                {/* Bouton de calcul */}
-                <Button
-                  onClick={() => setShowResults(true)}
-                  size="lg"
-                  className="w-full py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                  style={{
-                    backgroundColor: '#0F7F7B',
-                    color: '#F5F5F5',
-                    borderRadius: '12px',
-                    boxShadow: '0 8px 25px rgba(15, 127, 123, 0.3)'
-                  }}
-                >
-                  Calculer mon ROI
-                </Button>
+                {/* Bouton de calcul avec tooltip explicatif */}
+                <div className="relative group">
+                  <Button
+                    onClick={() => setShowResults(true)}
+                    size="lg"
+                    className="w-full py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                    style={{
+                      backgroundColor: '#0F7F7B',
+                      color: '#F5F5F5',
+                      borderRadius: '12px',
+                      boxShadow: '0 8px 25px rgba(15, 127, 123, 0.3)'
+                    }}
+                  >
+                    Calculer mon ROI
+                  </Button>
+                  
+                  {/* Tooltip explicatif de la formule */}
+                  <div className="absolute -top-72 left-1/2 transform -translate-x-1/2 bg-gray-900/95 backdrop-blur-md text-white p-6 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20 w-96 border border-gray-700 shadow-2xl">
+                    <div className="font-semibold text-primary mb-3 text-center">📊 Formule des Économies Directes</div>
+                    
+                    <div className="bg-gray-800 p-3 rounded-md font-mono text-xs text-center mb-4 border border-gray-600">
+                      Économies = (Heures/sem) × (Coût horaire) × 46 × (Employés)
+                    </div>
+                    
+                    <div className="space-y-2 text-xs">
+                      <div><strong>• Heures/semaine :</strong> Temps automatisable par personne</div>
+                      <div><strong>• Coût horaire :</strong> Valeur d'une heure de travail</div>
+                      <div><strong>• 46 semaines :</strong> Année de travail (hors congés)</div>
+                      <div><strong>• Employés :</strong> Nombre de personnes concernées</div>
+                    </div>
+                    
+                    <div className="mt-4 p-2 bg-primary/10 rounded text-xs border border-primary/20">
+                      <strong>Exemple :</strong> 4h × 20€ × 46 × 1 = <span className="text-primary font-bold">3 680€</span>
+                    </div>
+                    
+                    {/* Flèche du tooltip */}
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-900/95"></div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
