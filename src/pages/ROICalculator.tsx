@@ -343,19 +343,25 @@ const ROICalculatorPage = () => {
                             { name: 'Mois', value: results.economies_mois },
                             { name: 'Année', value: results.economies_directes }
                           ]}
-                          margin={{ top: 20, right: 30, left: 80, bottom: 5 }}
+                          margin={{ top: 20, right: 30, left: 100, bottom: 5 }}
                         >
                           <XAxis 
                             dataKey="name" 
                             axisLine={false}
                             tickLine={false}
-                            tick={{ fill: '#F5F5F5', fontSize: 14 }}
+                            tick={{ fill: '#F5F5F5', fontSize: 14, fontWeight: 'bold' }}
                           />
                           <YAxis 
                             axisLine={false}
                             tickLine={false}
-                            tick={{ fill: '#F5F5F5', fontSize: 12 }}
-                            tickFormatter={(value) => `${value.toLocaleString('fr-FR')} €`}
+                            tick={{ fill: '#F5F5F5', fontSize: 12, fontWeight: 'bold' }}
+                            tickFormatter={(value) => {
+                              if (value >= 1000) {
+                                return `${(value / 1000).toFixed(0)}k€`;
+                              }
+                              return `${value.toLocaleString('fr-FR')}€`;
+                            }}
+                            domain={[0, 'dataMax']}
                           />
                           <Tooltip
                             contentStyle={{
@@ -364,9 +370,9 @@ const ROICalculatorPage = () => {
                               borderRadius: '8px',
                               color: '#F5F5F5',
                               fontSize: '14px',
-                              fontWeight: '500'
+                              fontWeight: 'bold'
                             }}
-                            labelStyle={{ color: '#0F7F7B' }}
+                            labelStyle={{ color: '#0F7F7B', fontWeight: 'bold' }}
                             formatter={(value, name) => [`${value.toLocaleString('fr-FR')} €`, '']}
                             labelFormatter={(label) => `${label}`}
                             cursor={{ fill: 'rgba(15, 127, 123, 0.1)' }}
