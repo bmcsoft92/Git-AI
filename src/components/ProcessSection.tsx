@@ -59,14 +59,14 @@ const ProcessSection = () => {
     {
       number: "04",
       title: "Optimiser",
-      subtitle: "Assurer une performance durable & évolutive.",
+      subtitle: "Assurer une performance durable et faire évoluer le système.",
       icon: TrendingUp,
       color: "#D56A1F",
       details: {
-        title: "Phase 4 : Optimisation Continue",
-        description: "Monitoring des performances et amélioration continue basée sur les données d'usage réelles. Support technique et",
-        highlight: "évolutions fonctionnelles",
-        conclusion: "Le livrable : système optimisé avec roadmap d'évolution."
+        title: "Phase 4 : Optimisation & Croissance Continue",
+        description: "Notre partenariat ne s'arrête pas au déploiement. Nous assurons un suivi continu des indicateurs de performance (KPI) et proposons des itérations pour améliorer le système.",
+        highlight: "Le livrable : une solution qui évolue avec votre croissance, avec de nouvelles automatisations au fil de vos besoins.",
+        conclusion: ""
       }
     }
   ];
