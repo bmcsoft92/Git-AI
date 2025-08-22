@@ -11,8 +11,15 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center">
-                <img src="/lovable-uploads/8d8704c1-3e0c-4716-b520-20779aef37e0.png" alt="Maia Elange Logo" className="w-10 h-10 rounded-lg" />
+              <div className="w-14 h-14 rounded-lg flex items-center justify-center bg-gradient-to-br from-primary to-primary-glow p-1">
+                <img 
+                  src="/lovable-uploads/8d8704c1-3e0c-4716-b520-20779aef37e0.png" 
+                  alt="Maia Elange Logo" 
+                  className="w-full h-full rounded-lg filter brightness-150 contrast-125" 
+                  style={{
+                    filter: 'hue-rotate(180deg) brightness(1.3) contrast(1.2)'
+                  }}
+                />
               </div>
               <h1 className="text-2xl font-bold text-heading">Maia Elange</h1>
             </div>
