@@ -16,15 +16,68 @@ const Index = () => {
         <ProcessSection />
         <AutomationCTA />
       </main>
-      <footer className="bg-card border-t border-border py-8">
+      <footer className="bg-card border-t border-border py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <h3 className="text-xl font-bold text-heading">Maia Elange</h3>
-              <p className="text-text-secondary">Excellence en Automatisation IA • Design Premium</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Section Maia Elange */}
+            <div className="lg:col-span-1">
+              <h3 className="text-xl font-bold text-heading mb-4">🤖 Maia Elange</h3>
+              <p className="text-text-secondary mb-4">
+                Agence d'IA & d'automatisation pour organisations.
+              </p>
+              <p className="text-text-secondary mb-6">
+                Simples, mesurables, finanables.
+              </p>
+              <div className="space-y-2 text-sm text-text-secondary">
+                <p><span className="font-medium">Adresse :</span> 60 rue François Ier, 75008 Paris, France</p>
+                <p><span className="font-medium">Email :</span> contact@maiaelange.fr</p>
+                <p><span className="font-medium">Horaires :</span> Lun-Ven 9h-18h • Sam 9h-12h • Dim fermé</p>
+              </div>
             </div>
-            <div className="text-sm text-text-secondary">
-              © 2024 Maia Elange. Tous droits réservés.
+
+            {/* Section Solutions */}
+            <div>
+              <h4 className="text-lg font-semibold text-heading mb-4">Solutions</h4>
+              <ul className="space-y-2 text-text-secondary">
+                <li><a href="#" className="hover:text-primary transition-colors">Automatisation admin</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Assistants IA</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Marketing & croissance</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Business Intelligence</a></li>
+              </ul>
+            </div>
+
+            {/* Section Parcours */}
+            <div>
+              <h4 className="text-lg font-semibold text-heading mb-4">Parcours</h4>
+              <ul className="space-y-2 text-text-secondary">
+                <li><a href="#processus" className="hover:text-primary transition-colors">Processus</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Résultats</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Simulateur ROI</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">FAQ</a></li>
+              </ul>
+            </div>
+
+            {/* Section Ressources */}
+            <div>
+              <h4 className="text-lg font-semibold text-heading mb-4">Ressources</h4>
+              <ul className="space-y-2 text-text-secondary">
+                <li><a href="#" className="hover:text-primary transition-colors">RGPD & sécurité</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Intégrations</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Financements</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Copyright et liens légaux */}
+          <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div className="text-sm text-text-secondary mb-4 md:mb-0">
+              © 2025 Maia Elange – Tous droits réservés.
+            </div>
+            <div className="flex space-x-6 text-sm">
+              <a href="#" className="text-primary hover:text-primary-foreground transition-colors">Mentions légales</a>
+              <a href="#" className="text-primary hover:text-primary-foreground transition-colors">Politique de confidentialité</a>
+              <a href="#" className="text-primary hover:text-primary-foreground transition-colors">CGV</a>
             </div>
           </div>
         </div>
