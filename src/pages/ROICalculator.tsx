@@ -154,8 +154,8 @@ const ROICalculatorPage = () => {
                       value={[formData.hourlyRate]}
                       onValueChange={(value) => handleSliderChange('hourlyRate', value)}
                       max={200}
-                      min={10}
-                      step={5}
+                      min={1}
+                      step={1}
                       className="w-full"
                       style={{ 
                         '--slider-track': 'rgba(15, 127, 123, 0.2)',
