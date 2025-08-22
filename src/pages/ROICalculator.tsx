@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import Header from "@/components/Header";
 
 const ROICalculatorPage = () => {
@@ -356,6 +356,20 @@ const ROICalculatorPage = () => {
                             tickLine={false}
                             tick={{ fill: '#F5F5F5', fontSize: 12 }}
                             tickFormatter={(value) => `${value.toLocaleString('fr-FR')} €`}
+                          />
+                          <Tooltip
+                            contentStyle={{
+                              backgroundColor: 'rgba(31, 41, 55, 0.95)',
+                              border: '1px solid rgba(15, 127, 123, 0.3)',
+                              borderRadius: '8px',
+                              color: '#F5F5F5',
+                              fontSize: '14px',
+                              fontWeight: '500'
+                            }}
+                            labelStyle={{ color: '#0F7F7B' }}
+                            formatter={(value, name) => [`${value.toLocaleString('fr-FR')} €`, '']}
+                            labelFormatter={(label) => `${label}`}
+                            cursor={{ fill: 'rgba(15, 127, 123, 0.1)' }}
                           />
                           <Bar 
                             dataKey="value" 
