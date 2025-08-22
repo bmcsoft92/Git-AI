@@ -83,14 +83,13 @@ const Integrations = () => {
                            hover:scale-[1.05] hover:-translate-y-3 hover:shadow-2xl
                            bg-card/80 backdrop-blur-sm border border-border/30 
                            hover:border-primary hover:shadow-primary/40 hover:bg-card/90
-                           animate-fade-in opacity-0 translate-y-8
+                           animate-fade-in
                            relative overflow-hidden
                            before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/5 before:to-transparent 
                            before:opacity-0 before:transition-opacity before:duration-700 hover:before:opacity-100"
                 style={{ 
                   animationDelay: `${index * 200}ms`,
-                  animationFillMode: 'both',
-                  animationDuration: '1s'
+                  animationFillMode: 'both'
                 }}
               >
                 <CardHeader className="text-center pb-3 pt-6">
