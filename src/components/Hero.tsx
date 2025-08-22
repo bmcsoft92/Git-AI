@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, Settings, TrendingUp, Star } from "lucide-react";
 import heroImage from "@/assets/hero-ai-automation.jpg";
+import AnimatedCounter from "./AnimatedCounter";
 
 const Hero = () => {
   return (
@@ -39,16 +40,31 @@ const Hero = () => {
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center sm:text-left animate-fade-in-up-delay-2">
               <div className="bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border card-hover">
-                <div className="text-2xl font-bold text-primary mb-1 animate-counter">500+</div>
-                <div className="text-sm text-text-secondary">Projets IA Réalisés</div>
+                <div className="flex flex-col items-center sm:items-start">
+                  <Settings className="w-6 h-6 text-primary mb-2" />
+                  <div className="text-2xl font-bold text-primary mb-1">
+                    <AnimatedCounter target="500+" duration={2000} />
+                  </div>
+                  <div className="text-sm text-text-secondary">Projets IA Réalisés</div>
+                </div>
               </div>
               <div className="bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border card-hover">
-                <div className="text-2xl font-bold text-primary mb-1 animate-counter">98%</div>
-                <div className="text-sm text-text-secondary">Excellence Client</div>
+                <div className="flex flex-col items-center sm:items-start">
+                  <TrendingUp className="w-6 h-6 text-primary mb-2" />
+                  <div className="text-2xl font-bold text-primary mb-1">
+                    <AnimatedCounter target="98%" duration={2000} />
+                  </div>
+                  <div className="text-sm text-text-secondary">Excellence Client</div>
+                </div>
               </div>
               <div className="bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border card-hover">
-                <div className="text-2xl font-bold text-primary mb-1 animate-counter">24/7</div>
-                <div className="text-sm text-text-secondary">Support Premium</div>
+                <div className="flex flex-col items-center sm:items-start">
+                  <Star className="w-6 h-6 text-primary mb-2" />
+                  <div className="text-2xl font-bold text-primary mb-1">
+                    <AnimatedCounter target="24/7" duration={2000} />
+                  </div>
+                  <div className="text-sm text-text-secondary">Support Premium</div>
+                </div>
               </div>
             </div>
           </div>
