@@ -121,7 +121,7 @@ const ROICalculatorPage = () => {
                       className="text-sm font-medium mb-3 block"
                       style={{ color: '#F5F5F5', minHeight: '40px' }}
                     >
-                      Heures/sem.<br />automatisables
+                      Heures par<br />semaine
                     </Label>
                     <div className="relative">
                       <Input
@@ -149,7 +149,7 @@ const ROICalculatorPage = () => {
                       className="text-sm font-medium mb-3 block"
                       style={{ color: '#F5F5F5', minHeight: '40px' }}
                     >
-                      Coût horaire moyen<br />(€)
+                      Coût horaire<br />(€)
                     </Label>
                     <div className="relative">
                       <Input
@@ -177,7 +177,7 @@ const ROICalculatorPage = () => {
                       className="text-sm font-medium mb-3 block"
                       style={{ color: '#F5F5F5', minHeight: '40px' }}
                     >
-                      Nombre<br />d'employés
+                      Nombre<br />employés
                     </Label>
                     <div className="relative">
                       <Input
@@ -204,7 +204,7 @@ const ROICalculatorPage = () => {
                       className="text-sm font-medium mb-3 block"
                       style={{ color: '#F5F5F5', minHeight: '40px' }}
                     >
-                      Investissement annuel<br />estimé (€)
+                      Investissement<br />(€)
                     </Label>
                     <div className="relative">
                       <Input
