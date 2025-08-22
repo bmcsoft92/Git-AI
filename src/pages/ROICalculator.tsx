@@ -115,7 +115,7 @@ const ROICalculatorPage = () => {
                       className="text-base font-medium mb-4 block"
                       style={{ color: '#F5F5F5' }}
                     >
-                      Heures/sem. automatisables
+                      Heures automatisables
                     </Label>
                     <div className="relative">
                       <Input
@@ -133,12 +133,6 @@ const ROICalculatorPage = () => {
                         min="1"
                         max="40"
                       />
-                      <span 
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-lg font-medium"
-                        style={{ color: '#4A9EFF' }}
-                      >
-                        h
-                      </span>
                     </div>
                   </div>
 
