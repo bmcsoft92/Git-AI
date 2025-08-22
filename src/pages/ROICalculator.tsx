@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { Slider } from "@/components/ui/slider";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import Header from "@/components/Header";
 
@@ -17,10 +17,10 @@ const ROICalculatorPage = () => {
   const [showResults, setShowResults] = useState(false);
   const [showDetailedResults, setShowDetailedResults] = useState(false);
 
-  const handleSliderChange = (field: string, value: number[]) => {
+  const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
-      [field]: value[0]
+      [field]: parseFloat(value) || 0
     }));
   };
 
@@ -108,89 +108,89 @@ const ROICalculatorPage = () => {
               }}
             >
               <CardContent className="p-12">
-                <div className="space-y-8 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   {/* Heures automatisables */}
                   <div className="text-center">
                     <Label 
-                      className="text-lg font-medium mb-3 block"
+                      className="text-sm font-medium mb-3 block"
                       style={{ color: '#F5F5F5' }}
                     >
                       Heures/sem. automatisables
                     </Label>
-                    <div className="flex items-center justify-between mb-4">
-                      <span style={{ color: '#4A9EFF', fontSize: '24px', fontWeight: 'bold' }}>
-                        {formData.hoursPerWeek} h
+                    <div className="relative">
+                      <Input
+                        type="number"
+                        value={formData.hoursPerWeek}
+                        onChange={(e) => handleInputChange('hoursPerWeek', e.target.value)}
+                        className="text-center text-xl font-bold py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                        style={{ 
+                          backgroundColor: 'rgba(31, 41, 55, 0.8)',
+                          color: '#4A9EFF',
+                          borderColor: 'rgba(74, 158, 255, 0.3)',
+                          borderRadius: '12px'
+                        }}
+                        min="1"
+                        max="40"
+                      />
+                      <span 
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm font-medium"
+                        style={{ color: '#4A9EFF' }}
+                      >
+                        h
                       </span>
                     </div>
-                    <Slider
-                      value={[formData.hoursPerWeek]}
-                      onValueChange={(value) => handleSliderChange('hoursPerWeek', value)}
-                      max={40}
-                      min={1}
-                      step={1}
-                      className="w-full"
-                      style={{ 
-                        '--slider-track': 'rgba(15, 127, 123, 0.2)',
-                        '--slider-range': '#4A9EFF',
-                        '--slider-thumb': '#4A9EFF'
-                      } as React.CSSProperties}
-                    />
                   </div>
 
                   {/* Coût horaire */}
                   <div className="text-center">
                     <Label 
-                      className="text-lg font-medium mb-3 block"
+                      className="text-sm font-medium mb-3 block"
                       style={{ color: '#F5F5F5' }}
                     >
                       Coût horaire moyen (€)
                     </Label>
-                    <div className="flex items-center justify-between mb-4">
-                      <span style={{ color: '#4A9EFF', fontSize: '24px', fontWeight: 'bold' }}>
-                        {formData.hourlyRate} €
-                      </span>
+                    <div className="relative">
+                      <Input
+                        type="number"
+                        value={formData.hourlyRate}
+                        onChange={(e) => handleInputChange('hourlyRate', e.target.value)}
+                        className="text-center text-xl font-bold py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                        style={{ 
+                          backgroundColor: 'rgba(31, 41, 55, 0.8)',
+                          color: '#4A9EFF',
+                          borderColor: 'rgba(74, 158, 255, 0.3)',
+                          borderRadius: '12px'
+                        }}
+                        min="1"
+                        max="200"
+                      />
                     </div>
-                    <Slider
-                      value={[formData.hourlyRate]}
-                      onValueChange={(value) => handleSliderChange('hourlyRate', value)}
-                      max={200}
-                      min={1}
-                      step={1}
-                      className="w-full"
-                      style={{ 
-                        '--slider-track': 'rgba(15, 127, 123, 0.2)',
-                        '--slider-range': '#4A9EFF',
-                        '--slider-thumb': '#4A9EFF'
-                      } as React.CSSProperties}
-                    />
                   </div>
 
                   {/* Nombre d'employés */}
                   <div className="text-center">
                     <Label 
-                      className="text-lg font-medium mb-3 block"
+                      className="text-sm font-medium mb-3 block"
                       style={{ color: '#F5F5F5' }}
                     >
                       Nombre d'employés
                     </Label>
-                    <div className="flex items-center justify-between mb-4">
-                      <span style={{ color: '#4A9EFF', fontSize: '24px', fontWeight: 'bold' }}>
-                        {formData.employees}
-                      </span>
+                    <div className="relative">
+                      <Input
+                        type="number"
+                        value={formData.employees}
+                        onChange={(e) => handleInputChange('employees', e.target.value)}
+                        className="text-center text-xl font-bold py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                        style={{ 
+                          backgroundColor: 'rgba(31, 41, 55, 0.8)',
+                          color: '#4A9EFF',
+                          borderColor: 'rgba(74, 158, 255, 0.3)',
+                          borderRadius: '12px'
+                        }}
+                        min="1"
+                        max="1000"
+                      />
                     </div>
-                    <Slider
-                      value={[formData.employees]}
-                      onValueChange={(value) => handleSliderChange('employees', value)}
-                      max={100}
-                      min={1}
-                      step={1}
-                      className="w-full"
-                      style={{ 
-                        '--slider-track': 'rgba(15, 127, 123, 0.2)',
-                        '--slider-range': '#4A9EFF',
-                        '--slider-thumb': '#4A9EFF'
-                      } as React.CSSProperties}
-                    />
                   </div>
                 </div>
 
