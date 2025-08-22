@@ -16,77 +16,168 @@ const Index = () => {
         <ProcessSection />
         <AutomationCTA />
       </main>
-      <footer className="bg-card border-t border-border py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <footer className="relative bg-gradient-to-br from-card to-card/80 border-t border-border/50 overflow-hidden">
+        {/* Éléments décoratifs d'arrière-plan */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cta-primary rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
             {/* Section Maia Elange */}
-            <div className="lg:col-span-1">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+            <div className="lg:col-span-1 space-y-6">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/20 to-cta-primary/20 backdrop-blur-sm border border-primary/20 shadow-lg">
                   <img 
                     src="/lovable-uploads/8d8704c1-3e0c-4716-b520-20779aef37e0.png" 
                     alt="Maia Elange Logo" 
-                    className="w-full h-full rounded-lg" 
+                    className="w-8 h-8 rounded-lg" 
                   />
                 </div>
-                <h3 className="text-xl font-bold text-heading">Maia Elange</h3>
+                <h3 className="text-2xl font-bold text-heading">Maia Elange</h3>
               </div>
-              <p className="text-text-secondary mb-4">
-                Agence d'IA & d'automatisation pour organisations.
-              </p>
-              <p className="text-text-secondary mb-6">
-                Simples, mesurables, finanables.
-              </p>
-              <div className="space-y-2 text-sm text-text-secondary">
-                <p><span className="font-medium">Adresse :</span> 60 rue François Ier, 75008 Paris, France</p>
-                <p><span className="font-medium">Email :</span> contact@maiaelange.fr</p>
-                <p><span className="font-medium">Horaires :</span> Lun-Ven 9h-18h • Sam 9h-12h • Dim fermé</p>
+              
+              <div className="space-y-4">
+                <p className="text-text-secondary leading-relaxed font-medium">
+                  Agence d'IA & d'automatisation pour organisations.
+                </p>
+                <p className="text-sm text-text-secondary italic border-l-2 border-primary/30 pl-3">
+                  Simples, mesurables, financables.
+                </p>
+              </div>
+              
+              <div className="space-y-3 text-sm">
+                <div className="flex items-start space-x-2 group hover:text-primary transition-colors">
+                  <span className="font-semibold text-primary min-w-0 flex-shrink-0">📍</span>
+                  <span className="text-text-secondary group-hover:text-primary transition-colors">60 rue François Ier, 75008 Paris, France</span>
+                </div>
+                <div className="flex items-center space-x-2 group hover:text-primary transition-colors">
+                  <span className="font-semibold text-primary">📧</span>
+                  <a href="mailto:contact@maiaelange.fr" className="text-text-secondary group-hover:text-primary transition-colors hover:underline">
+                    contact@maiaelange.fr
+                  </a>
+                </div>
+                <div className="flex items-start space-x-2 group">
+                  <span className="font-semibold text-primary min-w-0 flex-shrink-0">🕒</span>
+                  <div className="text-text-secondary">
+                    <div>Lun-Ven 9h-18h</div>
+                    <div>Sam 9h-12h • Dim fermé</div>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Section Solutions */}
-            <div>
-              <h4 className="text-lg font-semibold text-heading mb-4">Solutions</h4>
-              <ul className="space-y-2 text-text-secondary">
-                <li><a href="#" className="hover:text-primary transition-colors">Automatisation admin</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Assistants IA</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Marketing & croissance</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Business Intelligence</a></li>
+            <div className="space-y-6">
+              <h4 className="text-lg font-bold text-heading relative">
+                Solutions
+                <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
+              </h4>
+              <ul className="space-y-3">
+                {[
+                  { name: "Automatisation admin", href: "#" },
+                  { name: "Assistants IA", href: "#" },
+                  { name: "Marketing & croissance", href: "#" },
+                  { name: "Business Intelligence", href: "#" }
+                ].map((item, index) => (
+                  <li key={index}>
+                    <a 
+                      href={item.href} 
+                      className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2"
+                    >
+                      <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
             {/* Section Parcours */}
-            <div>
-              <h4 className="text-lg font-semibold text-heading mb-4">Parcours</h4>
-              <ul className="space-y-2 text-text-secondary">
-                <li><a href="#processus" className="hover:text-primary transition-colors">Processus</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Résultats</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Simulateur ROI</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">FAQ</a></li>
+            <div className="space-y-6">
+              <h4 className="text-lg font-bold text-heading relative">
+                Parcours
+                <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
+              </h4>
+              <ul className="space-y-3">
+                {[
+                  { name: "Processus", href: "#processus" },
+                  { name: "Résultats", href: "#" },
+                  { name: "Simulateur ROI", href: "#" },
+                  { name: "FAQ", href: "#" }
+                ].map((item, index) => (
+                  <li key={index}>
+                    <a 
+                      href={item.href} 
+                      className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2"
+                    >
+                      <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
             {/* Section Ressources */}
-            <div>
-              <h4 className="text-lg font-semibold text-heading mb-4">Ressources</h4>
-              <ul className="space-y-2 text-text-secondary">
-                <li><a href="#" className="hover:text-primary transition-colors">RGPD & sécurité</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Intégrations</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Financements</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+            <div className="space-y-6">
+              <h4 className="text-lg font-bold text-heading relative">
+                Ressources
+                <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
+              </h4>
+              <ul className="space-y-3">
+                {[
+                  { name: "RGPD & sécurité", href: "#" },
+                  { name: "Intégrations", href: "#" },
+                  { name: "Financements", href: "#" },
+                  { name: "Contact", href: "#" }
+                ].map((item, index) => (
+                  <li key={index}>
+                    <a 
+                      href={item.href} 
+                      className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2"
+                    >
+                      <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
 
+          {/* Séparateur élégant */}
+          <div className="my-12">
+            <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+          </div>
+
           {/* Copyright et liens légaux */}
-          <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm text-text-secondary mb-4 md:mb-0">
-              © 2025 Maia Elange – Tous droits réservés.
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+              <div className="text-sm text-text-secondary font-medium">
+                © 2025 Maia Elange – Tous droits réservés.
+              </div>
+              <div className="hidden md:block w-1 h-1 bg-text-secondary/50 rounded-full"></div>
+              <div className="text-xs text-text-secondary/80">
+                Fait avec ❤️ pour l'automatisation intelligente
+              </div>
             </div>
-            <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-primary hover:text-primary-foreground transition-colors">Mentions légales</a>
-              <a href="#" className="text-primary hover:text-primary-foreground transition-colors">Politique de confidentialité</a>
-              <a href="#" className="text-primary hover:text-primary-foreground transition-colors">CGV</a>
+            
+            <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm">
+              {[
+                { name: "Mentions légales", href: "#" },
+                { name: "Politique de confidentialité", href: "#" },
+                { name: "CGV", href: "#" }
+              ].map((link, index) => (
+                <a 
+                  key={index}
+                  href={link.href} 
+                  className="text-primary hover:text-cta-primary transition-colors duration-300 font-medium hover:underline underline-offset-4 decoration-2"
+                >
+                  {link.name}
+                </a>
+              ))}
             </div>
           </div>
         </div>
