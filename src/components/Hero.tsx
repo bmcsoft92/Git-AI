@@ -21,9 +21,9 @@ const Hero = () => {
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-16 animate-fade-in-up">
             <div className="mb-12">
-              <span className="inline-flex items-center px-6 py-3 rounded-full text-lg font-semibold bg-primary/20 text-primary border border-primary/30">
-                Expertise Technique • Excellence IA
-              </span>
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full text-lg font-semibold">
+                diagnostic gratuit
+              </Button>
             </div>
             
             <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-heading mb-12 leading-tight">
