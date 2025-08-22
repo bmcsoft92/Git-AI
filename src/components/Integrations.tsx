@@ -7,43 +7,37 @@ const Integrations = () => {
       id: "google-workspace",
       name: "Google Workspace",
       description: "Docs / Sheets / Gmail",
-      bgColor: "from-red-500/10 to-yellow-500/10",
-      iconColor: "text-yellow-500"
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
     },
     {
       id: "outlook",
       name: "Outlook", 
       description: "Mail & Calendrier",
-      bgColor: "from-blue-600/10 to-blue-500/10",
-      iconColor: "text-blue-600"
+      logo: "https://upload.wikimedia.org/wikipedia/commons/d/df/Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg"
     },
     {
       id: "salesforce",
       name: "Salesforce",
       description: "CRM & Ventes", 
-      bgColor: "from-blue-400/10 to-cyan-400/10",
-      iconColor: "text-blue-400"
+      logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg"
     },
     {
       id: "slack",
       name: "Slack",
       description: "Communication & Support",
-      bgColor: "from-green-500/10 to-purple-500/10", 
-      iconColor: "text-green-500"
+      logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg"
     },
     {
       id: "teams",
       name: "Teams",
       description: "Opérations & Collaboration",
-      bgColor: "from-purple-600/10 to-blue-600/10",
-      iconColor: "text-purple-600"
+      logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg"
     },
     {
       id: "linkedin", 
       name: "LinkedIn",
       description: "Prospection & Recrutement",
-      bgColor: "from-blue-700/10 to-blue-600/10",
-      iconColor: "text-blue-700"
+      logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
     }
   ];
 
@@ -86,13 +80,17 @@ const Integrations = () => {
             >
               <CardHeader className="text-center pb-3 pt-6">
                 <div className="flex justify-center mb-4">
-                  <div className={`w-16 h-16 rounded-lg bg-gradient-to-br ${integration.bgColor} flex items-center justify-center
+                  <div className="w-16 h-16 rounded-lg bg-background/80 flex items-center justify-center
                                 transition-all duration-300 group-hover:bg-primary/10 group-hover:scale-110 border border-border/20
-                                group-hover:border-primary/40`}>
-                    <div className={`w-8 h-8 rounded-md ${integration.iconColor} bg-current/20 
-                                   transition-transform duration-300 group-hover:scale-110 relative`}>
-                      <div className={`absolute inset-1 rounded ${integration.iconColor} bg-current opacity-80`}></div>
-                    </div>
+                                group-hover:border-primary/40">
+                    <img 
+                      src={integration.logo} 
+                      alt={`${integration.name} logo`}
+                      className="w-10 h-10 transition-transform duration-300 group-hover:scale-110 object-contain"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
                   </div>
                 </div>
                 <CardTitle className="text-base font-semibold text-heading group-hover:text-primary transition-colors duration-300">
