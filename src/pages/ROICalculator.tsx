@@ -238,10 +238,8 @@ const ROICalculatorPage = () => {
                     <Button
                       onClick={() => setShowDetailedResults(true)}
                       size="lg"
-                      className="w-full py-4 text-lg font-semibold transition-all duration-300 hover:scale-105"
+                      className="w-full py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground"
                       style={{
-                        background: 'linear-gradient(90deg, #FF6B6B, #4ECDC4)',
-                        color: '#F5F5F5',
                         borderRadius: '12px',
                         border: 'none'
                       }}
