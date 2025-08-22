@@ -15,16 +15,16 @@ const Hero = () => {
             </div>
             
             <h1 className="text-4xl lg:text-6xl font-bold text-heading mb-6 leading-tight">
-              L'Automatisation
+              Systèmes d'Automatisation
               <span className="text-primary block">
-                Industrielle Réinventée
+                IA pour Organisations
               </span>
             </h1>
             
             <p className="text-xl text-text-secondary mb-8 leading-relaxed">
-              Optimisez vos processus de production avec nos solutions d'automatisation 
-              de pointe. Alliant fiabilité industrielle et innovation technologique pour 
-              transformer votre entreprise.
+              Transformez vos processus organisationnels avec nos solutions d'intelligence artificielle 
+              avancées. Automatisation intelligente des workflows, prise de décision augmentée et 
+              optimisation continue de vos opérations.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -40,15 +40,15 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-text-secondary">
               <div className="flex items-center">
                 <CheckCircle className="h-5 w-5 text-success mr-2" />
-                ROI mesuré en 6 mois
+                Efficacité +80% avec IA
               </div>
               <div className="flex items-center">
                 <CheckCircle className="h-5 w-5 text-success mr-2" />
-                99.9% de fiabilité
+                Automatisation intelligente
               </div>
               <div className="flex items-center">
                 <CheckCircle className="h-5 w-5 text-success mr-2" />
-                Support 24/7
+                Déploiement en 30 jours
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@ const Hero = () => {
             </div>
             <div className="absolute -bottom-6 -left-6 bg-card border border-border rounded-lg p-4 shadow-lg">
               <div className="text-2xl font-bold text-primary">+300%</div>
-              <div className="text-sm text-text-secondary">Productivité augmentée</div>
+              <div className="text-sm text-text-secondary">Efficacité organisationnelle</div>
             </div>
           </div>
         </div>

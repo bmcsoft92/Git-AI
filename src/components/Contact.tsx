@@ -12,11 +12,11 @@ const Contact = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-heading mb-4">
-            Parlons de Votre Projet
+            Parlons de vos Besoins d'Automatisation IA
           </h2>
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-            Nos experts vous accompagnent dans la transformation de votre industrie. 
-            Contactez-nous pour une consultation personnalisée.
+            Nos experts en intelligence artificielle vous accompagnent dans l'automatisation 
+            de vos processus organisationnels. Consultation personnalisée gratuite.
           </p>
         </div>
 
@@ -57,11 +57,12 @@ const Contact = () => {
                     <SelectValue placeholder="Sélectionnez votre secteur" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="automotive">Automobile</SelectItem>
-                    <SelectItem value="aerospace">Aérospatiale</SelectItem>
-                    <SelectItem value="food">Agroalimentaire</SelectItem>
-                    <SelectItem value="pharma">Pharmaceutique</SelectItem>
-                    <SelectItem value="energy">Énergie</SelectItem>
+                    <SelectItem value="banking">Services Financiers</SelectItem>
+                    <SelectItem value="telecom">Télécommunications</SelectItem>
+                    <SelectItem value="retail">Commerce & Retail</SelectItem>
+                    <SelectItem value="healthcare">Santé & Pharmaceutique</SelectItem>
+                    <SelectItem value="insurance">Assurance</SelectItem>
+                    <SelectItem value="consulting">Conseil & Services</SelectItem>
                     <SelectItem value="other">Autre</SelectItem>
                   </SelectContent>
                 </Select>
@@ -71,7 +72,7 @@ const Contact = () => {
                 <Label htmlFor="project">Décrivez votre projet</Label>
                 <Textarea 
                   id="project" 
-                  placeholder="Parlez-nous de vos besoins en automatisation..."
+                  placeholder="Décrivez vos besoins en automatisation IA : workflows à optimiser, processus répétitifs, aide à la décision..."
                   rows={4}
                 />
               </div>
@@ -139,11 +140,11 @@ const Contact = () => {
             <Card className="bg-primary text-primary-foreground">
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold mb-3">
-                  Audit Gratuit de vos Processus
+                  Audit Gratuit IA de vos Processus
                 </h3>
                 <p className="mb-4 opacity-90">
-                  Bénéficiez d'un audit complet de vos processus industriels 
-                  et recevez nos recommandations d'optimisation.
+                  Bénéficiez d'une analyse complète de vos processus organisationnels 
+                  et découvrez le potentiel d'automatisation par IA.
                 </p>
                 <Button variant="secondary" className="w-full">
                   Planifier un audit

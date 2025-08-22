@@ -19,7 +19,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <h3 className="text-xl font-bold text-heading">AutomaTech</h3>
-              <p className="text-text-secondary">Innovation & Confiance en Automatisation</p>
+              <p className="text-text-secondary">Solutions IA d'Automatisation Organisationnelle</p>
             </div>
             <div className="text-sm text-text-secondary">
               © 2024 AutomaTech. Tous droits réservés.

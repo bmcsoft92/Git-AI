@@ -6,53 +6,53 @@ const Expertise = () => {
   const stats = [
     {
       icon: Users,
-      value: "500+",
-      label: "Clients industriels",
-      description: "Font confiance à nos solutions"
+      value: "300+",
+      label: "Organisations clientes",
+      description: "Automatisées par nos solutions IA"
     },
     {
       icon: Award,
-      value: "25 ans",
-      label: "D'expertise",
-      description: "Dans l'automatisation industrielle"
+      value: "15 ans",
+      label: "D'expertise IA",
+      description: "Dans l'automatisation organisationnelle"
     },
     {
       icon: Target,
-      value: "99.9%",
-      label: "De fiabilité",
-      description: "Sur nos systèmes déployés"
+      value: "95%",
+      label: "Taux de succès",
+      description: "Sur nos projets d'automatisation IA"
     },
     {
       icon: Star,
       value: "24/7",
-      label: "Support technique",
-      description: "Assistance continue garantie"
+      label: "Support IA",
+      description: "Monitoring intelligent continu"
     }
   ];
 
   const testimonials = [
     {
-      company: "Renault Group",
-      sector: "Automobile",
-      quote: "AutomaTech a révolutionné notre chaîne de production. 40% d'augmentation de productivité en 6 mois.",
-      author: "Marie Dubois, Directrice Production"
+      company: "BNP Paribas",
+      sector: "Services Financiers",
+      quote: "L'IA conversationnelle d'AutomaTech a transformé notre service client. 70% de réduction du temps de traitement des demandes.",
+      author: "Claire Martin, DSI"
     },
     {
-      company: "Airbus",
-      sector: "Aérospatiale", 
-      quote: "Leur expertise en robotisation nous a permis d'atteindre une précision jamais vue auparavant.",
-      author: "Jean Martin, Ingénieur en Chef"
+      company: "Orange Business",
+      sector: "Télécommunications", 
+      quote: "Leurs solutions d'automatisation des workflows nous ont permis d'optimiser nos opérations avec une efficacité remarquable.",
+      author: "Thomas Dubois, Directeur Opérations"
     },
     {
-      company: "Danone",
-      sector: "Agroalimentaire",
-      quote: "Solutions d'automatisation parfaitement adaptées aux contraintes sanitaires de notre secteur.",
-      author: "Sophie Laurent, Responsable Qualité"
+      company: "Société Générale",
+      sector: "Banking",
+      quote: "L'IA décisionnelle a révolutionné notre processus d'analyse de risques. Des décisions plus rapides et plus précises.",
+      author: "Sophie Chen, Risk Manager"
     }
   ];
 
   const certifications = [
-    "ISO 27001", "IEC 61508", "ATEX", "CE Marking", "UL Listed", "Industry 4.0"
+    "ISO 27001", "SOC 2", "GDPR Compliant", "AI Ethics", "Cloud Security", "Enterprise AI"
   ];
 
   return (
@@ -61,11 +61,11 @@ const Expertise = () => {
         {/* En-tête */}
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-heading mb-4">
-            Une Expertise Reconnue
+            Leader en Automatisation IA
           </h2>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Leader français de l'automatisation industrielle, nous accompagnons les 
-            plus grandes entreprises dans leur transformation technologique.
+            Pionnier français de l'automatisation organisationnelle par intelligence artificielle, 
+            nous accompagnons les entreprises dans leur transformation numérique intelligente.
           </p>
         </div>
 
