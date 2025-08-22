@@ -9,9 +9,9 @@ import Header from "@/components/Header";
 
 const ROICalculatorPage = () => {
   const [formData, setFormData] = useState({
-    hoursPerWeek: 10,
-    hourlyRate: 40,
-    employees: 5
+    hoursPerWeek: "10",
+    hourlyRate: "40",
+    employees: "5"
   });
 
   const [showResults, setShowResults] = useState(false);
@@ -20,26 +20,35 @@ const ROICalculatorPage = () => {
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
-      [field]: parseFloat(value) || 0
+      [field]: value
     }));
   };
 
+  const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    e.target.select();
+  };
+
   const calculateROI = () => {
+    // Convertir les strings en nombres avec valeurs par défaut
+    const hoursPerWeek = parseFloat(formData.hoursPerWeek) || 0;
+    const hourlyRate = parseFloat(formData.hourlyRate) || 0;
+    const employees = parseFloat(formData.employees) || 0;
+    
     // Phase 1 - Levier 1 : Économies Directes
-    const economies_directes = formData.hoursPerWeek * formData.hourlyRate * 46 * formData.employees;
+    const economies_directes = hoursPerWeek * hourlyRate * 46 * employees;
     
     // Calculs par période pour le graphique
     const economies_semaine = Math.round(economies_directes / 46);
     const economies_mois = Math.round(economies_directes / 12);
     
     // Phase 2 - Calculs stratégiques complets
-    const heures_annuelles_liberees = formData.hoursPerWeek * 46 * formData.employees;
-    const gains_indirects = heures_annuelles_liberees * 0.25 * (formData.hourlyRate * 1.5);
+    const heures_annuelles_liberees = hoursPerWeek * 46 * employees;
+    const gains_indirects = heures_annuelles_liberees * 0.25 * (hourlyRate * 1.5);
     
     let investissement;
-    if (formData.employees === 1) {
+    if (employees === 1) {
       investissement = 2500;
-    } else if (formData.employees > 1 && formData.employees <= 10) {
+    } else if (employees > 1 && employees <= 10) {
       investissement = 7500;
     } else {
       investissement = 15000;
@@ -122,6 +131,7 @@ const ROICalculatorPage = () => {
                         type="number"
                         value={formData.hoursPerWeek}
                         onChange={(e) => handleInputChange('hoursPerWeek', e.target.value)}
+                        onFocus={handleInputFocus}
                         className="text-left text-xl font-medium py-5 px-5 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                         style={{ 
                           backgroundColor: 'rgba(31, 41, 55, 0.9)',
@@ -149,6 +159,7 @@ const ROICalculatorPage = () => {
                         type="number"
                         value={formData.hourlyRate}
                         onChange={(e) => handleInputChange('hourlyRate', e.target.value)}
+                        onFocus={handleInputFocus}
                         className="text-left text-xl font-medium py-5 px-5 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                         style={{ 
                           backgroundColor: 'rgba(31, 41, 55, 0.9)',
@@ -176,6 +187,7 @@ const ROICalculatorPage = () => {
                         type="number"
                         value={formData.employees}
                         onChange={(e) => handleInputChange('employees', e.target.value)}
+                        onFocus={handleInputFocus}
                         className="text-left text-xl font-medium py-5 px-5 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                         style={{ 
                           backgroundColor: 'rgba(31, 41, 55, 0.9)',
