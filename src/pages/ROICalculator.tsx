@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Progress } from "@/components/ui/progress";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import Header from "@/components/Header";
 
@@ -17,6 +19,19 @@ const ROICalculatorPage = () => {
 
   const [showResults, setShowResults] = useState(false);
   const [showDetailedResults, setShowDetailedResults] = useState(false);
+  const [showDiagnostic, setShowDiagnostic] = useState(false);
+  
+  // États pour le formulaire de diagnostic
+  const [diagnosticData, setDiagnosticData] = useState({
+    nom: "",
+    email: "",
+    organisation: "",
+    taille: ""
+  });
+  const [currentStep, setCurrentStep] = useState(1);
+  
+  // Référence pour le scroll vers le diagnostic
+  const diagnosticRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
@@ -677,29 +692,242 @@ const ROICalculatorPage = () => {
                   {/* Appel à l'action final */}
                   <div className="text-center">
                     <Button
+                      onClick={() => {
+                        setShowDiagnostic(true);
+                        setTimeout(() => {
+                          diagnosticRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                      }}
                       size="lg"
                       className="px-12 py-5 text-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                       style={{
-                        backgroundColor: '#FF8C42',
+                        backgroundColor: '#0F7F7B',
                         color: '#F5F5F5',
                         borderRadius: '15px',
-                        boxShadow: '0 10px 30px rgba(255, 140, 66, 0.4)'
+                        boxShadow: '0 10px 30px rgba(15, 127, 123, 0.4)'
                       }}
                     >
-                      Votre diagnostic stratégique personnalisé
+                      Continuer vers le Diagnostic Détaillé
                     </Button>
                     <p className="mt-4 text-sm opacity-80" style={{ color: '#F5F5F5' }}>
-                      Diagnostic personnalisé • Sans engagement • 30 minutes
+                      Diagnostic personnalisé • Sans engagement • 3 minutes
                     </p>
                   </div>
                 </CardContent>
               </Card>
+              )}
+
+            {/* Formulaire de Diagnostic Détaillé */}
+            {showDiagnostic && (
+              <div ref={diagnosticRef} className="mt-16">
+                <Card 
+                  className="border-0 shadow-2xl max-w-3xl mx-auto animate-fade-in"
+                  style={{ 
+                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                    backdropFilter: 'blur(15px)',
+                    border: '2px solid rgba(15, 127, 123, 0.3)'
+                  }}
+                >
+                  <CardContent className="p-12">
+                    {/* En-tête du diagnostic */}
+                    <div className="text-center mb-8">
+                      <Badge 
+                        variant="outline" 
+                        className="mb-4 px-4 py-2 text-sm font-medium uppercase tracking-wider"
+                        style={{ 
+                          borderColor: '#4A9EFF', 
+                          color: '#4A9EFF',
+                          backgroundColor: 'rgba(74, 158, 255, 0.1)'
+                        }}
+                      >
+                        ÉTAPE 2 : DIAGNOSTIC DÉTAILLÉ
+                      </Badge>
+                      
+                      <h2 
+                        className="text-3xl lg:text-4xl font-bold mb-4"
+                        style={{ color: '#F5F5F5' }}
+                      >
+                        Affinez votre potentiel
+                      </h2>
+                      
+                      <p 
+                        className="text-lg mb-6 opacity-90 max-w-2xl mx-auto"
+                        style={{ color: '#F5F5F5' }}
+                      >
+                        Remplissez ce formulaire pour recevoir un rapport personnalisé et des recommandations sur-mesure.
+                      </p>
+
+                      {/* Badges de confiance */}
+                      <div className="flex justify-center gap-4 mb-8 flex-wrap">
+                        <Badge className="px-3 py-2" style={{ backgroundColor: 'rgba(15, 127, 123, 0.2)', color: '#0F7F7B', border: '1px solid rgba(15, 127, 123, 0.3)' }}>
+                          ✓ Conforme RGPD
+                        </Badge>
+                        <Badge className="px-3 py-2" style={{ backgroundColor: 'rgba(15, 127, 123, 0.2)', color: '#0F7F7B', border: '1px solid rgba(15, 127, 123, 0.3)' }}>
+                          ✓ &lt;3 min
+                        </Badge>
+                        <Badge className="px-3 py-2" style={{ backgroundColor: 'rgba(15, 127, 123, 0.2)', color: '#0F7F7B', border: '1px solid rgba(15, 127, 123, 0.3)' }}>
+                          ✓ Sans engagement
+                        </Badge>
+                      </div>
+
+                      {/* Barre de progression */}
+                      <div className="mb-8">
+                        <Progress value={20} className="h-2 mb-2" style={{ backgroundColor: 'rgba(15, 127, 123, 0.2)' }} />
+                        <p className="text-sm opacity-70" style={{ color: '#F5F5F5' }}>
+                          Étape 1 sur 5
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Formulaire Étape 1 */}
+                    <div className="space-y-8">
+                      <div className="text-center mb-8">
+                        <h3 
+                          className="text-2xl font-semibold mb-4"
+                          style={{ color: '#F5F5F5' }}
+                        >
+                          Étape 1/5 – Pour commencer, qui êtes-vous ?
+                        </h3>
+                        <p 
+                          className="text-base opacity-80"
+                          style={{ color: '#F5F5F5' }}
+                        >
+                          Ces premières informations nous permettent d'ajuster le diagnostic à votre réalité.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Nom & prénom */}
+                        <div>
+                          <Label 
+                            className="text-sm font-medium mb-3 block"
+                            style={{ color: '#F5F5F5' }}
+                          >
+                            Nom & prénom *
+                          </Label>
+                          <Input
+                            type="text"
+                            value={diagnosticData.nom}
+                            onChange={(e) => setDiagnosticData(prev => ({ ...prev, nom: e.target.value }))}
+                            placeholder="Jean Dupont"
+                            className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                            style={{ 
+                              backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                              color: '#F5F5F5',
+                              borderColor: 'rgba(74, 158, 255, 0.4)',
+                              borderRadius: '8px'
+                            }}
+                          />
+                        </div>
+
+                        {/* Email professionnel */}
+                        <div>
+                          <Label 
+                            className="text-sm font-medium mb-3 block"
+                            style={{ color: '#F5F5F5' }}
+                          >
+                            Email professionnel *
+                          </Label>
+                          <Input
+                            type="email"
+                            value={diagnosticData.email}
+                            onChange={(e) => setDiagnosticData(prev => ({ ...prev, email: e.target.value }))}
+                            placeholder="jean.dupont@entreprise.fr"
+                            className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                            style={{ 
+                              backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                              color: '#F5F5F5',
+                              borderColor: 'rgba(74, 158, 255, 0.4)',
+                              borderRadius: '8px'
+                            }}
+                          />
+                          <p className="text-xs mt-2 opacity-70" style={{ color: '#F5F5F5' }}>
+                            C'est à cette adresse que nous enverrons votre rapport confidentiel.
+                          </p>
+                        </div>
+
+                        {/* Organisation */}
+                        <div>
+                          <Label 
+                            className="text-sm font-medium mb-3 block"
+                            style={{ color: '#F5F5F5' }}
+                          >
+                            Organisation *
+                          </Label>
+                          <Input
+                            type="text"
+                            value={diagnosticData.organisation}
+                            onChange={(e) => setDiagnosticData(prev => ({ ...prev, organisation: e.target.value }))}
+                            placeholder="Nom de votre société"
+                            className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                            style={{ 
+                              backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                              color: '#F5F5F5',
+                              borderColor: 'rgba(74, 158, 255, 0.4)',
+                              borderRadius: '8px'
+                            }}
+                          />
+                        </div>
+
+                        {/* Taille de l'équipe */}
+                        <div>
+                          <Label 
+                            className="text-sm font-medium mb-3 block"
+                            style={{ color: '#F5F5F5' }}
+                          >
+                            Taille de l'équipe *
+                          </Label>
+                          <Select 
+                            value={diagnosticData.taille} 
+                            onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, taille: value }))}
+                          >
+                            <SelectTrigger 
+                              className="text-base py-3 px-4 border-2"
+                              style={{ 
+                                backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                color: '#F5F5F5',
+                                borderColor: 'rgba(74, 158, 255, 0.4)',
+                                borderRadius: '8px'
+                              }}
+                            >
+                              <SelectValue placeholder="Moi uniquement (solo)" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="1">Moi uniquement (solo)</SelectItem>
+                              <SelectItem value="2-5">2-5 employés</SelectItem>
+                              <SelectItem value="6-20">6-20 employés</SelectItem>
+                              <SelectItem value="21-50">21-50 employés</SelectItem>
+                              <SelectItem value="51-100">51-100 employés</SelectItem>
+                              <SelectItem value="100+">100+ employés</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+
+                      {/* Bouton Suivant */}
+                      <div className="text-center mt-10">
+                        <Button
+                          size="lg"
+                          className="px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
+                          style={{
+                            backgroundColor: '#4A9EFF',
+                            color: '#F5F5F5',
+                            borderRadius: '8px'
+                          }}
+                        >
+                          Suivant
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             )}
+            </div>
           </div>
-        </div>
-      </main>
-    </div>
-  );
-};
+        </main>
+      </div>
+    );
+  };
 
 export default ROICalculatorPage;
