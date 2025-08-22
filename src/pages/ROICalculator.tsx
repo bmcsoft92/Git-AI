@@ -94,7 +94,7 @@ const ROICalculatorPage = () => {
                 className="text-lg mb-8 opacity-90 max-w-2xl mx-auto"
                 style={{ color: '#F5F5F5' }}
               >
-                Utilisez les curseurs pour ajuster les variables clés de votre entreprise et découvrez le potentiel financier de l'automatisation.
+                Saisissez les variables clés de votre entreprise et découvrez le potentiel financier de l'automatisation.
               </p>
             </div>
 
