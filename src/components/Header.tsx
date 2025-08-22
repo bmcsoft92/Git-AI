@@ -6,6 +6,11 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleHomeClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsMenuOpen(false); // Fermer le menu mobile si ouvert
+  };
+
   return (
     <header className="bg-card border-b border-border sticky top-0 z-50 backdrop-blur-sm bg-card/95">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,7 +30,7 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="nav-link text-text-secondary hover:text-primary transition-colors">
+            <Link to="/" onClick={handleHomeClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
               Accueil
             </Link>
             <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
@@ -67,7 +72,7 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border mobile-menu-enter">
             <div className="flex flex-col space-y-4">
-              <Link to="/" className="nav-link text-text-secondary hover:text-primary transition-colors">
+              <Link to="/" onClick={handleHomeClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Accueil
               </Link>
               <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
