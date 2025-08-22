@@ -409,10 +409,10 @@ const ROICalculatorPage = () => {
                       className="text-3xl font-bold mb-4"
                       style={{ color: '#0F7F7B' }}
                     >
-                      Votre Diagnostic Stratégique Complet
+                      Analyse financière détaillée sur 3 leviers de croissance
                     </h2>
                     <p className="text-lg opacity-90" style={{ color: '#F5F5F5' }}>
-                      Analyse financière détaillée sur 3 leviers de croissance
+                      Votre diagnostic stratégique personnalisé
                     </p>
                   </div>
 
