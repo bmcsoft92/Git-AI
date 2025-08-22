@@ -24,7 +24,7 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <a href="#accueil" className="nav-link text-text-secondary hover:text-primary transition-colors">
+            <a href="/" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Accueil
             </a>
             <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
@@ -66,7 +66,7 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border mobile-menu-enter">
             <div className="flex flex-col space-y-4">
-              <a href="#accueil" className="nav-link text-text-secondary hover:text-primary transition-colors">
+              <a href="/" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Accueil
               </a>
               <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
