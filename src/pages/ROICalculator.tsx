@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, PieChart, Pie, Cell } from 'recharts';
 import Header from "@/components/Header";
 
 const ROICalculatorPage = () => {
@@ -335,58 +335,117 @@ const ROICalculatorPage = () => {
                       </div>
                     </div>
 
-                    <div className="h-64 mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <BarChart
-                          data={[
-                            { name: 'Semaine', value: results.economies_semaine },
-                            { name: 'Mois', value: results.economies_mois },
-                            { name: 'Année', value: results.economies_directes }
-                          ]}
-                          margin={{ top: 20, right: 30, left: 80, bottom: 5 }}
-                        >
-                          <XAxis 
-                            dataKey="name" 
-                            axisLine={false}
-                            tickLine={false}
-                            tick={{ fill: '#F5F5F5', fontSize: 14 }}
-                          />
-                          <YAxis 
-                            axisLine={false}
-                            tickLine={false}
-                            tick={{ fill: '#F5F5F5', fontSize: 12 }}
-                            tickFormatter={(value) => `${value.toLocaleString('fr-FR')} €`}
-                          />
-                          <Tooltip
-                            contentStyle={{
-                              backgroundColor: 'rgba(31, 41, 55, 0.95)',
-                              border: '1px solid rgba(15, 127, 123, 0.3)',
-                              borderRadius: '8px',
-                              color: '#F5F5F5',
-                              fontSize: '14px',
-                              fontWeight: '500'
-                            }}
-                            labelStyle={{ color: '#0F7F7B' }}
-                            formatter={(value, name) => [`${value.toLocaleString('fr-FR')} €`, '']}
-                            labelFormatter={(label) => `${label}`}
-                            cursor={{ fill: 'rgba(15, 127, 123, 0.1)' }}
-                          />
-                          <Bar 
-                            dataKey="value" 
-                            fill="url(#barGradient)"
-                            radius={[6, 6, 0, 0]}
-                            style={{
-                              filter: 'drop-shadow(0 4px 8px rgba(74, 158, 255, 0.3))'
-                            }}
-                          />
-                          <defs>
-                            <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="0%" stopColor="#4A9EFF" />
-                              <stop offset="100%" stopColor="#0F7F7B" />
-                            </linearGradient>
-                          </defs>
-                        </BarChart>
-                      </ResponsiveContainer>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                      {/* Graphique en barres */}
+                      <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+                        <h4 className="text-lg font-semibold mb-4 text-center" style={{ color: '#F5F5F5' }}>
+                          Économies par période
+                        </h4>
+                        <div className="h-64">
+                          <ResponsiveContainer width="100%" height="100%">
+                            <BarChart
+                              data={[
+                                { name: 'Semaine', value: results.economies_semaine },
+                                { name: 'Mois', value: results.economies_mois },
+                                { name: 'Année', value: results.economies_directes }
+                              ]}
+                              margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                            >
+                              <XAxis 
+                                dataKey="name" 
+                                axisLine={false}
+                                tickLine={false}
+                                tick={{ fill: '#F5F5F5', fontSize: 12 }}
+                              />
+                              <YAxis 
+                                axisLine={false}
+                                tickLine={false}
+                                tick={{ fill: '#F5F5F5', fontSize: 10 }}
+                                tickFormatter={(value) => `${(value/1000).toFixed(0)}k€`}
+                              />
+                              <Tooltip
+                                contentStyle={{
+                                  backgroundColor: 'rgba(31, 41, 55, 0.95)',
+                                  border: '1px solid rgba(15, 127, 123, 0.3)',
+                                  borderRadius: '8px',
+                                  color: '#F5F5F5',
+                                  fontSize: '14px',
+                                  fontWeight: '500'
+                                }}
+                                labelStyle={{ color: '#0F7F7B' }}
+                                formatter={(value, name) => [`${value.toLocaleString('fr-FR')} €`, '']}
+                                labelFormatter={(label) => `${label}`}
+                                cursor={{ fill: 'rgba(15, 127, 123, 0.1)' }}
+                              />
+                              <Bar 
+                                dataKey="value" 
+                                fill="url(#barGradient)"
+                                radius={[6, 6, 0, 0]}
+                                style={{
+                                  filter: 'drop-shadow(0 4px 8px rgba(74, 158, 255, 0.3))'
+                                }}
+                              />
+                              <defs>
+                                <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                                  <stop offset="0%" stopColor="#4A9EFF" />
+                                  <stop offset="100%" stopColor="#0F7F7B" />
+                                </linearGradient>
+                              </defs>
+                            </BarChart>
+                          </ResponsiveContainer>
+                        </div>
+                      </div>
+
+                      {/* Graphique circulaire */}
+                      <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                        <h4 className="text-lg font-semibold mb-4 text-center" style={{ color: '#F5F5F5' }}>
+                          Répartition des gains annuels
+                        </h4>
+                        <div className="h-64">
+                          <ResponsiveContainer width="100%" height="100%">
+                            <PieChart>
+                              <Pie
+                                data={[
+                                  { name: 'Économies Directes', value: results.economies_directes, color: '#4A9EFF' },
+                                  { name: 'Gains de Croissance', value: results.gains_indirects, color: '#9333EA' }
+                                ]}
+                                cx="50%"
+                                cy="50%"
+                                innerRadius={50}
+                                outerRadius={90}
+                                paddingAngle={2}
+                                dataKey="value"
+                              >
+                                <Cell fill="#4A9EFF" />
+                                <Cell fill="#9333EA" />
+                              </Pie>
+                              <Tooltip
+                                contentStyle={{
+                                  backgroundColor: 'rgba(31, 41, 55, 0.95)',
+                                  border: '1px solid rgba(15, 127, 123, 0.3)',
+                                  borderRadius: '8px',
+                                  color: '#F5F5F5',
+                                  fontSize: '14px',
+                                  fontWeight: '500'
+                                }}
+                                formatter={(value, name) => [`${value.toLocaleString('fr-FR')} €`, name]}
+                              />
+                            </PieChart>
+                          </ResponsiveContainer>
+                        </div>
+                        
+                        {/* Légende */}
+                        <div className="flex justify-center gap-6 mt-4">
+                          <div className="flex items-center gap-2">
+                            <div className="w-4 h-4 rounded" style={{ backgroundColor: '#4A9EFF' }}></div>
+                            <span className="text-sm" style={{ color: '#F5F5F5' }}>Économies Directes</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="w-4 h-4 rounded" style={{ backgroundColor: '#9333EA' }}></div>
+                            <span className="text-sm" style={{ color: '#F5F5F5' }}>Gains de Croissance</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
