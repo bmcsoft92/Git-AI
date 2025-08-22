@@ -10,7 +10,12 @@ const Header = () => {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-heading">AutomaTech</h1>
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">M</span>
+              </div>
+              <h1 className="text-2xl font-bold text-heading">Maia Elange</h1>
+            </div>
           </div>
           
           {/* Desktop Navigation */}
@@ -24,11 +29,11 @@ const Header = () => {
             <a href="#contact" className="text-text-secondary hover:text-primary transition-colors">
               Contact
             </a>
-            <Button variant="outline" size="sm">
-              En savoir plus
+            <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              Expertise Technique
             </Button>
-            <Button variant="cta" size="sm">
-              Demander une démo
+            <Button variant="cta" size="sm" className="btn-cta-hover">
+              Excellence IA
             </Button>
           </div>
 
@@ -58,11 +63,11 @@ const Header = () => {
                 Contact
               </a>
               <div className="flex flex-col gap-2 pt-2">
-                <Button variant="outline" size="sm">
-                  En savoir plus
+                <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                  Expertise Technique
                 </Button>
-                <Button variant="cta" size="sm">
-                  Demander une démo
+                <Button variant="cta" size="sm" className="btn-cta-hover">
+                  Excellence IA
                 </Button>
               </div>
             </div>
