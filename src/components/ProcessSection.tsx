@@ -118,16 +118,7 @@ const ProcessSection = () => {
           </h2>
           
           <p className="text-lg max-w-4xl mx-auto" style={{ color: '#F5F5F5' }}>
-            Parcours simple et transparent en 4 étapes : 
-            <span 
-              className="animate-pulse"
-              style={{ 
-                color: '#0F7F7B',
-                textShadow: '0 0 10px rgba(255, 140, 66, 0.3)'
-              }}
-            > 
-              Diagnostiquer → Prototyper → Déployer → Optimiser
-            </span>.
+            Un parcours simple et transparent en 4 étapes pour garantir vos résultats et maximiser votre ROI.
           </p>
         </div>
 
