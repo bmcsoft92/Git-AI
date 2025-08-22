@@ -204,7 +204,7 @@ const ROICalculatorPage = () => {
                       className="text-base font-medium mb-3 block"
                       style={{ color: '#F5F5F5', minHeight: '48px' }}
                     >
-                      Investissement<br />estimé (€)
+                      Investissement annuel<br />estimé (€)
                     </Label>
                     <div className="relative">
                       <Input
