@@ -415,84 +415,105 @@ const ROICalculatorPage = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
                     {/* Levier 1 - Économies de Productivité */}
-                    <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in" 
-                         style={{ 
-                           backgroundColor: 'rgba(15, 127, 123, 0.1)', 
-                           borderColor: 'rgba(15, 127, 123, 0.3)',
-                           animationDelay: '0.1s'
-                         }}>
-                      <div className="flex items-center justify-center mb-4">
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center animate-pulse" 
-                             style={{ backgroundColor: '#0F7F7B' }}>
-                          <span className="text-2xl">📈</span>
+                    <div className="relative group">
+                      <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in cursor-help" 
+                           style={{ 
+                             backgroundColor: 'rgba(15, 127, 123, 0.1)', 
+                             borderColor: 'rgba(15, 127, 123, 0.3)',
+                             animationDelay: '0.1s'
+                           }}>
+                        <div className="flex items-center justify-center mb-4">
+                          <div className="w-12 h-12 rounded-full flex items-center justify-center animate-pulse" 
+                               style={{ backgroundColor: '#0F7F7B' }}>
+                            <span className="text-2xl">📈</span>
+                          </div>
                         </div>
+                        <h3 className="text-lg font-semibold mb-2" style={{ color: '#0F7F7B' }}>
+                          Vos Économies de Productivité
+                        </h3>
+                        <div className="text-3xl font-bold mb-2" style={{ 
+                          color: '#0F7F7B',
+                          textShadow: '0 0 10px rgba(15, 127, 123, 0.3)'
+                        }}>
+                          {results.economies_directes.toLocaleString()} €
+                        </div>
+                        <div className="text-sm" style={{ color: '#F5F5F5' }}>par an</div>
                       </div>
-                      <h3 className="text-lg font-semibold mb-2" style={{ color: '#0F7F7B' }}>
-                        Vos Économies de Productivité
-                      </h3>
-                      <div className="text-3xl font-bold mb-2" style={{ 
-                        color: '#0F7F7B',
-                        textShadow: '0 0 10px rgba(15, 127, 123, 0.3)'
-                      }}>
-                        {results.economies_directes.toLocaleString()} €
+                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white p-4 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-normal z-20 max-w-sm">
+                        <strong className="text-green-400">Levier 1 : La Productivité</strong><br/>
+                        Valeur brute du temps de travail économisé en automatisant les tâches manuelles.<br/>
+                        <em>Calcul : (Heures/sem.) × (Coût horaire) × 46 sem. × (Employés)</em>
                       </div>
-                      <div className="text-sm" style={{ color: '#F5F5F5' }}>par an</div>
                     </div>
 
                     {/* Levier 2 - Potentiel de Croissance */}
-                    <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in" 
-                         style={{ 
-                           backgroundColor: 'rgba(255, 140, 66, 0.1)', 
-                           borderColor: 'rgba(255, 140, 66, 0.3)',
-                           animationDelay: '0.2s'
-                         }}>
-                      <div className="flex items-center justify-center mb-4">
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center animate-pulse" 
-                             style={{ backgroundColor: '#FF8C42' }}>
-                          <span className="text-2xl">🚀</span>
+                    <div className="relative group">
+                      <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in cursor-help" 
+                           style={{ 
+                             backgroundColor: 'rgba(255, 140, 66, 0.1)', 
+                             borderColor: 'rgba(255, 140, 66, 0.3)',
+                             animationDelay: '0.2s'
+                           }}>
+                        <div className="flex items-center justify-center mb-4">
+                          <div className="w-12 h-12 rounded-full flex items-center justify-center animate-pulse" 
+                               style={{ backgroundColor: '#FF8C42' }}>
+                            <span className="text-2xl">🚀</span>
+                          </div>
                         </div>
+                        <h3 className="text-lg font-semibold mb-2" style={{ color: '#FF8C42' }}>
+                          Votre Potentiel de Croissance
+                        </h3>
+                        <div className="text-3xl font-bold mb-2" style={{ 
+                          color: '#FF8C42',
+                          textShadow: '0 0 10px rgba(255, 140, 66, 0.3)'
+                        }}>
+                          +{results.gains_indirects.toLocaleString()} €
+                        </div>
+                        <div className="text-sm" style={{ color: '#F5F5F5' }}>par an</div>
                       </div>
-                      <h3 className="text-lg font-semibold mb-2" style={{ color: '#FF8C42' }}>
-                        Votre Potentiel de Croissance
-                      </h3>
-                      <div className="text-3xl font-bold mb-2" style={{ 
-                        color: '#FF8C42',
-                        textShadow: '0 0 10px rgba(255, 140, 66, 0.3)'
-                      }}>
-                        +{results.gains_indirects.toLocaleString()} €
+                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white p-4 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-normal z-20 max-w-sm">
+                        <strong className="text-orange-400">Levier 2 : La Croissance</strong><br/>
+                        Revenus supplémentaires générés en réinvestissant 25% du temps économisé dans des activités à forte valeur ajoutée.<br/>
+                        <em>L'automatisation comme moteur de croissance !</em>
                       </div>
-                      <div className="text-sm" style={{ color: '#F5F5F5' }}>par an</div>
                     </div>
 
                     {/* Levier 3 - Investissement */}
-                    <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in" 
-                         style={{ 
-                           backgroundColor: 'rgba(239, 68, 68, 0.1)', 
-                           borderColor: 'rgba(239, 68, 68, 0.3)',
-                           animationDelay: '0.3s'
-                         }}>
-                      <div className="flex items-center justify-center mb-4">
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center animate-pulse" 
-                             style={{ backgroundColor: '#EF4444' }}>
-                          <span className="text-2xl">💰</span>
+                    <div className="relative group">
+                      <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in cursor-help" 
+                           style={{ 
+                             backgroundColor: 'rgba(239, 68, 68, 0.1)', 
+                             borderColor: 'rgba(239, 68, 68, 0.3)',
+                             animationDelay: '0.3s'
+                           }}>
+                        <div className="flex items-center justify-center mb-4">
+                          <div className="w-12 h-12 rounded-full flex items-center justify-center animate-pulse" 
+                               style={{ backgroundColor: '#EF4444' }}>
+                            <span className="text-2xl">💰</span>
+                          </div>
                         </div>
+                        <h3 className="text-lg font-semibold mb-2" style={{ color: '#EF4444' }}>
+                          Pour un Investissement Estimé
+                        </h3>
+                        <div className="text-3xl font-bold mb-2" style={{ 
+                          color: '#EF4444',
+                          textShadow: '0 0 10px rgba(239, 68, 68, 0.3)'
+                        }}>
+                          -{results.investissement.toLocaleString()} €
+                        </div>
+                        <div className="text-sm" style={{ color: '#F5F5F5' }}>investissement unique</div>
                       </div>
-                      <h3 className="text-lg font-semibold mb-2" style={{ color: '#EF4444' }}>
-                        Pour un Investissement Estimé
-                      </h3>
-                      <div className="text-3xl font-bold mb-2" style={{ 
-                        color: '#EF4444',
-                        textShadow: '0 0 10px rgba(239, 68, 68, 0.3)'
-                      }}>
-                        -{results.investissement.toLocaleString()} €
+                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white p-4 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-normal z-20 max-w-sm">
+                        <strong className="text-red-400">Levier 3 : L'Investissement</strong><br/>
+                        Estimation transparente de l'investissement annuel en outils et accompagnement, ajusté selon la taille de votre équipe.<br/>
+                        <em>Un calcul crédible et réaliste !</em>
                       </div>
-                      <div className="text-sm" style={{ color: '#F5F5F5' }}>investissement unique</div>
                     </div>
                   </div>
 
                   {/* ROI Stratégique Final */}
-                  <div className="text-center mb-10 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-                    <div className="max-w-md mx-auto p-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl" 
+                  <div className="text-center mb-10 animate-fade-in relative group" style={{ animationDelay: '0.5s' }}>
+                    <div className="max-w-md mx-auto p-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-help" 
                          style={{ 
                            background: 'linear-gradient(135deg, rgba(15, 127, 123, 0.2), rgba(255, 140, 66, 0.1))',
                            border: '2px solid rgba(15, 127, 123, 0.4)'
@@ -507,6 +528,11 @@ const ROICalculatorPage = () => {
                       }}>
                         +{results.roi_strategique}%
                       </div>
+                    </div>
+                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white p-4 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-normal z-20 max-w-md">
+                      <strong className="text-blue-400">ROI Stratégique Final</strong><br/>
+                      Pour chaque euro investi, combien d'euros vous gagnez réellement en retour, en comptant les économies ET la croissance générée.<br/>
+                      <em>Vision complète : Économies + Croissance - Investissement</em>
                     </div>
                   </div>
 
