@@ -252,7 +252,7 @@ const ROICalculatorPage = () => {
                       boxShadow: '0 8px 25px rgba(15, 127, 123, 0.3)'
                     }}
                   >
-                    Calculer mon ROI
+                    Calculer mes économies
                   </Button>
                   
                   {/* Tooltip explicatif de la formule */}
