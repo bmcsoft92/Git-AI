@@ -23,15 +23,30 @@ const Header = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <a href="#solutions" className="text-text-secondary hover:text-primary transition-colors">
               Solutions
             </a>
-            <a href="#expertise" className="text-text-secondary hover:text-primary transition-colors">
-              Expertise
+            <a href="#integrations" className="text-text-secondary hover:text-primary transition-colors">
+              Intégrations
+            </a>
+            <a href="#processus" className="text-text-secondary hover:text-primary transition-colors">
+              Processus
+            </a>
+            <a href="#resultats" className="text-text-secondary hover:text-primary transition-colors">
+              Résultats
+            </a>
+            <a href="#simulateur" className="text-text-secondary hover:text-primary transition-colors">
+              Simulateur ROI
+            </a>
+            <a href="#faq" className="text-text-secondary hover:text-primary transition-colors">
+              FAQ
             </a>
             <a href="#contact" className="text-text-secondary hover:text-primary transition-colors">
               Contact
+            </a>
+            <a href="#questions" className="text-text-secondary hover:text-primary transition-colors">
+              Questions fréquentes
             </a>
             <Button className="bg-orange-500 hover:bg-orange-600 text-white">
               diagnostic gratuit
@@ -57,11 +72,26 @@ const Header = () => {
               <a href="#solutions" className="text-text-secondary hover:text-primary transition-colors">
                 Solutions
               </a>
-              <a href="#expertise" className="text-text-secondary hover:text-primary transition-colors">
-                Expertise
+              <a href="#integrations" className="text-text-secondary hover:text-primary transition-colors">
+                Intégrations
+              </a>
+              <a href="#processus" className="text-text-secondary hover:text-primary transition-colors">
+                Processus
+              </a>
+              <a href="#resultats" className="text-text-secondary hover:text-primary transition-colors">
+                Résultats
+              </a>
+              <a href="#simulateur" className="text-text-secondary hover:text-primary transition-colors">
+                Simulateur ROI
+              </a>
+              <a href="#faq" className="text-text-secondary hover:text-primary transition-colors">
+                FAQ
               </a>
               <a href="#contact" className="text-text-secondary hover:text-primary transition-colors">
                 Contact
+              </a>
+              <a href="#questions" className="text-text-secondary hover:text-primary transition-colors">
+                Questions fréquentes
               </a>
               <div className="flex flex-col gap-2 pt-2">
                 <Button className="bg-orange-500 hover:bg-orange-600 text-white">
