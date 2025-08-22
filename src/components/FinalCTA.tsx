@@ -47,7 +47,7 @@ const FinalCTA = () => {
               size="lg" 
               className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground px-8 py-4 text-lg"
             >
-              parler à un expert
+              Parler à un expert
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 

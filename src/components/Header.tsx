@@ -49,7 +49,7 @@ const Header = () => {
               Questions fréquentes
             </a>
             <Button className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white">
-              parler à un expert
+              Parler à un expert
             </Button>
           </div>
 
@@ -95,7 +95,7 @@ const Header = () => {
               </a>
               <div className="flex flex-col gap-2 pt-2">
                 <Button className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white">
-                  parler à un expert
+                  Parler à un expert
                 </Button>
               </div>
             </div>
