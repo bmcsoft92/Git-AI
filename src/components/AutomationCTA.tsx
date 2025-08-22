@@ -4,7 +4,7 @@ import { ArrowRight, Shield } from "lucide-react";
 
 const AutomationCTA = () => {
   return (
-    <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#0E1A1A' }}>
+    <section id="simulateur" className="py-20 relative overflow-hidden" style={{ backgroundColor: '#0E1A1A' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <Card 

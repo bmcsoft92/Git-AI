@@ -29,6 +29,15 @@ const Header = () => {
     setIsMenuOpen(false); // Fermer le menu mobile si ouvert
   };
 
+  const handleSimulateurClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const simulateurSection = document.getElementById('simulateur');
+    if (simulateurSection) {
+      simulateurSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false); // Fermer le menu mobile si ouvert
+  };
+
   return (
     <header className="bg-card border-b border-border sticky top-0 z-50 backdrop-blur-sm bg-card/95">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,7 +69,7 @@ const Header = () => {
             <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Méthode
             </a>
-            <a href="#simulateur" className="nav-link text-text-secondary hover:text-primary transition-colors">
+            <a href="#simulateur" onClick={handleSimulateurClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
               Simulateur ROI
             </a>
             <a href="#faq" className="nav-link text-text-secondary hover:text-primary transition-colors">
@@ -102,7 +111,7 @@ const Header = () => {
               <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Méthode
               </a>
-              <a href="#simulateur" className="nav-link text-text-secondary hover:text-primary transition-colors">
+              <a href="#simulateur" onClick={handleSimulateurClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Simulateur ROI
               </a>
               <a href="#faq" className="nav-link text-text-secondary hover:text-primary transition-colors">
