@@ -6,23 +6,23 @@ const Hero = () => {
 
   return (
     <section className="relative bg-background overflow-hidden min-h-screen flex items-center">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-12 animate-fade-in-up">
-            <div className="mb-8">
-              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-primary/20 text-primary border border-primary/30">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="mb-16 animate-fade-in-up">
+            <div className="mb-12">
+              <span className="inline-flex items-center px-6 py-3 rounded-full text-lg font-semibold bg-primary/20 text-primary border border-primary/30">
                 Innovation • IA Avancée
               </span>
             </div>
             
-            <h1 className="text-4xl lg:text-6xl font-bold text-heading mb-8 leading-tight">
+            <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-heading mb-12 leading-tight">
               L'IA + l'Humain
               <span className="text-primary block">
                 au service de votre entreprise
               </span>
             </h1>
             
-            <p className="text-xl text-text-secondary mb-10 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-2xl lg:text-3xl text-text-secondary mb-16 leading-relaxed max-w-4xl mx-auto">
               Nous libérons vos équipes des tâches répétitives en <strong className="text-primary">2 semaines</strong> grâce à une 
               automatisation sans code, vous permettant de <strong className="text-primary">réduire vos coûts de 40%</strong> et 
               d'augmenter votre productivité.
