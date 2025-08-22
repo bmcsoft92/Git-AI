@@ -24,6 +24,9 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
+            <a href="#accueil" className="nav-link text-text-secondary hover:text-primary transition-colors">
+              Accueil
+            </a>
             <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Solutions
             </a>
@@ -33,9 +36,6 @@ const Header = () => {
             <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Processus
             </a>
-            <a href="#resultats" className="nav-link text-text-secondary hover:text-primary transition-colors">
-              Résultats
-            </a>
             <a href="#simulateur" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Simulateur ROI
             </a>
@@ -44,9 +44,6 @@ const Header = () => {
             </a>
             <a href="#contact" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Contact
-            </a>
-            <a href="#questions" className="nav-link text-text-secondary hover:text-primary transition-colors">
-              Questions fréquentes
             </a>
             <Button className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white">
               Parler à un expert
@@ -69,6 +66,9 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border mobile-menu-enter">
             <div className="flex flex-col space-y-4">
+              <a href="#accueil" className="nav-link text-text-secondary hover:text-primary transition-colors">
+                Accueil
+              </a>
               <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Solutions
               </a>
@@ -78,9 +78,6 @@ const Header = () => {
               <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Processus
               </a>
-              <a href="#resultats" className="nav-link text-text-secondary hover:text-primary transition-colors">
-                Résultats
-              </a>
               <a href="#simulateur" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Simulateur ROI
               </a>
@@ -89,9 +86,6 @@ const Header = () => {
               </a>
               <a href="#contact" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Contact
-              </a>
-              <a href="#questions" className="nav-link text-text-secondary hover:text-primary transition-colors">
-                Questions fréquentes
               </a>
               <div className="flex flex-col gap-2 pt-2">
                 <Button className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white">
