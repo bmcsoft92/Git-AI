@@ -98,9 +98,11 @@ const ROICalculatorPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="py-20" style={{ backgroundColor: '#0E1A1A', minHeight: 'calc(100vh - 80px)' }}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
+      <main className="py-20">
+        {/* Étape 1 - Simulateur ROI */}
+        <div style={{ backgroundColor: '#0E1A1A', minHeight: 'calc(100vh - 80px)', padding: '3rem 0' }}>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
             {/* Badge et titre */}
             <div className="mb-12">
               <Badge 
@@ -716,12 +718,15 @@ const ROICalculatorPage = () => {
                 </CardContent>
               </Card>
               )}
+            </div>
+          </div>
+        </div>
 
-            {/* Formulaire de Diagnostic Détaillé */}
-            {showDiagnostic && (
-              <div ref={diagnosticRef} className="mt-16" style={{ backgroundColor: '#1A1F2E', padding: '3rem 0' }}>
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                  <div className="max-w-4xl mx-auto">
+        {/* Étape 2 - Diagnostic Détaillé */}
+        {showDiagnostic && (
+          <div ref={diagnosticRef} style={{ backgroundColor: '#1A1F2E', padding: '3rem 0' }}>
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
                     <Card 
                       className="border-0 shadow-2xl max-w-3xl mx-auto animate-fade-in"
                       style={{ 
@@ -923,12 +928,10 @@ const ROICalculatorPage = () => {
                         </div>
                       </CardContent>
                     </Card>
-                  </div>
-                </div>
               </div>
-            )}
+            </div>
           </div>
-        </div>
+        )}
       </main>
     </div>
   );
