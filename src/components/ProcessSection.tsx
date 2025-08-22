@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Search, Lightbulb, Rocket, TrendingUp, Sparkles } from "lucide-react";
+import { Search, Lightbulb, Rocket, TrendingUp, Sparkles, Check } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const ProcessSection = () => {
@@ -64,8 +64,8 @@ const ProcessSection = () => {
       color: "#D56A1F",
       details: {
         title: "Phase 4 : Optimisation & Croissance Continue",
-        description: "Notre partenariat ne s'arrête pas au déploiement. Nous assurons un suivi continu des indicateurs de performance (KPI) et proposons des itérations pour améliorer le système.",
-        highlight: "Le livrable : une solution qui évolue avec votre croissance, avec de nouvelles automatisations au fil de vos besoins.",
+        description: "Notre partenariat ne s'arrête pas au déploiement. Nous devenons votre partenaire stratégique pour la croissance. Nous assurons un suivi des indicateurs de performance (KPI) pour mesurer l'impact réel sur votre activité. Grâce à des itérations régulières, nous affinons et améliorons le système. Au fil de votre croissance, nous identifions et déployons de nouvelles automatisations pour que votre système évolue avec vos ambitions.",
+        highlight: "Le livrable : un système d'automatisation dynamique qui devient un véritable moteur de votre performance.",
         conclusion: ""
       }
     }
@@ -242,11 +242,56 @@ const ProcessSection = () => {
                         color: '#0F7F7B',
                         textShadow: `0 0 8px ${phases[selectedPhase].color}60`
                       }}
-                    >
-                      {phases[selectedPhase].details.highlight}
-                    </strong>
-                    . {phases[selectedPhase].details.conclusion}
-                  </p>
+                     >
+                       {phases[selectedPhase].details.highlight}
+                     </strong>
+                     . {phases[selectedPhase].details.conclusion}
+                   </p>
+
+                   {/* Tags avec coches pour la phase 4 */}
+                   {selectedPhase === 3 && (
+                     <div 
+                       className="animate-fade-in mt-6"
+                       style={{ animationDelay: '0.3s' }}
+                     >
+                       <div className="grid grid-cols-1 gap-3">
+                         {[
+                           "Suivi des KPI",
+                           "Itérations & Améliorations", 
+                           "Nouvelles Automatisations"
+                         ].map((item, index) => (
+                           <div 
+                             key={index}
+                             className="flex items-center space-x-3 p-3 rounded-lg transition-all duration-300 hover:scale-[1.02]"
+                             style={{ 
+                               backgroundColor: 'rgba(15, 127, 123, 0.1)',
+                               border: '1px solid rgba(15, 127, 123, 0.2)',
+                               animationDelay: `${0.4 + index * 0.1}s`
+                             }}
+                           >
+                             <div 
+                               className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center"
+                               style={{ 
+                                 backgroundColor: '#0F7F7B',
+                                 boxShadow: '0 0 10px rgba(15, 127, 123, 0.4)'
+                               }}
+                             >
+                               <Check 
+                                 className="h-4 w-4" 
+                                 style={{ color: '#F5F5F5' }}
+                               />
+                             </div>
+                             <span 
+                               className="text-base font-medium"
+                               style={{ color: '#F5F5F5' }}
+                             >
+                               {item}
+                             </span>
+                           </div>
+                         ))}
+                       </div>
+                     </div>
+                   )}
 
                   {/* Indicateur visuel */}
                   <div 
