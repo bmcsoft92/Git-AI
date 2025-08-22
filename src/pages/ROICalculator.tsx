@@ -223,7 +223,7 @@ const ROICalculatorPage = () => {
             {/* Phase 1 - Résultats Initiaux */}
             {showResults && (
               <Card 
-                className="border-0 shadow-2xl max-w-2xl mx-auto mb-8 animate-fade-in"
+                className="border-0 shadow-2xl max-w-2xl mx-auto mb-8 animate-fade-in animate-scale-in"
                 style={{ 
                   backgroundColor: 'rgba(31, 41, 55, 0.8)',
                   backdropFilter: 'blur(10px)',
@@ -236,8 +236,12 @@ const ROICalculatorPage = () => {
                       Économies annuelles estimées
                     </div>
                     <div 
-                      className="text-5xl font-bold mb-4"
-                      style={{ color: '#0F7F7B' }}
+                      className="text-5xl font-bold mb-4 animate-pulse"
+                      style={{ 
+                        color: '#0F7F7B',
+                        textShadow: '0 0 20px rgba(15, 127, 123, 0.5)',
+                        animation: 'pulse 2s infinite'
+                      }}
                     >
                       {results.economies_directes.toLocaleString('fr-FR')} €
                     </div>
@@ -284,39 +288,54 @@ const ROICalculatorPage = () => {
                     </div>
 
                     <div className="flex justify-center gap-6 mb-8 flex-wrap">
-                      <Badge 
-                        className="px-4 py-2 text-sm font-medium"
-                        style={{ 
-                          backgroundColor: 'rgba(15, 127, 123, 0.2)',
-                          color: '#0F7F7B',
-                          border: '1px solid rgba(15, 127, 123, 0.3)'
-                        }}
-                      >
-                        📅 Semaine : {results.economies_semaine.toLocaleString('fr-FR')} €
-                      </Badge>
-                      <Badge 
-                        className="px-4 py-2 text-sm font-medium"
-                        style={{ 
-                          backgroundColor: 'rgba(15, 127, 123, 0.2)',
-                          color: '#0F7F7B',
-                          border: '1px solid rgba(15, 127, 123, 0.3)'
-                        }}
-                      >
-                        🗓️ Mois : {results.economies_mois.toLocaleString('fr-FR')} €
-                      </Badge>
-                      <Badge 
-                        className="px-4 py-2 text-sm font-medium"
-                        style={{ 
-                          backgroundColor: 'rgba(15, 127, 123, 0.2)',
-                          color: '#0F7F7B',
-                          border: '1px solid rgba(15, 127, 123, 0.3)'
-                        }}
-                      >
-                        📊 Année : {results.economies_directes.toLocaleString('fr-FR')} €
-                      </Badge>
+                      <div className="relative group">
+                        <Badge 
+                          className="px-4 py-3 text-sm font-medium transition-all duration-300 hover:scale-110 hover:shadow-lg cursor-pointer"
+                          style={{ 
+                            backgroundColor: 'rgba(15, 127, 123, 0.2)',
+                            color: '#0F7F7B',
+                            border: '1px solid rgba(15, 127, 123, 0.3)'
+                          }}
+                        >
+                          📅 Semaine : {results.economies_semaine.toLocaleString('fr-FR')} €
+                        </Badge>
+                        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10">
+                          Économie hebdomadaire avec l'automatisation
+                        </div>
+                      </div>
+                      <div className="relative group">
+                        <Badge 
+                          className="px-4 py-3 text-sm font-medium transition-all duration-300 hover:scale-110 hover:shadow-lg cursor-pointer"
+                          style={{ 
+                            backgroundColor: 'rgba(15, 127, 123, 0.2)',
+                            color: '#0F7F7B',
+                            border: '1px solid rgba(15, 127, 123, 0.3)'
+                          }}
+                        >
+                          🗓️ Mois : {results.economies_mois.toLocaleString('fr-FR')} €
+                        </Badge>
+                        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10">
+                          Économie mensuelle récurrente
+                        </div>
+                      </div>
+                      <div className="relative group">
+                        <Badge 
+                          className="px-4 py-3 text-sm font-medium transition-all duration-300 hover:scale-110 hover:shadow-lg cursor-pointer"
+                          style={{ 
+                            backgroundColor: 'rgba(15, 127, 123, 0.2)',
+                            color: '#0F7F7B',
+                            border: '1px solid rgba(15, 127, 123, 0.3)'
+                          }}
+                        >
+                          📊 Année : {results.economies_directes.toLocaleString('fr-FR')} €
+                        </Badge>
+                        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10">
+                          Total annuel des économies possibles
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="h-64 mb-8">
+                    <div className="h-64 mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart
                           data={[
@@ -340,9 +359,18 @@ const ROICalculatorPage = () => {
                           />
                           <Bar 
                             dataKey="value" 
-                            fill="#4A9EFF"
-                            radius={[4, 4, 0, 0]}
+                            fill="url(#barGradient)"
+                            radius={[6, 6, 0, 0]}
+                            style={{
+                              filter: 'drop-shadow(0 4px 8px rgba(74, 158, 255, 0.3))'
+                            }}
                           />
+                          <defs>
+                            <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stopColor="#4A9EFF" />
+                              <stop offset="100%" stopColor="#0F7F7B" />
+                            </linearGradient>
+                          </defs>
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
@@ -376,13 +404,14 @@ const ROICalculatorPage = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
                     {/* Levier 1 - Économies de Productivité */}
-                    <div className="text-center p-6 rounded-xl border-2" 
+                    <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in" 
                          style={{ 
                            backgroundColor: 'rgba(15, 127, 123, 0.1)', 
-                           borderColor: 'rgba(15, 127, 123, 0.3)' 
+                           borderColor: 'rgba(15, 127, 123, 0.3)',
+                           animationDelay: '0.1s'
                          }}>
                       <div className="flex items-center justify-center mb-4">
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center" 
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center animate-pulse" 
                              style={{ backgroundColor: '#0F7F7B' }}>
                           <span className="text-2xl">📈</span>
                         </div>
@@ -390,20 +419,24 @@ const ROICalculatorPage = () => {
                       <h3 className="text-lg font-semibold mb-2" style={{ color: '#0F7F7B' }}>
                         Vos Économies de Productivité
                       </h3>
-                      <div className="text-3xl font-bold mb-2" style={{ color: '#0F7F7B' }}>
+                      <div className="text-3xl font-bold mb-2" style={{ 
+                        color: '#0F7F7B',
+                        textShadow: '0 0 10px rgba(15, 127, 123, 0.3)'
+                      }}>
                         {results.economies_directes.toLocaleString()} €
                       </div>
                       <div className="text-sm" style={{ color: '#F5F5F5' }}>par an</div>
                     </div>
 
                     {/* Levier 2 - Potentiel de Croissance */}
-                    <div className="text-center p-6 rounded-xl border-2" 
+                    <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in" 
                          style={{ 
                            backgroundColor: 'rgba(255, 140, 66, 0.1)', 
-                           borderColor: 'rgba(255, 140, 66, 0.3)' 
+                           borderColor: 'rgba(255, 140, 66, 0.3)',
+                           animationDelay: '0.2s'
                          }}>
                       <div className="flex items-center justify-center mb-4">
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center" 
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center animate-pulse" 
                              style={{ backgroundColor: '#FF8C42' }}>
                           <span className="text-2xl">🚀</span>
                         </div>
@@ -411,20 +444,24 @@ const ROICalculatorPage = () => {
                       <h3 className="text-lg font-semibold mb-2" style={{ color: '#FF8C42' }}>
                         Votre Potentiel de Croissance
                       </h3>
-                      <div className="text-3xl font-bold mb-2" style={{ color: '#FF8C42' }}>
+                      <div className="text-3xl font-bold mb-2" style={{ 
+                        color: '#FF8C42',
+                        textShadow: '0 0 10px rgba(255, 140, 66, 0.3)'
+                      }}>
                         +{results.gains_indirects.toLocaleString()} €
                       </div>
                       <div className="text-sm" style={{ color: '#F5F5F5' }}>par an</div>
                     </div>
 
                     {/* Levier 3 - Investissement */}
-                    <div className="text-center p-6 rounded-xl border-2" 
+                    <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in" 
                          style={{ 
                            backgroundColor: 'rgba(239, 68, 68, 0.1)', 
-                           borderColor: 'rgba(239, 68, 68, 0.3)' 
+                           borderColor: 'rgba(239, 68, 68, 0.3)',
+                           animationDelay: '0.3s'
                          }}>
                       <div className="flex items-center justify-center mb-4">
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center" 
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center animate-pulse" 
                              style={{ backgroundColor: '#EF4444' }}>
                           <span className="text-2xl">💰</span>
                         </div>
@@ -432,7 +469,10 @@ const ROICalculatorPage = () => {
                       <h3 className="text-lg font-semibold mb-2" style={{ color: '#EF4444' }}>
                         Pour un Investissement Estimé
                       </h3>
-                      <div className="text-3xl font-bold mb-2" style={{ color: '#EF4444' }}>
+                      <div className="text-3xl font-bold mb-2" style={{ 
+                        color: '#EF4444',
+                        textShadow: '0 0 10px rgba(239, 68, 68, 0.3)'
+                      }}>
                         -{results.investissement.toLocaleString()} €
                       </div>
                       <div className="text-sm" style={{ color: '#F5F5F5' }}>investissement unique</div>
@@ -440,8 +480,8 @@ const ROICalculatorPage = () => {
                   </div>
 
                   {/* ROI Stratégique Final */}
-                  <div className="text-center mb-10">
-                    <div className="max-w-md mx-auto p-8 rounded-xl" 
+                  <div className="text-center mb-10 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+                    <div className="max-w-md mx-auto p-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl" 
                          style={{ 
                            background: 'linear-gradient(135deg, rgba(15, 127, 123, 0.2), rgba(255, 140, 66, 0.1))',
                            border: '2px solid rgba(15, 127, 123, 0.4)'
@@ -449,7 +489,11 @@ const ROICalculatorPage = () => {
                       <h3 className="text-xl font-semibold mb-4" style={{ color: '#F5F5F5' }}>
                         Votre ROI Stratégique sur 12 mois
                       </h3>
-                      <div className="text-6xl font-bold" style={{ color: '#0F7F7B' }}>
+                      <div className="text-6xl font-bold animate-pulse" style={{ 
+                        color: '#0F7F7B',
+                        textShadow: '0 0 30px rgba(15, 127, 123, 0.5)',
+                        animation: 'pulse 2s infinite'
+                      }}>
                         +{results.roi_strategique}%
                       </div>
                     </div>
