@@ -580,13 +580,13 @@ const ROICalculatorPage = () => {
                       <h3 className="text-xl font-semibold mb-4" style={{ color: '#F5F5F5' }}>
                         Votre ROI Stratégique sur 12 mois
                       </h3>
-                      <div className="text-6xl font-bold animate-pulse" style={{ 
-                        color: '#0F7F7B',
-                        textShadow: '0 0 30px rgba(15, 127, 123, 0.5)',
-                        animation: 'pulse 2s infinite'
-                      }}>
-                        +{results.roi_strategique}%
-                      </div>
+                       <div className="text-6xl font-bold animate-pulse" style={{ 
+                         color: '#0F7F7B',
+                         textShadow: '0 0 30px rgba(15, 127, 123, 0.5)',
+                         animation: 'pulse 2s infinite'
+                       }}>
+                         {results.roi_strategique >= 0 ? '+' : ''}{results.roi_strategique}%
+                       </div>
                       <p className="text-lg mt-4 opacity-90" style={{ color: '#F5F5F5' }}>
                         C'est la véritable mesure de la valeur créée pour votre entreprise.
                       </p>
