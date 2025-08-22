@@ -79,15 +79,18 @@ const Integrations = () => {
             return (
               <Card 
                 key={integration.id}
-                className="group cursor-pointer transition-all duration-500 ease-out transform 
-                           hover:scale-[1.03] hover:-translate-y-2 hover:shadow-2xl
-                           bg-card/80 border border-border/30 
-                           hover:border-primary hover:shadow-primary/30
-                           animate-fade-in"
+                className="group cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] transform 
+                           hover:scale-[1.05] hover:-translate-y-3 hover:shadow-2xl
+                           bg-card/80 backdrop-blur-sm border border-border/30 
+                           hover:border-primary hover:shadow-primary/40 hover:bg-card/90
+                           animate-fade-in opacity-0 translate-y-8
+                           relative overflow-hidden
+                           before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/5 before:to-transparent 
+                           before:opacity-0 before:transition-opacity before:duration-700 hover:before:opacity-100"
                 style={{ 
-                  animationDelay: `${index * 150}ms`,
+                  animationDelay: `${index * 200}ms`,
                   animationFillMode: 'both',
-                  animationDuration: '0.8s'
+                  animationDuration: '1s'
                 }}
               >
                 <CardHeader className="text-center pb-3 pt-6">
