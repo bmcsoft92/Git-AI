@@ -13,39 +13,39 @@ const Services = () => {
   const services = [
     {
       icon: Brain,
-      title: "IA Décisionnelle",
-      description: "Systèmes d'aide à la décision basés sur l'intelligence artificielle pour optimiser vos choix stratégiques.",
-      features: ["Machine Learning avancé", "Analyse prédictive", "Recommandations intelligentes"]
+      title: "Prenez des Décisions Plus Intelligentes",
+      description: "Votre IA personnelle vous aide à faire les meilleurs choix pour votre entreprise, basés sur vos données réelles.",
+      features: ["Conseils automatiques sur mesure", "Prédictions fiables", "Recommandations claires"]
     },
     {
       icon: Workflow,
-      title: "Automatisation des Workflows",
-      description: "Orchestration intelligente de vos processus métier avec des workflows adaptatifs et auto-optimisés.",
-      features: ["Processus automatisés", "Gestion des exceptions", "Optimisation continue"]
+      title: "Automatisez Vos Tâches Répétitives",
+      description: "Libérez-vous des corvées administratives. Votre IA s'occupe de tout pendant que vous vous concentrez sur l'essentiel.",
+      features: ["Processus automatiques", "Moins d'erreurs humaines", "Gain de temps immédiat"]
     },
     {
       icon: Bot,
-      title: "Agents IA Conversationnels",
-      description: "Assistants virtuels intelligents pour automatiser les interactions client et les tâches répétitives.",
-      features: ["Chatbots avancés", "Traitement du langage naturel", "Apprentissage continu"]
+      title: "Un Assistant qui Répond à Vos Clients 24h/24",
+      description: "Votre IA répond instantanément à vos clients, même la nuit et le week-end, pour ne jamais manquer une vente.",
+      features: ["Réponses instantanées", "Disponible en permanence", "S'améliore avec l'expérience"]
     },
     {
       icon: TrendingUp,
-      title: "Optimisation IA des Opérations",
-      description: "Algorithmes d'intelligence artificielle pour maximiser l'efficacité opérationnelle de votre organisation.",
-      features: ["Optimisation en temps réel", "Allocation intelligente des ressources", "Prévision de charge"]
+      title: "Boostez Votre Efficacité Opérationnelle",
+      description: "Optimisez automatiquement votre organisation pour économiser du temps et de l'argent chaque jour.",
+      features: ["Optimisation continue", "Allocation intelligente", "Prévisions précises"]
     },
     {
       icon: Users,
-      title: "IA Collaborative",
-      description: "Solutions d'intelligence collective pour améliorer la collaboration et la productivité des équipes.",
-      features: ["Matching intelligent", "Planification automatisée", "Coordination d'équipes"]
+      title: "Coordonnez Vos Équipes Sans Effort",
+      description: "Votre IA organise parfaitement le travail d'équipe, améliore la collaboration et booste la productivité.",
+      features: ["Organisation automatique", "Planification optimale", "Coordination fluide"]
     },
     {
       icon: BarChart3,
-      title: "Analytics IA Avancés",
-      description: "Tableaux de bord intelligents avec insights automatiques et recommandations basées sur l'IA.",
-      features: ["Insights automatiques", "Détection d'anomalies", "Prédictions métier"]
+      title: "Comprenez Votre Business en Temps Réel",
+      description: "Des tableaux de bord qui vous révèlent instantanément ce qui marche, ce qui cloche et quoi faire ensuite.",
+      features: ["Analyses automatiques", "Alertes intelligentes", "Actions recommandées"]
     }
   ];
 
@@ -64,30 +64,33 @@ const Services = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+            <Card 
+              key={index} 
+              className="group hover:shadow-xl hover:scale-105 transition-all duration-300 hover:-translate-y-2 cursor-pointer border-l-4 border-l-transparent hover:border-l-primary"
+            >
               <CardHeader>
                 <div className="flex items-center mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <service.icon className="h-6 w-6 text-primary" />
+                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                    <service.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                   </div>
                 </div>
-                <CardTitle className="text-xl text-heading">
+                <CardTitle className="text-xl text-heading group-hover:text-primary transition-colors duration-300">
                   {service.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-text-secondary mb-4">
+                <p className="text-text-secondary mb-4 group-hover:text-heading transition-colors duration-300">
                   {service.description}
                 </p>
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-text-secondary">
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                    <li key={idx} className="flex items-center text-sm text-text-secondary group-hover:text-heading transition-colors duration-300">
+                      <div className="w-2 h-2 bg-primary rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></div>
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   En savoir plus
                 </Button>
               </CardContent>

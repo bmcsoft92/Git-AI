@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Users, Award, Target } from "lucide-react";
+import AnimatedCounter from "./AnimatedCounter";
 
 const Expertise = () => {
   const stats = [
@@ -72,15 +73,18 @@ const Expertise = () => {
         {/* Statistiques */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center">
+            <div key={index} className="text-center group hover:scale-105 transition-transform duration-300">
               <div className="flex justify-center mb-4">
-                <div className="p-4 rounded-full bg-primary/10">
-                  <stat.icon className="h-8 w-8 text-primary" />
+                <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                  <stat.icon className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
               </div>
-              <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
-              <div className="font-semibold text-heading mb-1">{stat.label}</div>
-              <div className="text-sm text-text-secondary">{stat.description}</div>
+              <AnimatedCounter 
+                value={stat.value}
+                className="text-3xl font-bold text-primary mb-2"
+              />
+              <div className="font-semibold text-heading mb-1 group-hover:text-primary transition-colors duration-300">{stat.label}</div>
+              <div className="text-sm text-text-secondary group-hover:text-heading transition-colors duration-300">{stat.description}</div>
             </div>
           ))}
         </div>
@@ -92,18 +96,18 @@ const Expertise = () => {
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-l-4 border-l-primary">
+              <Card key={index} className="border-l-4 border-l-primary group hover:shadow-lg hover:scale-105 transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                      <Star key={i} className="h-4 w-4 fill-primary text-primary group-hover:scale-110 transition-transform duration-200" style={{ animationDelay: `${i * 100}ms` }} />
                     ))}
                   </div>
-                  <blockquote className="text-text-secondary mb-4 italic">
+                  <blockquote className="text-text-secondary mb-4 italic group-hover:text-heading transition-colors duration-300">
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="border-t pt-4">
-                    <div className="font-semibold text-heading">{testimonial.company}</div>
+                    <div className="font-semibold text-heading group-hover:text-primary transition-colors duration-300">{testimonial.company}</div>
                     <div className="text-sm text-text-secondary mb-2">{testimonial.sector}</div>
                     <div className="text-sm text-text-secondary">{testimonial.author}</div>
                   </div>
