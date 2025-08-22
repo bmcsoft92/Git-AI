@@ -58,7 +58,7 @@ const Header = () => {
               Intégrations
             </a>
             <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
-              Processus
+              Méthode
             </a>
             <a href="#simulateur" className="nav-link text-text-secondary hover:text-primary transition-colors">
               Simulateur ROI
@@ -100,7 +100,7 @@ const Header = () => {
                 Intégrations
               </a>
               <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
-                Processus
+                Méthode
               </a>
               <a href="#simulateur" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Simulateur ROI
