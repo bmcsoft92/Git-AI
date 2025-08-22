@@ -20,14 +20,14 @@ const ProcessSection = () => {
     {
       number: "01",
       title: "Diagnostiquer",
-      subtitle: "Identifier ensemble votre potentiel d'automatisation.",
+      subtitle: "Cartographier vos processus pour identifier les gains rapides.",
       icon: Search,
       color: "#FF8C42",
       details: {
-        title: "Phase 1 : Diagnostic & Stratégie",
-        description: "Nous commençons par un audit complet de vos processus. L'objectif est d'identifier les tâches chronophages et les goulots d'étranglement qui peuvent être automatisés. Cette phase est souvent éligible au",
-        highlight: "Diag Data IA de Bpifrance",
-        conclusion: "Le livrable : une feuille de route claire avec des priorités et un ROI estimé."
+        title: "Phase 1 : Diagnostic Stratégique",
+        description: "Nous commençons par une session stratégique pour cartographier vos processus actuels et comprendre vos objectifs. L'objectif : identifier précisément les 2 ou 3 opportunités d'automatisation qui généreront le plus fort retour sur investissement.",
+        highlight: "Le livrable : une feuille de route claire et priorisée.",
+        conclusion: ""
       }
     },
     {
