@@ -120,7 +120,6 @@ const ROICalculatorPage = () => {
                     <div className="relative">
                       <Input
                         type="number"
-                        step="0.1"
                         value={formData.hoursPerWeek}
                         onChange={(e) => handleInputChange('hoursPerWeek', e.target.value)}
                         className="text-left text-xl font-medium py-5 px-5 border-2 focus:ring-2 focus:ring-primary/50 w-full"
@@ -131,7 +130,7 @@ const ROICalculatorPage = () => {
                           borderRadius: '8px',
                           height: '64px'
                         }}
-                        min="0.1"
+                        min="1"
                         max="40"
                       />
                     </div>
@@ -148,7 +147,6 @@ const ROICalculatorPage = () => {
                     <div className="relative">
                       <Input
                         type="number"
-                        step="0.1"
                         value={formData.hourlyRate}
                         onChange={(e) => handleInputChange('hourlyRate', e.target.value)}
                         className="text-left text-xl font-medium py-5 px-5 border-2 focus:ring-2 focus:ring-primary/50 w-full"
@@ -159,7 +157,7 @@ const ROICalculatorPage = () => {
                           borderRadius: '8px',
                           height: '64px'
                         }}
-                        min="0.1"
+                        min="1"
                         max="200"
                       />
                     </div>
@@ -176,7 +174,6 @@ const ROICalculatorPage = () => {
                     <div className="relative">
                       <Input
                         type="number"
-                        step="0.1"
                         value={formData.employees}
                         onChange={(e) => handleInputChange('employees', e.target.value)}
                         className="text-left text-xl font-medium py-5 px-5 border-2 focus:ring-2 focus:ring-primary/50 w-full"
@@ -187,7 +184,7 @@ const ROICalculatorPage = () => {
                           borderRadius: '8px',
                           height: '64px'
                         }}
-                        min="0.1"
+                        min="1"
                         max="1000"
                       />
                     </div>
