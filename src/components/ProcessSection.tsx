@@ -46,14 +46,14 @@ const ProcessSection = () => {
     {
       number: "03",
       title: "Déployer",
-      subtitle: "Intégrer la solution dans votre quotidien.",
+      subtitle: "Intégrer le système et former vos équipes pour une adoption immédiate.",
       icon: Rocket,
       color: "#FF5722",
       details: {
-        title: "Phase 3 : Déploiement & Formation",
-        description: "Mise en production sécurisée avec accompagnement de vos équipes. Formation complète et",
-        highlight: "transfert de compétences",
-        conclusion: "Le livrable : solution déployée avec équipes autonomes."
+        title: "Phase 3 : Déploiement & Adoption",
+        description: "Nous intégrons le système complet dans votre environnement existant, en assurant une transition fluide. La clé du succès est l'adoption : nous formons vos équipes pour garantir une prise en main immédiate et une autonomie complète.",
+        highlight: "",
+        conclusion: ""
       }
     },
     {
