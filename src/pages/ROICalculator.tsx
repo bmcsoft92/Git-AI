@@ -345,7 +345,7 @@ const ROICalculatorPage = () => {
                     </h3>
                     
                     <div className="text-sm mb-6" style={{ color: '#F5F5F5', opacity: 0.8 }}>
-                      Basé sur vos entrées ROI (heures × coût horaire × employés). Ajustez ci-dessous si besoin.
+                      Ce chiffre représente la valeur du temps que votre équipe peut récupérer. Mais ce n'est que le début.
                     </div>
 
                     <div className="flex justify-center gap-6 mb-8 flex-wrap">
