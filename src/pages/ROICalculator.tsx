@@ -343,7 +343,7 @@ const ROICalculatorPage = () => {
                             { name: 'Mois', value: results.economies_mois },
                             { name: 'Année', value: results.economies_directes }
                           ]}
-                          margin={{ top: 20, right: 50, left: 100, bottom: 5 }}
+                          margin={{ top: 20, right: 80, left: 80, bottom: 5 }}
                         >
                           <XAxis 
                             dataKey="name" 
