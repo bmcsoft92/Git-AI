@@ -108,27 +108,27 @@ const ROICalculatorPage = () => {
               }}
             >
               <CardContent className="p-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 items-end">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                   {/* Heures automatisables */}
-                  <div className="text-center">
+                  <div>
                     <Label 
-                      className="text-base font-medium mb-4 block"
+                      className="text-sm font-medium mb-2 block"
                       style={{ color: '#F5F5F5' }}
                     >
-                      Heures automatisables
+                      Heures/sem. automatisables
                     </Label>
                     <div className="relative">
                       <Input
                         type="number"
                         value={formData.hoursPerWeek}
                         onChange={(e) => handleInputChange('hoursPerWeek', e.target.value)}
-                        className="text-center text-2xl font-bold py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                        className="text-left text-lg font-medium py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                         style={{ 
-                          backgroundColor: 'rgba(31, 41, 55, 0.8)',
-                          color: '#4A9EFF',
-                          borderColor: 'rgba(74, 158, 255, 0.3)',
-                          borderRadius: '12px',
-                          height: '60px'
+                          backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                          color: '#F5F5F5',
+                          borderColor: 'rgba(74, 158, 255, 0.4)',
+                          borderRadius: '8px',
+                          height: '56px'
                         }}
                         min="1"
                         max="40"
@@ -137,9 +137,9 @@ const ROICalculatorPage = () => {
                   </div>
 
                   {/* Coût horaire */}
-                  <div className="text-center">
+                  <div>
                     <Label 
-                      className="text-base font-medium mb-4 block"
+                      className="text-sm font-medium mb-2 block"
                       style={{ color: '#F5F5F5' }}
                     >
                       Coût horaire moyen (€)
@@ -149,13 +149,13 @@ const ROICalculatorPage = () => {
                         type="number"
                         value={formData.hourlyRate}
                         onChange={(e) => handleInputChange('hourlyRate', e.target.value)}
-                        className="text-center text-2xl font-bold py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                        className="text-left text-lg font-medium py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                         style={{ 
-                          backgroundColor: 'rgba(31, 41, 55, 0.8)',
-                          color: '#4A9EFF',
-                          borderColor: 'rgba(74, 158, 255, 0.3)',
-                          borderRadius: '12px',
-                          height: '60px'
+                          backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                          color: '#F5F5F5',
+                          borderColor: 'rgba(74, 158, 255, 0.4)',
+                          borderRadius: '8px',
+                          height: '56px'
                         }}
                         min="1"
                         max="200"
@@ -164,9 +164,9 @@ const ROICalculatorPage = () => {
                   </div>
 
                   {/* Nombre d'employés */}
-                  <div className="text-center">
+                  <div>
                     <Label 
-                      className="text-base font-medium mb-4 block"
+                      className="text-sm font-medium mb-2 block"
                       style={{ color: '#F5F5F5' }}
                     >
                       Nombre d'employés
@@ -176,13 +176,13 @@ const ROICalculatorPage = () => {
                         type="number"
                         value={formData.employees}
                         onChange={(e) => handleInputChange('employees', e.target.value)}
-                        className="text-center text-2xl font-bold py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                        className="text-left text-lg font-medium py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                         style={{ 
-                          backgroundColor: 'rgba(31, 41, 55, 0.8)',
-                          color: '#4A9EFF',
-                          borderColor: 'rgba(74, 158, 255, 0.3)',
-                          borderRadius: '12px',
-                          height: '60px'
+                          backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                          color: '#F5F5F5',
+                          borderColor: 'rgba(74, 158, 255, 0.4)',
+                          borderRadius: '8px',
+                          height: '56px'
                         }}
                         min="1"
                         max="1000"
