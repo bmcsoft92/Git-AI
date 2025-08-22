@@ -89,6 +89,13 @@ const ROICalculatorPage = () => {
                 Calculez votre ROI en{' '}
                 <span style={{ color: '#0F7F7B' }}>30 secondes</span>
               </h1>
+              
+              <p 
+                className="text-lg mb-8 opacity-90 max-w-2xl mx-auto"
+                style={{ color: '#F5F5F5' }}
+              >
+                Utilisez les curseurs pour ajuster les variables clés de votre entreprise et découvrez le potentiel financier de l'automatisation.
+              </p>
             </div>
 
             {/* Formulaire principal */}
