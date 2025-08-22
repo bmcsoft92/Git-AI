@@ -1,76 +1,49 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
-  MessageCircle, 
-  Mail, 
-  Users, 
-  FolderKanban,
+  TrendingUp, 
+  Settings,
   Target,
-  BarChart3,
-  UserCheck,
-  Share2,
-  FileText,
-  Link,
-  Calendar
+  Check
 } from "lucide-react";
 
 const Services = () => {
-  const automationServices = [
+  const strategicPillars = [
     {
-      icon: MessageCircle,
-      title: "Chatbots IA",
-      description: "Répondez à vos clients 24/7 avec une IA conversationnelle à vos clients 24/7. Augmentez votre satisfaction tout en économisant du temps."
+      id: "growth",
+      icon: TrendingUp,
+      title: "Accélérer la Croissance Commerciale",
+      description: "Automatisez votre cycle de vente, de la génération de leads à la fidélisation client, pour ne plus jamais manquer une opportunité.",
+      services: [
+        "Génération de Leads",
+        "CRM & Suivi des Clients", 
+        "Gestion des Emails",
+        "Planification & Prise de Rendez-vous",
+        "Chatbots IA"
+      ]
     },
     {
-      icon: Mail,
-      title: "Gestion des Emails",
-      description: "Tri intelligent et réponses automatiques. Répartez le contenu de vos boîte mail et gagnez des heures."
+      id: "efficiency", 
+      icon: Settings,
+      title: "Optimiser l'Efficacité Opérationnelle",
+      description: "Libérez vos équipes des tâches administratives et répétitives pour qu'elles puissent se concentrer sur ce qui compte vraiment : l'innovation et la valeur ajoutée.",
+      services: [
+        "Gestion de Projet",
+        "Recrutement & Onboarding",
+        "Comptabilité & Facturation", 
+        "Synchronisation d'Outils"
+      ]
     },
     {
-      icon: Users,
-      title: "CRM & Suivi des Clients",
-      description: "Optimisez la gestion de vos contacts et transformez vos prospects en clients fidèles grâce à des workflows automatisés."
-    },
-    {
-      icon: FolderKanban,
-      title: "Gestion de Projet",
-      description: "Mettez à jour automatiquement dans vos outils (Trello, Asana...). Équipe alignée et productive."
-    },
-    {
-      icon: Target,
-      title: "Génération de Leads",
-      description: "Automatisez vos campagnes et multipliez vos prospects qualifiés sans effort."
-    },
-    {
-      icon: BarChart3,
-      title: "Analyse & Reporting Automatisé",
-      description: "Recevez des rapports clairs sur vos performances sans passer des heures à analyser vos données."
-    },
-    {
-      icon: UserCheck,
-      title: "Recrutement & Onboarding",
-      description: "Pré-sélection des candidats et navigation automatisée. Gagnez du temps sur chaque nouvelle embauche."
-    },
-    {
-      icon: Share2,
-      title: "Gestion des Réseaux Sociaux",
-      description: "Planifiez et publiez automatiquement. Augmentez visibilité et engagement."
-    },
-    {
-      icon: FileText,
-      title: "Comptabilité & Facturation",
-      description: "Envoyez vous et relances automatiques des factures, réduisez les impayés, suivez le RGPD."
-    },
-    {
-      icon: Link,
-      title: "Synchronisation d'Outils",
-      description: "Reliez CRM, emailing, outils... Pour éviter les logiciels et ressources plus efficacement."
-    },
-    {
-      icon: Calendar,
-      title: "Planification & Prise de Rendez-vous",
-      description: "Evitez les blocages d'agenda : prise de RDV 100 % automatisée."
+      id: "marketing",
+      icon: Target, 
+      title: "Augmenter l'Impact Marketing",
+      description: "Déployez des campagnes intelligentes, gérez votre présence en ligne et prenez des décisions basées sur des données claires et automatisées.",
+      services: [
+        "Gestion des Réseaux Sociaux",
+        "Analyse & Reporting Automatisés"
+      ]
     }
   ];
 
@@ -87,46 +60,73 @@ const Services = () => {
           </Badge>
         </div>
 
+        {/* New Strategic Title */}
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold text-heading mb-6">
-            Découvrez tout ce que nous pouvons{" "}
-            <span className="text-primary">automatiser</span> pour vous.
+            Des Solutions Conçues pour Vos{" "}
+            <span className="text-primary">Objectifs Stratégiques</span>
           </h2>
           <p className="text-lg text-text-secondary max-w-4xl mx-auto leading-relaxed">
-            Chaque organisation est unique. Voici comment nous aidons nos clients à gagner du 
-            temps et à se concentrer sur ce qui compte :
+            Nous ne vendons pas des outils, nous construisons des avantages concurrentiels. 
+            Découvrez comment nous pouvons transformer vos opérations.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {automationServices.map((service, index) => (
-            <Card 
-              key={index} 
-              className="group bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
-            >
-              <CardHeader className="pb-4">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
-                    <service.icon className="h-5 w-5 text-primary" />
+        {/* Interactive Tabs */}
+        <div className="mb-16">
+          <Tabs defaultValue="growth" className="w-full">
+            {/* Tabs List - The three main pillars */}
+            <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 gap-4 bg-transparent h-auto p-0">
+              {strategicPillars.map((pillar) => (
+                <TabsTrigger
+                  key={pillar.id}
+                  value={pillar.id}
+                  className="flex flex-col items-center p-6 bg-card border border-border/50 rounded-lg 
+                            hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10
+                            data-[state=active]:bg-card/80 data-[state=active]:border-primary/50 data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20
+                            text-left space-y-4 h-auto"
+                >
+                  <div className="p-4 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                    <pillar.icon className="h-8 w-8 text-primary" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-heading text-center">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-sm text-text-secondary leading-relaxed text-center">
+                      {pillar.description}
+                    </p>
+                  </div>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {/* Tabs Content - Services details */}
+            {strategicPillars.map((pillar) => (
+              <TabsContent 
+                key={pillar.id} 
+                value={pillar.id} 
+                className="mt-8 animate-fade-in"
+              >
+                <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg p-6">
+                  <h4 className="text-xl font-semibold text-heading mb-4">
+                    Services inclus :
+                  </h4>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {pillar.services.map((service, index) => (
+                      <div 
+                        key={index}
+                        className="flex items-center space-x-3 p-3 bg-background/50 rounded-lg"
+                      >
+                        <Check className="h-5 w-5 text-primary flex-shrink-0" />
+                        <span className="text-text-secondary">{service}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <CardTitle className="text-lg font-semibold text-heading mb-3">
-                  {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-sm text-text-secondary mb-4 leading-relaxed">
-                  {service.description}
-                </p>
-                <Button 
-                  variant="link" 
-                  className="p-0 h-auto text-primary hover:text-primary/80 text-sm font-medium"
-                >
-                  Voir le workflow
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
 
         {/* Badge COMPATIBILITÉ */}
