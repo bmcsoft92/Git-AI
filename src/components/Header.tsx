@@ -11,6 +11,15 @@ const Header = () => {
     setIsMenuOpen(false); // Fermer le menu mobile si ouvert
   };
 
+  const handleSolutionsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const solutionsSection = document.getElementById('solutions');
+    if (solutionsSection) {
+      solutionsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false); // Fermer le menu mobile si ouvert
+  };
+
   return (
     <header className="bg-card border-b border-border sticky top-0 z-50 backdrop-blur-sm bg-card/95">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,7 +42,7 @@ const Header = () => {
             <Link to="/" onClick={handleHomeClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
               Accueil
             </Link>
-            <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
+            <a href="#solutions" onClick={handleSolutionsClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
               Solutions
             </a>
             <a href="#integrations" className="nav-link text-text-secondary hover:text-primary transition-colors">
@@ -75,7 +84,7 @@ const Header = () => {
               <Link to="/" onClick={handleHomeClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Accueil
               </Link>
-              <a href="#solutions" className="nav-link text-text-secondary hover:text-primary transition-colors">
+              <a href="#solutions" onClick={handleSolutionsClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Solutions
               </a>
               <a href="#integrations" className="nav-link text-text-secondary hover:text-primary transition-colors">
