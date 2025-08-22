@@ -329,7 +329,7 @@ const ROICalculatorPage = () => {
                             axisLine={false}
                             tickLine={false}
                             tick={{ fill: '#F5F5F5', fontSize: 12 }}
-                            tickFormatter={(value) => `${(value / 1000).toFixed(0)}k €`}
+                            tickFormatter={(value) => `${value.toLocaleString('fr-FR')} €`}
                           />
                           <Bar 
                             dataKey="value" 
