@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import heroImage from "@/assets/hero-automation.jpg";
+import heroImage from "@/assets/hero-ai-automation.jpg";
 
 const Hero = () => {
   return (
@@ -56,7 +56,7 @@ const Hero = () => {
             <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
               <img
                 src={heroImage}
-                alt="Automatisation industrielle moderne"
+                alt="Intelligence artificielle et automatisation organisationnelle moderne"
                 className="w-full h-full object-cover"
               />
             </div>
