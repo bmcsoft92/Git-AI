@@ -1,14 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
   TrendingUp, 
   Settings,
   Target,
   Check
 } from "lucide-react";
+import { useState } from "react";
 
 const Services = () => {
+  const [activeTab, setActiveTab] = useState("growth");
+
   const strategicPillars = [
     {
       id: "growth",
@@ -72,46 +75,61 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Interactive Tabs */}
+        {/* Interactive Cards */}
         <div className="mb-16">
-          <Tabs defaultValue="growth" className="w-full">
-            {/* Tabs List - The three main pillars */}
-            <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 gap-4 bg-transparent h-auto p-0">
-              {strategicPillars.map((pillar) => (
-                <TabsTrigger
+          {/* Strategic Pillars Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {strategicPillars.map((pillar) => {
+              const Icon = pillar.icon;
+              const isActive = activeTab === pillar.id;
+              
+              return (
+                <Card 
                   key={pillar.id}
-                  value={pillar.id}
-                  className="flex flex-col items-center p-6 bg-card border border-border/50 rounded-lg 
-                            hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10
-                            data-[state=active]:bg-card/80 data-[state=active]:border-primary/50 data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20
-                            text-left space-y-4 h-auto"
+                  className={`cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 ${
+                    isActive 
+                      ? 'bg-card/80 border-primary/50 shadow-lg shadow-primary/20' 
+                      : 'bg-card/50 border-border/50 hover:border-primary/30'
+                  }`}
+                  onClick={() => setActiveTab(pillar.id)}
                 >
-                  <div className="p-4 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
-                    <pillar.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-semibold text-heading text-center">
+                  <CardHeader className="text-center pb-4">
+                    <div className="flex justify-center mb-4">
+                      <div className={`p-4 rounded-lg transition-colors duration-300 ${
+                        isActive ? 'bg-primary/20' : 'bg-primary/10'
+                      }`}>
+                        <Icon className="h-8 w-8 text-primary" />
+                      </div>
+                    </div>
+                    <CardTitle className="text-lg font-semibold text-heading mb-3">
                       {pillar.title}
-                    </h3>
-                    <p className="text-sm text-text-secondary leading-relaxed text-center">
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center pt-0">
+                    <p className="text-sm text-text-secondary leading-relaxed">
                       {pillar.description}
                     </p>
-                  </div>
-                </TabsTrigger>
-              ))}
-            </TabsList>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
 
-            {/* Tabs Content - Services details */}
-            {strategicPillars.map((pillar) => (
-              <TabsContent 
-                key={pillar.id} 
-                value={pillar.id} 
-                className="mt-8 animate-fade-in"
-              >
-                <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg p-6">
-                  <h4 className="text-xl font-semibold text-heading mb-4">
+          {/* Services Details */}
+          {strategicPillars.map((pillar) => (
+            <div 
+              key={pillar.id}
+              className={`transition-all duration-300 ${
+                activeTab === pillar.id ? 'block animate-fade-in' : 'hidden'
+              }`}
+            >
+              <Card className="bg-card/50 backdrop-blur-sm border border-border/50">
+                <CardHeader>
+                  <CardTitle className="text-xl font-semibold text-heading">
                     Services inclus :
-                  </h4>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {pillar.services.map((service, index) => (
                       <div 
@@ -123,10 +141,10 @@ const Services = () => {
                       </div>
                     ))}
                   </div>
-                </div>
-              </TabsContent>
-            ))}
-          </Tabs>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
         </div>
 
         {/* Badge COMPATIBILITÉ */}
