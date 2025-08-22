@@ -1,8 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/hero-ai-automation.jpg";
+import AnimatedCounter from "./AnimatedCounter";
 
 const Hero = () => {
+  const stats = [
+    { value: "500+", label: "processus automatisés" },
+    { value: "340", label: "ROI moyen", suffix: "%" },
+    { value: "98", label: "satisfaction client", suffix: "%" }
+  ];
+
   return (
     <section className="relative bg-background overflow-hidden min-h-screen flex items-center">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
@@ -15,26 +23,66 @@ const Hero = () => {
             </div>
             
             <h1 className="text-4xl lg:text-6xl font-bold text-heading mb-8 leading-tight">
-              Solutions IA
+              L'IA + l'Humain
               <span className="text-primary block">
-                pour Entreprises Visionnaires
+                au service de votre entreprise
               </span>
             </h1>
             
             <p className="text-xl text-text-secondary mb-10 leading-relaxed max-w-2xl">
-              <strong className="text-heading">Maia Elange</strong> révolutionne votre organisation avec des 
-              <strong className="text-primary"> agents IA sur mesure</strong> et une automatisation intelligente. 
-              Excellence technologique, résultats mesurables.
+              Nous libérons vos équipes des tâches répétitives en <strong className="text-primary">2 semaines</strong> grâce à une 
+              automatisation sans code, vous permettant de <strong className="text-primary">réduire vos coûts de 40%</strong> et 
+              d'augmenter votre productivité.
             </p>
+
+            {/* Preuves sociales avec stats animées */}
+            <div className="flex flex-wrap gap-6 mb-10 animate-fade-in-up-delay">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="flex items-baseline justify-center">
+                    <AnimatedCounter 
+                      value={stat.value}
+                      className="text-2xl font-bold text-primary"
+                    />
+                    {stat.suffix && (
+                      <span className="text-2xl font-bold text-primary">{stat.suffix}</span>
+                    )}
+                  </div>
+                  <div className="text-sm text-text-secondary font-medium">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay">
-              <Button variant="cta" size="lg" className="group font-semibold btn-cta-hover uppercase tracking-wide">
-                Découvrir l'Excellence IA
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2">
+              <Button 
+                size="lg" 
+                className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground"
+              >
+                Réserver mon diagnostic gratuit (2h sur site)
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                Expertise Technique
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              >
+                Calculer mon ROI
               </Button>
+            </div>
+
+            {/* Garanties */}
+            <div className="flex flex-wrap gap-4 mt-6 animate-fade-in-up-delay-2">
+              <Badge variant="outline" className="text-success border-success/30 bg-success/10">
+                ✓ Sans engagement
+              </Badge>
+              <Badge variant="outline" className="text-success border-success/30 bg-success/10">
+                ✓ Facturation au temps passé
+              </Badge>
+              <Badge variant="outline" className="text-success border-success/30 bg-success/10">
+                ✓ Sur devis personnalisé
+              </Badge>
             </div>
           </div>
           

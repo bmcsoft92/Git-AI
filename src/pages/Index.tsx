@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import Expertise from "@/components/Expertise";
-import Contact from "@/components/Contact";
+import ProcessSection from "@/components/ProcessSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import ROICalculator from "@/components/ROICalculator";
+import FinalCTA from "@/components/FinalCTA";
 
 const Index = () => {
   return (
@@ -11,8 +13,10 @@ const Index = () => {
       <main>
         <Hero />
         <Services />
-        <Expertise />
-        <Contact />
+        <ProcessSection />
+        <TestimonialsSection />
+        <ROICalculator />
+        <FinalCTA />
       </main>
       <footer className="bg-card border-t border-border py-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
