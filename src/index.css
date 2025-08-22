@@ -8,51 +8,51 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Palette "Innovateur de Confiance" pour automatisation B2B */
-    --background: 0 0% 95%;
-    --foreground: 0 0% 20%;
+    /* Palette "Automatisation Intelligente" 2.0 - Excellence Concurrentielle */
+    --background: 43 27% 95%; /* Ivory Premium #F6F4EF */
+    --foreground: 180 26% 8%; /* Graphite Moderne #0E1A1A */
 
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 20%;
+    --card: 43 27% 98%;
+    --card-foreground: 180 26% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover-foreground: 180 26% 8%;
 
-    /* Bleu Cobalt - Confiance et Intelligence (#0047AB) */
-    --primary: 218 100% 34%;
+    /* Teal Innovant - Confiance & Innovation (#0F7F7B) */
+    --primary: 178 78% 28%;
     --primary-foreground: 0 0% 100%;
 
     /* Gris structure et clarté */
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 40%;
+    --secondary: 43 15% 92%;
+    --secondary-foreground: 180 15% 35%;
 
-    --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 43 20% 90%;
+    --muted-foreground: 180 15% 35%;
 
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 20%;
+    --accent: 43 15% 92%;
+    --accent-foreground: 180 26% 8%;
 
     /* Rouge erreur (#D9001D) */
     --destructive: 349 100% 43%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Bordures et inputs en gris clair */
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 218 100% 34%;
+    /* Bordures et inputs */
+    --border: 43 15% 85%;
+    --input: 43 15% 85%;
+    --ring: 178 78% 28%;
 
-    /* Orange Kaki - Action et Innovation (#EC5800) */
-    --cta-primary: 20 100% 46%;
+    /* Orange Énergique - Conversion & Énergie (#D56A1F) */
+    --cta-primary: 22 75% 47%;
     --cta-primary-foreground: 0 0% 100%;
 
-    /* Vert succès (#00A86B) */
+    /* Vert succès */
     --success: 156 100% 33%;
     --success-foreground: 0 0% 100%;
 
-    /* Titres et texte */
-    --heading: 0 0% 20%;
-    --text-primary: 0 0% 20%;
-    --text-secondary: 0 0% 40%;
+    /* Titres et texte avec Graphite Moderne */
+    --heading: 180 26% 8%;
+    --text-primary: 180 26% 8%;
+    --text-secondary: 180 15% 35%;
 
     --radius: 0.5rem;
 

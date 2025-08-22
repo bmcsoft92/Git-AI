@@ -61,11 +61,11 @@ const Expertise = () => {
         {/* En-tête */}
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-heading mb-4">
-            Leader en Automatisation IA
+            Partenaire Stratégique Évident en Automatisation IA
           </h2>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Pionnier français de l'automatisation organisationnelle par intelligence artificielle, 
-            nous accompagnons les entreprises dans leur transformation numérique intelligente.
+            <strong className="text-primary">Leader français</strong> de l'automatisation organisationnelle par IA. 
+            Nous transformons vos contraintes en avantages concurrentiels avec des résultats mesurables et un ROI garanti.
           </p>
         </div>
 

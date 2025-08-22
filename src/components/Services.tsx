@@ -54,11 +54,11 @@ const Services = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-heading mb-4">
-            Solutions IA pour Organisations
+            Solutions IA sans code
           </h2>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Intelligence artificielle appliquée à l'automatisation de vos processus 
-            organisationnels pour une efficacité et une performance maximales.
+            <strong className="text-heading">Automatisez vos processus en 2 semaines</strong> sans compétences techniques. 
+            Notre intelligence artificielle identifie et optimise vos tâches répétitives pour un ROI immédiat.
           </p>
         </div>
 
@@ -97,7 +97,7 @@ const Services = () => {
 
         <div className="text-center mt-16">
           <Button variant="cta" size="lg">
-            Explorer toutes nos solutions IA
+            Réserver mon diagnostic gratuit
           </Button>
         </div>
       </div>
