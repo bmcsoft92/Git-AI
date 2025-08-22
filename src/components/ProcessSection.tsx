@@ -59,7 +59,7 @@ const ProcessSection = () => {
     {
       number: "04",
       title: "Optimiser",
-      subtitle: "Assurer une performance durable et faire évoluer le système.",
+      subtitle: "Transformer votre système en un moteur de croissance continue.",
       icon: TrendingUp,
       color: "#D56A1F",
       details: {
