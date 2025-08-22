@@ -36,6 +36,19 @@ const ROICalculatorPage = () => {
     const employees = parseFloat(formData.employees) || 0;
     const investissement = parseFloat(formData.investissement) || 0;
     
+    // Validation des données
+    if (hoursPerWeek <= 0 || hourlyRate <= 0 || employees <= 0 || investissement <= 0) {
+      return {
+        economies_directes: 0,
+        economies_semaine: 0,
+        economies_mois: 0,
+        gains_indirects: 0,
+        investissement: 0,
+        roi_strategique: 0,
+        gain_total: 0
+      };
+    }
+    
     // Heures annuelles totales économisées
     const heures_annuelles_totales = hoursPerWeek * 46 * employees;
     
@@ -59,7 +72,7 @@ const ROICalculatorPage = () => {
       economies_semaine,
       economies_mois,
       gains_indirects: Math.round(gains_indirects),
-      investissement,
+      investissement: Math.round(investissement),
       roi_strategique: Math.round(roi_strategique),
       gain_total: Math.round(gain_total)
     };
