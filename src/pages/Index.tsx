@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Integrations from "@/components/Integrations";
 import ProcessSection from "@/components/ProcessSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import ROICalculator from "@/components/ROICalculator";
 import FinalCTA from "@/components/FinalCTA";
 
@@ -16,7 +15,6 @@ const Index = () => {
         <Services />
         <Integrations />
         <ProcessSection />
-        <TestimonialsSection />
         <ROICalculator />
         <FinalCTA />
       </main>
