@@ -604,7 +604,7 @@ const ROICalculatorPage = () => {
                            color: '#EF4444',
                            textShadow: '0 0 10px rgba(239, 68, 68, 0.3)'
                          }}>
-                           {results.investissement.toLocaleString()} €
+                           -{results.investissement.toLocaleString()} €
                          </div>
                         <div className="text-sm" style={{ color: '#F5F5F5' }}>par an</div>
                       </div>
@@ -615,18 +615,18 @@ const ROICalculatorPage = () => {
                              backgroundColor: '#1F2937',
                              border: '2px solid #374151'
                            }}>
-                        <div className="text-center">
-                          <div className="font-bold text-red-400 text-lg mb-3">
-                            💰 Levier 3 : L'Investissement
-                          </div>
-                          <div className="text-sm leading-relaxed">
-                            <strong>Estimation transparente</strong> de l'investissement annuel en outils et accompagnement, ajusté selon la taille de votre équipe.
-                          </div>
-                          <div className="mt-3 p-3 bg-gray-700 rounded text-xs">
-                            <strong>Un calcul crédible et réaliste !</strong><br/>
-                            Pas de gains magiques, un investissement rentable
-                          </div>
-                        </div>
+                         <div className="text-center">
+                           <div className="font-bold text-red-400 text-lg mb-3">
+                             💰 Levier 3 : L'Investissement
+                           </div>
+                           <div className="text-sm leading-relaxed">
+                             <strong>Sortie d'argent représentée en négatif</strong> selon la convention financière. Ce coût d'investissement annuel est affiché avec le signe (-) pour symboliser une dépense.
+                           </div>
+                           <div className="mt-3 p-3 bg-gray-700 rounded text-xs">
+                             <strong>Convention visuelle :</strong><br/>
+                             Gains (+) vs Coûts (-) = Vision claire du ROI
+                           </div>
+                         </div>
                       </div>
                     </div>
                   </div>
