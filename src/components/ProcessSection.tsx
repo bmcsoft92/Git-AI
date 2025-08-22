@@ -22,7 +22,7 @@ const ProcessSection = () => {
       title: "Diagnostiquer",
       subtitle: "Cartographier vos processus pour identifier les gains rapides.",
       icon: Search,
-      color: "#FF8C42",
+      color: "#D56A1F",
       details: {
         title: "Phase 1 : Diagnostic Stratégique",
         description: "Nous commençons par une session stratégique pour cartographier vos processus actuels et comprendre vos objectifs. L'objectif : identifier précisément les 2 ou 3 opportunités d'automatisation qui généreront le plus fort retour sur investissement.",
@@ -35,7 +35,7 @@ const ProcessSection = () => {
       title: "Prototyper",
       subtitle: "Visualiser la solution et valider le ROI avant de s'engager.",
       icon: Lightbulb,
-      color: "#FF6B35",
+      color: "#D56A1F",
       details: {
         title: "Phase 2 : Prototype & Preuve de Valeur",
         description: "Avant tout engagement majeur, nous construisons un prototype fonctionnel. Vous voyez concrètement la solution en action, vous testez son efficacité et vous validez le ROI projeté.",
@@ -48,7 +48,7 @@ const ProcessSection = () => {
       title: "Déployer",
       subtitle: "Intégrer le système et former vos équipes pour une adoption immédiate.",
       icon: Rocket,
-      color: "#FF5722",
+      color: "#D56A1F",
       details: {
         title: "Phase 3 : Déploiement & Adoption",
         description: "Nous intégrons le système complet dans votre environnement existant, en assurant une transition fluide. La clé du succès est l'adoption : nous formons vos équipes pour garantir une prise en main immédiate et une autonomie complète.",
@@ -61,7 +61,7 @@ const ProcessSection = () => {
       title: "Optimiser",
       subtitle: "Assurer une performance durable & évolutive.",
       icon: TrendingUp,
-      color: "#FF4500",
+      color: "#D56A1F",
       details: {
         title: "Phase 4 : Optimisation Continue",
         description: "Monitoring des performances et amélioration continue basée sur les données d'usage réelles. Support technique et",
@@ -89,7 +89,7 @@ const ProcessSection = () => {
             <Sparkles 
               size={16} 
               style={{ 
-                color: phases[i % phases.length]?.color || '#FF8C42',
+                color: phases[i % phases.length]?.color || '#D56A1F',
                 opacity: 0.3
               }} 
             />
