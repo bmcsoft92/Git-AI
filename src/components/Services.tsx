@@ -184,12 +184,6 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Badge COMPATIBILITÉ */}
-        <div className="flex justify-center mb-8">
-          <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-primary/30 text-primary">
-            COMPATIBILITÉ
-          </Badge>
-        </div>
       </div>
     </section>
   );
