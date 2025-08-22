@@ -33,14 +33,14 @@ const ProcessSection = () => {
     {
       number: "02",
       title: "Prototyper",
-      subtitle: "Construire une première version simple et efficace.",
+      subtitle: "Visualiser la solution et valider le ROI avant de s'engager.",
       icon: Lightbulb,
       color: "#FF6B35",
       details: {
-        title: "Phase 2 : Prototypage & Validation",
-        description: "Développement rapide d'un prototype fonctionnel pour valider l'approche technique et l'expérience utilisateur. Cette phase permet de",
-        highlight: "tester et ajuster avant le déploiement complet",
-        conclusion: "Le livrable : un prototype opérationnel avec validation métier."
+        title: "Phase 2 : Prototype & Preuve de Valeur",
+        description: "Avant tout engagement majeur, nous construisons un prototype fonctionnel. Vous voyez concrètement la solution en action, vous testez son efficacité et vous validez le ROI projeté.",
+        highlight: "C'est notre garantie pour une décision 100% éclairée et sans risque.",
+        conclusion: ""
       }
     },
     {
