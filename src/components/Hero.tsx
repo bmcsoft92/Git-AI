@@ -34,7 +34,7 @@ const Hero = () => {
                 size="lg" 
                 className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground"
               >
-                Réserver mon diagnostic gratuit (2h sur site)
+                Mon diagnostic gratuit
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
