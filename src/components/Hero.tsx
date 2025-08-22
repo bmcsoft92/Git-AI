@@ -44,13 +44,9 @@ const Hero = () => {
             <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-2xl border border-border">
               <img
                 src={heroImage}
-                alt="Intelligence artificielle premium et automatisation organisationnelle de pointe"
+                alt="Intelligence artificielle et automatisation organisationnelle de pointe"
                 className="w-full h-full object-cover"
               />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-card border border-border rounded-lg p-4 shadow-xl backdrop-blur-sm">
-              <div className="text-2xl font-bold text-primary">Excellence</div>
-              <div className="text-sm text-text-secondary">Design & IA</div>
             </div>
           </div>
         </div>
