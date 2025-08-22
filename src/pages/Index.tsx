@@ -23,11 +23,11 @@ const Index = () => {
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cta-primary rounded-full blur-3xl"></div>
         </div>
         
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {/* Section Maia Elange */}
-            <div className="lg:col-span-1 space-y-6">
-              <div className="flex items-center space-x-3 mb-6">
+            <div className="lg:col-span-1 space-y-4">
+              <div className="flex items-center space-x-3 mb-4">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/20 to-cta-primary/20 backdrop-blur-sm border border-primary/20 shadow-lg">
                   <img 
                     src="/lovable-uploads/8d8704c1-3e0c-4716-b520-20779aef37e0.png" 
@@ -69,7 +69,7 @@ const Index = () => {
             </div>
 
             {/* Section Solutions */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               <h4 className="text-lg font-bold text-heading relative">
                 Solutions
                 <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
@@ -95,7 +95,7 @@ const Index = () => {
             </div>
 
             {/* Section Parcours */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               <h4 className="text-lg font-bold text-heading relative">
                 Parcours
                 <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
@@ -121,7 +121,7 @@ const Index = () => {
             </div>
 
             {/* Section Ressources */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               <h4 className="text-lg font-bold text-heading relative">
                 Ressources
                 <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
@@ -148,12 +148,12 @@ const Index = () => {
           </div>
 
           {/* Séparateur élégant */}
-          <div className="my-12">
+          <div className="my-8">
             <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
           </div>
 
           {/* Copyright et liens légaux */}
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
               <div className="text-sm text-text-secondary font-medium">
                 © 2025 Maia Elange – Tous droits réservés.
