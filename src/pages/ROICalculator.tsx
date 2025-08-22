@@ -439,10 +439,25 @@ const ROICalculatorPage = () => {
                         </div>
                         <div className="text-sm" style={{ color: '#F5F5F5' }}>par an</div>
                       </div>
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white p-4 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-normal z-20 max-w-sm">
-                        <strong className="text-green-400">Levier 1 : La Productivité</strong><br/>
-                        Valeur brute du temps de travail économisé en automatisant les tâches manuelles.<br/>
-                        <em>Calcul : (Heures/sem.) × (Coût horaire) × 46 sem. × (Employés)</em>
+                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-800 border border-gray-600 text-white p-6 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30 shadow-2xl" 
+                           style={{ 
+                             width: '320px', 
+                             marginLeft: '-160px',
+                             backgroundColor: '#1F2937',
+                             border: '2px solid #374151'
+                           }}>
+                        <div className="text-center">
+                          <div className="font-bold text-green-400 text-lg mb-3">
+                            🎯 Levier 1 : La Productivité
+                          </div>
+                          <div className="text-sm leading-relaxed">
+                            <strong>Valeur brute du temps de travail économisé</strong> en automatisant les tâches manuelles répétitives.
+                          </div>
+                          <div className="mt-3 p-3 bg-gray-700 rounded text-xs">
+                            <strong>Calcul :</strong><br/>
+                            (Heures/sem.) × (Coût horaire) × 46 sem. × (Employés)
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -471,10 +486,25 @@ const ROICalculatorPage = () => {
                         </div>
                         <div className="text-sm" style={{ color: '#F5F5F5' }}>par an</div>
                       </div>
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white p-4 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-normal z-20 max-w-sm">
-                        <strong className="text-orange-400">Levier 2 : La Croissance</strong><br/>
-                        Revenus supplémentaires générés en réinvestissant 25% du temps économisé dans des activités à forte valeur ajoutée.<br/>
-                        <em>L'automatisation comme moteur de croissance !</em>
+                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-800 border border-gray-600 text-white p-6 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30 shadow-2xl" 
+                           style={{ 
+                             width: '340px', 
+                             marginLeft: '-170px',
+                             backgroundColor: '#1F2937',
+                             border: '2px solid #374151'
+                           }}>
+                        <div className="text-center">
+                          <div className="font-bold text-orange-400 text-lg mb-3">
+                            🚀 Levier 2 : La Croissance
+                          </div>
+                          <div className="text-sm leading-relaxed">
+                            <strong>Revenus supplémentaires</strong> générés en réinvestissant 25% du temps économisé dans des activités à forte valeur ajoutée.
+                          </div>
+                          <div className="mt-3 p-3 bg-gray-700 rounded text-xs">
+                            <strong>L'automatisation comme moteur de croissance !</strong><br/>
+                            Valorisé à 1,5x votre coût horaire
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -503,10 +533,25 @@ const ROICalculatorPage = () => {
                         </div>
                         <div className="text-sm" style={{ color: '#F5F5F5' }}>investissement unique</div>
                       </div>
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white p-4 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-normal z-20 max-w-sm">
-                        <strong className="text-red-400">Levier 3 : L'Investissement</strong><br/>
-                        Estimation transparente de l'investissement annuel en outils et accompagnement, ajusté selon la taille de votre équipe.<br/>
-                        <em>Un calcul crédible et réaliste !</em>
+                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-800 border border-gray-600 text-white p-6 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30 shadow-2xl" 
+                           style={{ 
+                             width: '350px', 
+                             marginLeft: '-175px',
+                             backgroundColor: '#1F2937',
+                             border: '2px solid #374151'
+                           }}>
+                        <div className="text-center">
+                          <div className="font-bold text-red-400 text-lg mb-3">
+                            💰 Levier 3 : L'Investissement
+                          </div>
+                          <div className="text-sm leading-relaxed">
+                            <strong>Estimation transparente</strong> de l'investissement annuel en outils et accompagnement, ajusté selon la taille de votre équipe.
+                          </div>
+                          <div className="mt-3 p-3 bg-gray-700 rounded text-xs">
+                            <strong>Un calcul crédible et réaliste !</strong><br/>
+                            Pas de gains magiques, un investissement rentable
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -529,10 +574,25 @@ const ROICalculatorPage = () => {
                         +{results.roi_strategique}%
                       </div>
                     </div>
-                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white p-4 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-normal z-20 max-w-md">
-                      <strong className="text-blue-400">ROI Stratégique Final</strong><br/>
-                      Pour chaque euro investi, combien d'euros vous gagnez réellement en retour, en comptant les économies ET la croissance générée.<br/>
-                      <em>Vision complète : Économies + Croissance - Investissement</em>
+                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-800 border border-gray-600 text-white p-6 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30 shadow-2xl" 
+                         style={{ 
+                           width: '380px', 
+                           marginLeft: '-190px',
+                           backgroundColor: '#1F2937',
+                           border: '2px solid #374151'
+                         }}>
+                      <div className="text-center">
+                        <div className="font-bold text-blue-400 text-lg mb-3">
+                          🎯 ROI Stratégique Final
+                        </div>
+                        <div className="text-sm leading-relaxed">
+                          <strong>Pour chaque euro investi</strong>, combien d'euros vous gagnez réellement en retour, en comptant les économies ET la croissance générée.
+                        </div>
+                        <div className="mt-3 p-3 bg-gray-700 rounded text-xs">
+                          <strong>Formule :</strong> (Économies + Croissance - Investissement) / Investissement × 100<br/>
+                          <em>Vision complète et transparente !</em>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
