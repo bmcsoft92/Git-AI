@@ -108,11 +108,11 @@ const ROICalculatorPage = () => {
               }}
             >
               <CardContent className="p-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 items-end">
                   {/* Heures automatisables */}
                   <div className="text-center">
                     <Label 
-                      className="text-sm font-medium mb-3 block"
+                      className="text-base font-medium mb-4 block"
                       style={{ color: '#F5F5F5' }}
                     >
                       Heures/sem. automatisables
@@ -122,18 +122,19 @@ const ROICalculatorPage = () => {
                         type="number"
                         value={formData.hoursPerWeek}
                         onChange={(e) => handleInputChange('hoursPerWeek', e.target.value)}
-                        className="text-center text-xl font-bold py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                        className="text-center text-2xl font-bold py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50"
                         style={{ 
                           backgroundColor: 'rgba(31, 41, 55, 0.8)',
                           color: '#4A9EFF',
                           borderColor: 'rgba(74, 158, 255, 0.3)',
-                          borderRadius: '12px'
+                          borderRadius: '12px',
+                          height: '60px'
                         }}
                         min="1"
                         max="40"
                       />
                       <span 
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm font-medium"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-lg font-medium"
                         style={{ color: '#4A9EFF' }}
                       >
                         h
@@ -144,7 +145,7 @@ const ROICalculatorPage = () => {
                   {/* Coût horaire */}
                   <div className="text-center">
                     <Label 
-                      className="text-sm font-medium mb-3 block"
+                      className="text-base font-medium mb-4 block"
                       style={{ color: '#F5F5F5' }}
                     >
                       Coût horaire moyen (€)
@@ -154,12 +155,13 @@ const ROICalculatorPage = () => {
                         type="number"
                         value={formData.hourlyRate}
                         onChange={(e) => handleInputChange('hourlyRate', e.target.value)}
-                        className="text-center text-xl font-bold py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                        className="text-center text-2xl font-bold py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50"
                         style={{ 
                           backgroundColor: 'rgba(31, 41, 55, 0.8)',
                           color: '#4A9EFF',
                           borderColor: 'rgba(74, 158, 255, 0.3)',
-                          borderRadius: '12px'
+                          borderRadius: '12px',
+                          height: '60px'
                         }}
                         min="1"
                         max="200"
@@ -170,7 +172,7 @@ const ROICalculatorPage = () => {
                   {/* Nombre d'employés */}
                   <div className="text-center">
                     <Label 
-                      className="text-sm font-medium mb-3 block"
+                      className="text-base font-medium mb-4 block"
                       style={{ color: '#F5F5F5' }}
                     >
                       Nombre d'employés
@@ -180,12 +182,13 @@ const ROICalculatorPage = () => {
                         type="number"
                         value={formData.employees}
                         onChange={(e) => handleInputChange('employees', e.target.value)}
-                        className="text-center text-xl font-bold py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                        className="text-center text-2xl font-bold py-4 px-4 border-2 focus:ring-2 focus:ring-primary/50"
                         style={{ 
                           backgroundColor: 'rgba(31, 41, 55, 0.8)',
                           color: '#4A9EFF',
                           borderColor: 'rgba(74, 158, 255, 0.3)',
-                          borderRadius: '12px'
+                          borderRadius: '12px',
+                          height: '60px'
                         }}
                         min="1"
                         max="1000"
