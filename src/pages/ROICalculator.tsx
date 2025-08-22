@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import Header from "@/components/Header";
 
 const ROICalculatorPage = () => {
@@ -27,6 +28,10 @@ const ROICalculatorPage = () => {
     // Phase 1 - Levier 1 : Économies Directes
     const economies_directes = formData.hoursPerWeek * formData.hourlyRate * 46 * formData.employees;
     
+    // Calculs par période pour le graphique
+    const economies_semaine = Math.round(economies_directes / 46);
+    const economies_mois = Math.round(economies_directes / 12);
+    
     // Phase 2 - Calculs stratégiques complets
     const heures_annuelles_liberees = formData.hoursPerWeek * 46 * formData.employees;
     const gains_indirects = heures_annuelles_liberees * 0.25 * (formData.hourlyRate * 1.5);
@@ -45,6 +50,8 @@ const ROICalculatorPage = () => {
 
     return {
       economies_directes: Math.round(economies_directes),
+      economies_semaine,
+      economies_mois,
       gains_indirects: Math.round(gains_indirects),
       investissement,
       roi_strategique: Math.round(roi_strategique),
@@ -217,24 +224,18 @@ const ROICalculatorPage = () => {
                 }}
               >
                 <CardContent className="p-10">
-                  <h2 
-                    className="text-2xl font-bold mb-6 text-center"
-                    style={{ color: '#0F7F7B' }}
-                  >
-                    Vos Économies de Productivité
-                  </h2>
-
                   <div className="text-center mb-8">
-                    <div className="p-8 rounded-xl" style={{ backgroundColor: 'rgba(15, 127, 123, 0.1)' }}>
-                      <div 
-                        className="text-5xl font-bold mb-3"
-                        style={{ color: '#0F7F7B' }}
-                      >
-                        {results.economies_directes.toLocaleString()} €
-                      </div>
-                      <div className="text-lg" style={{ color: '#F5F5F5' }}>
-                        d'économies annuelles directes
-                      </div>
+                    <div className="mb-4" style={{ color: '#F5F5F5', fontSize: '16px', opacity: 0.8 }}>
+                      Économies annuelles estimées
+                    </div>
+                    <div 
+                      className="text-5xl font-bold mb-4"
+                      style={{ color: '#0F7F7B' }}
+                    >
+                      {results.economies_directes.toLocaleString('fr-FR')} €
+                    </div>
+                    <div className="text-sm mb-6" style={{ color: '#F5F5F5', opacity: 0.7 }}>
+                      ROI attendu en <strong>45-60 jours</strong> selon usage.
                     </div>
                   </div>
 
@@ -244,13 +245,102 @@ const ROICalculatorPage = () => {
                       size="lg"
                       className="w-full py-4 text-lg font-semibold transition-all duration-300 hover:scale-105"
                       style={{
-                        backgroundColor: '#0F7F7B',
+                        background: 'linear-gradient(90deg, #FF6B6B, #4ECDC4)',
                         color: '#F5F5F5',
-                        borderRadius: '12px'
+                        borderRadius: '12px',
+                        border: 'none'
                       }}
                     >
-                      Voir mon Diagnostic Stratégique Complet
+                      Voir comment récupérer cet argent
                     </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Phase Graphique Interactive */}
+            {showDetailedResults && (
+              <Card 
+                className="border-0 shadow-2xl max-w-4xl mx-auto mb-8 animate-fade-in"
+                style={{ 
+                  backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                  backdropFilter: 'blur(15px)',
+                  border: '1px solid rgba(15, 127, 123, 0.2)'
+                }}
+              >
+                <CardContent className="p-10">
+                  <div className="text-center mb-8">
+                    <h3 className="text-xl mb-6" style={{ color: '#F5F5F5' }}>
+                      Vous laissez potentiellement <strong>{results.economies_directes.toLocaleString('fr-FR')} €</strong> sur la table chaque année.
+                    </h3>
+                    
+                    <div className="text-sm mb-6" style={{ color: '#F5F5F5', opacity: 0.8 }}>
+                      Basé sur vos entrées ROI (heures × coût horaire × employés). Ajustez ci-dessous si besoin.
+                    </div>
+
+                    <div className="flex justify-center gap-6 mb-8 flex-wrap">
+                      <Badge 
+                        className="px-4 py-2 text-sm font-medium"
+                        style={{ 
+                          backgroundColor: 'rgba(15, 127, 123, 0.2)',
+                          color: '#0F7F7B',
+                          border: '1px solid rgba(15, 127, 123, 0.3)'
+                        }}
+                      >
+                        📅 Semaine : {results.economies_semaine.toLocaleString('fr-FR')} €
+                      </Badge>
+                      <Badge 
+                        className="px-4 py-2 text-sm font-medium"
+                        style={{ 
+                          backgroundColor: 'rgba(15, 127, 123, 0.2)',
+                          color: '#0F7F7B',
+                          border: '1px solid rgba(15, 127, 123, 0.3)'
+                        }}
+                      >
+                        🗓️ Mois : {results.economies_mois.toLocaleString('fr-FR')} €
+                      </Badge>
+                      <Badge 
+                        className="px-4 py-2 text-sm font-medium"
+                        style={{ 
+                          backgroundColor: 'rgba(15, 127, 123, 0.2)',
+                          color: '#0F7F7B',
+                          border: '1px solid rgba(15, 127, 123, 0.3)'
+                        }}
+                      >
+                        📊 Année : {results.economies_directes.toLocaleString('fr-FR')} €
+                      </Badge>
+                    </div>
+
+                    <div className="h-64 mb-8">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart
+                          data={[
+                            { name: 'Semaine', value: results.economies_semaine },
+                            { name: 'Mois', value: results.economies_mois },
+                            { name: 'Année', value: results.economies_directes }
+                          ]}
+                          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                        >
+                          <XAxis 
+                            dataKey="name" 
+                            axisLine={false}
+                            tickLine={false}
+                            tick={{ fill: '#F5F5F5', fontSize: 14 }}
+                          />
+                          <YAxis 
+                            axisLine={false}
+                            tickLine={false}
+                            tick={{ fill: '#F5F5F5', fontSize: 12 }}
+                            tickFormatter={(value) => `${(value / 1000).toFixed(0)}k €`}
+                          />
+                          <Bar 
+                            dataKey="value" 
+                            fill="#4A9EFF"
+                            radius={[4, 4, 0, 0]}
+                          />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
