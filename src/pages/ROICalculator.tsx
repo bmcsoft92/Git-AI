@@ -416,7 +416,7 @@ const ROICalculatorPage = () => {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
                     {/* Levier 1 - Économies de Productivité */}
                     <div className="relative group">
-                      <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in cursor-help" 
+                      <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in cursor-help h-64 flex flex-col justify-center" 
                            style={{ 
                              backgroundColor: 'rgba(15, 127, 123, 0.1)', 
                              borderColor: 'rgba(15, 127, 123, 0.3)',
@@ -466,7 +466,7 @@ const ROICalculatorPage = () => {
 
                     {/* Levier 2 - Potentiel de Croissance */}
                     <div className="relative group">
-                      <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in cursor-help" 
+                      <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in cursor-help h-64 flex flex-col justify-center" 
                            style={{ 
                              backgroundColor: 'rgba(255, 140, 66, 0.1)', 
                              borderColor: 'rgba(255, 140, 66, 0.3)',
@@ -516,7 +516,7 @@ const ROICalculatorPage = () => {
 
                     {/* Levier 3 - Investissement */}
                     <div className="relative group">
-                      <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in cursor-help" 
+                      <div className="text-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl animate-fade-in cursor-help h-64 flex flex-col justify-center" 
                            style={{ 
                              backgroundColor: 'rgba(239, 68, 68, 0.1)', 
                              borderColor: 'rgba(239, 68, 68, 0.3)',
