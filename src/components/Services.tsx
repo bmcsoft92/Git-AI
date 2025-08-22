@@ -104,7 +104,13 @@ const Services = () => {
                           isActive 
                             ? 'text-primary drop-shadow-md' 
                             : 'text-primary group-hover:text-primary group-hover:drop-shadow-sm'
-                        }`} />
+                        }`} 
+                        strokeWidth={1.5}
+                        style={{
+                          filter: 'drop-shadow(0 0 0.5px currentColor)',
+                          shapeRendering: 'geometricPrecision'
+                        }}
+                        />
                       </div>
                     </div>
                     <CardTitle className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
@@ -138,7 +144,14 @@ const Services = () => {
               <Card className="bg-card/60 backdrop-blur-sm border border-primary/20 shadow-lg shadow-primary/10">
                 <CardHeader>
                   <CardTitle className="text-xl font-semibold text-heading flex items-center gap-2">
-                    <Check className="h-5 w-5 text-primary" />
+                    <Check 
+                      className="h-5 w-5 text-primary" 
+                      strokeWidth={1.5}
+                      style={{
+                        filter: 'drop-shadow(0 0 0.5px currentColor)',
+                        shapeRendering: 'geometricPrecision'
+                      }}
+                    />
                     Services inclus :
                   </CardTitle>
                 </CardHeader>
@@ -153,7 +166,14 @@ const Services = () => {
                           animationDelay: `${index * 50}ms`
                         }}
                       >
-                        <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                        <Check 
+                          className="h-4 w-4 text-primary flex-shrink-0" 
+                          strokeWidth={1.5}
+                          style={{
+                            filter: 'drop-shadow(0 0 0.5px currentColor)',
+                            shapeRendering: 'geometricPrecision'
+                          }}
+                        />
                         <span className="text-text-secondary font-medium text-sm">{service}</span>
                       </div>
                     ))}
