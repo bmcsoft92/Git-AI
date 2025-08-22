@@ -140,12 +140,13 @@ const Integrations = () => {
                           before:opacity-0 before:transition-opacity before:duration-700 hover:before:opacity-100">
               <h3 className="text-xl font-semibold text-heading mb-4 group-hover:text-primary
                            transition-all duration-500 group-hover:scale-105 relative z-10">
-                Plus de 100+ intégrations disponibles
+                Des Intégrations Sur-Mesure pour Votre Écosystème
               </h3>
               <p className="text-text-secondary mb-6 max-w-2xl mx-auto group-hover:text-text-secondary/90
                            transition-all duration-500 group-hover:scale-[1.02] relative z-10">
-                Votre outil n'est pas dans la liste ? Nous créons des connecteurs sur-mesure 
-                pour s'adapter parfaitement à votre écosystème technologique.
+                Votre entreprise utilise des outils spécifiques? Notre expertise ne se limite pas à une liste prédéfinie. 
+                Nous créons des connecteurs sur-mesure pour que notre IA s'adapte parfaitement à votre environnement 
+                technologique, et non l'inverse.
               </p>
             </div>
           </div>
