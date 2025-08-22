@@ -29,11 +29,8 @@ const Header = () => {
             <a href="#contact" className="text-text-secondary hover:text-primary transition-colors">
               Contact
             </a>
-            <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              Expertise Technique
-            </Button>
-            <Button variant="cta" size="sm" className="btn-cta-hover">
-              Excellence IA
+            <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+              diagnostic gratuit
             </Button>
           </div>
 
@@ -63,11 +60,8 @@ const Header = () => {
                 Contact
               </a>
               <div className="flex flex-col gap-2 pt-2">
-                <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                  Expertise Technique
-                </Button>
-                <Button variant="cta" size="sm" className="btn-cta-hover">
-                  Excellence IA
+                <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                  diagnostic gratuit
                 </Button>
               </div>
             </div>
