@@ -83,7 +83,7 @@ const Integrations = () => {
                            hover:scale-[1.03] hover:-translate-y-2 hover:shadow-2xl
                            bg-card/80 border border-border/30 
                            hover:border-primary hover:shadow-primary/30
-                           animate-fade-in opacity-0"
+                           animate-fade-in"
                 style={{ 
                   animationDelay: `${index * 150}ms`,
                   animationFillMode: 'both',
