@@ -798,7 +798,7 @@ const ROICalculatorPage = () => {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Nom & prénom */}
-                        <div>
+                        <div className="w-full">
                           <Label 
                             className="text-sm font-medium mb-3 block"
                             style={{ color: '#F5F5F5' }}
@@ -810,7 +810,7 @@ const ROICalculatorPage = () => {
                             value={diagnosticData.nom}
                             onChange={(e) => setDiagnosticData(prev => ({ ...prev, nom: e.target.value }))}
                             placeholder="Jean Dupont"
-                            className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                            className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                             style={{ 
                               backgroundColor: 'rgba(31, 41, 55, 0.9)',
                               color: '#F5F5F5',
@@ -821,7 +821,7 @@ const ROICalculatorPage = () => {
                         </div>
 
                         {/* Email professionnel */}
-                        <div>
+                        <div className="w-full">
                           <Label 
                             className="text-sm font-medium mb-3 block"
                             style={{ color: '#F5F5F5' }}
@@ -833,7 +833,7 @@ const ROICalculatorPage = () => {
                             value={diagnosticData.email}
                             onChange={(e) => setDiagnosticData(prev => ({ ...prev, email: e.target.value }))}
                             placeholder="jean.dupont@entreprise.fr"
-                            className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                            className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                             style={{ 
                               backgroundColor: 'rgba(31, 41, 55, 0.9)',
                               color: '#F5F5F5',
@@ -847,7 +847,7 @@ const ROICalculatorPage = () => {
                         </div>
 
                         {/* Organisation */}
-                        <div>
+                        <div className="w-full">
                           <Label 
                             className="text-sm font-medium mb-3 block"
                             style={{ color: '#F5F5F5' }}
@@ -859,7 +859,7 @@ const ROICalculatorPage = () => {
                             value={diagnosticData.organisation}
                             onChange={(e) => setDiagnosticData(prev => ({ ...prev, organisation: e.target.value }))}
                             placeholder="Nom de votre société"
-                            className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                            className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                             style={{ 
                               backgroundColor: 'rgba(31, 41, 55, 0.9)',
                               color: '#F5F5F5',
@@ -870,7 +870,7 @@ const ROICalculatorPage = () => {
                         </div>
 
                         {/* Taille de l'équipe */}
-                        <div>
+                        <div className="w-full">
                           <Label 
                             className="text-sm font-medium mb-3 block"
                             style={{ color: '#F5F5F5' }}
@@ -882,7 +882,7 @@ const ROICalculatorPage = () => {
                             onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, taille: value }))}
                           >
                             <SelectTrigger 
-                              className="text-base py-3 px-4 border-2"
+                              className="text-base py-3 px-4 border-2 w-full"
                               style={{ 
                                 backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                 color: '#F5F5F5',
