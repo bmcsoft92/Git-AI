@@ -11,8 +11,8 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+                <img src="/lovable-uploads/8d8704c1-3e0c-4716-b520-20779aef37e0.png" alt="Maia Elange Logo" className="w-10 h-10 rounded-lg" />
               </div>
               <h1 className="text-2xl font-bold text-heading">Maia Elange</h1>
             </div>
