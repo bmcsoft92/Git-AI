@@ -176,7 +176,7 @@ const ROICalculatorPage = () => {
                       className="text-sm font-medium mb-3 block"
                       style={{ color: '#F5F5F5', minHeight: '40px' }}
                     >
-                      Coût horaire moyen<br />(€)
+                      Coût horaire<br />moyen (€)
                     </Label>
                     <div className="relative">
                       <Input
