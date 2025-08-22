@@ -112,7 +112,7 @@ const ROICalculatorPage = () => {
                   backgroundColor: 'rgba(15, 127, 123, 0.1)'
                 }}
               >
-                SIMULATEUR
+                ÉTAPE 1 : SIMULATEUR ROI
               </Badge>
               
               <h1 
