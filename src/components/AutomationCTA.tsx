@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const AutomationCTA = () => {
   return (
@@ -48,19 +49,21 @@ const AutomationCTA = () => {
               </div>
 
               {/* Bouton CTA */}
-              <Button
-                size="lg"
-                className="group px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                style={{
-                  backgroundColor: '#FF8C42',
-                  color: '#F5F5F5',
-                  borderRadius: '8px',
-                  boxShadow: '0 8px 25px rgba(255, 140, 66, 0.3)'
-                }}
-              >
-                Calculer votre ROI
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
+              <Link to="/calculateur-roi">
+                <Button
+                  size="lg"
+                  className="group px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  style={{
+                    backgroundColor: '#FF8C42',
+                    color: '#F5F5F5',
+                    borderRadius: '8px',
+                    boxShadow: '0 8px 25px rgba(255, 140, 66, 0.3)'
+                  }}
+                >
+                  Calculer votre ROI
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </Button>
+              </Link>
 
               {/* Message de confiance */}
               <div className="mt-8 pt-6 border-t border-gray-600">
