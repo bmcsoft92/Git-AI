@@ -20,6 +20,15 @@ const Header = () => {
     setIsMenuOpen(false); // Fermer le menu mobile si ouvert
   };
 
+  const handleIntegrationsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const integrationsSection = document.getElementById('integrations');
+    if (integrationsSection) {
+      integrationsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false); // Fermer le menu mobile si ouvert
+  };
+
   return (
     <header className="bg-card border-b border-border sticky top-0 z-50 backdrop-blur-sm bg-card/95">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +54,7 @@ const Header = () => {
             <a href="#solutions" onClick={handleSolutionsClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
               Solutions
             </a>
-            <a href="#integrations" className="nav-link text-text-secondary hover:text-primary transition-colors">
+            <a href="#integrations" onClick={handleIntegrationsClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
               Intégrations
             </a>
             <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
@@ -87,7 +96,7 @@ const Header = () => {
               <a href="#solutions" onClick={handleSolutionsClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Solutions
               </a>
-              <a href="#integrations" className="nav-link text-text-secondary hover:text-primary transition-colors">
+              <a href="#integrations" onClick={handleIntegrationsClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Intégrations
               </a>
               <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
