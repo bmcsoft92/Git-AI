@@ -141,7 +141,7 @@ const ROICalculatorPage = () => {
               }}
             >
               <CardContent className="p-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 items-end">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 items-end max-w-2xl mx-auto">
                   {/* Heures automatisables */}
                   <div>
                     <Label 
