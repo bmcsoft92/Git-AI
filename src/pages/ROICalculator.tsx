@@ -411,9 +411,6 @@ const ROICalculatorPage = () => {
                     >
                       Analyse financière détaillée sur 3 leviers de croissance
                     </h2>
-                    <p className="text-lg opacity-90" style={{ color: '#F5F5F5' }}>
-                      Votre diagnostic stratégique personnalisé
-                    </p>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
@@ -525,7 +522,7 @@ const ROICalculatorPage = () => {
                         boxShadow: '0 10px 30px rgba(255, 140, 66, 0.4)'
                       }}
                     >
-                      Analyse financière détaillée sur 3 leviers de croissance
+                      Votre diagnostic stratégique personnalisé
                     </Button>
                     <p className="mt-4 text-sm opacity-80" style={{ color: '#F5F5F5' }}>
                       Diagnostic personnalisé • Sans engagement • 30 minutes
