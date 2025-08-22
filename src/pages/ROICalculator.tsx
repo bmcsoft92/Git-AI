@@ -411,6 +411,9 @@ const ROICalculatorPage = () => {
                     >
                       Analyse financière détaillée sur 3 leviers de croissance
                     </h2>
+                    <p className="text-lg opacity-90 mb-6" style={{ color: '#F5F5F5' }}>
+                      L'automatisation n'est pas une dépense, c'est un investissement qui réduit les coûts ET accélère votre croissance.
+                    </p>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
