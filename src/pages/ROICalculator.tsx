@@ -525,7 +525,7 @@ const ROICalculatorPage = () => {
                         boxShadow: '0 10px 30px rgba(255, 140, 66, 0.4)'
                       }}
                     >
-                      Réserver mon diagnostic gratuit pour activer ce ROI
+                      Analyse financière détaillée sur 3 leviers de croissance
                     </Button>
                     <p className="mt-4 text-sm opacity-80" style={{ color: '#F5F5F5' }}>
                       Diagnostic personnalisé • Sans engagement • 30 minutes
