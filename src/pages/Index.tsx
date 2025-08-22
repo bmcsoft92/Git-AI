@@ -21,7 +21,16 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Section Maia Elange */}
             <div className="lg:col-span-1">
-              <h3 className="text-xl font-bold text-heading mb-4">🤖 Maia Elange</h3>
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/8d8704c1-3e0c-4716-b520-20779aef37e0.png" 
+                    alt="Maia Elange Logo" 
+                    className="w-full h-full rounded-lg" 
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-heading">Maia Elange</h3>
+              </div>
               <p className="text-text-secondary mb-4">
                 Agence d'IA & d'automatisation pour organisations.
               </p>
