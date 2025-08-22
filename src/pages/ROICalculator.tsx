@@ -36,16 +36,20 @@ const ROICalculatorPage = () => {
     const employees = parseFloat(formData.employees) || 0;
     const investissement = parseFloat(formData.investissement) || 0;
     
-    // Phase 1 - Levier 1 : Économies Directes
-    const economies_directes = hoursPerWeek * hourlyRate * 46 * employees;
+    // Heures annuelles totales économisées
+    const heures_annuelles_totales = hoursPerWeek * 46 * employees;
     
-    // Calculs par période pour le graphique
+    // Phase 1 - Levier 1 : Économies Directes (75% du temps = vraies économies)
+    const heures_economisees = heures_annuelles_totales * 0.75;
+    const economies_directes = heures_economisees * hourlyRate;
+    
+    // Phase 2 - Levier 2 : Gains de Croissance (25% du temps réinvesti à plus forte valeur)
+    const heures_reinvesties = heures_annuelles_totales * 0.25;
+    const gains_indirects = heures_reinvesties * (hourlyRate * 1.5);
+    
+    // Calculs par période pour le graphique (basés sur les économies directes)
     const economies_semaine = Math.round(economies_directes / 46);
     const economies_mois = Math.round(economies_directes / 12);
-    
-    // Phase 2 - Calculs stratégiques complets
-    const heures_annuelles_liberees = hoursPerWeek * 46 * employees;
-    const gains_indirects = heures_annuelles_liberees * 0.25 * (hourlyRate * 1.5);
     
     const gain_total = economies_directes + gains_indirects;
     const roi_strategique = ((gain_total - investissement) / investissement) * 100;
