@@ -2,14 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/hero-ai-automation.jpg";
-import AnimatedCounter from "./AnimatedCounter";
 
 const Hero = () => {
-  const stats = [
-    { value: "500+", label: "processus automatisés" },
-    { value: "340", label: "ROI moyen", suffix: "%" },
-    { value: "98", label: "satisfaction client", suffix: "%" }
-  ];
 
   return (
     <section className="relative bg-background overflow-hidden min-h-screen flex items-center">
@@ -35,25 +29,6 @@ const Hero = () => {
               d'augmenter votre productivité.
             </p>
 
-            {/* Preuves sociales avec stats animées */}
-            <div className="flex flex-wrap gap-6 mb-10 animate-fade-in-up-delay">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="flex items-baseline justify-center">
-                    <AnimatedCounter 
-                      value={stat.value}
-                      className="text-2xl font-bold text-primary"
-                    />
-                    {stat.suffix && (
-                      <span className="text-2xl font-bold text-primary">{stat.suffix}</span>
-                    )}
-                  </div>
-                  <div className="text-sm text-text-secondary font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
             
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2">
               <Button 
