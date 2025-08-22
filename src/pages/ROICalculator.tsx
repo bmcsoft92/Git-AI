@@ -105,7 +105,7 @@ const ROICalculatorPage = () => {
                   {/* Heures automatisables */}
                   <div className="text-center">
                     <Label 
-                      className="text-sm font-medium mb-3 block"
+                      className="text-lg font-medium mb-3 block"
                       style={{ color: '#F5F5F5' }}
                     >
                       Heures/sem. automatisables
@@ -133,7 +133,7 @@ const ROICalculatorPage = () => {
                   {/* Coût horaire */}
                   <div className="text-center">
                     <Label 
-                      className="text-sm font-medium mb-3 block"
+                      className="text-lg font-medium mb-3 block"
                       style={{ color: '#F5F5F5' }}
                     >
                       Coût horaire moyen (€)
@@ -161,7 +161,7 @@ const ROICalculatorPage = () => {
                   {/* Nombre d'employés */}
                   <div className="text-center">
                     <Label 
-                      className="text-sm font-medium mb-3 block"
+                      className="text-lg font-medium mb-3 block"
                       style={{ color: '#F5F5F5' }}
                     >
                       Nombre d'employés
