@@ -355,7 +355,7 @@ const ROICalculatorPage = () => {
                             axisLine={false}
                             tickLine={false}
                             tick={{ fill: '#F5F5F5', fontSize: 11, fontWeight: 'bold' }}
-                            tickFormatter={(value) => `${value.toLocaleString('fr-FR')} €`}
+                            tickFormatter={(value) => `${value.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`}
                             domain={[0, 'dataMax']}
                             width={90}
                           />
