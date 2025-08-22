@@ -92,23 +92,35 @@ const Integrations = () => {
                   animationFillMode: 'both'
                 }}
               >
-                <CardHeader className="text-center pb-3 pt-6">
+                <CardHeader className="text-center pb-3 pt-6 relative">
                   <div className="flex justify-center mb-4">
-                    <div className="w-16 h-16 rounded-lg bg-background/80 flex items-center justify-center
-                                  transition-all duration-300 group-hover:bg-primary/10 group-hover:scale-110 border border-border/20
-                                  group-hover:border-primary/40">
+                    <div className="w-16 h-16 rounded-xl bg-background/80 flex items-center justify-center
+                                  transition-all duration-700 ease-out group-hover:bg-primary/15 group-hover:scale-125 
+                                  border border-border/20 group-hover:border-primary/60
+                                  relative overflow-hidden
+                                  before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/20 before:to-transparent 
+                                  before:opacity-0 before:transition-all before:duration-700 group-hover:before:opacity-100
+                                  after:absolute after:inset-0 after:rounded-xl after:border after:border-primary/30 
+                                  after:opacity-0 after:transition-all after:duration-700 after:animate-pulse 
+                                  group-hover:after:opacity-100 group-hover:after:shadow-[0_0_20px_rgba(var(--primary),0.4)]">
                       <IconComponent 
-                        className={`w-8 h-8 ${integration.color} transition-all duration-300 group-hover:scale-110`}
+                        className={`w-8 h-8 ${integration.color} transition-all duration-700 ease-out 
+                                   group-hover:scale-125 group-hover:rotate-12 group-hover:drop-shadow-lg
+                                   relative z-10`}
                         strokeWidth={1.5}
                       />
                     </div>
                   </div>
-                  <CardTitle className="text-base font-semibold text-heading group-hover:text-primary transition-colors duration-300">
+                  <CardTitle className="text-base font-semibold text-heading group-hover:text-primary 
+                                     transition-all duration-500 ease-out transform group-hover:scale-105
+                                     group-hover:drop-shadow-sm">
                     {integration.name}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="text-center pt-0 pb-6">
-                  <p className="text-xs text-text-secondary group-hover:text-text-secondary/90 transition-colors duration-300">
+                <CardContent className="text-center pt-0 pb-6 relative">
+                  <p className="text-xs text-text-secondary group-hover:text-primary/90 
+                               transition-all duration-500 ease-out transform group-hover:scale-102
+                               group-hover:font-medium group-hover:drop-shadow-sm">
                     {integration.description}
                   </p>
                 </CardContent>
@@ -118,13 +130,20 @@ const Integrations = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="inline-block">
-            <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8 border border-primary/20">
-              <h3 className="text-xl font-semibold text-heading mb-4">
+        <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '1.5s', animationFillMode: 'both' }}>
+          <div className="inline-block group">
+            <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8 border border-primary/20
+                          transition-all duration-700 ease-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20
+                          hover:border-primary/40 hover:bg-gradient-to-r hover:from-primary/15 hover:to-primary/8
+                          relative overflow-hidden
+                          before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/5 before:via-transparent before:to-primary/5 
+                          before:opacity-0 before:transition-opacity before:duration-700 hover:before:opacity-100">
+              <h3 className="text-xl font-semibold text-heading mb-4 group-hover:text-primary
+                           transition-all duration-500 group-hover:scale-105 relative z-10">
                 Plus de 100+ intégrations disponibles
               </h3>
-              <p className="text-text-secondary mb-6 max-w-2xl mx-auto">
+              <p className="text-text-secondary mb-6 max-w-2xl mx-auto group-hover:text-text-secondary/90
+                           transition-all duration-500 group-hover:scale-[1.02] relative z-10">
                 Votre outil n'est pas dans la liste ? Nous créons des connecteurs sur-mesure 
                 pour s'adapter parfaitement à votre écosystème technologique.
               </p>
