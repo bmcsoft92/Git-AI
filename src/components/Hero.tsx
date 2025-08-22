@@ -23,9 +23,7 @@ const Hero = () => {
             </h1>
             
             <p className="text-2xl lg:text-3xl text-text-secondary mb-16 leading-relaxed max-w-4xl mx-auto">
-              Nous libérons vos équipes des tâches répétitives en <strong className="text-primary">2 semaines</strong> grâce à une 
-              automatisation sans code, vous permettant de <strong className="text-primary">réduire vos coûts de 40%</strong> et 
-              d'augmenter votre productivité.
+              Nous concevons des systèmes d'automatisation <strong className="text-primary">simples, mesurables et finançables</strong>. vous permettant de <strong className="text-primary">réduire vos coûts</strong> et d'<strong className="text-primary">augmenter votre productivité</strong>.
             </p>
 
             
