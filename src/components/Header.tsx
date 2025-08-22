@@ -29,6 +29,15 @@ const Header = () => {
     setIsMenuOpen(false); // Fermer le menu mobile si ouvert
   };
 
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false); // Fermer le menu mobile si ouvert
+  };
+
   const handleSimulateurClick = (e: React.MouseEvent) => {
     e.preventDefault();
     const simulateurSection = document.getElementById('simulateur');
@@ -75,7 +84,7 @@ const Header = () => {
             <a href="#faq" className="nav-link text-text-secondary hover:text-primary transition-colors">
               FAQ
             </a>
-            <a href="#contact" className="nav-link text-text-secondary hover:text-primary transition-colors">
+            <a href="#contact" onClick={handleContactClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
               Contact
             </a>
             <Button className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white">
@@ -117,7 +126,7 @@ const Header = () => {
               <a href="#faq" className="nav-link text-text-secondary hover:text-primary transition-colors">
                 FAQ
               </a>
-              <a href="#contact" className="nav-link text-text-secondary hover:text-primary transition-colors">
+              <a href="#contact" onClick={handleContactClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
                 Contact
               </a>
               <div className="flex flex-col gap-2 pt-2">
