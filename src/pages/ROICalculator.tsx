@@ -429,8 +429,11 @@ const ROICalculatorPage = () => {
                           </div>
                         </div>
                         <h3 className="text-lg font-semibold mb-2" style={{ color: '#0F7F7B' }}>
-                          Vos Économies de Productivité
+                          Levier 1 : Productivité
                         </h3>
+                        <div className="text-sm mb-3" style={{ color: '#F5F5F5', opacity: 0.8 }}>
+                          Économies Directes
+                        </div>
                         <div className="text-3xl font-bold mb-2" style={{ 
                           color: '#0F7F7B',
                           textShadow: '0 0 10px rgba(15, 127, 123, 0.3)'
@@ -476,8 +479,11 @@ const ROICalculatorPage = () => {
                           </div>
                         </div>
                         <h3 className="text-lg font-semibold mb-2" style={{ color: '#FF8C42' }}>
-                          Votre Potentiel de Croissance
+                          Levier 2 : Croissance
                         </h3>
+                        <div className="text-sm mb-3" style={{ color: '#F5F5F5', opacity: 0.8 }}>
+                          Gains Indirects
+                        </div>
                         <div className="text-3xl font-bold mb-2" style={{ 
                           color: '#FF8C42',
                           textShadow: '0 0 10px rgba(255, 140, 66, 0.3)'
@@ -523,8 +529,11 @@ const ROICalculatorPage = () => {
                           </div>
                         </div>
                         <h3 className="text-lg font-semibold mb-2" style={{ color: '#EF4444' }}>
-                          Pour un Investissement Estimé
+                          Levier 3 : Investissement
                         </h3>
+                        <div className="text-sm mb-3" style={{ color: '#F5F5F5', opacity: 0.8 }}>
+                          Coût Estimé
+                        </div>
                         <div className="text-3xl font-bold mb-2" style={{ 
                           color: '#EF4444',
                           textShadow: '0 0 10px rgba(239, 68, 68, 0.3)'
