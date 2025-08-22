@@ -118,8 +118,8 @@ const ROICalculatorPage = () => {
                   {/* Heures automatisables */}
                   <div>
                     <Label 
-                      className="text-base font-medium mb-3 block"
-                      style={{ color: '#F5F5F5', minHeight: '48px' }}
+                      className="text-sm font-medium mb-3 block"
+                      style={{ color: '#F5F5F5', minHeight: '40px' }}
                     >
                       Heures/sem.<br />automatisables
                     </Label>
@@ -146,10 +146,10 @@ const ROICalculatorPage = () => {
                   {/* Coût horaire */}
                   <div>
                     <Label 
-                      className="text-base font-medium mb-3 block"
-                      style={{ color: '#F5F5F5', minHeight: '48px' }}
+                      className="text-sm font-medium mb-3 block"
+                      style={{ color: '#F5F5F5', minHeight: '40px' }}
                     >
-                      Coût horaire<br />moyen (€)
+                      Coût horaire moyen<br />(€)
                     </Label>
                     <div className="relative">
                       <Input
@@ -174,8 +174,8 @@ const ROICalculatorPage = () => {
                   {/* Nombre d'employés */}
                   <div>
                     <Label 
-                      className="text-base font-medium mb-3 block"
-                      style={{ color: '#F5F5F5', minHeight: '48px' }}
+                      className="text-sm font-medium mb-3 block"
+                      style={{ color: '#F5F5F5', minHeight: '40px' }}
                     >
                       Nombre<br />d'employés
                     </Label>
@@ -201,10 +201,10 @@ const ROICalculatorPage = () => {
                   {/* Investissement estimé */}
                   <div>
                     <Label 
-                      className="text-base font-medium mb-3 block"
-                      style={{ color: '#F5F5F5', minHeight: '48px' }}
+                      className="text-sm font-medium mb-3 block"
+                      style={{ color: '#F5F5F5', minHeight: '40px' }}
                     >
-                      Investissement<br />annuel estimé (€)
+                      Investissement annuel<br />estimé (€)
                     </Label>
                     <div className="relative">
                       <Input
