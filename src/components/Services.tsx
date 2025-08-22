@@ -185,16 +185,10 @@ const Services = () => {
         </div>
 
         {/* Badge COMPATIBILITÉ */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-8">
           <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-primary/30 text-primary">
             COMPATIBILITÉ
           </Badge>
-        </div>
-
-        <div className="text-center">
-          <Button variant="cta" size="lg" className="btn-cta-hover">
-            Parler à un expert
-          </Button>
         </div>
       </div>
     </section>
