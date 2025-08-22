@@ -3,8 +3,6 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Integrations from "@/components/Integrations";
 import ProcessSection from "@/components/ProcessSection";
-import ROICalculator from "@/components/ROICalculator";
-import FinalCTA from "@/components/FinalCTA";
 
 const Index = () => {
   return (
@@ -15,8 +13,6 @@ const Index = () => {
         <Services />
         <Integrations />
         <ProcessSection />
-        <ROICalculator />
-        <FinalCTA />
       </main>
       <footer className="bg-card border-t border-border py-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
