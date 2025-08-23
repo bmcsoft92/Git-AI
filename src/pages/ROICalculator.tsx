@@ -8,6 +8,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Progress } from "@/components/ui/progress";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import Header from "@/components/Header";
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
+import { ROIResults } from '@/components/ROIResults';
 
 const ROICalculatorPage = () => {
   const [formData, setFormData] = useState({
@@ -48,6 +51,21 @@ const ROICalculatorPage = () => {
   });
   const [currentStep, setCurrentStep] = useState(1);
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
+  
+  // Nouveaux états pour les résultats et l'analyse IA
+  const [showAnalysisResults, setShowAnalysisResults] = useState(false);
+  const [analysisResults, setAnalysisResults] = useState<{
+    calculationId: string;
+    recommendations: Array<{
+      title: string;
+      description: string;
+      estimatedROI: string;
+      timeline: string;
+      impact: string;
+      priority: number;
+    }>;
+  } | null>(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
   
   // Référence pour le scroll vers le diagnostic
   const diagnosticRef = useRef<HTMLDivElement>(null);
@@ -136,10 +154,92 @@ const ROICalculatorPage = () => {
     }
   };
 
-  const handleDiagnosticSubmit = () => {
-    // Ici on peut envoyer les données ou afficher un message de succès
-    console.log("Diagnostic complet:", diagnosticData);
-    alert("Diagnostic envoyé avec succès ! Vous recevrez votre rapport par email.");
+  const handleDiagnosticSubmit = async () => {
+    setIsAnalyzing(true);
+    
+    try {
+      // Calculer les données ROI
+      const roiCalculation = calculateROI();
+      
+      // Préparer les données pour l'analyse IA
+      const analysisData = {
+        roiData: {
+          hours_per_week: parseFloat(formData.hoursPerWeek),
+          hourly_rate: parseFloat(formData.hourlyRate),
+          employees: parseInt(formData.employees),
+          investment: parseFloat(formData.investissement),
+          annual_savings: roiCalculation.economiesAnnuelles,
+          roi_percentage: roiCalculation.roiPourcentage
+        },
+        diagnosticData: {
+          team_size: diagnosticData.taille,
+          business_type: diagnosticData.secteur,
+          main_activities: diagnosticData.processus_prioritaires,
+          repetitive_tasks: diagnosticData.processus_prioritaires,
+          current_tools: diagnosticData.outils,
+          pain_points: [diagnosticData.tache_frustrante].filter(Boolean),
+          automation_goals: diagnosticData.processus_prioritaires,
+          timeline: diagnosticData.delai,
+          budget_range: diagnosticData.budget_annuel,
+          technical_level: "intermediate", // Valeur par défaut
+          priority_processes: diagnosticData.processus_prioritaires,
+          success_metrics: ["ROI", "time_savings", "efficiency"]
+        },
+        userEmail: diagnosticData.email,
+        userName: diagnosticData.nom,
+        userPhone: "" // Pas de téléphone dans le formulaire actuel
+      };
+
+      console.log("Sending analysis data:", analysisData);
+
+      // Appeler l'edge function d'analyse
+      const { data: analysisResponse, error: analysisError } = await supabase.functions.invoke('analyze-roi-data', {
+        body: analysisData
+      });
+
+      if (analysisError) throw analysisError;
+
+      console.log("Analysis response:", analysisResponse);
+
+      // Envoyer l'email avec les résultats
+      const emailData = {
+        calculationId: analysisResponse.calculationId,
+        userEmail: diagnosticData.email,
+        userName: diagnosticData.nom,
+        roiData: analysisData.roiData,
+        diagnosticData: analysisData.diagnosticData,
+        recommendations: analysisResponse.recommendations
+      };
+
+      const { error: emailError } = await supabase.functions.invoke('send-roi-email', {
+        body: emailData
+      });
+
+      if (emailError) {
+        console.error("Email error:", emailError);
+        // Continue même si l'email échoue
+      }
+
+      // Sauvegarder les résultats et afficher
+      setAnalysisResults({
+        calculationId: analysisResponse.calculationId,
+        recommendations: analysisResponse.recommendations
+      });
+
+      setShowAnalysisResults(true);
+      toast.success("Analyse terminée ! Vos résultats sont prêts et un rapport a été envoyé par email.");
+
+      // Scroll vers les résultats
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 500);
+
+    } catch (error: any) {
+      console.error("Error in diagnostic submission:", error);
+      toast.error("Erreur lors de l'analyse. Veuillez réessayer ou nous contacter directement.");
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
 
   const getProgressValue = () => {
@@ -1646,7 +1746,9 @@ const ROICalculatorPage = () => {
                                 borderRadius: '8px'
                               }}
                             >
-                              {currentStep === 6 ? 'Voir mes Résultats & Recevoir mon Rapport' : 'Suivant'}
+                               {currentStep === 6 ? (
+                                 isAnalyzing ? 'Analyse en cours...' : 'Voir mes Résultats & Recevoir mon Rapport'
+                               ) : 'Suivant'}
                             </Button>
                           </div>
                         </div>

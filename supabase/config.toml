@@ -1,1 +1,10 @@
 project_id = "jyimtfbfntikeugqumxb"
+
+[functions.send-roi-email]
+verify_jwt = false
+
+[functions.analyze-roi-data]
+verify_jwt = false
+
+[functions.book-appointment]
+verify_jwt = false
