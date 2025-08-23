@@ -59,7 +59,7 @@ const Services = () => {
       title: "Multipliez par 3 votre Portée Digitale",
       subtitle: "Impact Marketing Décuplé",
       description: "Déployez des campagnes intelligentes pilotées par la data en temps réel. Automatisation complète de vos réseaux sociaux et reporting prédictif pour maximiser votre ROI marketing.",
-      ctaText: "Planifier un Audit Gratuit",
+      ctaText: "Réserver un Diagnostic Gratuit",
       ctaAction: () => navigate("/contact"),
       services: [
         { name: "Social Media Automation", icon: Users, description: "Publication et engagement automatisés" },
@@ -71,7 +71,7 @@ const Services = () => {
   const processSteps = [
     {
       step: "01",
-      title: "Audit & Analyse Stratégique",
+      title: "Diagnostic & Analyse Stratégique",
       description: "Diagnostic complet de vos processus actuels et identification des opportunités d'automatisation les plus rentables.",
       icon: BarChart3
     },
