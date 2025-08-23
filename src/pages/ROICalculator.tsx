@@ -168,8 +168,8 @@ const ROICalculatorPage = () => {
           hourly_rate: parseFloat(formData.hourlyRate),
           employees: parseInt(formData.employees),
           investment: parseFloat(formData.investissement),
-          annual_savings: roiCalculation.economiesAnnuelles,
-          roi_percentage: roiCalculation.roiPourcentage
+          annual_savings: roiCalculation.economies_directes,
+          roi_percentage: roiCalculation.roi_strategique
         },
         diagnosticData: {
           team_size: diagnosticData.taille,
