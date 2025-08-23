@@ -1578,7 +1578,10 @@ const ROICalculatorPage = () => {
 
                             {/* Checkbox de consentement RGPD */}
                             <div className="w-full">
-                              <div className="flex items-start space-x-3">
+                              <div className="flex items-start space-x-3 p-4 rounded-lg border-2" style={{
+                                borderColor: validationErrors.includes('consentement') ? '#EF4444' : 'rgba(107, 114, 128, 0.3)',
+                                backgroundColor: validationErrors.includes('consentement') ? 'rgba(239, 68, 68, 0.05)' : 'rgba(31, 41, 55, 0.3)'
+                              }}>
                                 <input
                                   type="checkbox"
                                   id="consentement"
@@ -1590,7 +1593,7 @@ const ROICalculatorPage = () => {
                                       setValidationErrors(prev => prev.filter(error => error !== 'consentement'));
                                     }
                                   }}
-                                  className="w-4 h-4 rounded border-2 focus:ring-2 focus:ring-primary/50 mt-1"
+                                  className="w-5 h-5 rounded border-2 focus:ring-2 focus:ring-primary/50 mt-1"
                                   style={{
                                     accentColor: '#4F46E5',
                                     borderColor: validationErrors.includes('consentement') ? '#EF4444' : '#6B7280'
@@ -1598,17 +1601,20 @@ const ROICalculatorPage = () => {
                                 />
                                 <label 
                                   htmlFor="consentement"
-                                  className="text-sm cursor-pointer leading-relaxed"
+                                  className="text-sm cursor-pointer leading-relaxed font-medium"
                                   style={{ color: '#F5F5F5' }}
                                 >
                                   J'accepte que mes données soient traitées pour établir ce diagnostic et être recontacté(e) à ce sujet. *
                                 </label>
                               </div>
                               {hasFieldError('consentement') && (
-                                <p className="text-red-400 text-sm mt-2">
-                                  ⚠️ Vous devez accepter le traitement de vos données pour continuer
+                                <p className="text-red-400 text-sm mt-2 font-semibold">
+                                  ⚠️ OBLIGATOIRE : Vous devez accepter le traitement de vos données pour recevoir votre diagnostic personnalisé
                                 </p>
                               )}
+                              <p className="text-xs mt-2 opacity-70" style={{ color: '#F5F5F5' }}>
+                                En cochant cette case, vous acceptez que vos informations soient utilisées uniquement dans le cadre de ce diagnostic d'automatisation.
+                              </p>
                             </div>
                           </div>
                         )}
