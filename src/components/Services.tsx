@@ -29,7 +29,7 @@ const Services = () => {
       subtitle: "Croissance Commerciale Accélérée",
       description: "Transformez votre processus commercial avec l'automatisation du suivi prospects, des relances et de la qualification. Résultat mesurable : +30% de conversions en 90 jours.",
       ctaText: "Tester mon ROI sur les ventes",
-      ctaAction: () => navigate("/roi-calculator"),
+      ctaAction: () => navigate("/calculateur-roi"),
       services: [
         { name: "Génération de Leads Qualifiés", icon: Target, description: "Automatisation capture & scoring" },
         { name: "CRM Intelligent & Suivi", icon: BarChart3, description: "Suivi automatisé des opportunités" },
@@ -45,7 +45,7 @@ const Services = () => {
       subtitle: "Efficacité Opérationnelle Maximisée",
       description: "Éliminez les tâches répétitives qui freinent votre équipe. Nos automatisations permettent à vos collaborateurs de se concentrer sur l'innovation et les missions à forte valeur ajoutée.",
       ctaText: "Découvrir mes gains de temps",
-      ctaAction: () => navigate("/roi-calculator"),
+      ctaAction: () => navigate("/calculateur-roi"),
       services: [
         { name: "Gestion de Projet Automatisée", icon: Briefcase, description: "Workflows intelligents" },
         { name: "Recrutement & Onboarding", icon: Users, description: "Processus RH optimisés" },
@@ -60,7 +60,7 @@ const Services = () => {
       subtitle: "Impact Marketing Décuplé",
       description: "Déployez des campagnes intelligentes pilotées par la data en temps réel. Automatisation complète de vos réseaux sociaux et reporting prédictif pour maximiser votre ROI marketing.",
       ctaText: "Voir mon potentiel marketing",
-      ctaAction: () => navigate("/roi-calculator"),
+      ctaAction: () => navigate("/calculateur-roi"),
       services: [
         { name: "Social Media Automation", icon: Users, description: "Publication et engagement automatisés" },
         { name: "Analytics Prédictifs", icon: BarChart3, description: "Insights temps réel & prédictions" }
@@ -320,7 +320,12 @@ const Services = () => {
                 Discutons de vos objectifs et créons ensemble un plan d'action sur-mesure pour maximiser votre ROI
               </p>
               <Button 
-                onClick={() => navigate("/contact")}
+                onClick={() => {
+                  navigate("/");
+                  setTimeout(() => {
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }}
                 variant="cta"
                 size="lg"
                 className="px-8 py-4 text-lg group/cta"
