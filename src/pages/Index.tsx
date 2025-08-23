@@ -31,8 +31,9 @@ const Index = () => {
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/20 to-cta-primary/20 backdrop-blur-sm border border-primary/20 shadow-lg">
                   <img 
                     src="/lovable-uploads/8d8704c1-3e0c-4716-b520-20779aef37e0.png" 
-                    alt="Maia Elange Logo" 
+                    alt="Logo Maia Elange - Agence d'automatisation IA et d'intelligence artificielle" 
                     className="w-8 h-8 rounded-lg" 
+                    loading="lazy"
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-heading">Maia Elange</h3>

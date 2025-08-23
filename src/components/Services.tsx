@@ -113,13 +113,13 @@ const Services = () => {
                         />
                       </div>
                     </div>
-                    <CardTitle className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
+                    <h3 className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
                       isActive 
                         ? 'text-heading' 
                         : 'text-heading group-hover:text-primary'
                     }`}>
                       {pillar.title}
-                    </CardTitle>
+                    </h3>
                   </CardHeader>
                   <CardContent className="text-center pt-0">
                     <p className="text-sm text-text-secondary leading-relaxed group-hover:text-text-secondary/90">
@@ -143,7 +143,7 @@ const Services = () => {
             >
               <Card className="bg-card/60 backdrop-blur-sm border border-primary/20 shadow-lg shadow-primary/10">
                 <CardHeader>
-                  <CardTitle className="text-xl font-semibold text-heading flex items-center gap-2">
+                  <h3 className="text-xl font-semibold text-heading flex items-center gap-2">
                     <Check 
                       className="h-5 w-5 text-primary" 
                       strokeWidth={1.5}
@@ -153,7 +153,7 @@ const Services = () => {
                       }}
                     />
                     Services inclus :
-                  </CardTitle>
+                  </h3>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -7,15 +7,12 @@ const Hero = () => {
 
   return (
     <section className="relative bg-background overflow-hidden min-h-screen flex items-center">
-      {/* Simple AI Background */}
-      <div 
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: `url(${heroAiBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
+      {/* Optimized AI Background with proper alt text */}
+      <img 
+        src={heroAiBg}
+        alt="Réseau de neurones représentant l'intelligence artificielle au service des entreprises"
+        className="absolute inset-0 w-full h-full object-cover opacity-20"
+        loading="eager"
       />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
         <div className="max-w-6xl mx-auto text-center">
@@ -42,6 +39,9 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground"
+                onClick={() => {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 Parler à un expert
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -50,6 +50,9 @@ const Hero = () => {
                 variant="outline" 
                 size="lg" 
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                onClick={() => {
+                  window.location.href = '/calculateur-roi';
+                }}
               >
                 Calculer mon ROI
               </Button>
