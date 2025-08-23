@@ -55,7 +55,7 @@ const Header = () => {
             <div className="flex items-center space-x-3">
               <div className="w-16 h-16 rounded-lg flex items-center justify-center glow-hover">
                 <img 
-                  src="/lovable-uploads/8d8704c1-3e0c-4716-b520-20779aef37e0.png" 
+                  src="/lovable-uploads/6464ae76-963f-4a08-96fb-19127780a208.png" 
                   alt="Maia Elange Logo" 
                   className="w-full h-full rounded-lg transition-transform duration-300 hover:scale-110" 
                 />

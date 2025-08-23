@@ -30,7 +30,7 @@ const Index = () => {
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/20 to-cta-primary/20 backdrop-blur-sm border border-primary/20 shadow-lg">
                   <img 
-                    src="/lovable-uploads/8d8704c1-3e0c-4716-b520-20779aef37e0.png" 
+                    src="/lovable-uploads/6464ae76-963f-4a08-96fb-19127780a208.png" 
                     alt="Logo Maia Elange - Agence d'automatisation IA et d'intelligence artificielle" 
                     className="w-8 h-8 rounded-lg" 
                     loading="lazy"
