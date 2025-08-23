@@ -11,8 +11,11 @@ import Header from "@/components/Header";
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { ROIResults } from '@/components/ROIResults';
+import { ArrowLeft, Home } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ROICalculatorPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     hoursPerWeek: "10",
     hourlyRate: "40",
@@ -330,6 +333,17 @@ const ROICalculatorPage = () => {
     return (
       <div className="min-h-screen">
         <Header />
+        {/* Bouton de retour pour les résultats */}
+        <div className="container mx-auto px-4 pt-4">
+          <Button 
+            onClick={() => navigate("/")}
+            variant="outline" 
+            className="mb-4"
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Retour à l'accueil
+          </Button>
+        </div>
         <div className="container mx-auto px-4 py-8">
           <ROIResults 
             calculationId={analysisResults.calculationId}
@@ -349,6 +363,17 @@ const ROICalculatorPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      {/* Bouton de retour */}
+      <div className="container mx-auto px-4 pt-4">
+        <Button 
+          onClick={() => navigate("/")}
+          variant="outline" 
+          className="mb-4"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Retour à l'accueil
+        </Button>
+      </div>
       <main className="py-20">
         {/* Étape 1 - Simulateur ROI */}
         <div style={{ backgroundColor: '#0E1A1A', minHeight: 'calc(100vh - 80px)', padding: '3rem 0' }}>

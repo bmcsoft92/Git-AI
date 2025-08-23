@@ -7,7 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Search, Phone, Mail, Calendar, User, Building2, TrendingUp, Filter } from "lucide-react";
+import { Search, Phone, Mail, Calendar, User, Building2, TrendingUp, Filter, ArrowLeft, Home } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Lead {
   id: string;
@@ -39,6 +40,7 @@ const statusConfig = {
 };
 
 export default function CRM() {
+  const navigate = useNavigate();
   const [leads, setLeads] = useState<Lead[]>([]);
   const [filteredLeads, setFilteredLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
@@ -146,6 +148,18 @@ export default function CRM() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 p-6">
       <div className="max-w-7xl mx-auto">
+        {/* Bouton de retour */}
+        <div className="mb-6">
+          <Button 
+            onClick={() => navigate("/")}
+            variant="outline" 
+            className="mb-4"
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Retour à l'accueil
+          </Button>
+        </div>
+        
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-2">CRM Dashboard</h1>
           <p className="text-muted-foreground">Gérez vos leads et suivez votre pipeline de ventes</p>
