@@ -30,6 +30,7 @@ const ROICalculatorPage = () => {
     taille: "",
     // Étape 2
     secteur: "",
+    secteur_autre: "", // Nouveau champ pour "autre"
     chiffre_affaires: "",
     // Étape 3
     processus_automatiser: "",
@@ -63,6 +64,8 @@ const ROICalculatorPage = () => {
         break;
       case 2:
         if (!diagnosticData.secteur) errors.push("secteur");
+        // Si "autre" est sélectionné, le champ secteur_autre devient obligatoire
+        if (diagnosticData.secteur === "autre" && !diagnosticData.secteur_autre.trim()) errors.push("secteur_autre");
         if (!diagnosticData.chiffre_affaires) errors.push("chiffre_affaires");
         break;
       case 3:
@@ -1032,7 +1035,14 @@ const ROICalculatorPage = () => {
                                 </Label>
                                 <Select 
                                   value={diagnosticData.secteur} 
-                                  onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, secteur: value }))}
+                                  onValueChange={(value) => {
+                                    setDiagnosticData(prev => ({ 
+                                      ...prev, 
+                                      secteur: value,
+                                      // Réinitialiser le champ "autre" si on change de sélection
+                                      secteur_autre: value !== "autre" ? "" : prev.secteur_autre
+                                    }));
+                                  }}
                                 >
                                   <SelectTrigger 
                                     className="text-base py-3 px-4 border-2 w-full"
@@ -1056,6 +1066,31 @@ const ROICalculatorPage = () => {
                                     <SelectItem value="autre">Autre</SelectItem>
                                   </SelectContent>
                                 </Select>
+                                
+                                {/* Champ qui s'affiche quand "Autre" est sélectionné */}
+                                {diagnosticData.secteur === "autre" && (
+                                  <div className="mt-4">
+                                    <Label 
+                                      className="text-sm font-medium mb-3 block"
+                                      style={{ color: '#F5F5F5' }}
+                                    >
+                                      Précisez votre secteur d'activité *
+                                    </Label>
+                                    <Input
+                                      type="text"
+                                      value={diagnosticData.secteur_autre}
+                                      onChange={(e) => setDiagnosticData(prev => ({ ...prev, secteur_autre: e.target.value }))}
+                                      placeholder="Ex: Agriculture, Immobilier, Transport..."
+                                      className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
+                                      style={{ 
+                                        backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                        color: '#F5F5F5',
+                                        borderColor: getFieldBorderStyle('secteur_autre'),
+                                        borderRadius: '8px'
+                                      }}
+                                    />
+                                  </div>
+                                )}
                               </div>
 
                               {/* Chiffre d'affaires */}
