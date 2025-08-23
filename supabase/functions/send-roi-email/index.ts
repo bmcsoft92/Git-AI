@@ -88,9 +88,21 @@ const handler = async (req: Request): Promise<Response> => {
           <h2 style="color: #007bff;">Recommandations IA - Top 3 Chantiers Prioritaires</h2>
           ${recommendationsHtml}
 
-          <div style="background: #007bff; color: white; padding: 20px; border-radius: 8px; margin-top: 30px; text-align: center;">
-            <h3 style="margin: 0 0 10px 0;">Prochaine Étape</h3>
-            <p style="margin: 10px 0;">Contactez ce prospect pour programmer un diagnostic approfondi et présenter une proposition personnalisée.</p>
+          <div style="background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 30px; border-radius: 12px; margin: 40px 0; text-align: center;">
+            <h3 style="margin: 0 0 15px 0; font-size: 24px;">🚀 Passons à l'action !</h3>
+            <p style="margin: 15px 0; font-size: 16px; opacity: 0.9;">Votre diagnostic est prêt. Réservez maintenant votre entretien gratuit pour transformer ces recommandations en plan d'action concret.</p>
+            
+            <a href="${Deno.env.get('SUPABASE_URL')?.replace('//', '//').split('.')[0]}.lovable.app/calculateur-roi" 
+               style="display: inline-block; background: white; color: #007bff; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 18px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+              📅 Réserver un Entretien Gratuit
+            </a>
+            
+            <p style="margin: 15px 0 0 0; font-size: 14px; opacity: 0.8;">✅ Consultation de 30 minutes offerte<br>✅ Plan d'action personnalisé<br>✅ Sans engagement</p>
+          </div>
+
+          <div style="background: #f8f9fa; color: #333; padding: 20px; border-radius: 8px; margin-top: 30px; text-align: center; border-left: 4px solid #28a745;">
+            <h4 style="margin: 0 0 10px 0; color: #28a745;">📧 Copie pour l'équipe Maia Elange</h4>
+            <p style="margin: 10px 0; font-size: 14px;">Ce prospect a complété son diagnostic ROI et va recevoir ses recommandations. Préparez-vous à le recontacter pour programmer un diagnostic approfondi.</p>
           </div>
           
           <p style="color: #666; font-size: 12px; margin-top: 20px; text-align: center;">
