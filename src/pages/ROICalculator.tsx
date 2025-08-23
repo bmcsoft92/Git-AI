@@ -308,10 +308,25 @@ const ROICalculatorPage = () => {
   const results = calculateROI();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <Header />
       
-      <main className="py-20">
+      {/* Affichage conditionnel : Résultats d'analyse IA ou Calculateur ROI */}
+      {showAnalysisResults && analysisResults ? (
+        <div className="container mx-auto px-4 py-8">
+          <ROIResults 
+            calculationId={analysisResults.calculationId}
+            recommendations={analysisResults.recommendations}
+            roiData={{
+              annual_savings: calculateROI().economies_directes,
+              roi_percentage: calculateROI().roi_strategique,
+              investment: parseFloat(formData.investissement)
+            }}
+          />
+        </div>
+      ) : (
+        <>
+          <main className="py-20">
         {/* Étape 1 - Simulateur ROI */}
         <div style={{ backgroundColor: '#0E1A1A', minHeight: 'calc(100vh - 80px)', padding: '3rem 0' }}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -1758,7 +1773,9 @@ const ROICalculatorPage = () => {
             </div>
           </div>
         )}
-      </main>
+        </main>
+        </>
+      )}
     </div>
   );
 };
