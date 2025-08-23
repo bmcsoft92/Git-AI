@@ -33,8 +33,7 @@ const ROICalculatorPage = () => {
     secteur_autre: "", // Nouveau champ pour "autre"
     chiffre_affaires: "",
     // Étape 3
-    processus_automatiser: "",
-    outils_actuels: "",
+    processus_prioritaires: [] as string[], // Checkboxes multiples
     tache_frustrante: "", // Champ optionnel
     // Étape 4
     objectifs: "",
@@ -70,8 +69,7 @@ const ROICalculatorPage = () => {
         if (!diagnosticData.chiffre_affaires) errors.push("chiffre_affaires");
         break;
       case 3:
-        if (!diagnosticData.processus_automatiser.trim()) errors.push("processus_automatiser");
-        if (!diagnosticData.outils_actuels.trim()) errors.push("outils_actuels");
+        if (diagnosticData.processus_prioritaires.length === 0) errors.push("processus_prioritaires");
         break;
       case 4:
         if (!diagnosticData.objectifs.trim()) errors.push("objectifs");
@@ -1131,7 +1129,7 @@ const ROICalculatorPage = () => {
                           </div>
                         )}
 
-                        {/* Étape 3 */}
+                         {/* Étape 3 */}
                         {currentStep === 3 && (
                           <div className="space-y-8">
                             <div className="text-center mb-8">
@@ -1139,59 +1137,68 @@ const ROICalculatorPage = () => {
                                 className="text-2xl font-semibold mb-4"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Étape 3/5 – Vos besoins d'automatisation
+                                Étape 3/5 – Où se situent vos points de friction ?
                               </h3>
                               <p 
-                                className="text-base opacity-80"
+                                className="text-base opacity-80 mb-2"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Identifions ensemble les processus à optimiser dans votre organisation.
+                                Indiquez les 1 à 3 processus qui vous freinent le plus.
                               </p>
                             </div>
 
-                             <div className="space-y-6">
-                              {/* Processus à automatiser */}
+                            <div className="space-y-6">
+                              {/* Question avec choix multiples */}
                               <div className="w-full">
                                 <Label 
-                                  className="text-sm font-medium mb-3 block"
+                                  className="text-sm font-medium mb-4 block"
                                   style={{ color: '#F5F5F5' }}
                                 >
-                                  Quels processus souhaitez-vous automatiser en priorité ? *
+                                  Quels processus clés souhaitez-vous optimiser en priorité ? *
                                 </Label>
-                                <textarea
-                                  value={diagnosticData.processus_automatiser}
-                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, processus_automatiser: e.target.value }))}
-                                  placeholder="Ex: Gestion des emails, facturation, suivi client, reporting..."
-                                  className="w-full text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 h-24 resize-none"
-                                  style={{ 
-                                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
-                                    color: '#F5F5F5',
-                                    borderColor: getFieldBorderStyle('processus_automatiser'),
-                                    borderRadius: '8px'
-                                  }}
-                                />
-                              </div>
-
-                              {/* Outils actuels */}
-                              <div className="w-full">
-                                <Label 
-                                  className="text-sm font-medium mb-3 block"
-                                  style={{ color: '#F5F5F5' }}
-                                >
-                                  Quels outils utilisez-vous actuellement ? *
-                                </Label>
-                                <textarea
-                                  value={diagnosticData.outils_actuels}
-                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, outils_actuels: e.target.value }))}
-                                  placeholder="Ex: Excel, CRM Salesforce, outils de comptabilité..."
-                                  className="w-full text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 h-24 resize-none"
-                                  style={{ 
-                                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
-                                    color: '#F5F5F5',
-                                    borderColor: getFieldBorderStyle('outils_actuels'),
-                                    borderRadius: '8px'
-                                  }}
-                                />
+                                
+                                <div className="space-y-3">
+                                  {[
+                                    'Prospection & prise de RDV',
+                                    'Création et suivi des devis',
+                                    'Facturation & relances de paiement',
+                                    'Support client & FAQ',
+                                    'Reporting & tâches administratives'
+                                  ].map((option) => (
+                                    <div key={option} className="flex items-center space-x-3">
+                                      <input
+                                        type="checkbox"
+                                        id={option}
+                                        checked={diagnosticData.processus_prioritaires.includes(option)}
+                                        onChange={(e) => {
+                                          if (e.target.checked) {
+                                            setDiagnosticData(prev => ({
+                                              ...prev,
+                                              processus_prioritaires: [...prev.processus_prioritaires, option]
+                                            }));
+                                          } else {
+                                            setDiagnosticData(prev => ({
+                                              ...prev,
+                                              processus_prioritaires: prev.processus_prioritaires.filter(item => item !== option)
+                                            }));
+                                          }
+                                        }}
+                                        className="w-4 h-4 rounded border-2 focus:ring-2 focus:ring-primary/50"
+                                        style={{
+                                          accentColor: '#4F46E5',
+                                          borderColor: validationErrors.includes('processus_prioritaires') ? '#EF4444' : '#6B7280'
+                                        }}
+                                      />
+                                      <label 
+                                        htmlFor={option}
+                                        className="text-base cursor-pointer"
+                                        style={{ color: '#F5F5F5' }}
+                                      >
+                                        {option}
+                                      </label>
+                                    </div>
+                                  ))}
+                                </div>
                               </div>
 
                               {/* Tâche la plus frustrante - champ optionnel */}
