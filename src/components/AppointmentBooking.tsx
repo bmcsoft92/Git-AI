@@ -13,12 +13,16 @@ import { toast } from "sonner";
 interface AppointmentBookingProps {
   calculationId: string;
   onClose: () => void;
+  userInfo?: {
+    name: string;
+    email: string;
+  };
 }
 
-export const AppointmentBooking = ({ calculationId, onClose }: AppointmentBookingProps) => {
+export const AppointmentBooking = ({ calculationId, onClose, userInfo }: AppointmentBookingProps) => {
   const [formData, setFormData] = useState({
-    userName: "",
-    userEmail: "",
+    userName: userInfo?.name || "",
+    userEmail: userInfo?.email || "",
     userPhone: "",
     appointmentDate: "",
     appointmentTime: "",

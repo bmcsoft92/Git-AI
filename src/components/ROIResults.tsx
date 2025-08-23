@@ -20,9 +20,13 @@ interface ROIResultsProps {
     roi_percentage: number;
     investment: number;
   };
+  userInfo: {
+    name: string;
+    email: string;
+  };
 }
 
-export const ROIResults = ({ calculationId, recommendations, roiData }: ROIResultsProps) => {
+export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }: ROIResultsProps) => {
   const [showBooking, setShowBooking] = useState(false);
 
   const priorityColors = {
@@ -154,6 +158,7 @@ export const ROIResults = ({ calculationId, recommendations, roiData }: ROIResul
         <AppointmentBooking 
           calculationId={calculationId}
           onClose={() => setShowBooking(false)}
+          userInfo={userInfo}
         />
       )}
     </div>

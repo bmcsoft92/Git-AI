@@ -353,6 +353,10 @@ const ROICalculatorPage = () => {
               roi_percentage: calculateROI().roi_strategique,
               investment: parseFloat(formData.investissement)
             }}
+            userInfo={{
+              name: diagnosticData.nom,
+              email: diagnosticData.email
+            }}
           />
         </div>
       </div>
