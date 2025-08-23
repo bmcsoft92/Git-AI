@@ -701,15 +701,13 @@ const ROICalculatorPage = () => {
                         }, 100);
                       }}
                       size="lg"
-                      className="px-12 py-5 text-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                      className="px-12 py-5 text-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground"
                       style={{
-                        backgroundColor: '#0F7F7B',
-                        color: '#F5F5F5',
                         borderRadius: '15px',
-                        boxShadow: '0 10px 30px rgba(15, 127, 123, 0.4)'
+                        boxShadow: '0 10px 30px rgba(255, 140, 66, 0.4)'
                       }}
                     >
-                      Continuer vers le Diagnostic Détaillé
+                      Continuer vers le diagnostic détaillé
                     </Button>
                     <p className="mt-4 text-sm opacity-80" style={{ color: '#F5F5F5' }}>
                       Diagnostic personnalisé • Sans engagement • 3 minutes
