@@ -28,7 +28,7 @@ const Services = () => {
       title: "Augmentez vos Ventes de +30%",
       subtitle: "Croissance Commerciale Accélérée",
       description: "Transformez votre processus commercial avec l'automatisation du suivi prospects, des relances et de la qualification. Résultat mesurable : +30% de conversions en 90 jours.",
-      ctaText: "Voir un Cas Concret",
+      ctaText: "Calculer mon ROI (Gratuit)",
       ctaAction: () => navigate("/roi-calculator"),
       services: [
         { name: "Génération de Leads Qualifiés", icon: Target, description: "Automatisation capture & scoring" },
@@ -44,7 +44,7 @@ const Services = () => {
       title: "Libérez 15h/Semaine par Employé",
       subtitle: "Efficacité Opérationnelle Maximisée",
       description: "Éliminez les tâches répétitives qui freinent votre équipe. Nos automatisations permettent à vos collaborateurs de se concentrer sur l'innovation et les missions à forte valeur ajoutée.",
-      ctaText: "Découvrir les Gains",
+      ctaText: "Estimer mes Économies (Gratuit)",
       ctaAction: () => navigate("/roi-calculator"),
       services: [
         { name: "Gestion de Projet Automatisée", icon: Briefcase, description: "Workflows intelligents" },
@@ -306,6 +306,135 @@ const Services = () => {
                 </Card>
               );
             })}
+          </div>
+        </div>
+
+        {/* Service Levels Clarification */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-heading mb-4">
+              3 Niveaux de Service <span className="text-primary">Adaptés à Vos Besoins</span>
+            </h2>
+            <p className="text-text-secondary max-w-3xl mx-auto">
+              De l'estimation gratuite au plan d'action sur-mesure, nous vous accompagnons à chaque étape
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Level 1: ROI Calculator */}
+            <Card className="p-6 bg-gradient-to-br from-card/60 to-card/40 backdrop-blur-sm border border-primary/20 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-success/20 rounded-full mb-4">
+                  <BarChart3 className="h-8 w-8 text-success" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-xl font-bold text-heading mb-2">Calcul ROI Automatique</h3>
+                <div className="inline-block bg-success/20 text-success px-3 py-1 rounded-full text-sm font-medium mb-4">
+                  100% GRATUIT
+                </div>
+              </div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Check className="h-4 w-4 text-success flex-shrink-0" />
+                  Estimation ROI instantanée
+                </li>
+                <li className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Check className="h-4 w-4 text-success flex-shrink-0" />
+                  Calcul automatisé des économies
+                </li>
+                <li className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Check className="h-4 w-4 text-success flex-shrink-0" />
+                  Résultats en 2 minutes
+                </li>
+              </ul>
+              <Button 
+                onClick={() => navigate("/roi-calculator")}
+                variant="outline" 
+                className="w-full"
+              >
+                Calculer mon ROI
+              </Button>
+            </Card>
+
+            {/* Level 2: Diagnostic */}
+            <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm border border-primary/30 hover:shadow-lg hover:shadow-primary/15 transition-all duration-300 relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <div className="bg-primary text-white px-4 py-1 rounded-full text-xs font-bold">
+                  RECOMMANDÉ
+                </div>
+              </div>
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-4">
+                  <Target className="h-8 w-8 text-primary" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-xl font-bold text-heading mb-2">Diagnostic Approfondi</h3>
+                <div className="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4">
+                  GRATUIT & PERSONNALISÉ
+                </div>
+              </div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                  Analyse personnalisée de vos processus
+                </li>
+                <li className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                  Identification des opportunités
+                </li>
+                <li className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                  Recommandations prioritaires
+                </li>
+                <li className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                  Entretien avec un expert (30min)
+                </li>
+              </ul>
+              <Button 
+                onClick={() => navigate("/contact")}
+                variant="default" 
+                className="w-full"
+              >
+                Réserver mon Diagnostic
+              </Button>
+            </Card>
+
+            {/* Level 3: Custom Action Plan */}
+            <Card className="p-6 bg-gradient-to-br from-cta-primary/10 to-cta-primary/5 backdrop-blur-sm border border-cta-primary/30 hover:shadow-lg hover:shadow-cta-primary/15 transition-all duration-300">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-cta-primary/20 rounded-full mb-4">
+                  <Briefcase className="h-8 w-8 text-cta-primary" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-xl font-bold text-heading mb-2">Plan d'Action Sur-Mesure</h3>
+                <div className="inline-block bg-cta-primary/20 text-cta-primary px-3 py-1 rounded-full text-sm font-medium mb-4">
+                  SUR DEVIS
+                </div>
+              </div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Check className="h-4 w-4 text-cta-primary flex-shrink-0" />
+                  Stratégie complète d'automatisation
+                </li>
+                <li className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Check className="h-4 w-4 text-cta-primary flex-shrink-0" />
+                  Roadmap de déploiement détaillée
+                </li>
+                <li className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Check className="h-4 w-4 text-cta-primary flex-shrink-0" />
+                  Budget & timeline précis
+                </li>
+                <li className="flex items-center gap-2 text-sm text-text-secondary">
+                  <Check className="h-4 w-4 text-cta-primary flex-shrink-0" />
+                  Support dédié & formation
+                </li>
+              </ul>
+              <Button 
+                onClick={() => navigate("/contact")}
+                variant="cta" 
+                className="w-full"
+              >
+                Demander un Devis
+              </Button>
+            </Card>
           </div>
         </div>
 
