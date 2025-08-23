@@ -53,32 +53,47 @@ const ROICalculatorPage = () => {
     
     switch (step) {
       case 1:
-        if (!diagnosticData.nom.trim()) errors.push("Le nom est obligatoire");
-        if (!diagnosticData.email.trim()) errors.push("L'email est obligatoire");
-        if (!diagnosticData.email.includes("@")) errors.push("L'email doit être valide");
-        if (!diagnosticData.organisation.trim()) errors.push("L'organisation est obligatoire");
-        if (!diagnosticData.taille) errors.push("La taille de l'équipe est obligatoire");
+        if (!diagnosticData.nom.trim()) errors.push("nom");
+        if (!diagnosticData.email.trim()) errors.push("email");
+        // Validation stricte du format email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (diagnosticData.email.trim() && !emailRegex.test(diagnosticData.email)) errors.push("email");
+        if (!diagnosticData.organisation.trim()) errors.push("organisation");
+        if (!diagnosticData.taille) errors.push("taille");
         break;
       case 2:
-        if (!diagnosticData.secteur) errors.push("Le secteur d'activité est obligatoire");
-        if (!diagnosticData.chiffre_affaires) errors.push("Le chiffre d'affaires est obligatoire");
+        if (!diagnosticData.secteur) errors.push("secteur");
+        if (!diagnosticData.chiffre_affaires) errors.push("chiffre_affaires");
         break;
       case 3:
-        if (!diagnosticData.processus_automatiser.trim()) errors.push("Les processus à automatiser sont obligatoires");
-        if (!diagnosticData.outils_actuels.trim()) errors.push("Les outils actuels sont obligatoires");
+        if (!diagnosticData.processus_automatiser.trim()) errors.push("processus_automatiser");
+        if (!diagnosticData.outils_actuels.trim()) errors.push("outils_actuels");
         break;
       case 4:
-        if (!diagnosticData.objectifs.trim()) errors.push("Les objectifs sont obligatoires");
-        if (!diagnosticData.priorite) errors.push("La priorité est obligatoire");
+        if (!diagnosticData.objectifs.trim()) errors.push("objectifs");
+        if (!diagnosticData.priorite) errors.push("priorite");
         break;
       case 5:
-        if (!diagnosticData.budget) errors.push("Le budget est obligatoire");
-        if (!diagnosticData.timeline) errors.push("La timeline est obligatoire");
+        if (!diagnosticData.budget) errors.push("budget");
+        if (!diagnosticData.timeline) errors.push("timeline");
         break;
     }
     
     setValidationErrors(errors);
     return errors.length === 0;
+  };
+
+  // Fonction pour vérifier si un champ a une erreur
+  const hasFieldError = (fieldName: string): boolean => {
+    return validationErrors.includes(fieldName);
+  };
+
+  // Fonction pour obtenir le style de bordure en fonction de l'état du champ
+  const getFieldBorderStyle = (fieldName: string) => {
+    if (hasFieldError(fieldName)) {
+      return 'rgba(239, 68, 68, 0.8)'; // Rouge pour les erreurs
+    }
+    return 'rgba(74, 158, 255, 0.4)'; // Bleu normal
   };
 
   const handleNextStep = () => {
@@ -896,7 +911,7 @@ const ROICalculatorPage = () => {
                                   style={{ 
                                     backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                     color: '#F5F5F5',
-                                    borderColor: 'rgba(74, 158, 255, 0.4)',
+                                    borderColor: getFieldBorderStyle('nom'),
                                     borderRadius: '8px'
                                   }}
                                 />
@@ -919,7 +934,7 @@ const ROICalculatorPage = () => {
                                   style={{ 
                                     backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                     color: '#F5F5F5',
-                                    borderColor: 'rgba(74, 158, 255, 0.4)',
+                                    borderColor: getFieldBorderStyle('email'),
                                     borderRadius: '8px'
                                   }}
                                 />
@@ -945,7 +960,7 @@ const ROICalculatorPage = () => {
                                   style={{ 
                                     backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                     color: '#F5F5F5',
-                                    borderColor: 'rgba(74, 158, 255, 0.4)',
+                                    borderColor: getFieldBorderStyle('organisation'),
                                     borderRadius: '8px'
                                   }}
                                 />
@@ -968,7 +983,7 @@ const ROICalculatorPage = () => {
                                     style={{ 
                                       backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                       color: '#F5F5F5',
-                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderColor: getFieldBorderStyle('taille'),
                                       borderRadius: '8px'
                                     }}
                                   >
@@ -1024,7 +1039,7 @@ const ROICalculatorPage = () => {
                                     style={{ 
                                       backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                       color: '#F5F5F5',
-                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderColor: getFieldBorderStyle('secteur'),
                                       borderRadius: '8px'
                                     }}
                                   >
@@ -1060,7 +1075,7 @@ const ROICalculatorPage = () => {
                                     style={{ 
                                       backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                       color: '#F5F5F5',
-                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderColor: getFieldBorderStyle('chiffre_affaires'),
                                       borderRadius: '8px'
                                     }}
                                   >
@@ -1115,7 +1130,7 @@ const ROICalculatorPage = () => {
                                   style={{ 
                                     backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                     color: '#F5F5F5',
-                                    borderColor: 'rgba(74, 158, 255, 0.4)',
+                                    borderColor: getFieldBorderStyle('processus_automatiser'),
                                     borderRadius: '8px'
                                   }}
                                 />
@@ -1137,7 +1152,7 @@ const ROICalculatorPage = () => {
                                   style={{ 
                                     backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                     color: '#F5F5F5',
-                                    borderColor: 'rgba(74, 158, 255, 0.4)',
+                                    borderColor: getFieldBorderStyle('outils_actuels'),
                                     borderRadius: '8px'
                                   }}
                                 />
@@ -1181,7 +1196,7 @@ const ROICalculatorPage = () => {
                                   style={{ 
                                     backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                     color: '#F5F5F5',
-                                    borderColor: 'rgba(74, 158, 255, 0.4)',
+                                    borderColor: getFieldBorderStyle('objectifs'),
                                     borderRadius: '8px'
                                   }}
                                 />
@@ -1204,7 +1219,7 @@ const ROICalculatorPage = () => {
                                     style={{ 
                                       backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                       color: '#F5F5F5',
-                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderColor: getFieldBorderStyle('priorite'),
                                       borderRadius: '8px'
                                     }}
                                   >
@@ -1259,7 +1274,7 @@ const ROICalculatorPage = () => {
                                     style={{ 
                                       backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                       color: '#F5F5F5',
-                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderColor: getFieldBorderStyle('budget'),
                                       borderRadius: '8px'
                                     }}
                                   >
@@ -1293,7 +1308,7 @@ const ROICalculatorPage = () => {
                                     style={{ 
                                       backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                       color: '#F5F5F5',
-                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderColor: getFieldBorderStyle('timeline'),
                                       borderRadius: '8px'
                                     }}
                                   >
@@ -1309,17 +1324,6 @@ const ROICalculatorPage = () => {
                                 </Select>
                               </div>
                             </div>
-                          </div>
-                        )}
-
-                        {/* Messages d'erreur */}
-                        {validationErrors.length > 0 && (
-                          <div className="mt-6 p-4 rounded-lg" style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
-                            <ul className="space-y-1">
-                              {validationErrors.map((error, index) => (
-                                <li key={index} className="text-red-400 text-sm">• {error}</li>
-                              ))}
-                            </ul>
                           </div>
                         )}
 
