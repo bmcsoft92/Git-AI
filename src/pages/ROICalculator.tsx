@@ -1514,6 +1514,8 @@ const ROICalculatorPage = () => {
                                   </SelectTrigger>
                                   <SelectContent className="bg-gray-800 border-gray-600">
                                     <SelectItem value="au-plus-vite">Au plus vite</SelectItem>
+                                    <SelectItem value="7-jours">7 jours</SelectItem>
+                                    <SelectItem value="15-jours">15 jours</SelectItem>
                                     <SelectItem value="1-mois">Dans le mois</SelectItem>
                                     <SelectItem value="2-3-mois">2-3 mois</SelectItem>
                                     <SelectItem value="3-6-mois">3-6 mois</SelectItem>
@@ -1558,9 +1560,10 @@ const ROICalculatorPage = () => {
                                   </SelectTrigger>
                                   <SelectContent className="bg-gray-800 border-gray-600">
                                     <SelectItem value="non-defini">Non défini</SelectItem>
-                                    <SelectItem value="5k-15k">5k - 15k €</SelectItem>
-                                    <SelectItem value="15k-30k">15k - 30k €</SelectItem>
-                                    <SelectItem value="30k-50k">30k - 50k €</SelectItem>
+                                    <SelectItem value="moins-5k">Moins de 5k €</SelectItem>
+                                    <SelectItem value="5k-10k">5k - 10k €</SelectItem>
+                                    <SelectItem value="10k-25k">10k - 25k €</SelectItem>
+                                    <SelectItem value="25k-50k">25k - 50k €</SelectItem>
                                     <SelectItem value="50k-100k">50k - 100k €</SelectItem>
                                     <SelectItem value="100k+">Plus de 100k €</SelectItem>
                                   </SelectContent>
