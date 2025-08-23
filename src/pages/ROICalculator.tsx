@@ -35,6 +35,7 @@ const ROICalculatorPage = () => {
     // Étape 3
     processus_automatiser: "",
     outils_actuels: "",
+    tache_frustrante: "", // Champ optionnel
     // Étape 4
     objectifs: "",
     priorite: "",
@@ -1148,7 +1149,7 @@ const ROICalculatorPage = () => {
                               </p>
                             </div>
 
-                            <div className="space-y-6">
+                             <div className="space-y-6">
                               {/* Processus à automatiser */}
                               <div className="w-full">
                                 <Label 
@@ -1188,6 +1189,28 @@ const ROICalculatorPage = () => {
                                     backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                     color: '#F5F5F5',
                                     borderColor: getFieldBorderStyle('outils_actuels'),
+                                    borderRadius: '8px'
+                                  }}
+                                />
+                              </div>
+
+                              {/* Tâche la plus frustrante - champ optionnel */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Décrivez la tâche la plus frustrante de votre semaine (optionnel)
+                                </Label>
+                                <textarea
+                                  value={diagnosticData.tache_frustrante}
+                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, tache_frustrante: e.target.value }))}
+                                  placeholder="Ex: Saisie manuelle de données, relances clients, création de rapports..."
+                                  className="w-full text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 h-24 resize-none"
+                                  style={{ 
+                                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                    color: '#F5F5F5',
+                                    borderColor: '#6B7280', // Pas de bordure rouge car optionnel
                                     borderRadius: '8px'
                                   }}
                                 />
