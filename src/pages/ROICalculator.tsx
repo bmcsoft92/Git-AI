@@ -42,8 +42,9 @@ const ROICalculatorPage = () => {
     outils: [] as string[], // Checkboxes outils
     autre_outil: "", // Champ optionnel pour autre outil
     // Étape 6
-    budget: "",
-    timeline: ""
+    consentement: false, // Checkbox obligatoire pour RGPD
+    delai: "", // Délai souhaité
+    budget_annuel: "" // Budget annuel
   });
   const [currentStep, setCurrentStep] = useState(1);
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
@@ -94,8 +95,9 @@ const ROICalculatorPage = () => {
         if (diagnosticData.outils.length === 0 && !diagnosticData.autre_outil.trim()) errors.push("outils");
         break;
       case 6:
-        if (!diagnosticData.budget) errors.push("budget");
-        if (!diagnosticData.timeline) errors.push("timeline");
+        if (!diagnosticData.delai) errors.push("delai");
+        if (!diagnosticData.budget_annuel) errors.push("budget_annuel");
+        if (!diagnosticData.consentement) errors.push("consentement");
         break;
     }
     
@@ -1470,83 +1472,140 @@ const ROICalculatorPage = () => {
                                 className="text-2xl font-semibold mb-4"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Étape 6/6 – Budget et timing
+                                Étape 6/6 – Derniers réglages
                               </h3>
                               <p 
                                 className="text-base opacity-80"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Dernières informations pour finaliser votre diagnostic personnalisé.
+                                Fixons l'urgence et le cadre de votre projet.
                               </p>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                              {/* Budget */}
+                              {/* Délai souhaité */}
                               <div className="w-full">
                                 <Label 
                                   className="text-sm font-medium mb-3 block"
                                   style={{ color: '#F5F5F5' }}
                                 >
-                                  Budget envisagé *
+                                  Délai souhaité *
                                 </Label>
                                 <Select 
-                                  value={diagnosticData.budget} 
-                                  onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, budget: value }))}
+                                  value={diagnosticData.delai} 
+                                  onValueChange={(value) => {
+                                    setDiagnosticData(prev => ({ ...prev, delai: value }));
+                                    // Enlever l'erreur dès qu'une valeur est sélectionnée
+                                    if (value && validationErrors.includes('delai')) {
+                                      setValidationErrors(prev => prev.filter(error => error !== 'delai'));
+                                    }
+                                  }}
                                 >
                                   <SelectTrigger 
                                     className="text-base py-3 px-4 border-2 w-full"
                                     style={{ 
                                       backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                       color: '#F5F5F5',
-                                      borderColor: getFieldBorderStyle('budget'),
+                                      borderColor: getFieldBorderStyle('delai'),
+                                      borderRadius: '8px'
+                                    }}
+                                  >
+                                    <SelectValue placeholder="Sélectionnez votre délai" />
+                                  </SelectTrigger>
+                                  <SelectContent className="bg-gray-800 border-gray-600">
+                                    <SelectItem value="au-plus-vite">Au plus vite</SelectItem>
+                                    <SelectItem value="1-mois">Dans le mois</SelectItem>
+                                    <SelectItem value="2-3-mois">2-3 mois</SelectItem>
+                                    <SelectItem value="3-6-mois">3-6 mois</SelectItem>
+                                    <SelectItem value="plus-6-mois">Plus de 6 mois</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                {hasFieldError('delai') && (
+                                  <p className="text-red-400 text-sm mt-2">
+                                    ⚠️ Ce champ est obligatoire
+                                  </p>
+                                )}
+                              </div>
+
+                              {/* Budget annuel */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Budget annuel *
+                                </Label>
+                                <Select 
+                                  value={diagnosticData.budget_annuel} 
+                                  onValueChange={(value) => {
+                                    setDiagnosticData(prev => ({ ...prev, budget_annuel: value }));
+                                    // Enlever l'erreur dès qu'une valeur est sélectionnée
+                                    if (value && validationErrors.includes('budget_annuel')) {
+                                      setValidationErrors(prev => prev.filter(error => error !== 'budget_annuel'));
+                                    }
+                                  }}
+                                >
+                                  <SelectTrigger 
+                                    className="text-base py-3 px-4 border-2 w-full"
+                                    style={{ 
+                                      backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                      color: '#F5F5F5',
+                                      borderColor: getFieldBorderStyle('budget_annuel'),
                                       borderRadius: '8px'
                                     }}
                                   >
                                     <SelectValue placeholder="Sélectionnez votre budget" />
                                   </SelectTrigger>
                                   <SelectContent className="bg-gray-800 border-gray-600">
+                                    <SelectItem value="non-defini">Non défini</SelectItem>
                                     <SelectItem value="5k-15k">5k - 15k €</SelectItem>
                                     <SelectItem value="15k-30k">15k - 30k €</SelectItem>
                                     <SelectItem value="30k-50k">30k - 50k €</SelectItem>
                                     <SelectItem value="50k-100k">50k - 100k €</SelectItem>
                                     <SelectItem value="100k+">Plus de 100k €</SelectItem>
-                                    <SelectItem value="non-defini">Non défini</SelectItem>
                                   </SelectContent>
                                 </Select>
+                                {hasFieldError('budget_annuel') && (
+                                  <p className="text-red-400 text-sm mt-2">
+                                    ⚠️ Ce champ est obligatoire
+                                  </p>
+                                )}
                               </div>
+                            </div>
 
-                              {/* Timeline */}
-                              <div className="w-full">
-                                <Label 
-                                  className="text-sm font-medium mb-3 block"
+                            {/* Checkbox de consentement RGPD */}
+                            <div className="w-full">
+                              <div className="flex items-start space-x-3">
+                                <input
+                                  type="checkbox"
+                                  id="consentement"
+                                  checked={diagnosticData.consentement}
+                                  onChange={(e) => {
+                                    setDiagnosticData(prev => ({ ...prev, consentement: e.target.checked }));
+                                    // Enlever l'erreur dès que la checkbox est cochée
+                                    if (e.target.checked && validationErrors.includes('consentement')) {
+                                      setValidationErrors(prev => prev.filter(error => error !== 'consentement'));
+                                    }
+                                  }}
+                                  className="w-4 h-4 rounded border-2 focus:ring-2 focus:ring-primary/50 mt-1"
+                                  style={{
+                                    accentColor: '#4F46E5',
+                                    borderColor: validationErrors.includes('consentement') ? '#EF4444' : '#6B7280'
+                                  }}
+                                />
+                                <label 
+                                  htmlFor="consentement"
+                                  className="text-sm cursor-pointer leading-relaxed"
                                   style={{ color: '#F5F5F5' }}
                                 >
-                                  Timeline souhaitée *
-                                </Label>
-                                <Select 
-                                  value={diagnosticData.timeline} 
-                                  onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, timeline: value }))}
-                                >
-                                  <SelectTrigger 
-                                    className="text-base py-3 px-4 border-2 w-full"
-                                    style={{ 
-                                      backgroundColor: 'rgba(31, 41, 55, 0.9)',
-                                      color: '#F5F5F5',
-                                      borderColor: getFieldBorderStyle('timeline'),
-                                      borderRadius: '8px'
-                                    }}
-                                  >
-                                    <SelectValue placeholder="Quand souhaitez-vous commencer ?" />
-                                  </SelectTrigger>
-                                  <SelectContent className="bg-gray-800 border-gray-600">
-                                    <SelectItem value="immediatement">Immédiatement</SelectItem>
-                                    <SelectItem value="1-3-mois">Dans 1-3 mois</SelectItem>
-                                    <SelectItem value="3-6-mois">Dans 3-6 mois</SelectItem>
-                                    <SelectItem value="6-12-mois">Dans 6-12 mois</SelectItem>
-                                    <SelectItem value="exploration">Phase d'exploration</SelectItem>
-                                  </SelectContent>
-                                </Select>
+                                  J'accepte que mes données soient traitées pour établir ce diagnostic et être recontacté(e) à ce sujet. *
+                                </label>
                               </div>
+                              {hasFieldError('consentement') && (
+                                <p className="text-red-400 text-sm mt-2">
+                                  ⚠️ Vous devez accepter le traitement de vos données pour continuer
+                                </p>
+                              )}
                             </div>
                           </div>
                         )}
@@ -1578,7 +1637,7 @@ const ROICalculatorPage = () => {
                                 borderRadius: '8px'
                               }}
                             >
-                              {currentStep === 6 ? 'Envoyer le diagnostic' : 'Suivant'}
+                              {currentStep === 6 ? 'Voir mes Résultats & Recevoir mon Rapport' : 'Suivant'}
                             </Button>
                           </div>
                         </div>
