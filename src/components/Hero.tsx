@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import heroAiBg from "@/assets/hero-ai-brain-bg.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
 
   return (
     <section className="relative bg-background overflow-hidden min-h-screen flex items-center">
@@ -60,7 +62,7 @@ const Hero = () => {
                   size="lg" 
                   className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                   onClick={() => {
-                    window.location.href = '/calculateur-roi';
+                    navigate('/calculateur-roi');
                   }}
                 >
                   Tester mon ROI (gratuit)
