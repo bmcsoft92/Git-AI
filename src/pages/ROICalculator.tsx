@@ -1041,7 +1041,7 @@ const ROICalculatorPage = () => {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                              {/* Secteur d'activité */}
+                               {/* Secteur d'activité */}
                               <div className="w-full">
                                 <Label 
                                   className="text-sm font-medium mb-3 block"
@@ -1058,6 +1058,10 @@ const ROICalculatorPage = () => {
                                       // Réinitialiser le champ "autre" si on change de sélection
                                       secteur_autre: value !== "autre" ? "" : prev.secteur_autre
                                     }));
+                                    // Enlever l'erreur dès qu'une valeur est sélectionnée
+                                    if (value && validationErrors.includes('secteur')) {
+                                      setValidationErrors(prev => prev.filter(error => error !== 'secteur'));
+                                    }
                                   }}
                                 >
                                   <SelectTrigger 
@@ -1082,6 +1086,11 @@ const ROICalculatorPage = () => {
                                     <SelectItem value="autre">Autre</SelectItem>
                                   </SelectContent>
                                 </Select>
+                                {hasFieldError('secteur') && (
+                                  <p className="text-red-400 text-sm mt-2">
+                                    ⚠️ Ce champ est obligatoire
+                                  </p>
+                                )}
                                 
                                 {/* Champ qui s'affiche quand "Autre" est sélectionné */}
                                 {diagnosticData.secteur === "autre" && (
@@ -1095,7 +1104,13 @@ const ROICalculatorPage = () => {
                                     <Input
                                       type="text"
                                       value={diagnosticData.secteur_autre}
-                                      onChange={(e) => setDiagnosticData(prev => ({ ...prev, secteur_autre: e.target.value }))}
+                                      onChange={(e) => {
+                                        setDiagnosticData(prev => ({ ...prev, secteur_autre: e.target.value }));
+                                        // Enlever l'erreur dès qu'on commence à taper
+                                        if (e.target.value.trim() && validationErrors.includes('secteur_autre')) {
+                                          setValidationErrors(prev => prev.filter(error => error !== 'secteur_autre'));
+                                        }
+                                      }}
                                       placeholder="Ex: Agriculture, Immobilier, Transport..."
                                       className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                                       style={{ 
@@ -1105,6 +1120,11 @@ const ROICalculatorPage = () => {
                                         borderRadius: '8px'
                                       }}
                                     />
+                                    {hasFieldError('secteur_autre') && (
+                                      <p className="text-red-400 text-sm mt-2">
+                                        ⚠️ Veuillez préciser votre secteur d'activité
+                                      </p>
+                                    )}
                                   </div>
                                 )}
                               </div>
@@ -1119,7 +1139,13 @@ const ROICalculatorPage = () => {
                                 </Label>
                                 <Select 
                                   value={diagnosticData.chiffre_affaires} 
-                                  onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, chiffre_affaires: value }))}
+                                  onValueChange={(value) => {
+                                    setDiagnosticData(prev => ({ ...prev, chiffre_affaires: value }));
+                                    // Enlever l'erreur dès qu'une valeur est sélectionnée
+                                    if (value && validationErrors.includes('chiffre_affaires')) {
+                                      setValidationErrors(prev => prev.filter(error => error !== 'chiffre_affaires'));
+                                    }
+                                  }}
                                 >
                                   <SelectTrigger 
                                     className="text-base py-3 px-4 border-2 w-full"
@@ -1141,6 +1167,11 @@ const ROICalculatorPage = () => {
                                     <SelectItem value="20M+">Plus de 20M €</SelectItem>
                                   </SelectContent>
                                 </Select>
+                                {hasFieldError('chiffre_affaires') && (
+                                  <p className="text-red-400 text-sm mt-2">
+                                    ⚠️ Ce champ est obligatoire
+                                  </p>
+                                )}
                               </div>
                             </div>
                           </div>
