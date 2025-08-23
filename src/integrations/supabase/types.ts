@@ -20,6 +20,7 @@ export type Database = {
           appointment_type: string | null
           created_at: string
           id: string
+          lead_id: string | null
           notes: string | null
           roi_calculation_id: string | null
           status: string | null
@@ -33,6 +34,7 @@ export type Database = {
           appointment_type?: string | null
           created_at?: string
           id?: string
+          lead_id?: string | null
           notes?: string | null
           roi_calculation_id?: string | null
           status?: string | null
@@ -46,6 +48,7 @@ export type Database = {
           appointment_type?: string | null
           created_at?: string
           id?: string
+          lead_id?: string | null
           notes?: string | null
           roi_calculation_id?: string | null
           status?: string | null
@@ -56,6 +59,13 @@ export type Database = {
         }
         Relationships: [
           {
+            foreignKeyName: "appointments_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "appointments_roi_calculation_id_fkey"
             columns: ["roi_calculation_id"]
             isOneToOne: false
@@ -63,6 +73,63 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      leads: {
+        Row: {
+          annual_savings: number | null
+          business_type: string | null
+          company: string | null
+          created_at: string
+          email: string
+          id: string
+          last_contact_date: string | null
+          name: string | null
+          next_followup_date: string | null
+          notes: string | null
+          phone: string | null
+          roi_potential: number | null
+          source: string | null
+          status: Database["public"]["Enums"]["lead_status"]
+          team_size: string | null
+          updated_at: string
+        }
+        Insert: {
+          annual_savings?: number | null
+          business_type?: string | null
+          company?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          last_contact_date?: string | null
+          name?: string | null
+          next_followup_date?: string | null
+          notes?: string | null
+          phone?: string | null
+          roi_potential?: number | null
+          source?: string | null
+          status?: Database["public"]["Enums"]["lead_status"]
+          team_size?: string | null
+          updated_at?: string
+        }
+        Update: {
+          annual_savings?: number | null
+          business_type?: string | null
+          company?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          last_contact_date?: string | null
+          name?: string | null
+          next_followup_date?: string | null
+          notes?: string | null
+          phone?: string | null
+          roi_potential?: number | null
+          source?: string | null
+          status?: Database["public"]["Enums"]["lead_status"]
+          team_size?: string | null
+          updated_at?: string
+        }
+        Relationships: []
       }
       roi_calculations: {
         Row: {
@@ -77,6 +144,7 @@ export type Database = {
           hours_per_week: number
           id: string
           investment: number
+          lead_id: string | null
           main_activities: string[] | null
           pain_points: string[] | null
           priority_processes: string[] | null
@@ -104,6 +172,7 @@ export type Database = {
           hours_per_week: number
           id?: string
           investment: number
+          lead_id?: string | null
           main_activities?: string[] | null
           pain_points?: string[] | null
           priority_processes?: string[] | null
@@ -131,6 +200,7 @@ export type Database = {
           hours_per_week?: number
           id?: string
           investment?: number
+          lead_id?: string | null
           main_activities?: string[] | null
           pain_points?: string[] | null
           priority_processes?: string[] | null
@@ -146,17 +216,45 @@ export type Database = {
           user_name?: string | null
           user_phone?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "roi_calculations_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      upsert_lead: {
+        Args: {
+          p_annual_savings?: number
+          p_business_type?: string
+          p_company?: string
+          p_email: string
+          p_name?: string
+          p_phone?: string
+          p_roi_potential?: number
+          p_status?: Database["public"]["Enums"]["lead_status"]
+          p_team_size?: string
+        }
+        Returns: string
+      }
     }
     Enums: {
-      [_ in never]: never
+      lead_status:
+        | "nouveau_lead"
+        | "diagnostic_envoye"
+        | "rdv_demande"
+        | "rdv_confirme"
+        | "proposition_envoyee"
+        | "client_signe"
+        | "perdu"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -283,6 +381,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      lead_status: [
+        "nouveau_lead",
+        "diagnostic_envoye",
+        "rdv_demande",
+        "rdv_confirme",
+        "proposition_envoyee",
+        "client_signe",
+        "perdu",
+      ],
+    },
   },
 } as const
