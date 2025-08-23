@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -36,8 +36,8 @@ const ROICalculatorPage = () => {
     processus_prioritaires: [] as string[], // Checkboxes multiples
     tache_frustrante: "", // Champ optionnel
     // Étape 4
-    objectifs: "",
-    priorite: "",
+    heures_repetitives: "", // Heures par semaine sur tâches répétitives
+    cout_horaire: "", // Coût horaire moyen chargé
     // Étape 5
     budget: "",
     timeline: ""
@@ -47,6 +47,17 @@ const ROICalculatorPage = () => {
   
   // Référence pour le scroll vers le diagnostic
   const diagnosticRef = useRef<HTMLDivElement>(null);
+
+  // Synchroniser les données du calculateur ROI avec le diagnostic
+  useEffect(() => {
+    if (showDiagnostic && !diagnosticData.heures_repetitives && !diagnosticData.cout_horaire) {
+      setDiagnosticData(prev => ({
+        ...prev,
+        heures_repetitives: formData.hoursPerWeek,
+        cout_horaire: formData.hourlyRate
+      }));
+    }
+  }, [showDiagnostic, formData.hoursPerWeek, formData.hourlyRate, diagnosticData.heures_repetitives, diagnosticData.cout_horaire]);
 
   // Validation des étapes
   const validateStep = (step: number): boolean => {
@@ -72,8 +83,8 @@ const ROICalculatorPage = () => {
         if (diagnosticData.processus_prioritaires.length === 0) errors.push("processus_prioritaires");
         break;
       case 4:
-        if (!diagnosticData.objectifs.trim()) errors.push("objectifs");
-        if (!diagnosticData.priorite) errors.push("priorite");
+        if (!diagnosticData.heures_repetitives.trim()) errors.push("heures_repetitives");
+        if (!diagnosticData.cout_horaire.trim()) errors.push("cout_horaire");
         break;
       case 5:
         if (!diagnosticData.budget) errors.push("budget");
@@ -1234,70 +1245,65 @@ const ROICalculatorPage = () => {
                                 className="text-2xl font-semibold mb-4"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Étape 4/5 – Vos objectifs
+                                Étape 4/5 – Quantifions ensemble votre potentiel
                               </h3>
                               <p 
                                 className="text-base opacity-80"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Définissons ensemble vos priorités pour maximiser l'impact de l'automatisation.
+                                Cette étape reprend les données du simulateur. Vous pouvez les ajuster si besoin.
                               </p>
                             </div>
 
                             <div className="space-y-6">
-                              {/* Objectifs */}
+                              {/* Heures répétitives */}
                               <div className="w-full">
                                 <Label 
                                   className="text-sm font-medium mb-3 block"
                                   style={{ color: '#F5F5F5' }}
                                 >
-                                  Quels sont vos principaux objectifs ? *
+                                  Heures par semaine passées sur des tâches répétitives *
                                 </Label>
-                                <textarea
-                                  value={diagnosticData.objectifs}
-                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, objectifs: e.target.value }))}
-                                  placeholder="Ex: Réduire les erreurs, gagner du temps, améliorer la satisfaction client..."
-                                  className="w-full text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 h-24 resize-none"
+                                <Input
+                                  type="number"
+                                  value={diagnosticData.heures_repetitives || formData.hoursPerWeek}
+                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, heures_repetitives: e.target.value }))}
+                                  placeholder="10"
+                                  className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
                                   style={{ 
                                     backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                     color: '#F5F5F5',
-                                    borderColor: getFieldBorderStyle('objectifs'),
+                                    borderColor: getFieldBorderStyle('heures_repetitives'),
                                     borderRadius: '8px'
                                   }}
+                                  min="1"
+                                  max="40"
                                 />
                               </div>
 
-                              {/* Priorité */}
+                              {/* Coût horaire */}
                               <div className="w-full">
                                 <Label 
                                   className="text-sm font-medium mb-3 block"
                                   style={{ color: '#F5F5F5' }}
                                 >
-                                  Quelle est votre priorité principale ? *
+                                  Coût horaire moyen chargé (€) *
                                 </Label>
-                                <Select 
-                                  value={diagnosticData.priorite} 
-                                  onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, priorite: value }))}
-                                >
-                                  <SelectTrigger 
-                                    className="text-base py-3 px-4 border-2 w-full"
-                                    style={{ 
-                                      backgroundColor: 'rgba(31, 41, 55, 0.9)',
-                                      color: '#F5F5F5',
-                                      borderColor: getFieldBorderStyle('priorite'),
-                                      borderRadius: '8px'
-                                    }}
-                                  >
-                                    <SelectValue placeholder="Sélectionnez votre priorité" />
-                                  </SelectTrigger>
-                                  <SelectContent className="bg-gray-800 border-gray-600">
-                                    <SelectItem value="reduire-couts">Réduire les coûts</SelectItem>
-                                    <SelectItem value="gagner-temps">Gagner du temps</SelectItem>
-                                    <SelectItem value="ameliorer-qualite">Améliorer la qualité</SelectItem>
-                                    <SelectItem value="croissance">Accélérer la croissance</SelectItem>
-                                    <SelectItem value="satisfaction-client">Satisfaction client</SelectItem>
-                                  </SelectContent>
-                                </Select>
+                                <Input
+                                  type="number"
+                                  value={diagnosticData.cout_horaire || formData.hourlyRate}
+                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, cout_horaire: e.target.value }))}
+                                  placeholder="30"
+                                  className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                                  style={{ 
+                                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                    color: '#F5F5F5',
+                                    borderColor: getFieldBorderStyle('cout_horaire'),
+                                    borderRadius: '8px'
+                                  }}
+                                  min="1"
+                                  max="200"
+                                />
                               </div>
                             </div>
                           </div>
