@@ -27,7 +27,7 @@ const ROICalculatorPage = () => {
     nom: "",
     email: "",
     organisation: "",
-    taille: "",
+    taille: "1", // Prérempli avec "Moi uniquement (solo)"
     // Étape 2
     secteur: "",
     secteur_autre: "", // Nouveau champ pour "autre"
