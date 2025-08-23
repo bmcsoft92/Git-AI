@@ -28,7 +28,7 @@ const Services = () => {
       title: "Augmentez vos Ventes de +30%",
       subtitle: "Croissance Commerciale Accélérée",
       description: "Transformez votre processus commercial avec l'automatisation du suivi prospects, des relances et de la qualification. Résultat mesurable : +30% de conversions en 90 jours.",
-      ctaText: "Voir un Cas Concret",
+      ctaText: "Tester mon ROI sur les ventes",
       ctaAction: () => navigate("/roi-calculator"),
       services: [
         { name: "Génération de Leads Qualifiés", icon: Target, description: "Automatisation capture & scoring" },
@@ -44,7 +44,7 @@ const Services = () => {
       title: "Libérez 15h/Semaine par Employé",
       subtitle: "Efficacité Opérationnelle Maximisée",
       description: "Éliminez les tâches répétitives qui freinent votre équipe. Nos automatisations permettent à vos collaborateurs de se concentrer sur l'innovation et les missions à forte valeur ajoutée.",
-      ctaText: "Découvrir les Gains",
+      ctaText: "Découvrir mes gains de temps",
       ctaAction: () => navigate("/roi-calculator"),
       services: [
         { name: "Gestion de Projet Automatisée", icon: Briefcase, description: "Workflows intelligents" },
@@ -59,8 +59,8 @@ const Services = () => {
       title: "Multipliez par 3 votre Portée Digitale",
       subtitle: "Impact Marketing Décuplé",
       description: "Déployez des campagnes intelligentes pilotées par la data en temps réel. Automatisation complète de vos réseaux sociaux et reporting prédictif pour maximiser votre ROI marketing.",
-      ctaText: "Planifier un Diagnostic Gratuit",
-      ctaAction: () => navigate("/contact"),
+      ctaText: "Voir mon potentiel marketing",
+      ctaAction: () => navigate("/roi-calculator"),
       services: [
         { name: "Social Media Automation", icon: Users, description: "Publication et engagement automatisés" },
         { name: "Analytics Prédictifs", icon: BarChart3, description: "Insights temps réel & prédictions" }
@@ -307,6 +307,32 @@ const Services = () => {
               );
             })}
           </div>
+        </div>
+
+        {/* Global CTA Section */}
+        <div className="mb-20">
+          <Card className="bg-gradient-to-br from-cta-primary/10 to-primary/10 backdrop-blur-sm border border-primary/30 p-8 text-center">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold text-heading mb-4">
+                Prêt à Transformer votre <span className="text-primary">Entreprise</span> ?
+              </h2>
+              <p className="text-lg text-text-secondary mb-8 leading-relaxed">
+                Discutons de vos objectifs et créons ensemble un plan d'action sur-mesure pour maximiser votre ROI
+              </p>
+              <Button 
+                onClick={() => navigate("/contact")}
+                variant="cta"
+                size="lg"
+                className="px-8 py-4 text-lg group/cta"
+              >
+                Obtenir un plan d'action personnalisé
+                <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover/cta:translate-x-1" />
+              </Button>
+              <div className="mt-4 text-sm text-text-secondary/80">
+                Consultation gratuite • Devis personnalisé • Accompagnement expert
+              </div>
+            </div>
+          </Card>
         </div>
 
         {/* Expertise Badge */}
