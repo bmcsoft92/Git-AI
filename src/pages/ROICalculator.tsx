@@ -90,7 +90,8 @@ const ROICalculatorPage = () => {
         if (!diagnosticData.cout_horaire.trim()) errors.push("cout_horaire");
         break;
       case 5:
-        // Les outils ne sont pas obligatoires, mais on peut valider si besoin
+        // Au moins un outil doit être sélectionné
+        if (diagnosticData.outils.length === 0 && !diagnosticData.autre_outil.trim()) errors.push("outils");
         break;
       case 6:
         if (!diagnosticData.budget) errors.push("budget");
@@ -1371,7 +1372,7 @@ const ROICalculatorPage = () => {
                                   className="text-sm font-medium mb-4 block"
                                   style={{ color: '#F5F5F5' }}
                                 >
-                                  Quels outils utilisez-vous actuellement ?
+                                  Quels outils utilisez-vous actuellement ? *
                                 </Label>
                                 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1392,6 +1393,10 @@ const ROICalculatorPage = () => {
                                               ...prev,
                                               outils: [...prev.outils, outil]
                                             }));
+                                            // Enlever l'erreur si au moins un outil est sélectionné
+                                            if (validationErrors.includes('outils')) {
+                                              setValidationErrors(prev => prev.filter(error => error !== 'outils'));
+                                            }
                                           } else {
                                             setDiagnosticData(prev => ({
                                               ...prev,
@@ -1402,7 +1407,7 @@ const ROICalculatorPage = () => {
                                         className="w-4 h-4 rounded border-2 focus:ring-2 focus:ring-primary/50"
                                         style={{
                                           accentColor: '#4F46E5',
-                                          borderColor: '#6B7280'
+                                          borderColor: validationErrors.includes('outils') ? '#EF4444' : '#6B7280'
                                         }}
                                       />
                                       <label 
@@ -1415,6 +1420,11 @@ const ROICalculatorPage = () => {
                                     </div>
                                   ))}
                                 </div>
+                                {hasFieldError('outils') && (
+                                  <p className="text-red-400 text-sm mt-2">
+                                    ⚠️ Veuillez sélectionner au moins un outil ou préciser un autre outil
+                                  </p>
+                                )}
                               </div>
 
                               {/* Autre outil - champ optionnel */}
@@ -1428,7 +1438,13 @@ const ROICalculatorPage = () => {
                                 <Input
                                   type="text"
                                   value={diagnosticData.autre_outil}
-                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, autre_outil: e.target.value }))}
+                                  onChange={(e) => {
+                                    setDiagnosticData(prev => ({ ...prev, autre_outil: e.target.value }));
+                                    // Enlever l'erreur si on commence à taper dans le champ autre outil
+                                    if (e.target.value.trim() && validationErrors.includes('outils')) {
+                                      setValidationErrors(prev => prev.filter(error => error !== 'outils'));
+                                    }
+                                  }}
                                   placeholder="Ex: Notion, Trello, CRM spécifique..."
                                   className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
                                   style={{ 
@@ -1438,6 +1454,9 @@ const ROICalculatorPage = () => {
                                     borderRadius: '8px'
                                   }}
                                 />
+                                <p className="text-sm mt-2 opacity-70" style={{ color: '#F5F5F5' }}>
+                                  Si vous n'utilisez aucun des outils ci-dessus, vous pouvez préciser le vôtre ici
+                                </p>
                               </div>
                             </div>
                           </div>
