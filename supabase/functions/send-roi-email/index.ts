@@ -48,8 +48,7 @@ const handler = async (req: Request): Promise<Response> => {
     const emailResponse = await resend.emails.send({
       from: "Maia Elange <contact@maiaelange.fr>",
       to: [userEmail],
-      bcc: ["contact@maiaelange.fr"],
-      subject: `Nouvelle demande d'analyse ROI - ${userName || userEmail}`,
+      subject: `Vos recommandations d'automatisation personnalisées - Maia Elange`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
           <h1 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
