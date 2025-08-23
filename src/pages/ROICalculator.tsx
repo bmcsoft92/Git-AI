@@ -23,15 +23,91 @@ const ROICalculatorPage = () => {
   
   // États pour le formulaire de diagnostic
   const [diagnosticData, setDiagnosticData] = useState({
+    // Étape 1
     nom: "",
     email: "",
     organisation: "",
-    taille: ""
+    taille: "",
+    // Étape 2
+    secteur: "",
+    chiffre_affaires: "",
+    // Étape 3
+    processus_automatiser: "",
+    outils_actuels: "",
+    // Étape 4
+    objectifs: "",
+    priorite: "",
+    // Étape 5
+    budget: "",
+    timeline: ""
   });
   const [currentStep, setCurrentStep] = useState(1);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
   
   // Référence pour le scroll vers le diagnostic
   const diagnosticRef = useRef<HTMLDivElement>(null);
+
+  // Validation des étapes
+  const validateStep = (step: number): boolean => {
+    const errors: string[] = [];
+    
+    switch (step) {
+      case 1:
+        if (!diagnosticData.nom.trim()) errors.push("Le nom est obligatoire");
+        if (!diagnosticData.email.trim()) errors.push("L'email est obligatoire");
+        if (!diagnosticData.email.includes("@")) errors.push("L'email doit être valide");
+        if (!diagnosticData.organisation.trim()) errors.push("L'organisation est obligatoire");
+        if (!diagnosticData.taille) errors.push("La taille de l'équipe est obligatoire");
+        break;
+      case 2:
+        if (!diagnosticData.secteur) errors.push("Le secteur d'activité est obligatoire");
+        if (!diagnosticData.chiffre_affaires) errors.push("Le chiffre d'affaires est obligatoire");
+        break;
+      case 3:
+        if (!diagnosticData.processus_automatiser.trim()) errors.push("Les processus à automatiser sont obligatoires");
+        if (!diagnosticData.outils_actuels.trim()) errors.push("Les outils actuels sont obligatoires");
+        break;
+      case 4:
+        if (!diagnosticData.objectifs.trim()) errors.push("Les objectifs sont obligatoires");
+        if (!diagnosticData.priorite) errors.push("La priorité est obligatoire");
+        break;
+      case 5:
+        if (!diagnosticData.budget) errors.push("Le budget est obligatoire");
+        if (!diagnosticData.timeline) errors.push("La timeline est obligatoire");
+        break;
+    }
+    
+    setValidationErrors(errors);
+    return errors.length === 0;
+  };
+
+  const handleNextStep = () => {
+    if (validateStep(currentStep)) {
+      if (currentStep < 5) {
+        setCurrentStep(currentStep + 1);
+      } else {
+        // Soumission finale
+        handleDiagnosticSubmit();
+      }
+    }
+  };
+
+  const handlePrevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+      setValidationErrors([]);
+    }
+  };
+
+  const handleDiagnosticSubmit = () => {
+    // Ici on peut envoyer les données ou afficher un message de succès
+    console.log("Diagnostic complet:", diagnosticData);
+    alert("Diagnostic envoyé avec succès ! Vous recevrez votre rapport par email.");
+  };
+
+  const getProgressValue = () => {
+    return (currentStep / 5) * 100;
+  };
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
@@ -777,150 +853,504 @@ const ROICalculatorPage = () => {
 
                           {/* Barre de progression */}
                           <div className="mb-8">
-                            <Progress value={20} className="h-2 mb-2" style={{ backgroundColor: 'rgba(15, 127, 123, 0.2)' }} />
+                            <Progress value={getProgressValue()} className="h-2 mb-2" style={{ backgroundColor: 'rgba(15, 127, 123, 0.2)' }} />
                             <p className="text-sm opacity-70" style={{ color: '#F5F5F5' }}>
-                              Étape 1 sur 5
+                              Étape {currentStep} sur 5
                             </p>
                           </div>
                         </div>
 
-                        {/* Formulaire Étape 1 */}
-                        <div className="space-y-8">
-                          <div className="text-center mb-8">
-                            <h3 
-                              className="text-2xl font-semibold mb-4"
-                              style={{ color: '#F5F5F5' }}
-                            >
-                              Étape 1/5 – Pour commencer, qui êtes-vous ?
-                            </h3>
-                            <p 
-                              className="text-base opacity-80"
-                              style={{ color: '#F5F5F5' }}
-                            >
-                              Ces premières informations nous permettent d'ajuster le diagnostic à votre réalité.
-                            </p>
-                          </div>
-
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* Nom & prénom */}
-                            <div className="w-full">
-                              <Label 
-                                className="text-sm font-medium mb-3 block"
+                        {/* Étape 1 */}
+                        {currentStep === 1 && (
+                          <div className="space-y-8">
+                            <div className="text-center mb-8">
+                              <h3 
+                                className="text-2xl font-semibold mb-4"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Nom & prénom *
-                              </Label>
-                              <Input
-                                type="text"
-                                value={diagnosticData.nom}
-                                onChange={(e) => setDiagnosticData(prev => ({ ...prev, nom: e.target.value }))}
-                                placeholder="Jean Dupont"
-                                className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
-                                style={{ 
-                                  backgroundColor: 'rgba(31, 41, 55, 0.9)',
-                                  color: '#F5F5F5',
-                                  borderColor: 'rgba(74, 158, 255, 0.4)',
-                                  borderRadius: '8px'
-                                }}
-                              />
-                            </div>
-
-                            {/* Email professionnel */}
-                            <div className="w-full">
-                              <Label 
-                                className="text-sm font-medium mb-3 block"
+                                Étape 1/5 – Pour commencer, qui êtes-vous ?
+                              </h3>
+                              <p 
+                                className="text-base opacity-80"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Email professionnel *
-                              </Label>
-                              <Input
-                                type="email"
-                                value={diagnosticData.email}
-                                onChange={(e) => setDiagnosticData(prev => ({ ...prev, email: e.target.value }))}
-                                placeholder="jean.dupont@entreprise.fr"
-                                className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
-                                style={{ 
-                                  backgroundColor: 'rgba(31, 41, 55, 0.9)',
-                                  color: '#F5F5F5',
-                                  borderColor: 'rgba(74, 158, 255, 0.4)',
-                                  borderRadius: '8px'
-                                }}
-                              />
-                              <p className="text-xs mt-2 opacity-70" style={{ color: '#F5F5F5' }}>
-                                C'est à cette adresse que nous enverrons votre rapport confidentiel.
+                                Ces premières informations nous permettent d'ajuster le diagnostic à votre réalité.
                               </p>
                             </div>
 
-                            {/* Organisation */}
-                            <div className="w-full">
-                              <Label 
-                                className="text-sm font-medium mb-3 block"
-                                style={{ color: '#F5F5F5' }}
-                              >
-                                Organisation *
-                              </Label>
-                              <Input
-                                type="text"
-                                value={diagnosticData.organisation}
-                                onChange={(e) => setDiagnosticData(prev => ({ ...prev, organisation: e.target.value }))}
-                                placeholder="Nom de votre société"
-                                className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
-                                style={{ 
-                                  backgroundColor: 'rgba(31, 41, 55, 0.9)',
-                                  color: '#F5F5F5',
-                                  borderColor: 'rgba(74, 158, 255, 0.4)',
-                                  borderRadius: '8px'
-                                }}
-                              />
-                            </div>
-
-                            {/* Taille de l'équipe */}
-                            <div className="w-full">
-                              <Label 
-                                className="text-sm font-medium mb-3 block"
-                                style={{ color: '#F5F5F5' }}
-                              >
-                                Taille de l'équipe *
-                              </Label>
-                              <Select 
-                                value={diagnosticData.taille} 
-                                onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, taille: value }))}
-                              >
-                                <SelectTrigger 
-                                  className="text-base py-3 px-4 border-2 w-full"
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              {/* Nom & prénom */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Nom & prénom *
+                                </Label>
+                                <Input
+                                  type="text"
+                                  value={diagnosticData.nom}
+                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, nom: e.target.value }))}
+                                  placeholder="Jean Dupont"
+                                  className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
                                   style={{ 
                                     backgroundColor: 'rgba(31, 41, 55, 0.9)',
                                     color: '#F5F5F5',
                                     borderColor: 'rgba(74, 158, 255, 0.4)',
                                     borderRadius: '8px'
                                   }}
+                                />
+                              </div>
+
+                              {/* Email professionnel */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
                                 >
-                                  <SelectValue placeholder="Moi uniquement (solo)" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  <SelectItem value="1">Moi uniquement (solo)</SelectItem>
-                                  <SelectItem value="2-5">2-5 employés</SelectItem>
-                                  <SelectItem value="6-20">6-20 employés</SelectItem>
-                                  <SelectItem value="21-50">21-50 employés</SelectItem>
-                                  <SelectItem value="51-100">51-100 employés</SelectItem>
-                                  <SelectItem value="100+">100+ employés</SelectItem>
-                                </SelectContent>
-                              </Select>
+                                  Email professionnel *
+                                </Label>
+                                <Input
+                                  type="email"
+                                  value={diagnosticData.email}
+                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, email: e.target.value }))}
+                                  placeholder="jean.dupont@entreprise.fr"
+                                  className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
+                                  style={{ 
+                                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                    color: '#F5F5F5',
+                                    borderColor: 'rgba(74, 158, 255, 0.4)',
+                                    borderRadius: '8px'
+                                  }}
+                                />
+                                <p className="text-xs mt-2 opacity-70" style={{ color: '#F5F5F5' }}>
+                                  C'est à cette adresse que nous enverrons votre rapport confidentiel.
+                                </p>
+                              </div>
+
+                              {/* Organisation */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Organisation *
+                                </Label>
+                                <Input
+                                  type="text"
+                                  value={diagnosticData.organisation}
+                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, organisation: e.target.value }))}
+                                  placeholder="Nom de votre société"
+                                  className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 w-full"
+                                  style={{ 
+                                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                    color: '#F5F5F5',
+                                    borderColor: 'rgba(74, 158, 255, 0.4)',
+                                    borderRadius: '8px'
+                                  }}
+                                />
+                              </div>
+
+                              {/* Taille de l'équipe */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Taille de l'équipe *
+                                </Label>
+                                <Select 
+                                  value={diagnosticData.taille} 
+                                  onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, taille: value }))}
+                                >
+                                  <SelectTrigger 
+                                    className="text-base py-3 px-4 border-2 w-full"
+                                    style={{ 
+                                      backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                      color: '#F5F5F5',
+                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderRadius: '8px'
+                                    }}
+                                  >
+                                    <SelectValue placeholder="Moi uniquement (solo)" />
+                                  </SelectTrigger>
+                                  <SelectContent className="bg-gray-800 border-gray-600">
+                                    <SelectItem value="1">Moi uniquement (solo)</SelectItem>
+                                    <SelectItem value="2-5">2-5 employés</SelectItem>
+                                    <SelectItem value="6-20">6-20 employés</SelectItem>
+                                    <SelectItem value="21-50">21-50 employés</SelectItem>
+                                    <SelectItem value="51-100">51-100 employés</SelectItem>
+                                    <SelectItem value="100+">100+ employés</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
                             </div>
                           </div>
+                        )}
 
-                          {/* Bouton Suivant */}
-                          <div className="text-center mt-10">
+                        {/* Étape 2 */}
+                        {currentStep === 2 && (
+                          <div className="space-y-8">
+                            <div className="text-center mb-8">
+                              <h3 
+                                className="text-2xl font-semibold mb-4"
+                                style={{ color: '#F5F5F5' }}
+                              >
+                                Étape 2/5 – Votre secteur d'activité
+                              </h3>
+                              <p 
+                                className="text-base opacity-80"
+                                style={{ color: '#F5F5F5' }}
+                              >
+                                Parlez-nous de votre entreprise pour des recommandations personnalisées.
+                              </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              {/* Secteur d'activité */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Secteur d'activité *
+                                </Label>
+                                <Select 
+                                  value={diagnosticData.secteur} 
+                                  onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, secteur: value }))}
+                                >
+                                  <SelectTrigger 
+                                    className="text-base py-3 px-4 border-2 w-full"
+                                    style={{ 
+                                      backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                      color: '#F5F5F5',
+                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderRadius: '8px'
+                                    }}
+                                  >
+                                    <SelectValue placeholder="Sélectionnez votre secteur" />
+                                  </SelectTrigger>
+                                  <SelectContent className="bg-gray-800 border-gray-600">
+                                    <SelectItem value="tech">Technologies / IT</SelectItem>
+                                    <SelectItem value="service">Services aux entreprises</SelectItem>
+                                    <SelectItem value="commerce">Commerce / E-commerce</SelectItem>
+                                    <SelectItem value="industrie">Industrie / Manufacturing</SelectItem>
+                                    <SelectItem value="sante">Santé / Pharmaceutique</SelectItem>
+                                    <SelectItem value="finance">Finance / Assurance</SelectItem>
+                                    <SelectItem value="education">Éducation / Formation</SelectItem>
+                                    <SelectItem value="autre">Autre</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+
+                              {/* Chiffre d'affaires */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Chiffre d'affaires annuel *
+                                </Label>
+                                <Select 
+                                  value={diagnosticData.chiffre_affaires} 
+                                  onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, chiffre_affaires: value }))}
+                                >
+                                  <SelectTrigger 
+                                    className="text-base py-3 px-4 border-2 w-full"
+                                    style={{ 
+                                      backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                      color: '#F5F5F5',
+                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderRadius: '8px'
+                                    }}
+                                  >
+                                    <SelectValue placeholder="Sélectionnez une tranche" />
+                                  </SelectTrigger>
+                                  <SelectContent className="bg-gray-800 border-gray-600">
+                                    <SelectItem value="0-100k">0 - 100k €</SelectItem>
+                                    <SelectItem value="100k-500k">100k - 500k €</SelectItem>
+                                    <SelectItem value="500k-1M">500k - 1M €</SelectItem>
+                                    <SelectItem value="1M-5M">1M - 5M €</SelectItem>
+                                    <SelectItem value="5M-20M">5M - 20M €</SelectItem>
+                                    <SelectItem value="20M+">Plus de 20M €</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Étape 3 */}
+                        {currentStep === 3 && (
+                          <div className="space-y-8">
+                            <div className="text-center mb-8">
+                              <h3 
+                                className="text-2xl font-semibold mb-4"
+                                style={{ color: '#F5F5F5' }}
+                              >
+                                Étape 3/5 – Vos besoins d'automatisation
+                              </h3>
+                              <p 
+                                className="text-base opacity-80"
+                                style={{ color: '#F5F5F5' }}
+                              >
+                                Identifions ensemble les processus à optimiser dans votre organisation.
+                              </p>
+                            </div>
+
+                            <div className="space-y-6">
+                              {/* Processus à automatiser */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Quels processus souhaitez-vous automatiser en priorité ? *
+                                </Label>
+                                <textarea
+                                  value={diagnosticData.processus_automatiser}
+                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, processus_automatiser: e.target.value }))}
+                                  placeholder="Ex: Gestion des emails, facturation, suivi client, reporting..."
+                                  className="w-full text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 h-24 resize-none"
+                                  style={{ 
+                                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                    color: '#F5F5F5',
+                                    borderColor: 'rgba(74, 158, 255, 0.4)',
+                                    borderRadius: '8px'
+                                  }}
+                                />
+                              </div>
+
+                              {/* Outils actuels */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Quels outils utilisez-vous actuellement ? *
+                                </Label>
+                                <textarea
+                                  value={diagnosticData.outils_actuels}
+                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, outils_actuels: e.target.value }))}
+                                  placeholder="Ex: Excel, CRM Salesforce, outils de comptabilité..."
+                                  className="w-full text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 h-24 resize-none"
+                                  style={{ 
+                                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                    color: '#F5F5F5',
+                                    borderColor: 'rgba(74, 158, 255, 0.4)',
+                                    borderRadius: '8px'
+                                  }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Étape 4 */}
+                        {currentStep === 4 && (
+                          <div className="space-y-8">
+                            <div className="text-center mb-8">
+                              <h3 
+                                className="text-2xl font-semibold mb-4"
+                                style={{ color: '#F5F5F5' }}
+                              >
+                                Étape 4/5 – Vos objectifs
+                              </h3>
+                              <p 
+                                className="text-base opacity-80"
+                                style={{ color: '#F5F5F5' }}
+                              >
+                                Définissons ensemble vos priorités pour maximiser l'impact de l'automatisation.
+                              </p>
+                            </div>
+
+                            <div className="space-y-6">
+                              {/* Objectifs */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Quels sont vos principaux objectifs ? *
+                                </Label>
+                                <textarea
+                                  value={diagnosticData.objectifs}
+                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, objectifs: e.target.value }))}
+                                  placeholder="Ex: Réduire les erreurs, gagner du temps, améliorer la satisfaction client..."
+                                  className="w-full text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50 h-24 resize-none"
+                                  style={{ 
+                                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                    color: '#F5F5F5',
+                                    borderColor: 'rgba(74, 158, 255, 0.4)',
+                                    borderRadius: '8px'
+                                  }}
+                                />
+                              </div>
+
+                              {/* Priorité */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Quelle est votre priorité principale ? *
+                                </Label>
+                                <Select 
+                                  value={diagnosticData.priorite} 
+                                  onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, priorite: value }))}
+                                >
+                                  <SelectTrigger 
+                                    className="text-base py-3 px-4 border-2 w-full"
+                                    style={{ 
+                                      backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                      color: '#F5F5F5',
+                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderRadius: '8px'
+                                    }}
+                                  >
+                                    <SelectValue placeholder="Sélectionnez votre priorité" />
+                                  </SelectTrigger>
+                                  <SelectContent className="bg-gray-800 border-gray-600">
+                                    <SelectItem value="reduire-couts">Réduire les coûts</SelectItem>
+                                    <SelectItem value="gagner-temps">Gagner du temps</SelectItem>
+                                    <SelectItem value="ameliorer-qualite">Améliorer la qualité</SelectItem>
+                                    <SelectItem value="croissance">Accélérer la croissance</SelectItem>
+                                    <SelectItem value="satisfaction-client">Satisfaction client</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Étape 5 */}
+                        {currentStep === 5 && (
+                          <div className="space-y-8">
+                            <div className="text-center mb-8">
+                              <h3 
+                                className="text-2xl font-semibold mb-4"
+                                style={{ color: '#F5F5F5' }}
+                              >
+                                Étape 5/5 – Budget et timing
+                              </h3>
+                              <p 
+                                className="text-base opacity-80"
+                                style={{ color: '#F5F5F5' }}
+                              >
+                                Dernières informations pour finaliser votre diagnostic personnalisé.
+                              </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              {/* Budget */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Budget envisagé *
+                                </Label>
+                                <Select 
+                                  value={diagnosticData.budget} 
+                                  onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, budget: value }))}
+                                >
+                                  <SelectTrigger 
+                                    className="text-base py-3 px-4 border-2 w-full"
+                                    style={{ 
+                                      backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                      color: '#F5F5F5',
+                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderRadius: '8px'
+                                    }}
+                                  >
+                                    <SelectValue placeholder="Sélectionnez votre budget" />
+                                  </SelectTrigger>
+                                  <SelectContent className="bg-gray-800 border-gray-600">
+                                    <SelectItem value="5k-15k">5k - 15k €</SelectItem>
+                                    <SelectItem value="15k-30k">15k - 30k €</SelectItem>
+                                    <SelectItem value="30k-50k">30k - 50k €</SelectItem>
+                                    <SelectItem value="50k-100k">50k - 100k €</SelectItem>
+                                    <SelectItem value="100k+">Plus de 100k €</SelectItem>
+                                    <SelectItem value="non-defini">Non défini</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+
+                              {/* Timeline */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Timeline souhaitée *
+                                </Label>
+                                <Select 
+                                  value={diagnosticData.timeline} 
+                                  onValueChange={(value) => setDiagnosticData(prev => ({ ...prev, timeline: value }))}
+                                >
+                                  <SelectTrigger 
+                                    className="text-base py-3 px-4 border-2 w-full"
+                                    style={{ 
+                                      backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                      color: '#F5F5F5',
+                                      borderColor: 'rgba(74, 158, 255, 0.4)',
+                                      borderRadius: '8px'
+                                    }}
+                                  >
+                                    <SelectValue placeholder="Quand souhaitez-vous commencer ?" />
+                                  </SelectTrigger>
+                                  <SelectContent className="bg-gray-800 border-gray-600">
+                                    <SelectItem value="immediatement">Immédiatement</SelectItem>
+                                    <SelectItem value="1-3-mois">Dans 1-3 mois</SelectItem>
+                                    <SelectItem value="3-6-mois">Dans 3-6 mois</SelectItem>
+                                    <SelectItem value="6-12-mois">Dans 6-12 mois</SelectItem>
+                                    <SelectItem value="exploration">Phase d'exploration</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Messages d'erreur */}
+                        {validationErrors.length > 0 && (
+                          <div className="mt-6 p-4 rounded-lg" style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
+                            <ul className="space-y-1">
+                              {validationErrors.map((error, index) => (
+                                <li key={index} className="text-red-400 text-sm">• {error}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {/* Boutons de navigation */}
+                        <div className="flex justify-between items-center mt-10">
+                          {currentStep > 1 && (
                             <Button
+                              onClick={handlePrevStep}
+                              variant="outline"
                               size="lg"
-                              className="px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
+                              className="px-8 py-3 text-lg font-semibold transition-all duration-300"
                               style={{
-                                backgroundColor: '#4A9EFF',
-                                color: '#F5F5F5',
+                                borderColor: '#4A9EFF',
+                                color: '#4A9EFF',
+                                backgroundColor: 'transparent'
+                              }}
+                            >
+                              Précédent
+                            </Button>
+                          )}
+                          
+                          <div className={currentStep === 1 ? "mx-auto" : "ml-auto"}>
+                            <Button
+                              onClick={handleNextStep}
+                              size="lg"
+                              className="px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105 bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground"
+                              style={{
                                 borderRadius: '8px'
                               }}
                             >
-                              Suivant
+                              {currentStep === 5 ? 'Envoyer le diagnostic' : 'Suivant'}
                             </Button>
                           </div>
                         </div>
