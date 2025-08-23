@@ -20,8 +20,8 @@ Conformité WCAG 2.1 AA garantie
     --popover: 180 26% 8%;
     --popover-foreground: 0 0% 100%;
 
-    /* Teal Innovant - Intelligence & Innovation (#0F7F7B) */
-    --primary: 178 78% 28%;
+    /* Teal Innovant - Intelligence & Innovation - Contraste optimisé */
+    --primary: 178 85% 32%;
     --primary-foreground: 0 0% 100%;
 
     /* Gris structure pour éléments secondaires */
@@ -38,14 +38,15 @@ Conformité WCAG 2.1 AA garantie
     --destructive: 349 100% 43%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Bordures subtiles en graphite plus clair */
+    /* Bordures subtiles en graphite plus clair - Mise à jour avec les nouvelles couleurs */
     --border: 180 15% 20%;
     --input: 180 15% 15%;
-    --ring: 178 78% 28%;
+    --ring: 178 85% 32%;
 
-    /* Orange Énergique - Conversion & Action (#D56A1F) */
-    --cta-primary: 22 75% 47%;
+    /* Orange Énergique - Conversion & Action - Contraste renforcé */
+    --cta-primary: 22 82% 52%;
     --cta-primary-foreground: 0 0% 100%;
+
 
     /* Vert succès */
     --success: 156 100% 33%;
@@ -58,15 +59,15 @@ Conformité WCAG 2.1 AA garantie
 
     --radius: 0.375rem; /* 6px comme spécifié */
 
-    /* Sidebar maintenue pour cohérence */
+    /* Sidebar mise à jour avec les nouvelles couleurs */
     --sidebar-background: 180 26% 8%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 178 78% 28%;
+    --sidebar-primary: 178 85% 32%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 180 15% 15%;
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 180 15% 20%;
-    --sidebar-ring: 178 78% 28%;
+    --sidebar-ring: 178 85% 32%;
   }
 
   .light {
@@ -77,7 +78,7 @@ Conformité WCAG 2.1 AA garantie
     --card-foreground: 180 26% 8%;
     --popover: 0 0% 100%;
     --popover-foreground: 180 26% 8%;
-    --primary: 178 78% 28%;
+    --primary: 178 85% 32%;
     --primary-foreground: 0 0% 100%;
     --secondary: 43 15% 92%;
     --secondary-foreground: 180 15% 35%;
@@ -89,8 +90,8 @@ Conformité WCAG 2.1 AA garantie
     --destructive-foreground: 0 0% 100%;
     --border: 43 15% 85%;
     --input: 43 15% 85%;
-    --ring: 178 78% 28%;
-    --cta-primary: 22 75% 47%;
+    --ring: 178 85% 32%;
+    --cta-primary: 22 82% 52%;
     --cta-primary-foreground: 0 0% 100%;
     --success: 156 100% 33%;
     --success-foreground: 0 0% 100%;
@@ -170,7 +171,7 @@ Conformité WCAG 2.1 AA garantie
 
   .btn-cta-hover:hover {
     @apply scale-105;
-    box-shadow: 0 20px 50px rgba(213, 106, 31, 0.6), 0 5px 15px rgba(213, 106, 31, 0.3);
+    box-shadow: 0 20px 50px rgba(230, 120, 50, 0.6), 0 5px 15px rgba(230, 120, 50, 0.3);
     transform: translateY(-3px) scale(1.05);
     filter: brightness(1.1);
   }
@@ -182,7 +183,7 @@ Conformité WCAG 2.1 AA garantie
   .btn-cta-hover:active {
     @apply scale-95;
     transform: translateY(-1px) scale(0.98);
-    box-shadow: 0 8px 25px rgba(213, 106, 31, 0.4);
+    box-shadow: 0 8px 25px rgba(230, 120, 50, 0.4);
   }
 
   /* Effet de pulsation subtile pour attirer l'attention */
@@ -245,10 +246,10 @@ Conformité WCAG 2.1 AA garantie
 /* Keyframes pour les animations */
 @keyframes ctaPulse {
   0%, 100% {
-    box-shadow: 0 20px 50px rgba(213, 106, 31, 0.6), 0 5px 15px rgba(213, 106, 31, 0.3);
+    box-shadow: 0 20px 50px rgba(230, 120, 50, 0.6), 0 5px 15px rgba(230, 120, 50, 0.3);
   }
   50% {
-    box-shadow: 0 20px 50px rgba(213, 106, 31, 0.4), 0 5px 15px rgba(213, 106, 31, 0.2);
+    box-shadow: 0 20px 50px rgba(230, 120, 50, 0.4), 0 5px 15px rgba(230, 120, 50, 0.2);
   }
 }
 
