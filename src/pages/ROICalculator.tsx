@@ -424,11 +424,11 @@ const ROICalculatorPage = () => {
               }}
             >
               <CardContent className="p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 mb-8">
+                  <div className="space-y-3">
                     <Label 
                       htmlFor="heures" 
-                      className="block text-sm font-semibold mb-3"
+                      className="block text-sm font-semibold h-5 flex items-center"
                       style={{ color: '#F5F5F5' }}
                     >
                       Heures/semaine à automatiser
@@ -449,10 +449,10 @@ const ROICalculatorPage = () => {
                     />
                   </div>
 
-                  <div>
+                  <div className="space-y-3">
                     <Label 
                       htmlFor="taux" 
-                      className="block text-sm font-semibold mb-3"
+                      className="block text-sm font-semibold h-5 flex items-center"
                       style={{ color: '#F5F5F5' }}
                     >
                       Taux horaire (€)
@@ -473,10 +473,10 @@ const ROICalculatorPage = () => {
                     />
                   </div>
 
-                  <div>
+                  <div className="space-y-3">
                     <Label 
                       htmlFor="employes" 
-                      className="block text-sm font-semibold mb-3"
+                      className="block text-sm font-semibold h-5 flex items-center"
                       style={{ color: '#F5F5F5' }}
                     >
                       Nombre d'employés concernés
@@ -497,10 +497,10 @@ const ROICalculatorPage = () => {
                     />
                   </div>
 
-                  <div>
+                  <div className="space-y-3">
                     <Label 
                       htmlFor="investissement" 
-                      className="block text-sm font-semibold mb-3"
+                      className="block text-sm font-semibold h-5 flex items-center"
                       style={{ color: '#F5F5F5' }}
                     >
                       Investissement initial (€)
