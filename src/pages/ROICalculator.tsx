@@ -681,7 +681,7 @@ const ROICalculatorPage = () => {
                           🎯 ROI Stratégique Final
                         </div>
                         <div className="text-sm leading-relaxed">
-                          <strong>Pour chaque euro investi</strong>, combien d'euros vous gagnez réellement en retour, en comptant les économies ET la croissance générée.
+                          <strong>Pour chaque euro investi</strong>, combien d'euros vous gagnez réellement en retour, en comptant les économies et la croissance générée.
                         </div>
                         <div className="mt-3 p-3 bg-gray-700 rounded text-xs">
                           <strong>Formule :</strong> (Économies + Croissance - Investissement) / Investissement × 100<br/>
