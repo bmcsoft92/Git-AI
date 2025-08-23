@@ -5,49 +5,100 @@ import {
   TrendingUp, 
   Settings,
   Target,
-  Check
+  Check,
+  Building,
+  Users,
+  Briefcase,
+  ArrowRight,
+  Zap,
+  Clock,
+  BarChart3
 } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState("growth");
+  const navigate = useNavigate();
 
   const strategicPillars = [
     {
       id: "growth",
       icon: TrendingUp,
-      title: "Accélérer la Croissance Commerciale",
-      description: "Automatisez votre cycle de vente pour transformer plus de prospects en clients et augmenter votre chiffre d'affaires de 30%.",
+      title: "Augmentez vos Ventes de +30%",
+      subtitle: "Croissance Commerciale Accélérée",
+      description: "Transformez votre processus commercial avec l'automatisation du suivi prospects, des relances et de la qualification. Résultat mesurable : +30% de conversions en 90 jours.",
+      ctaText: "Voir un Cas Concret",
+      ctaAction: () => navigate("/roi-calculator"),
       services: [
-        "Génération de Leads",
-        "CRM & Suivi des Clients", 
-        "Gestion des Emails",
-        "Planification & Prise de Rendez-vous",
-        "Chatbots IA"
+        { name: "Génération de Leads Qualifiés", icon: Target, description: "Automatisation capture & scoring" },
+        { name: "CRM Intelligent & Suivi", icon: BarChart3, description: "Suivi automatisé des opportunités" },
+        { name: "Email Marketing Automatisé", icon: Zap, description: "Séquences personnalisées" },
+        { name: "Prise de RDV Automatique", icon: Clock, description: "Planification intelligente 24/7" },
+        { name: "Chatbots IA Conversationnels", icon: Users, description: "Qualification automatique" }
       ]
     },
     {
       id: "efficiency", 
       icon: Settings,
-      title: "Optimiser l'Efficacité Opérationnelle",
-      description: "Libérez jusqu'à 15h par semaine par employé en automatisant les tâches répétitives pour qu'ils se concentrent sur l'innovation et la valeur ajoutée.",
+      title: "Libérez 15h/Semaine par Employé",
+      subtitle: "Efficacité Opérationnelle Maximisée",
+      description: "Éliminez les tâches répétitives qui freinent votre équipe. Nos automatisations permettent à vos collaborateurs de se concentrer sur l'innovation et les missions à forte valeur ajoutée.",
+      ctaText: "Découvrir les Gains",
+      ctaAction: () => navigate("/roi-calculator"),
       services: [
-        "Gestion de Projet",
-        "Recrutement & Onboarding",
-        "Comptabilité & Facturation", 
-        "Synchronisation d'Outils"
+        { name: "Gestion de Projet Automatisée", icon: Briefcase, description: "Workflows intelligents" },
+        { name: "Recrutement & Onboarding", icon: Users, description: "Processus RH optimisés" },
+        { name: "Comptabilité Intelligente", icon: BarChart3, description: "Facturation automatisée" },
+        { name: "Synchronisation Multi-Outils", icon: Zap, description: "Intégration seamless" }
       ]
     },
     {
       id: "marketing",
       icon: Target, 
-      title: "Augmenter l'Impact Marketing",
-      description: "Multipliez par 3 votre portée digitale avec des campagnes intelligentes et des décisions basées sur des données automatisées en temps réel.",
+      title: "Multipliez par 3 votre Portée Digitale",
+      subtitle: "Impact Marketing Décuplé",
+      description: "Déployez des campagnes intelligentes pilotées par la data en temps réel. Automatisation complète de vos réseaux sociaux et reporting prédictif pour maximiser votre ROI marketing.",
+      ctaText: "Planifier un Audit Gratuit",
+      ctaAction: () => navigate("/contact"),
       services: [
-        "Gestion des Réseaux Sociaux",
-        "Analyse & Reporting Automatisés"
+        { name: "Social Media Automation", icon: Users, description: "Publication et engagement automatisés" },
+        { name: "Analytics Prédictifs", icon: BarChart3, description: "Insights temps réel & prédictions" }
       ]
     }
+  ];
+
+  const processSteps = [
+    {
+      step: "01",
+      title: "Audit & Analyse Stratégique",
+      description: "Diagnostic complet de vos processus actuels et identification des opportunités d'automatisation les plus rentables.",
+      icon: BarChart3
+    },
+    {
+      step: "02", 
+      title: "Stratégie & Conception Sur-Mesure",
+      description: "Élaboration d'un plan d'automatisation personnalisé avec ROI prévisible et roadmap de déploiement.",
+      icon: Target
+    },
+    {
+      step: "03",
+      title: "Développement & Intégration",
+      description: "Mise en place des solutions avec formation équipe et intégration progressive dans vos systèmes existants.",
+      icon: Settings
+    },
+    {
+      step: "04",
+      title: "Suivi & Optimisation Continue",
+      description: "Monitoring des performances, ajustements et évolutions pour garantir un ROI croissant dans le temps.",
+      icon: TrendingUp
+    }
+  ];
+
+  const businessSizes = [
+    { icon: Building, label: "PME", description: "Solutions adaptées aux budgets et besoins spécifiques" },
+    { icon: Briefcase, label: "ETI", description: "Automatisations scalables pour la croissance" },
+    { icon: Users, label: "Grandes Entreprises", description: "Déploiements complexes multi-départements" }
   ];
 
   return (
@@ -63,22 +114,37 @@ const Services = () => {
           </Badge>
         </div>
 
-        {/* New Strategic Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold text-heading mb-6">
+        {/* Main Title - H1 for SEO */}
+        <div className="text-center mb-12">
+          <h1 className="text-3xl lg:text-5xl font-bold text-heading mb-6">
             Des Solutions Conçues pour Vos{" "}
             <span className="text-primary">Objectifs Stratégiques</span>
-          </h2>
-          <p className="text-lg text-text-secondary max-w-4xl mx-auto leading-relaxed">
+          </h1>
+          <p className="text-lg text-text-secondary max-w-4xl mx-auto leading-relaxed mb-8">
             Nous ne vendons pas des outils, nous construisons des avantages concurrentiels. 
-            Découvrez comment nous pouvons transformer vos opérations.
+            Découvrez comment nous transformons les opérations de nos clients.
           </p>
+
+          {/* Business Size Targeting */}
+          <div className="flex flex-wrap justify-center gap-6 mb-12">
+            {businessSizes.map((size, index) => {
+              const Icon = size.icon;
+              return (
+                <div key={index} className="flex items-center gap-3 bg-card/50 backdrop-blur-sm rounded-lg px-4 py-3 border border-primary/20">
+                  <Icon className="h-5 w-5 text-primary" strokeWidth={1.5} />
+                  <div className="text-left">
+                    <div className="font-semibold text-heading text-sm">{size.label}</div>
+                    <div className="text-xs text-text-secondary">{size.description}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Interactive Cards */}
-        <div className="mb-16">
-          {/* Strategic Pillars Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {/* Strategic Pillars with Enhanced CTAs */}
+        <div className="mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {strategicPillars.map((pillar) => {
               const Icon = pillar.icon;
               const isActive = activeTab === pillar.id;
@@ -113,75 +179,149 @@ const Services = () => {
                         />
                       </div>
                     </div>
-                    <h3 className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
+                    <div className="mb-2 text-xs font-medium text-primary uppercase tracking-wide">
+                      {pillar.subtitle}
+                    </div>
+                    <h2 className={`text-xl font-bold mb-3 transition-colors duration-300 ${
                       isActive 
                         ? 'text-heading' 
                         : 'text-heading group-hover:text-primary'
                     }`}>
                       {pillar.title}
-                    </h3>
+                    </h2>
                   </CardHeader>
-                  <CardContent className="text-center pt-0">
-                    <p className="text-sm text-text-secondary leading-relaxed group-hover:text-text-secondary/90">
+                  <CardContent className="text-center pt-0 pb-6">
+                    <p className="text-sm text-text-secondary leading-relaxed group-hover:text-text-secondary/90 mb-6">
                       {pillar.description}
                     </p>
+                    <Button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        pillar.ctaAction();
+                      }}
+                      variant="cta"
+                      size="sm"
+                      className="w-full group/btn"
+                    >
+                      {pillar.ctaText}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                    </Button>
                   </CardContent>
                 </Card>
               );
             })}
           </div>
 
-          {/* Services Details */}
+          {/* Enhanced Services Details */}
           {strategicPillars.map((pillar) => (
             <div 
               key={pillar.id}
               className={`overflow-hidden transition-all duration-500 ease-in-out ${
                 activeTab === pillar.id 
-                  ? 'max-h-[500px] opacity-100 translate-y-0' 
+                  ? 'max-h-[800px] opacity-100 translate-y-0' 
                   : 'max-h-0 opacity-0 -translate-y-4'
               }`}
             >
-              <Card className="bg-card/60 backdrop-blur-sm border border-primary/20 shadow-lg shadow-primary/10">
+              <Card className="bg-gradient-to-br from-card/80 to-card/60 backdrop-blur-sm border border-primary/20 shadow-xl shadow-primary/10">
                 <CardHeader>
-                  <h3 className="text-xl font-semibold text-heading flex items-center gap-2">
-                    <Check 
-                      className="h-5 w-5 text-primary" 
-                      strokeWidth={1.5}
-                      style={{
-                        filter: 'drop-shadow(0 0 0.5px currentColor)',
-                        shapeRendering: 'geometricPrecision'
-                      }}
-                    />
-                    Services inclus :
+                  <h3 className="text-2xl font-bold text-heading flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-primary/20 rounded-lg">
+                      <Check 
+                        className="h-6 w-6 text-primary" 
+                        strokeWidth={1.5}
+                        style={{
+                          filter: 'drop-shadow(0 0 0.5px currentColor)',
+                          shapeRendering: 'geometricPrecision'
+                        }}
+                      />
+                    </div>
+                    Pack de Services Inclus
                   </h3>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {pillar.services.map((service, index) => (
-                      <div 
-                        key={index}
-                        className="flex items-center space-x-3 p-3 bg-background/60 rounded-lg border border-primary/10 
-                                 hover:bg-background/80 hover:border-primary/20 transition-all duration-200"
-                        style={{
-                          animationDelay: `${index * 50}ms`
-                        }}
-                      >
-                        <Check 
-                          className="h-4 w-4 text-primary flex-shrink-0" 
-                          strokeWidth={1.5}
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {pillar.services.map((service, index) => {
+                      const ServiceIcon = service.icon;
+                      return (
+                        <Card 
+                          key={index}
+                          className="p-4 bg-background/80 backdrop-blur-sm border border-primary/15 
+                                   hover:bg-background/90 hover:border-primary/25 hover:shadow-lg hover:shadow-primary/10
+                                   transition-all duration-300 group/service"
                           style={{
-                            filter: 'drop-shadow(0 0 0.5px currentColor)',
-                            shapeRendering: 'geometricPrecision'
+                            animationDelay: `${index * 100}ms`
                           }}
-                        />
-                        <span className="text-text-secondary font-medium text-sm">{service}</span>
-                      </div>
-                    ))}
+                        >
+                          <div className="flex items-start gap-3">
+                            <div className="p-2 bg-primary/15 rounded-lg group-hover/service:bg-primary/25 transition-colors">
+                              <ServiceIcon className="h-5 w-5 text-primary" strokeWidth={1.5} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-semibold text-heading text-sm mb-1 group-hover/service:text-primary transition-colors">
+                                {service.name}
+                              </h4>
+                              <p className="text-xs text-text-secondary leading-relaxed">
+                                {service.description}
+                              </p>
+                            </div>
+                          </div>
+                        </Card>
+                      );
+                    })}
                   </div>
                 </CardContent>
               </Card>
             </div>
           ))}
+        </div>
+
+        {/* Process Section for Trust Building */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-heading mb-4">
+              Notre Méthode <span className="text-primary">Éprouvée</span>
+            </h2>
+            <p className="text-text-secondary max-w-2xl mx-auto">
+              Un processus structuré et transparent pour garantir le succès de votre transformation digitale
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {processSteps.map((step, index) => {
+              const StepIcon = step.icon;
+              return (
+                <Card key={index} className="text-center p-6 bg-card/60 backdrop-blur-sm border border-primary/20 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 group/step">
+                  <div className="flex flex-col items-center">
+                    <div className="relative mb-4">
+                      <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center group-hover/step:bg-primary/30 transition-colors">
+                        <StepIcon className="h-8 w-8 text-primary" strokeWidth={1.5} />
+                      </div>
+                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                        <span className="text-xs font-bold text-white">{step.step}</span>
+                      </div>
+                    </div>
+                    <h3 className="font-semibold text-heading mb-2 text-sm">{step.title}</h3>
+                    <p className="text-xs text-text-secondary leading-relaxed">{step.description}</p>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Expertise Badge */}
+        <div className="text-center">
+          <Card className="inline-block p-6 bg-gradient-to-r from-primary/10 to-cta-primary/10 backdrop-blur-sm border border-primary/20">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-primary/20 rounded-full">
+                <Zap className="h-6 w-6 text-primary" strokeWidth={1.5} />
+              </div>
+              <div className="text-left">
+                <div className="font-bold text-heading text-lg">Technologies Maîtrisées</div>
+                <div className="text-text-secondary text-sm">Make, Zapier, IA, CRM, API... + 200 intégrations</div>
+              </div>
+            </div>
+          </Card>
         </div>
 
       </div>
