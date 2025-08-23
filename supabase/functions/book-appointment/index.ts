@@ -147,6 +147,31 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Appointment booked and emails sent successfully");
 
+    // Mettre à jour le lead avec le statut RDV demandé
+    console.log("Updating lead status to rdv_demande...");
+    
+    const { data: leadUpdateData, error: leadUpdateError } = await supabase
+      .rpc('upsert_lead', {
+        p_email: userEmail,
+        p_name: userName,
+        p_phone: userPhone || null,
+        p_status: 'rdv_demande'
+      });
+
+    if (leadUpdateError) {
+      console.error("Error updating lead status:", leadUpdateError);
+    } else {
+      console.log("Lead updated with ID:", leadUpdateData);
+      
+      // Lier le rendez-vous au lead si on a un lead_id
+      if (leadUpdateData && calculationId) {
+        await supabase
+          .from('appointments')
+          .update({ lead_id: leadUpdateData })
+          .eq('id', appointmentData.id);
+      }
+    }
+
     return new Response(JSON.stringify({ 
       success: true, 
       appointmentId: appointmentData.id,

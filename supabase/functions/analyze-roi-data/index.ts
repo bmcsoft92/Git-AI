@@ -188,6 +188,58 @@ Soyez spécifique et concret dans vos recommandations.
 
     console.log("Analysis saved with ID:", calculationData.id);
 
+    // Créer ou mettre à jour le lead dans le CRM
+    console.log("Creating/updating lead in CRM...");
+    
+    const { data: leadData, error: leadError } = await supabase
+      .rpc('upsert_lead', {
+        p_email: userEmail,
+        p_name: userName || null,
+        p_phone: userPhone || null,
+        p_team_size: diagnosticData.team_size || null,
+        p_business_type: diagnosticData.business_type || null,
+        p_roi_potential: roiData.roi_percentage,
+        p_annual_savings: roiData.annual_savings,
+        p_status: 'nouveau_lead'
+      });
+
+    if (leadError) {
+      console.error("Error creating/updating lead:", leadError);
+    } else {
+      console.log("Lead created/updated with ID:", leadData);
+      
+      // Lier l'analyse ROI au lead
+      await supabase
+        .from('roi_calculations')
+        .update({ lead_id: leadData })
+        .eq('id', calculationData.id);
+      
+      // Envoyer l'email avec les recommandations via l'edge function
+      const { data: emailData, error: emailError } = await supabase.functions.invoke('send-roi-email', {
+        body: {
+          calculationId: calculationData.id,
+          userEmail,
+          userName,
+          roiData,
+          diagnosticData,
+          recommendations
+        }
+      });
+
+      if (emailError) {
+        console.error("Error sending email:", emailError);
+      } else {
+        console.log("Email sent successfully");
+        
+        // Mettre à jour le statut du lead après envoi de l'email
+        await supabase
+          .rpc('upsert_lead', {
+            p_email: userEmail,
+            p_status: 'diagnostic_envoye'
+          });
+      }
+    }
+
     return new Response(JSON.stringify({
       success: true,
       calculationId: calculationData.id,
