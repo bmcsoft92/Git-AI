@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Target, TrendingUp, Clock, DollarSign } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Calendar, Target, TrendingUp, Clock, DollarSign, HelpCircle } from "lucide-react";
 import { AppointmentBooking } from "./AppointmentBooking";
+import { ContactForm } from "./ContactForm";
 
 interface ROIResultsProps {
   calculationId: string;
@@ -28,6 +30,7 @@ interface ROIResultsProps {
 
 export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }: ROIResultsProps) => {
   const [showBooking, setShowBooking] = useState(false);
+  const [showContact, setShowContact] = useState(false);
 
   const priorityColors = {
     1: "bg-gradient-to-r from-green-500 to-emerald-600",
@@ -53,14 +56,47 @@ export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }
         </p>
         
         <div className="flex flex-wrap justify-center gap-6 mt-6">
-          <div className="flex items-center gap-2 bg-background/50 px-4 py-2 rounded-lg border">
-            <DollarSign className="h-5 w-5 text-green-600" />
-            <span className="font-semibold">{roiData.annual_savings.toLocaleString('fr-FR')}€ d'économies/an</span>
-          </div>
-          <div className="flex items-center gap-2 bg-background/50 px-4 py-2 rounded-lg border">
-            <TrendingUp className="h-5 w-5 text-primary" />
-            <span className="font-semibold">{roiData.roi_percentage}% de ROI</span>
-          </div>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="flex items-center gap-2 bg-background/50 px-4 py-2 rounded-lg border cursor-help">
+                  <DollarSign className="h-5 w-5 text-green-600" />
+                  <span className="font-semibold">{roiData.annual_savings.toLocaleString('fr-FR')}€ d'économies/an</span>
+                  <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                </div>
+              </TooltipTrigger>
+              <TooltipContent className="max-w-xs p-4">
+                <div className="text-sm">
+                  <div className="font-semibold mb-2">Économies Directes Annuelles :</div>
+                  <div className="text-xs space-y-1">
+                    <div>Formule : <strong>Heures automatisées × 46 semaines × Employés × Taux horaire</strong></div>
+                    <div>Ces économies représentent la valeur du temps libéré grâce à l'automatisation de vos tâches répétitives.</div>
+                  </div>
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="flex items-center gap-2 bg-background/50 px-4 py-2 rounded-lg border cursor-help">
+                  <TrendingUp className="h-5 w-5 text-primary" />
+                  <span className="font-semibold">{roiData.roi_percentage}% de ROI</span>
+                  <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                </div>
+              </TooltipTrigger>
+              <TooltipContent className="max-w-xs p-4">
+                <div className="text-sm">
+                  <div className="font-semibold mb-2">ROI Stratégique :</div>
+                  <div className="text-xs space-y-1">
+                    <div>Formule : <strong>((Gains totaux - Investissement) / Investissement) × 100</strong></div>
+                    <div>Inclut les économies directes + 25% du temps réinvesti dans des activités à plus forte valeur ajoutée (×1.5 le taux horaire).</div>
+                  </div>
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
       </div>
 
@@ -145,19 +181,28 @@ export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }
             Réserver un Entretien Gratuit
           </Button>
           
-          <Button variant="outline" size="lg" asChild>
-            <a href="mailto:contact@maiaelange.fr">
-              Nous Contacter Directement
-            </a>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            onClick={() => setShowContact(true)}
+          >
+            Nous Contacter Directement
           </Button>
         </div>
       </div>
 
-      {/* Modal de réservation */}
+      {/* Modals */}
       {showBooking && (
         <AppointmentBooking 
           calculationId={calculationId}
           onClose={() => setShowBooking(false)}
+          userInfo={userInfo}
+        />
+      )}
+      
+      {showContact && (
+        <ContactForm 
+          onClose={() => setShowContact(false)}
           userInfo={userInfo}
         />
       )}

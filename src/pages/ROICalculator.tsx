@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Progress } from "@/components/ui/progress";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import { Tooltip as UITooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Header from "@/components/Header";
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
@@ -522,19 +523,35 @@ const ROICalculatorPage = () => {
                 </div>
 
                 <div className="text-center">
-                  <Button
-                    onClick={() => setShowResults(true)}
-                    size="lg"
-                    className="px-12 py-6 text-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                    style={{
-                      background: 'linear-gradient(135deg, #FF8C42, #FF6B35)',
-                      color: '#FFFFFF',
-                      borderRadius: '12px',
-                      boxShadow: '0 8px 25px rgba(255, 140, 66, 0.4)'
-                    }}
-                  >
-                    Calculer mon ROI
-                  </Button>
+                  <TooltipProvider>
+                    <UITooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          onClick={() => setShowResults(true)}
+                          size="lg"
+                          className="px-12 py-6 text-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                          style={{
+                            background: 'linear-gradient(135deg, #FF8C42, #FF6B35)',
+                            color: '#FFFFFF',
+                            borderRadius: '12px',
+                            boxShadow: '0 8px 25px rgba(255, 140, 66, 0.4)'
+                          }}
+                        >
+                          Calculer mon ROI
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent className="max-w-xs p-4">
+                        <div className="text-sm">
+                          <div className="font-semibold mb-2">Formule de calcul :</div>
+                          <div className="space-y-1 text-xs">
+                            <div>• <strong>Économies directes/an :</strong><br />Heures/sem × 46 semaines × Employés × Taux horaire</div>
+                            <div>• <strong>Gains croissance/an :</strong><br />25% du temps économisé × Taux horaire × 1.5</div>
+                            <div>• <strong>ROI :</strong><br />((Gains totaux - Investissement) / Investissement) × 100</div>
+                          </div>
+                        </div>
+                      </TooltipContent>
+                    </UITooltip>
+                  </TooltipProvider>
                   <p className="mt-4 text-sm opacity-80" style={{ color: '#F5F5F5' }}>
                     Résultat instantané • Gratuit • Sans engagement
                   </p>
