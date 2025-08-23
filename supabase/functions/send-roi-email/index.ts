@@ -89,15 +89,15 @@ const handler = async (req: Request): Promise<Response> => {
           ${recommendationsHtml}
 
           <div style="background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 30px; border-radius: 12px; margin: 40px 0; text-align: center;">
-            <h3 style="margin: 0 0 15px 0; font-size: 24px;">🚀 Passons à l'action !</h3>
-            <p style="margin: 15px 0; font-size: 16px; opacity: 0.9;">Votre diagnostic est prêt. Réservez maintenant votre entretien gratuit pour transformer ces recommandations en plan d'action concret.</p>
+            <h3 style="margin: 0 0 15px 0; font-size: 24px;">🚀 Prêt à transformer votre entreprise ?</h3>
+            <p style="margin: 15px 0; font-size: 16px; opacity: 0.9;">Votre diagnostic révèle un potentiel d'économies de <strong>${roiData.annual_savings.toLocaleString('fr-FR')}€ par an</strong>. Passez à l'étape suivante avec une consultation personnalisée.</p>
             
             <a href="${Deno.env.get('SUPABASE_URL')?.replace('//', '//').split('.')[0]}.lovable.app/calculateur-roi" 
                style="display: inline-block; background: white; color: #007bff; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 18px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">
-              📅 Réserver un Entretien Gratuit
+              📅 Demander une Consultation Personnalisée
             </a>
             
-            <p style="margin: 15px 0 0 0; font-size: 14px; opacity: 0.8;">✅ Consultation de 30 minutes offerte<br>✅ Plan d'action personnalisé<br>✅ Sans engagement</p>
+            <p style="margin: 15px 0 0 0; font-size: 14px; opacity: 0.8;">✅ Analyse approfondie de vos processus<br>✅ Plan d'action sur-mesure avec ROI détaillé<br>✅ Accompagnement personnalisé par nos experts</p>
           </div>
 
           <div style="background: #f8f9fa; color: #333; padding: 20px; border-radius: 8px; margin-top: 30px; text-align: center; border-left: 4px solid #28a745;">
