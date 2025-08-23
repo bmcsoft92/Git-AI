@@ -492,7 +492,7 @@ const ROICalculatorPage = () => {
                       Analyse financière détaillée sur 3 leviers de croissance
                     </h2>
                     <p className="text-lg opacity-90 mb-6" style={{ color: '#F5F5F5' }}>
-                      L'automatisation n'est pas une dépense, c'est un investissement qui réduit les coûts ET accélère votre croissance.
+                      L'automatisation n'est pas une dépense, c'est un investissement qui réduit les coûts et accélère votre croissance.
                     </p>
                   </div>
 
