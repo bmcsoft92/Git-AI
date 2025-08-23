@@ -121,8 +121,14 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
 
             <div style="background: #d4edda; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <h3 style="color: #155724; margin-top: 0;">Prochaines étapes</h3>
-              <p>Notre équipe va vous recontacter dans les plus brefs délais pour confirmer le créneau et vous envoyer les détails de connexion.</p>
+              <h3 style="color: #155724; margin-top: 0;">✅ Prochaines étapes</h3>
+              <p><strong>Notre équipe vous recontactera sous 24h</strong> pour :</p>
+              <ul>
+                <li>Confirmer votre créneau de rendez-vous</li>
+                <li>Vous envoyer le lien de connexion</li>
+                <li>Préparer votre consultation personnalisée</li>
+              </ul>
+              <p>Merci pour votre confiance !</p>
             </div>
 
             <p>Si vous avez des questions urgentes, n'hésitez pas à nous contacter directement à <a href="mailto:contact@maiaelange.fr">contact@maiaelange.fr</a></p>
