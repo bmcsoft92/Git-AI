@@ -14,7 +14,140 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      appointments: {
+        Row: {
+          appointment_date: string
+          appointment_type: string | null
+          created_at: string
+          id: string
+          notes: string | null
+          roi_calculation_id: string | null
+          status: string | null
+          updated_at: string
+          user_email: string
+          user_name: string
+          user_phone: string | null
+        }
+        Insert: {
+          appointment_date: string
+          appointment_type?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          roi_calculation_id?: string | null
+          status?: string | null
+          updated_at?: string
+          user_email: string
+          user_name: string
+          user_phone?: string | null
+        }
+        Update: {
+          appointment_date?: string
+          appointment_type?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          roi_calculation_id?: string | null
+          status?: string | null
+          updated_at?: string
+          user_email?: string
+          user_name?: string
+          user_phone?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "appointments_roi_calculation_id_fkey"
+            columns: ["roi_calculation_id"]
+            isOneToOne: false
+            referencedRelation: "roi_calculations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      roi_calculations: {
+        Row: {
+          annual_savings: number
+          automation_goals: string[] | null
+          budget_range: string | null
+          business_type: string | null
+          created_at: string
+          current_tools: string[] | null
+          employees: number
+          hourly_rate: number
+          hours_per_week: number
+          id: string
+          investment: number
+          main_activities: string[] | null
+          pain_points: string[] | null
+          priority_processes: string[] | null
+          priority_projects: Json | null
+          repetitive_tasks: string[] | null
+          roi_percentage: number
+          success_metrics: string[] | null
+          team_size: string | null
+          technical_level: string | null
+          timeline: string | null
+          updated_at: string
+          user_email: string
+          user_name: string | null
+          user_phone: string | null
+        }
+        Insert: {
+          annual_savings: number
+          automation_goals?: string[] | null
+          budget_range?: string | null
+          business_type?: string | null
+          created_at?: string
+          current_tools?: string[] | null
+          employees: number
+          hourly_rate: number
+          hours_per_week: number
+          id?: string
+          investment: number
+          main_activities?: string[] | null
+          pain_points?: string[] | null
+          priority_processes?: string[] | null
+          priority_projects?: Json | null
+          repetitive_tasks?: string[] | null
+          roi_percentage: number
+          success_metrics?: string[] | null
+          team_size?: string | null
+          technical_level?: string | null
+          timeline?: string | null
+          updated_at?: string
+          user_email: string
+          user_name?: string | null
+          user_phone?: string | null
+        }
+        Update: {
+          annual_savings?: number
+          automation_goals?: string[] | null
+          budget_range?: string | null
+          business_type?: string | null
+          created_at?: string
+          current_tools?: string[] | null
+          employees?: number
+          hourly_rate?: number
+          hours_per_week?: number
+          id?: string
+          investment?: number
+          main_activities?: string[] | null
+          pain_points?: string[] | null
+          priority_processes?: string[] | null
+          priority_projects?: Json | null
+          repetitive_tasks?: string[] | null
+          roi_percentage?: number
+          success_metrics?: string[] | null
+          team_size?: string | null
+          technical_level?: string | null
+          timeline?: string | null
+          updated_at?: string
+          user_email?: string
+          user_name?: string | null
+          user_phone?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
