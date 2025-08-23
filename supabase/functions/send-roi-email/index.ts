@@ -94,10 +94,10 @@ const handler = async (req: Request): Promise<Response> => {
             
             <a href="${Deno.env.get('SUPABASE_URL')?.replace('//', '//').split('.')[0]}.lovable.app/calculateur-roi" 
                style="display: inline-block; background: white; color: #007bff; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 18px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">
-              📅 Demander une Consultation Personnalisée
+              📅 Demander un Devis Personnalisé
             </a>
             
-            <p style="margin: 15px 0 0 0; font-size: 14px; opacity: 0.8;">✅ Analyse approfondie de vos processus<br>✅ Plan d'action sur-mesure avec ROI détaillé<br>✅ Accompagnement personnalisé par nos experts</p>
+            <p style="margin: 15px 0 0 0; font-size: 14px; opacity: 0.8;">✅ Analyse approfondie de vos processus<br>✅ Plan d'action sur-mesure avec ROI détaillé<br>✅ Devis personnalisé selon vos besoins</p>
           </div>
 
           <div style="background: #f8f9fa; color: #333; padding: 20px; border-radius: 8px; margin-top: 30px; text-align: center; border-left: 4px solid #28a745;">
