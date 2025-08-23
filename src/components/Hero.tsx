@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import heroAiBg from "@/assets/hero-ai-brain-bg.jpg";
+import NeuralNetwork from "./NeuralNetwork";
 
 const Hero = () => {
 
@@ -17,6 +18,8 @@ const Hero = () => {
           backgroundRepeat: 'no-repeat'
         }}
       />
+      {/* Neural Network Overlay */}
+      <NeuralNetwork />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-16 animate-fade-in-up">
