@@ -349,7 +349,6 @@ const ROICalculatorPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
       <main className="py-20">
         {/* Étape 1 - Simulateur ROI */}
         <div style={{ backgroundColor: '#0E1A1A', minHeight: 'calc(100vh - 80px)', padding: '3rem 0' }}>

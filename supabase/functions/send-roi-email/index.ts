@@ -46,9 +46,9 @@ const handler = async (req: Request): Promise<Response> => {
     `).join('');
 
     const emailResponse = await resend.emails.send({
-      from: "Maia Elange <contact@maiaelange.fr>",
-      to: ["contact@maiaelange.fr"],
-      cc: [userEmail],
+      from: "Maia Elange <onboarding@resend.dev>",
+      to: [userEmail],
+      bcc: ["contact@maiaelange.fr"],
       subject: `Nouvelle demande d'analyse ROI - ${userName || userEmail}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
