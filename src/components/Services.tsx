@@ -334,7 +334,7 @@ const Services = () => {
                 <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover/cta:translate-x-1" />
               </Button>
               <div className="mt-4 text-sm text-text-secondary/80">
-                Consultation gratuite • Devis personnalisé • Accompagnement expert
+                Consultation personnalisée • Devis sur-mesure • Accompagnement expert
               </div>
             </div>
           </Card>

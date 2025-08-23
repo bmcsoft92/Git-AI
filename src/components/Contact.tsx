@@ -16,7 +16,7 @@ const Contact = () => {
           </h2>
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
             Nos experts en intelligence artificielle vous accompagnent dans l'automatisation 
-            de vos processus organisationnels. Consultation personnalisée gratuite.
+            de vos processus organisationnels. Consultation personnalisée sur devis.
           </p>
         </div>
 
@@ -140,7 +140,7 @@ const Contact = () => {
             <Card className="bg-primary text-primary-foreground">
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold mb-3">
-                  Audit Gratuit IA de vos Processus
+                  Audit IA de vos Processus
                 </h3>
                 <p className="mb-4 opacity-90">
                   Bénéficiez d'une analyse complète de vos processus organisationnels 

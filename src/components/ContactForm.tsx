@@ -90,6 +90,8 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
               <Label htmlFor="phone">Téléphone</Label>
               <Input
                 id="phone"
+                type="tel"
+                placeholder="+33 6 12 34 56 78"
                 value={formData.phone}
                 onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
               />

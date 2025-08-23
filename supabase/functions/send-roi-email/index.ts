@@ -66,12 +66,12 @@ const handler = async (req: Request): Promise<Response> => {
             <h3 style="margin: 0 0 15px 0; font-size: 24px;">🚀 Prêt à transformer votre entreprise ?</h3>
             <p style="margin: 15px 0; font-size: 16px; opacity: 0.9;">Votre diagnostic révèle un potentiel d'économies de <strong>${roiData.annual_savings.toLocaleString('fr-FR')}€ par an</strong>. Passez à l'étape suivante avec une consultation personnalisée.</p>
             
-            <a href="${Deno.env.get('SUPABASE_URL')?.replace('//', '//').split('.')[0]}.lovable.app/calculateur-roi" 
+            <a href="https://calendly.com/contact-maiaelange/consultation-automatisation" 
                style="display: inline-block; background: white; color: #007bff; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 18px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">
-              📅 Réserver un Entretien Gratuit
+              📅 Réserver un Entretien
             </a>
             
-            <p style="margin: 15px 0 0 0; font-size: 14px; opacity: 0.8;">✅ Consultation personnalisée gratuite<br>✅ Plan d'action sur-mesure<br>✅ Devis adapté à vos besoins</p>
+            <p style="margin: 15px 0 0 0; font-size: 14px; opacity: 0.8;">✅ Consultation personnalisée<br>✅ Plan d'action sur-mesure<br>✅ Devis adapté à vos besoins</p>
           </div>
           
           <p>À bientôt,<br><strong>L'équipe Maia Elange</strong></p>

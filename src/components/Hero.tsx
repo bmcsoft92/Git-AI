@@ -65,7 +65,7 @@ const Hero = () => {
                     navigate('/calculateur-roi');
                   }}
                 >
-                  Tester mon ROI (gratuit)
+                  Calculer mon ROI
                 </Button>
                 <span className="text-xs text-text-secondary/80 italic">
                   Résultat instantané en 30 secondes

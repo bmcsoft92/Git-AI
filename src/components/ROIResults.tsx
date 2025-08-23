@@ -168,7 +168,7 @@ export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }
           Prêt à passer à l'action ?
         </h3>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Planifiez un entretien gratuit avec nos experts pour discuter de la mise en œuvre de ces recommandations
+          Planifiez un entretien avec nos experts pour discuter de la mise en œuvre de ces recommandations
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -178,7 +178,7 @@ export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }
             className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
           >
             <Calendar className="mr-2 h-5 w-5" />
-            Réserver un Entretien Gratuit
+            Réserver un Entretien
           </Button>
           
           <Button 

@@ -107,7 +107,7 @@ export const AppointmentBooking = ({ calculationId, onClose, userInfo }: Appoint
           <div className="flex items-center justify-between">
             <DialogTitle className="text-2xl font-bold flex items-center gap-2">
               <Calendar className="h-6 w-6 text-primary" />
-              Réserver un Entretien Gratuit
+              Réserver un Entretien
             </DialogTitle>
             <Button variant="ghost" size="icon" onClick={onClose}>
               <X className="h-4 w-4" />
@@ -119,7 +119,7 @@ export const AppointmentBooking = ({ calculationId, onClose, userInfo }: Appoint
           <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
             <h3 className="font-semibold text-primary mb-2">Entretien Personnalisé - 30 minutes</h3>
             <p className="text-sm text-muted-foreground">
-              Discutons de vos recommandations d'automatisation et de la stratégie de mise en œuvre adaptée à votre entreprise.
+              Discutons de vos recommandations d'automatisation et de la stratégie de mise en œuvre. Devis personnalisé selon vos besoins.
             </p>
           </div>
 
@@ -158,15 +158,16 @@ export const AppointmentBooking = ({ calculationId, onClose, userInfo }: Appoint
                   </div>
                 </div>
                 
-                <div>
-                  <Label htmlFor="userPhone">Téléphone</Label>
-                  <Input
-                    id="userPhone"
-                    value={formData.userPhone}
-                    onChange={(e) => handleInputChange("userPhone", e.target.value)}
-                    placeholder="06 12 34 56 78"
-                  />
-                </div>
+                  <div>
+                    <Label htmlFor="userPhone">Téléphone</Label>
+                    <Input
+                      id="userPhone"
+                      type="tel"
+                      value={formData.userPhone}
+                      onChange={(e) => handleInputChange("userPhone", e.target.value)}
+                      placeholder="+33 6 12 34 56 78"
+                    />
+                  </div>
               </CardContent>
             </Card>
 

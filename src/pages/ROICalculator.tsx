@@ -553,7 +553,7 @@ const ROICalculatorPage = () => {
                     </UITooltip>
                   </TooltipProvider>
                   <p className="mt-4 text-sm opacity-80" style={{ color: '#F5F5F5' }}>
-                    Résultat instantané • Gratuit • Sans engagement
+                    Résultat instantané • Sans engagement
                   </p>
                 </div>
               </CardContent>
