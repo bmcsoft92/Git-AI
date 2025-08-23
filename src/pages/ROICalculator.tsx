@@ -39,6 +39,9 @@ const ROICalculatorPage = () => {
     heures_repetitives: "", // Heures par semaine sur tâches répétitives
     cout_horaire: "", // Coût horaire moyen chargé
     // Étape 5
+    outils: [] as string[], // Checkboxes outils
+    autre_outil: "", // Champ optionnel pour autre outil
+    // Étape 6
     budget: "",
     timeline: ""
   });
@@ -87,6 +90,9 @@ const ROICalculatorPage = () => {
         if (!diagnosticData.cout_horaire.trim()) errors.push("cout_horaire");
         break;
       case 5:
+        // Les outils ne sont pas obligatoires, mais on peut valider si besoin
+        break;
+      case 6:
         if (!diagnosticData.budget) errors.push("budget");
         if (!diagnosticData.timeline) errors.push("timeline");
         break;
@@ -111,7 +117,7 @@ const ROICalculatorPage = () => {
 
   const handleNextStep = () => {
     if (validateStep(currentStep)) {
-      if (currentStep < 5) {
+      if (currentStep < 6) {
         setCurrentStep(currentStep + 1);
       } else {
         // Soumission finale
@@ -134,7 +140,7 @@ const ROICalculatorPage = () => {
   };
 
   const getProgressValue = () => {
-    return (currentStep / 5) * 100;
+    return (currentStep / 6) * 100;
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -883,7 +889,7 @@ const ROICalculatorPage = () => {
                           <div className="mb-8">
                             <Progress value={getProgressValue()} className="h-2 mb-2" style={{ backgroundColor: 'rgba(15, 127, 123, 0.2)' }} />
                             <p className="text-sm opacity-70" style={{ color: '#F5F5F5' }}>
-                              Étape {currentStep} sur 5
+                              Étape {currentStep} sur 6
                             </p>
                           </div>
                         </div>
@@ -896,7 +902,7 @@ const ROICalculatorPage = () => {
                                 className="text-2xl font-semibold mb-4"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Étape 1/5 – Pour commencer, qui êtes-vous ?
+                                Étape 1/6 – Pour commencer, qui êtes-vous ?
                               </h3>
                               <p 
                                 className="text-base opacity-80"
@@ -1024,7 +1030,7 @@ const ROICalculatorPage = () => {
                                 className="text-2xl font-semibold mb-4"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Étape 2/5 – Votre secteur d'activité
+                                Étape 2/6 – Votre secteur d'activité
                               </h3>
                               <p 
                                 className="text-base opacity-80"
@@ -1148,7 +1154,7 @@ const ROICalculatorPage = () => {
                                 className="text-2xl font-semibold mb-4"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Étape 3/5 – Où se situent vos points de friction ?
+                                Étape 3/6 – Où se situent vos points de friction ?
                               </h3>
                               <p 
                                 className="text-base opacity-80 mb-2"
@@ -1245,7 +1251,7 @@ const ROICalculatorPage = () => {
                                 className="text-2xl font-semibold mb-4"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Étape 4/5 – Quantifions ensemble votre potentiel
+                                Étape 4/6 – Quantifions ensemble votre potentiel
                               </h3>
                               <p 
                                 className="text-base opacity-80"
@@ -1317,7 +1323,104 @@ const ROICalculatorPage = () => {
                                 className="text-2xl font-semibold mb-4"
                                 style={{ color: '#F5F5F5' }}
                               >
-                                Étape 5/5 – Budget et timing
+                                Étape 5/6 – Quels sont vos outils du quotidien ?
+                              </h3>
+                              <p 
+                                className="text-base opacity-80"
+                                style={{ color: '#F5F5F5' }}
+                              >
+                                Cochez vos outils principaux pour identifier les connexions possibles.
+                              </p>
+                            </div>
+
+                            <div className="space-y-6">
+                              {/* Outils principaux */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-4 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Quels outils utilisez-vous actuellement ?
+                                </Label>
+                                
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  {[
+                                    'Google Workspace',
+                                    'Microsoft 365',
+                                    'Slack',
+                                    'LinkedIn'
+                                  ].map((outil) => (
+                                    <div key={outil} className="flex items-center space-x-3">
+                                      <input
+                                        type="checkbox"
+                                        id={outil}
+                                        checked={diagnosticData.outils.includes(outil)}
+                                        onChange={(e) => {
+                                          if (e.target.checked) {
+                                            setDiagnosticData(prev => ({
+                                              ...prev,
+                                              outils: [...prev.outils, outil]
+                                            }));
+                                          } else {
+                                            setDiagnosticData(prev => ({
+                                              ...prev,
+                                              outils: prev.outils.filter(item => item !== outil)
+                                            }));
+                                          }
+                                        }}
+                                        className="w-4 h-4 rounded border-2 focus:ring-2 focus:ring-primary/50"
+                                        style={{
+                                          accentColor: '#4F46E5',
+                                          borderColor: '#6B7280'
+                                        }}
+                                      />
+                                      <label 
+                                        htmlFor={outil}
+                                        className="text-base cursor-pointer"
+                                        style={{ color: '#F5F5F5' }}
+                                      >
+                                        {outil}
+                                      </label>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+
+                              {/* Autre outil - champ optionnel */}
+                              <div className="w-full">
+                                <Label 
+                                  className="text-sm font-medium mb-3 block"
+                                  style={{ color: '#F5F5F5' }}
+                                >
+                                  Autre outil important (optionnel)
+                                </Label>
+                                <Input
+                                  type="text"
+                                  value={diagnosticData.autre_outil}
+                                  onChange={(e) => setDiagnosticData(prev => ({ ...prev, autre_outil: e.target.value }))}
+                                  placeholder="Ex: Notion, Trello, CRM spécifique..."
+                                  className="text-base py-3 px-4 border-2 focus:ring-2 focus:ring-primary/50"
+                                  style={{ 
+                                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                                    color: '#F5F5F5',
+                                    borderColor: '#6B7280', // Pas de bordure rouge car optionnel
+                                    borderRadius: '8px'
+                                  }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Étape 6 */}
+                        {currentStep === 6 && (
+                          <div className="space-y-8">
+                            <div className="text-center mb-8">
+                              <h3 
+                                className="text-2xl font-semibold mb-4"
+                                style={{ color: '#F5F5F5' }}
+                              >
+                                Étape 6/6 – Budget et timing
                               </h3>
                               <p 
                                 className="text-base opacity-80"
@@ -1425,7 +1528,7 @@ const ROICalculatorPage = () => {
                                 borderRadius: '8px'
                               }}
                             >
-                              {currentStep === 5 ? 'Envoyer le diagnostic' : 'Suivant'}
+                              {currentStep === 6 ? 'Envoyer le diagnostic' : 'Suivant'}
                             </Button>
                           </div>
                         </div>
