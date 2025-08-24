@@ -292,6 +292,17 @@ export type Database = {
         }
         Returns: string
       }
+      confirm_appointment: {
+        Args: { p_appointment_id: string }
+        Returns: boolean
+      }
+      update_lead_status: {
+        Args: {
+          p_lead_email: string
+          p_new_status: Database["public"]["Enums"]["lead_status"]
+        }
+        Returns: boolean
+      }
       upsert_lead: {
         Args:
           | {

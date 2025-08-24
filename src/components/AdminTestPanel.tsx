@@ -236,7 +236,15 @@ export const AdminTestPanel = () => {
           chaud: leads?.filter(l => l.score === 'CHAUD').length || 0,
           tiede: leads?.filter(l => l.score === 'TIEDE').length || 0,
           froid: leads?.filter(l => l.score === 'FROID').length || 0,
-          duplicates: testEmails.length - new Set(leads?.map(l => l.email)).size
+          duplicates: testEmails.length - new Set(leads?.map(l => l.email)).size,
+          statusDistribution: {
+            nouveau: leads?.filter(l => l.status === 'nouveau').length || 0,
+            rdv_en_attente_confirmation: leads?.filter(l => l.status === 'rdv_en_attente_confirmation').length || 0,
+            rdv_confirme: leads?.filter(l => l.status === 'rdv_confirme').length || 0,
+            contact_recu: leads?.filter(l => l.status === 'contact_recu').length || 0,
+            client_signe: leads?.filter(l => l.status === 'client_signe').length || 0,
+            perdu: leads?.filter(l => l.status === 'perdu').length || 0
+          }
         },
         roiCalculations: roiCalculations?.length || 0,
         appointments: appointments?.length || 0,
@@ -537,6 +545,36 @@ export const AdminTestPanel = () => {
                 <div className="text-center">
                   <div className="font-semibold text-lg">{crmResults.contacts}</div>
                   <div className="text-muted-foreground">Messages</div>
+                </div>
+              </div>
+              
+              <div className="border-t pt-3">
+                <div className="text-sm font-medium mb-2">🔄 Statuts Automatisés :</div>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs">
+                  <div className="text-center">
+                    <div className="font-semibold">{crmResults.leads.statusDistribution.nouveau}</div>
+                    <div className="text-green-600">Nouveau</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-semibold">{crmResults.leads.statusDistribution.rdv_en_attente_confirmation}</div>
+                    <div className="text-orange-600">RDV Attente</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-semibold">{crmResults.leads.statusDistribution.rdv_confirme}</div>
+                    <div className="text-blue-600">RDV Confirmé</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-semibold">{crmResults.leads.statusDistribution.contact_recu}</div>
+                    <div className="text-purple-600">Contact Reçu</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-semibold">{crmResults.leads.statusDistribution.client_signe}</div>
+                    <div className="text-emerald-600">Client Signé</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-semibold">{crmResults.leads.statusDistribution.perdu}</div>
+                    <div className="text-red-600">Perdu</div>
+                  </div>
                 </div>
               </div>
               

@@ -31,13 +31,17 @@ interface Lead {
 }
 
 const statusConfig = {
-  nouveau_lead: { label: 'Nouveau Lead', color: 'bg-blue-500', textColor: 'text-white' },
-  diagnostic_envoye: { label: 'Diagnostic Envoyé', color: 'bg-green-500', textColor: 'text-white' },
-  rdv_demande: { label: 'RDV Demandé', color: 'bg-orange-500', textColor: 'text-white' },
-  rdv_confirme: { label: 'RDV Confirmé', color: 'bg-purple-500', textColor: 'text-white' },
-  proposition_envoyee: { label: 'Proposition Envoyée', color: 'bg-yellow-500', textColor: 'text-black' },
+  nouveau: { label: 'Nouveau', color: 'bg-green-500', textColor: 'text-white' },
+  rdv_en_attente_confirmation: { label: 'RDV En Attente', color: 'bg-orange-500', textColor: 'text-white' },
+  rdv_confirme: { label: 'RDV Confirmé', color: 'bg-blue-500', textColor: 'text-white' },
+  contact_recu: { label: 'Contact Reçu', color: 'bg-purple-500', textColor: 'text-white' },
   client_signe: { label: 'Client Signé', color: 'bg-emerald-600', textColor: 'text-white' },
-  perdu: { label: 'Perdu', color: 'bg-red-500', textColor: 'text-white' }
+  perdu: { label: 'Perdu', color: 'bg-red-500', textColor: 'text-white' },
+  // Anciens statuts pour compatibilité (à supprimer après nettoyage)
+  nouveau_lead: { label: 'Nouveau Lead (Ancien)', color: 'bg-gray-500', textColor: 'text-white' },
+  diagnostic_envoye: { label: 'Diagnostic Envoyé (Ancien)', color: 'bg-gray-500', textColor: 'text-white' },
+  rdv_demande: { label: 'RDV Demandé (Ancien)', color: 'bg-gray-500', textColor: 'text-white' },
+  proposition_envoyee: { label: 'Proposition Envoyée (Ancien)', color: 'bg-gray-500', textColor: 'text-white' }
 };
 
 export default function CRM() {
@@ -200,9 +204,9 @@ export default function CRM() {
                 <Calendar className="h-5 w-5 text-orange-600" />
                 <div>
                   <p className="text-sm text-muted-foreground">RDV en Attente</p>
-                  <p className="text-2xl font-bold">
-                    {leads.filter(lead => ['rdv_demande', 'rdv_confirme'].includes(lead.status)).length}
-                  </p>
+                   <p className="text-2xl font-bold">
+                     {leads.filter(lead => ['rdv_en_attente_confirmation', 'rdv_confirme'].includes(lead.status)).length}
+                   </p>
                 </div>
               </div>
             </CardContent>

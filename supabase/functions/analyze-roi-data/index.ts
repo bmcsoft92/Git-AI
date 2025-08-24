@@ -201,7 +201,7 @@ Soyez spécifique et concret dans vos recommandations.
         p_business_type: diagnosticData.business_type || null,
         p_roi_potential: roiData.roi_percentage,
         p_annual_savings: roiData.annual_savings,
-        p_status: 'nouveau_lead',
+        p_status: 'nouveau',
         p_budget_range: diagnosticData.budget_range || null
       });
 
@@ -233,12 +233,8 @@ Soyez spécifique et concret dans vos recommandations.
       } else {
         console.log("Email sent successfully");
         
-        // Mettre à jour le statut du lead après envoi de l'email
-        await supabase
-          .rpc('upsert_lead', {
-            p_email: userEmail,
-            p_status: 'diagnostic_envoye'
-          });
+        // Mettre à jour le statut du lead après envoi de l'email (reste nouveau)
+        console.log("Email ROI sent successfully to lead:", userEmail);
       }
     }
 
