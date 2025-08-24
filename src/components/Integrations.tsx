@@ -1,8 +1,12 @@
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Globe, Mail, Users, MessageSquare, Video, Briefcase } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Integrations = () => {
+  const navigate = useNavigate();
+
   const integrations = [
     {
       id: "google-workspace",
@@ -68,7 +72,7 @@ const Integrations = () => {
             <span className="text-primary">vos outils actuels</span>
           </h2>
           <p className="text-lg text-text-secondary max-w-4xl mx-auto leading-relaxed">
-            Nous branchons l'IA à vos plateformes existantes pour des flux plus fluides et efficaces — sans refonte lourde.
+            Nous connectons vos outils existants à nos systèmes d'automatisation pour plus de fluidité et d'efficacité, sans refonte technique inutile.
           </p>
         </div>
 
@@ -129,27 +133,27 @@ const Integrations = () => {
           })}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '1.5s', animationFillMode: 'both' }}>
-          <div className="inline-block group">
-            <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8 border border-primary/20
-                          transition-all duration-700 ease-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20
-                          hover:border-primary/40 hover:bg-gradient-to-r hover:from-primary/15 hover:to-primary/8
-                          relative overflow-hidden
-                          before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/5 before:via-transparent before:to-primary/5 
-                          before:opacity-0 before:transition-opacity before:duration-700 hover:before:opacity-100">
-              <h3 className="text-xl font-semibold text-heading mb-4 group-hover:text-primary
-                           transition-all duration-500 group-hover:scale-105 relative z-10">
-                Des Intégrations Sur-Mesure pour Votre Écosystème
-              </h3>
-              <p className="text-text-secondary mb-6 max-w-2xl mx-auto group-hover:text-text-secondary/90
-                           transition-all duration-500 group-hover:scale-[1.02] relative z-10">
-                Votre entreprise utilise des outils spécifiques? Notre expertise ne se limite pas à une liste prédéfinie. 
-                Nous créons des connecteurs sur-mesure pour que notre système d'automatisation s'adapte parfaitement à votre environnement, 
-                et non l'inverse.
-              </p>
-            </div>
+        {/* Additional tools mention */}
+        <div className="text-center mt-8 mb-16">
+          <p className="text-sm text-text-secondary/70">
+            Et bien d'autres via API (Notion, Trello, CRM internes…).
+          </p>
+        </div>
+
+        {/* Custom Integration Text and CTA */}
+        <div className="text-center animate-fade-in" style={{ animationDelay: '1.5s', animationFillMode: 'both' }}>
+          <div className="max-w-3xl mx-auto mb-8">
+            <p className="text-lg text-text-secondary leading-relaxed">
+              Si votre outil n'apparaît pas, nous développons un connecteur API spécifique pour qu'il s'intègre à votre écosystème.
+            </p>
           </div>
+          <Button 
+            onClick={() => navigate('/roi-calculator')}
+            className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 rounded-lg
+                     transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
+          >
+            Vérifier la compatibilité de vos outils
+          </Button>
         </div>
       </div>
     </section>
