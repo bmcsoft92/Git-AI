@@ -72,13 +72,13 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* 3 Colonnes du Footer */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8">
+          {/* 4 Colonnes du Footer */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mb-8">
             
-            {/* Colonne 1: Navigation rapide */}
+            {/* Colonne 1: Navigation principale */}
             <div className="space-y-4">
               <h4 className="text-lg font-bold text-heading relative">
-                Navigation rapide
+                Navigation principale
                 <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
               </h4>
               <ul className="space-y-3">
@@ -86,7 +86,33 @@ const Footer = () => {
                   { name: "Accueil", href: "/" },
                   { name: "Solutions", href: "/solutions" },
                   { name: "Méthode", href: "/methode" },
-                  { name: "Ressources", href: "/cas-usage" },
+                  { name: "Cas d'usage", href: "/cas-usage" },
+                  { name: "Calculateur ROI", href: "/calculateur-roi" },
+                  { name: "Blog & Guides", href: "/blog" }
+                ].map((item, index) => (
+                  <li key={index}>
+                    <Link 
+                      to={item.href} 
+                      className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2"
+                    >
+                      <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Colonne 2: Confiance */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-bold text-heading relative">
+                Confiance
+                <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
+              </h4>
+              <ul className="space-y-3">
+                {[
+                  { name: "À propos", href: "/a-propos" },
+                  { name: "FAQ", href: "/faq" },
                   { name: "Contact", href: "/contact" }
                 ].map((item, index) => (
                   <li key={index}>
@@ -102,47 +128,58 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Colonne 2: Confiance & Légal */}
+            {/* Colonne 3: Légal & conformité */}
             <div className="space-y-4">
               <h4 className="text-lg font-bold text-heading relative">
-                Confiance & Légal
+                Légal & Conformité
                 <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
               </h4>
               
               {/* Élément de confiance RGPD */}
-              <div className="bg-gradient-to-br from-primary/10 to-cta-primary/10 rounded-lg p-4 mb-4">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Shield className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-semibold text-heading">RGPD ✅</span>
+              <div className="bg-gradient-to-br from-primary/10 to-cta-primary/10 rounded-lg p-3 mb-4">
+                <div className="flex items-center space-x-2 mb-1">
+                  <Shield className="h-4 w-4 text-primary" />
+                  <span className="text-xs font-semibold text-heading">RGPD ✅</span>
                 </div>
                 <p className="text-xs text-text-secondary leading-relaxed">
-                  100% conforme aux standards européens (RGPD, sécurité des données).
+                  Conformité européenne garantie
                 </p>
               </div>
 
               <ul className="space-y-3">
                 {[
-                  { name: "À propos", href: "/a-propos" },
                   { name: "Mentions légales", href: "/mentions-legales" },
-                  { name: "Politique de confidentialité", href: "/politique-confidentialite" }
+                  { name: "Politique de confidentialité", href: "/politique-confidentialite" },
+                  { name: "CGU / CGV", href: "#", disabled: true }
                 ].map((item, index) => (
                   <li key={index}>
                     <Link 
                       to={item.href} 
-                      className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2 text-sm"
+                      className={`transition-all duration-300 group flex items-center space-x-2 text-sm ${
+                        item.disabled 
+                          ? 'text-text-secondary/50 cursor-not-allowed' 
+                          : 'text-text-secondary hover:text-primary'
+                      }`}
                     >
-                      <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
+                      <span className={`w-1 h-1 rounded-full transition-all duration-300 ${
+                        item.disabled 
+                          ? 'bg-primary/30' 
+                          : 'bg-primary/50 group-hover:bg-primary group-hover:scale-150'
+                      }`}></span>
+                      <span className={item.disabled ? '' : 'group-hover:translate-x-1 transition-transform duration-300'}>
+                        {item.name}
+                        {item.disabled && <span className="ml-1 text-xs">(bientôt)</span>}
+                      </span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Colonne 3: Contact direct */}
+            {/* Colonne 4: Call to Action */}
             <div className="space-y-4">
               <h4 className="text-lg font-bold text-heading relative">
-                Contact direct
+                Prêt à commencer ?
                 <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
               </h4>
               
@@ -156,7 +193,7 @@ const Footer = () => {
                     <p className="text-xs text-text-secondary mb-1">Email</p>
                     <a 
                       href="mailto:contact@maiaelange.fr" 
-                      className="text-primary hover:text-cta-primary transition-colors font-medium"
+                      className="text-primary hover:text-cta-primary transition-colors font-medium text-sm"
                     >
                       contact@maiaelange.fr
                     </a>
@@ -177,6 +214,16 @@ const Footer = () => {
                       Planifier un échange
                     </Link>
                   </div>
+                </div>
+
+                {/* CTA Button */}
+                <div className="mt-6 p-4 bg-gradient-to-br from-cta-primary/10 to-primary/10 rounded-lg border border-cta-primary/20">
+                  <Link 
+                    to="/contact"
+                    className="block text-center bg-cta-primary hover:bg-cta-primary/90 text-white px-4 py-3 rounded-lg text-sm font-medium transition-colors"
+                  >
+                    Obtenir un plan d'action personnalisé
+                  </Link>
                 </div>
 
                 {/* LinkedIn */}
