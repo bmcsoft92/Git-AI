@@ -14,7 +14,7 @@ const ROICalculator = () => {
     hourlyRate: 35,
     hoursPerWeek: 40,
     automationPercentage: 30,
-    budget: 25000
+    budget: 5000
   });
   const [showResults, setShowResults] = useState(false);
 
@@ -161,8 +161,10 @@ const ROICalculator = () => {
                   value={formData.budget}
                   onChange={(e) => handleInputChange('budget', e.target.value)}
                   className="mt-1 bg-background border-border text-foreground"
-                  min="5000"
+                  placeholder="1 000 - 15 000"
+                  min="1000"
                 />
+                <p className="text-xs text-text-secondary mt-1">Fourchette réaliste : 1 000€ - 15 000€ (ajustable selon votre projet)</p>
               </div>
 
               <div className="space-y-3">
