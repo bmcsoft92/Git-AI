@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -324,7 +324,13 @@ const ROICalculatorPage = () => {
     };
   };
 
-  const results = calculateROI();
+  // Calcul réactif des résultats ROI
+  const results = useMemo(() => calculateROI(), [
+    formData.hoursPerWeek, 
+    formData.hourlyRate, 
+    formData.employees, 
+    formData.investissement
+  ]);
 
   // Si on affiche les résultats d'analyse IA
   if (showAnalysisResults && analysisResults) {
