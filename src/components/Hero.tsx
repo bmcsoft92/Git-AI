@@ -10,12 +10,12 @@ const Hero = () => {
   return (
     <section className="relative bg-background overflow-hidden min-h-screen flex items-center">
       {/* Optimized AI Background with proper alt text */}
-      <img 
-        src={heroAiBg}
-        alt="Réseau de neurones représentant l'intelligence artificielle au service des entreprises"
-        className="absolute inset-0 w-full h-full object-cover opacity-20"
-        loading="eager"
-      />
+        <img 
+          src={heroAiBg}
+          alt="Réseau de neurones représentant l'intelligence artificielle au service des entreprises"
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          loading="eager"
+        />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-16 animate-fade-in-up">

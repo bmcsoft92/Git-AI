@@ -4,23 +4,34 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CookieBanner from "@/components/CookieBanner";
+// Performance: Lazy loading des composants pour réduire le bundle initial
+import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
-import ROICalculatorPage from "./pages/ROICalculator";
-import CRM from "./pages/CRM";
-import Methode from "./pages/Methode";
-import Solutions from "./pages/Solutions";
-import CasUsage from "./pages/CasUsage";
-import FAQ from "./pages/FAQ";
-import Contact from "./pages/Contact";
-import Blog from "./pages/Blog";
-import APropos from "./pages/APropos";
-import MentionsLegales from "./pages/MentionsLegales";
-import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
-import CGU from "./pages/CGU";
-import CGV from "./pages/CGV";
-import AdminTest from "./pages/AdminTest";
-import NotFound from "./pages/NotFound";
-import Appointment from "./pages/Appointment";
+
+// Lazy load des pages non critiques pour améliorer le First Contentful Paint
+const ROICalculatorPage = lazy(() => import("./pages/ROICalculator"));
+const CRM = lazy(() => import("./pages/CRM"));
+const Methode = lazy(() => import("./pages/Methode"));
+const Solutions = lazy(() => import("./pages/Solutions"));
+const CasUsage = lazy(() => import("./pages/CasUsage"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Blog = lazy(() => import("./pages/Blog"));
+const APropos = lazy(() => import("./pages/APropos"));
+const MentionsLegales = lazy(() => import("./pages/MentionsLegales"));
+const PolitiqueConfidentialite = lazy(() => import("./pages/PolitiqueConfidentialite"));
+const CGU = lazy(() => import("./pages/CGU"));
+const CGV = lazy(() => import("./pages/CGV"));
+const AdminTest = lazy(() => import("./pages/AdminTest"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Appointment = lazy(() => import("./pages/Appointment"));
+
+// Loading component pour le lazy loading
+const PageLoader = () => (
+  <div className="min-h-screen bg-background flex items-center justify-center">
+    <div className="animate-pulse text-primary">Chargement...</div>
+  </div>
+);
 
 const queryClient = new QueryClient();
 
@@ -33,23 +44,87 @@ const App = () => (
         <CookieBanner />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/calculateur-roi" element={<ROICalculatorPage />} />
-          <Route path="/crm" element={<CRM />} />
-          <Route path="/methode" element={<Methode />} />
-          <Route path="/solutions" element={<Solutions />} />
-          <Route path="/cas-usage" element={<CasUsage />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/a-propos" element={<APropos />} />
-          <Route path="/mentions-legales" element={<MentionsLegales />} />
-          <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
-          <Route path="/cgu" element={<CGU />} />
-          <Route path="/cgv" element={<CGV />} />
-          <Route path="/admin-test" element={<AdminTest />} />
-          <Route path="/appointment" element={<Appointment />} />
+          <Route path="/calculateur-roi" element={
+            <Suspense fallback={<PageLoader />}>
+              <ROICalculatorPage />
+            </Suspense>
+          } />
+          <Route path="/crm" element={
+            <Suspense fallback={<PageLoader />}>
+              <CRM />
+            </Suspense>
+          } />
+          <Route path="/methode" element={
+            <Suspense fallback={<PageLoader />}>
+              <Methode />
+            </Suspense>
+          } />
+          <Route path="/solutions" element={
+            <Suspense fallback={<PageLoader />}>
+              <Solutions />
+            </Suspense>
+          } />
+          <Route path="/cas-usage" element={
+            <Suspense fallback={<PageLoader />}>
+              <CasUsage />
+            </Suspense>
+          } />
+          <Route path="/faq" element={
+            <Suspense fallback={<PageLoader />}>
+              <FAQ />
+            </Suspense>
+          } />
+          <Route path="/contact" element={
+            <Suspense fallback={<PageLoader />}>
+              <Contact />
+            </Suspense>
+          } />
+          <Route path="/blog" element={
+            <Suspense fallback={<PageLoader />}>
+              <Blog />
+            </Suspense>
+          } />
+          <Route path="/a-propos" element={
+            <Suspense fallback={<PageLoader />}>
+              <APropos />
+            </Suspense>
+          } />
+          <Route path="/mentions-legales" element={
+            <Suspense fallback={<PageLoader />}>
+              <MentionsLegales />
+            </Suspense>
+          } />
+          <Route path="/politique-confidentialite" element={
+            <Suspense fallback={<PageLoader />}>
+              <PolitiqueConfidentialite />
+            </Suspense>
+          } />
+          <Route path="/cgu" element={
+            <Suspense fallback={<PageLoader />}>
+              <CGU />
+            </Suspense>
+          } />
+          <Route path="/cgv" element={
+            <Suspense fallback={<PageLoader />}>
+              <CGV />
+            </Suspense>
+          } />
+          <Route path="/admin-test" element={
+            <Suspense fallback={<PageLoader />}>
+              <AdminTest />
+            </Suspense>
+          } />
+          <Route path="/appointment" element={
+            <Suspense fallback={<PageLoader />}>
+              <Appointment />
+            </Suspense>
+          } />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={
+            <Suspense fallback={<PageLoader />}>
+              <NotFound />
+            </Suspense>
+          } />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
