@@ -172,16 +172,19 @@ const Header = () => {
 
             {/* 3. Contact & CTA */}
             <div className="flex items-center space-x-4">
-              <a 
-                href="#contact" 
-                onClick={handleContactClick} 
-                className="nav-link text-text-secondary hover:text-primary transition-colors"
+              <Link 
+                to="/contact" 
+                className={`nav-link transition-colors ${
+                  isActive('/contact') 
+                    ? 'text-primary font-medium' 
+                    : 'text-text-secondary hover:text-primary'
+                }`}
               >
                 Contact
-              </a>
+              </Link>
               
               <Button 
-                onClick={handleContactClick}
+                onClick={() => window.location.href = '/contact'}
                 className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white px-6 py-2"
               >
                 Obtenir un plan d'action personnalisé
@@ -303,16 +306,23 @@ const Header = () => {
 
               {/* Groupe 3: Contact & CTA */}
               <div className="space-y-4">
-                <a 
-                  href="#contact" 
-                  onClick={handleContactClick} 
-                  className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
+                <Link 
+                  to="/contact" 
+                  className={`block nav-link transition-colors pl-4 ${
+                    isActive('/contact') 
+                      ? 'text-primary font-medium border-l-2 border-primary' 
+                      : 'text-text-secondary hover:text-primary'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
-                </a>
+                </Link>
                 <div className="px-4">
                   <Button 
-                    onClick={handleContactClick}
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      window.location.href = '/contact';
+                    }}
                     className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white w-full"
                   >
                     Obtenir un plan d'action personnalisé
