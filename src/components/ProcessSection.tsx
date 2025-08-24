@@ -19,53 +19,53 @@ const ProcessSection = () => {
   const phases = [
     {
       number: "01",
-      title: "Diagnostiquer",
-      subtitle: "Cartographier vos processus pour identifier les gains rapides.",
+      title: "Diagnostic & Analyse Stratégique",
+      subtitle: "Analyse complète pour identifier jusqu'à 30% d'économies potentielles et de gains de productivité.",
       icon: Search,
       color: "#D56A1F",
       details: {
-        title: "Phase 1 : Diagnostic Stratégique",
-        description: "Nous commençons par une session stratégique pour cartographier vos processus actuels et comprendre vos objectifs. L'objectif : identifier précisément les 2 ou 3 opportunités d'automatisation qui généreront le plus fort retour sur investissement.",
-        highlight: "Le livrable : une feuille de route claire et priorisée.",
+        title: "Diagnostic & Analyse Stratégique",
+        description: "Analyse complète pour identifier jusqu'à 30% d'économies potentielles et de gains de productivité.",
+        highlight: "",
         conclusion: ""
       }
     },
     {
       number: "02",
-      title: "Prototyper",
-      subtitle: "Visualiser la solution et valider le ROI avant de s'engager.",
+      title: "Stratégie & Conception Sur-Mesure",
+      subtitle: "Un plan d'automatisation sur-mesure conçu pour générer un ROI rapide (souvent observable en 90 jours).",
       icon: Lightbulb,
       color: "#D56A1F",
       details: {
-        title: "Phase 2 : Prototype & Preuve de Valeur",
-        description: "Avant tout engagement majeur, nous construisons un prototype fonctionnel. Vous voyez concrètement la solution en action, vous testez son efficacité et vous validez le ROI projeté.",
-        highlight: "C'est notre garantie pour une décision 100% éclairée et sans risque.",
+        title: "Stratégie & Conception Sur-Mesure",
+        description: "Un plan d'automatisation sur-mesure conçu pour générer un ROI rapide (souvent observable en 90 jours).",
+        highlight: "",
         conclusion: ""
       }
     },
     {
       number: "03",
-      title: "Déployer",
-      subtitle: "Intégrer le système et former vos équipes pour une adoption immédiate.",
+      title: "Déploiement & Intégration",
+      subtitle: "Mise en place progressive sans rupture opérationnelle, avec formation complète de vos équipes.",
       icon: Rocket,
       color: "#D56A1F",
       details: {
-        title: "Phase 3 : Déploiement & Adoption",
-        description: "Nous intégrons le système complet dans votre environnement existant, en assurant une transition fluide. La clé du succès est l'adoption : nous formons vos équipes pour garantir une prise en main immédiate et une autonomie complète.",
+        title: "Déploiement & Intégration",
+        description: "Mise en place progressive sans rupture opérationnelle, avec formation complète de vos équipes.",
         highlight: "",
         conclusion: ""
       }
     },
     {
       number: "04",
-      title: "Optimiser",
-      subtitle: "Transformer votre système en un moteur de croissance continue.",
+      title: "Suivi & Optimisation Continue",
+      subtitle: "Suivi trimestriel, ajustements stratégiques et optimisation continue pour garantir un ROI croissant dans le temps.",
       icon: TrendingUp,
       color: "#D56A1F",
       details: {
-        title: "Phase 4 : Optimisation & Croissance Continue",
-        description: "Notre partenariat ne s'arrête pas au déploiement. Nous devenons votre partenaire stratégique pour la croissance. Nous assurons un suivi des indicateurs de performance (KPI) pour mesurer l'impact réel sur votre activité. Grâce à des itérations régulières, nous affinons et améliorons le système. Au fil de votre croissance, nous identifions et déployons de nouvelles automatisations pour que votre système évolue avec vos ambitions.",
-        highlight: "Le livrable : un système d'automatisation dynamique qui devient un véritable moteur de votre performance.",
+        title: "Suivi & Optimisation Continue",
+        description: "Suivi trimestriel, ajustements stratégiques et optimisation continue pour garantir un ROI croissant dans le temps.",
+        highlight: "",
         conclusion: ""
       }
     }
@@ -114,11 +114,11 @@ const ProcessSection = () => {
           </Badge>
           
           <h2 className="text-3xl lg:text-5xl font-bold mb-6 hover:scale-[1.02] transition-transform duration-500" style={{ color: '#F5F5F5' }}>
-            Plus qu'un prestataire, votre partenaire de croissance
+            Notre Méthode : Du Diagnostic à la Performance Mesurable
           </h2>
           
           <p className="text-lg max-w-4xl mx-auto" style={{ color: '#F5F5F5' }}>
-            Un parcours simple et transparent en 4 étapes pour garantir vos résultats et maximiser votre ROI.
+            Un processus structuré et transparent pour transformer vos opérations. Nous vous donnons la clarté et la feuille de route pour maximiser votre ROI.
           </p>
         </div>
 
@@ -340,6 +340,65 @@ const ProcessSection = () => {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+
+        {/* Section Technologies Maîtrisées */}
+        <div className="mt-20 text-center">
+          <div className="max-w-4xl mx-auto">
+            <Badge 
+              variant="outline" 
+              className="mb-6 px-4 py-2 text-sm font-medium uppercase tracking-wider hover:scale-105 transition-transform duration-300"
+              style={{ 
+                borderColor: '#0F7F7B', 
+                color: '#0F7F7B',
+                backgroundColor: 'rgba(15, 127, 123, 0.1)',
+                boxShadow: '0 0 20px rgba(255, 140, 66, 0.1)'
+              }}
+            >
+              Technologies Maîtrisées
+            </Badge>
+            
+            <p className="text-lg leading-relaxed" style={{ color: '#F5F5F5' }}>
+              Nous maîtrisons des solutions leaders comme n8n, Make et Zapier, utilisées par des milliers d'organisations dans le monde. 
+              Ces outils nous permettent de connecter vos systèmes et de créer des automatisations adaptées à vos besoins réels.
+            </p>
+          </div>
+        </div>
+
+        {/* CTA Final */}
+        <div className="mt-20 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#F5F5F5' }}>
+              Prêt à Transformer votre Entreprise ?
+            </h3>
+            
+            <p className="text-lg mb-8" style={{ color: '#F5F5F5' }}>
+              Discutons de vos objectifs et créons ensemble un plan d'action sur-mesure pour maximiser votre ROI.
+            </p>
+            
+            <div className="space-y-4">
+              <button
+                className="px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                style={{
+                  backgroundColor: '#0F7F7B',
+                  color: '#F5F5F5',
+                  boxShadow: '0 4px 20px rgba(15, 127, 123, 0.3)'
+                }}
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                Obtenir un plan d'action personnalisé
+              </button>
+              
+              <p className="text-sm" style={{ color: '#F5F5F5', opacity: 0.8 }}>
+                Sans engagement, juste une première étape claire pour avancer.
+              </p>
+            </div>
           </div>
         </div>
       </div>
