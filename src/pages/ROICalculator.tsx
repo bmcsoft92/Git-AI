@@ -688,8 +688,8 @@ const ROICalculatorPage = () => {
                     </Card>
                   </div>
 
-                  {/* Métriques principales */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                  {/* Métriques principales simplifiées */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div 
                       className="text-center p-6 rounded-xl"
                       style={{ backgroundColor: 'rgba(15, 127, 123, 0.15)' }}
@@ -743,66 +743,29 @@ const ROICalculatorPage = () => {
                         Gains de Croissance / an
                       </div>
                     </div>
+                  </div>
 
-                    <div 
-                      className="text-center p-6 rounded-xl"
-                      style={{ backgroundColor: 'rgba(74, 158, 255, 0.15)' }}
+                  {/* Retour sur investissement explicatif */}
+                  <div className="mb-8">
+                    <Card 
+                      className="max-w-2xl mx-auto border-0 shadow-lg"
+                      style={{ 
+                        backgroundColor: 'rgba(74, 158, 255, 0.1)',
+                        border: '1px solid rgba(74, 158, 255, 0.3)'
+                      }}
                     >
-                       <div className="flex items-center justify-center gap-2 mb-2">
-                         <div 
-                           className="text-4xl font-bold"
-                           style={{ color: '#4A9EFF' }}
-                         >
-                           {results.roi_affiche}%
-                         </div>
-                         <TooltipProvider>
-                           <UITooltip>
-                             <TooltipTrigger asChild>
-                               <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
-                             </TooltipTrigger>
-                             <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
-                               <p>Retour sur investissement = (Total Gains ÷ Budget) × 100.</p>
-                             </TooltipContent>
-                           </UITooltip>
-                         </TooltipProvider>
-                       </div>
-                       <div className="text-sm font-medium mb-2" style={{ color: '#F5F5F5' }}>
-                         ROI Stratégique
-                       </div>
-                       <div className="text-xs italic" style={{ color: '#B0B0B0' }}>
-                         ⚠️ Ces résultats sont des estimations indicatives, calculées à partir des données saisies. Les résultats réels peuvent varier selon votre contexte.
-                       </div>
-                    </div>
-
-                    <div 
-                      className="text-center p-6 rounded-xl"
-                      style={{ backgroundColor: 'rgba(34, 197, 94, 0.15)' }}
-                    >
-                       <div className="flex items-center justify-center gap-2 mb-2">
-                         <div 
-                           className="text-4xl font-bold"
-                           style={{ color: '#22C55E' }}
-                         >
-                           {results.multiplicateur_affiche}x
-                         </div>
-                         <TooltipProvider>
-                           <UITooltip>
-                             <TooltipTrigger asChild>
-                               <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
-                             </TooltipTrigger>
-                             <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
-                               <p>Facteur de rentabilité : combien de fois votre investissement est récupéré.</p>
-                             </TooltipContent>
-                           </UITooltip>
-                         </TooltipProvider>
-                       </div>
-                       <div className="text-sm font-medium mb-2" style={{ color: '#F5F5F5' }}>
-                         Multiplicateur
-                       </div>
-                       <div className="text-xs italic" style={{ color: '#B0B0B0' }}>
-                         ⚠️ Ces résultats sont des estimations indicatives, calculées à partir des données saisies. Les résultats réels peuvent varier selon votre contexte.
-                       </div>
-                    </div>
+                      <CardContent className="p-6 text-center">
+                        <div className="text-lg font-semibold mb-3" style={{ color: '#F5F5F5' }}>
+                          💰 Retour sur investissement
+                        </div>
+                        <div 
+                          className="text-xl font-bold"
+                          style={{ color: '#4A9EFF' }}
+                        >
+                          👉 Pour {parseFloat(formData.investissement).toLocaleString('fr-FR')} € investis, vous récupérez {(results.economies_directes + results.gains_croissance).toLocaleString('fr-FR')} € par an.
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
 
                   {/* Graphique évolutif */}
@@ -909,7 +872,7 @@ const ROICalculatorPage = () => {
                     </Card>
                   </div>
 
-                  {/* Mention explicite sous les résultats */}
+                  {/* Mention explicative sous les résultats */}
                   <div className="mb-8 text-center">
                     <p 
                       className="text-sm px-6 py-3 rounded-lg border"
@@ -919,7 +882,7 @@ const ROICalculatorPage = () => {
                         borderColor: 'rgba(74, 158, 255, 0.2)'
                       }}
                     >
-                      ⚠️ Ces chiffres sont des estimations indicatives, calculées à partir des données saisies. Les résultats réels peuvent varier selon votre contexte.
+                      ⚠️ Ces résultats sont des estimations indicatives calculées à partir des données que vous avez saisies. Les résultats réels peuvent varier selon votre contexte.
                     </p>
                   </div>
 
