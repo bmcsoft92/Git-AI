@@ -165,6 +165,18 @@ const ProcessSection = () => {
                 }}
                 onClick={() => setSelectedPhase(index)}
               >
+                {/* Image d'illustration */}
+                <div className="absolute top-0 right-0 h-20 w-20 opacity-20 overflow-hidden">
+                  <img 
+                    src={phase.image}
+                    alt={`Illustration ${phase.title}`}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    style={{
+                      filter: `brightness(${selectedPhase === index ? '1.2' : '0.8'}) contrast(1.1)`
+                    }}
+                  />
+                </div>
+                
                 {/* Effet lumineux en arrière-plan */}
                 {selectedPhase === index && (
                   <div 

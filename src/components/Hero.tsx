@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import heroAiBg from "@/assets/hero-ai-brain-bg.jpg";
+import heroAiBg from "@/assets/hero-professional-ai.jpg";
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
