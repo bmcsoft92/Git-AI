@@ -196,11 +196,13 @@ Soyez spécifique et concret dans vos recommandations.
         p_email: userEmail,
         p_name: userName || null,
         p_phone: userPhone || null,
+        p_company: null,
         p_team_size: diagnosticData.team_size || null,
         p_business_type: diagnosticData.business_type || null,
         p_roi_potential: roiData.roi_percentage,
         p_annual_savings: roiData.annual_savings,
-        p_status: 'nouveau_lead'
+        p_status: 'nouveau_lead',
+        p_budget_range: diagnosticData.budget_range || null
       });
 
     if (leadError) {

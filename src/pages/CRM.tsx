@@ -25,6 +25,7 @@ interface Lead {
   next_followup_date: string | null;
   notes: string | null;
   source: string | null;
+  score: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -299,6 +300,19 @@ export default function CRM() {
                       <div>
                         <p className="text-muted-foreground">Taille équipe</p>
                         <p className="font-medium">{lead.team_size || 'Non renseigné'}</p>
+                      </div>
+                      <div>
+                        <p className="text-muted-foreground">Score Lead</p>
+                        {lead.score && (
+                          <Badge className={`${
+                            lead.score === 'CHAUD' ? 'bg-red-500 text-white' : 
+                            lead.score === 'TIEDE' ? 'bg-yellow-500 text-black' : 
+                            'bg-blue-500 text-white'
+                          }`}>
+                            {lead.score}
+                          </Badge>
+                        )}
+                        {!lead.score && <p className="font-medium">Non calculé</p>}
                       </div>
                       <div>
                         <p className="text-muted-foreground">ROI Potentiel</p>
