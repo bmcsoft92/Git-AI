@@ -305,6 +305,7 @@ export type Database = {
         | "proposition_envoyee"
         | "client_signe"
         | "perdu"
+        | "rdv_en_attente_confirmation"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -440,6 +441,7 @@ export const Constants = {
         "proposition_envoyee",
         "client_signe",
         "perdu",
+        "rdv_en_attente_confirmation",
       ],
     },
   },

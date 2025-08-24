@@ -70,7 +70,7 @@ const handler = async (req: Request): Promise<Response> => {
       resend.emails.send({
         from: "Maia Elange <contact@maiaelange.fr>",
         to: ["contact@maiaelange.fr"],
-        subject: `Nouvelle demande de rendez-vous - ${userName}`,
+        subject: "Nouvelle demande de rendez-vous – Action requise",
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <h1 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
@@ -92,6 +92,12 @@ const handler = async (req: Request): Promise<Response> => {
               ${calculationId ? `<p><strong>ID Calcul ROI:</strong> ${calculationId}</p>` : ''}
             </div>
 
+            <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+              <p style="margin: 0 0 16px 0; color: #1e40af; font-size: 16px; font-weight: 600;">
+                Merci de contacter ce prospect sous 24h pour confirmer ou ajuster le créneau demandé.
+              </p>
+            </div>
+
             <div style="background: #007bff; color: white; padding: 20px; border-radius: 8px; text-align: center;">
               <p style="margin: 0;"><strong>Action requise:</strong> Contactez ce prospect pour confirmer le rendez-vous</p>
             </div>
@@ -103,7 +109,7 @@ const handler = async (req: Request): Promise<Response> => {
       resend.emails.send({
         from: "Maia Elange <contact@maiaelange.fr>",
         to: [userEmail],
-        subject: "Votre réservation est confirmée – Entretien Personnalisé Maïa Elange",
+        subject: "Votre demande de rendez-vous est bien enregistrée – Maïa Elange",
         html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; color: #333;">
             
@@ -120,6 +126,10 @@ const handler = async (req: Request): Promise<Response> => {
               
               <p style="margin: 0 0 24px 0; color: #4a5568; font-size: 16px;">
                 Votre entretien personnalisé est confirmé. Voici les détails de votre rendez-vous :
+              </p>
+
+              <p style="margin: 0 0 24px 0; color: #1a202c; font-size: 16px; font-weight: 500; background: #f0f9ff; padding: 16px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                Notre équipe vous recontactera sous 24h pour confirmer définitivement votre créneau.
               </p>
 
               <div style="background: white; border-radius: 8px; padding: 24px; border-left: 4px solid #3b82f6; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
@@ -176,15 +186,15 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Appointment booked and emails sent successfully");
 
-    // Mettre à jour le lead avec le statut RDV demandé
-    console.log("Updating lead status to rdv_demande...");
+    // Mettre à jour le lead avec le statut RDV en attente de confirmation
+    console.log("Updating lead status to rdv_en_attente_confirmation...");
     
     const { data: leadUpdateData, error: leadUpdateError } = await supabase
       .rpc('upsert_lead', {
         p_email: userEmail,
         p_name: userName,
         p_phone: userPhone || null,
-        p_status: 'rdv_demande'
+        p_status: 'rdv_en_attente_confirmation'
       });
 
     if (leadUpdateError) {
