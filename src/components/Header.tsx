@@ -80,6 +80,7 @@ const Header = () => {
                     ? 'text-primary border-b-2 border-primary' 
                     : 'text-text-secondary hover:text-primary'
                 }`}
+                onClick={() => setIsOutilsOpen(false)}
               >
                 Accueil
               </Link>
@@ -91,6 +92,7 @@ const Header = () => {
                     ? 'text-primary border-b-2 border-primary' 
                     : 'text-text-secondary hover:text-primary'
                 }`}
+                onClick={() => setIsOutilsOpen(false)}
               >
                 Solutions
               </Link>
@@ -102,6 +104,7 @@ const Header = () => {
                     ? 'text-primary border-b-2 border-primary' 
                     : 'text-text-secondary hover:text-primary'
                 }`}
+                onClick={() => setIsOutilsOpen(false)}
               >
                 Méthode
               </Link>
@@ -155,6 +158,7 @@ const Header = () => {
                     ? 'text-primary font-medium' 
                     : 'text-text-secondary hover:text-primary'
                 }`}
+                onClick={() => setIsOutilsOpen(false)}
               >
                 FAQ
               </Link>
@@ -172,6 +176,7 @@ const Header = () => {
                     ? 'text-primary font-medium' 
                     : 'text-text-secondary hover:text-primary'
                 }`}
+                onClick={() => setIsOutilsOpen(false)}
               >
                 Contact
               </Link>
@@ -322,7 +327,7 @@ const Header = () => {
         {/* Overlay pour fermer le dropdown Outils */}
         {isOutilsOpen && (
           <div 
-            className="fixed inset-0 z-40" 
+            className="fixed inset-0 z-30" 
             onClick={() => setIsOutilsOpen(false)}
           />
         )}
