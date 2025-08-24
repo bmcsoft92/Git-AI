@@ -122,18 +122,28 @@ const Footer = () => {
 
               <ul className="space-y-3">
                 {[
-                  { name: "Mentions légales", href: "#" },
-                  { name: "Politique de confidentialité (RGPD)", href: "#" },
+                  { name: "Mentions légales", href: "/mentions-legales" },
+                  { name: "Politique de confidentialité (RGPD)", href: "/politique-confidentialite" },
                   { name: "Cookies", href: "#" }
                 ].map((item, index) => (
                   <li key={index}>
-                    <a 
-                      href={item.href} 
-                      className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2 text-sm"
-                    >
-                      <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
-                    </a>
+                    {item.href === "#" ? (
+                      <a 
+                        href={item.href} 
+                        className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2 text-sm"
+                      >
+                        <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
+                      </a>
+                    ) : (
+                      <Link 
+                        to={item.href} 
+                        className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2 text-sm"
+                      >
+                        <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
