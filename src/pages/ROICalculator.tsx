@@ -293,21 +293,24 @@ const ROICalculatorPage = () => {
       };
     }
     
-    // Nouvelles formules selon les spécifications
-    // 1. Temps total économisé = Heures/semaine × Nb employés × 52
+    // Formules corrigées selon les spécifications
+    // 1. Économies Directes (€/an) = Heures × Taux horaire × 52 × Nb employés
+    const economies_directes = hoursPerWeek * hourlyRate * 52 * employees;
+    
+    // 2. Gains de Croissance (€/an) = Économies Directes × 0,5 (temps réinvesti)
+    const gains_croissance = economies_directes * 0.5;
+    
+    // 3. Total Gains = Économies Directes + Gains de Croissance
+    const total_gains = economies_directes + gains_croissance;
+    
+    // 4. ROI (%) = (Total Gains ÷ Budget estimé) × 100
+    const roi_strategique = (total_gains / investissement) * 100;
+    
+    // 5. Multiplicateur = Total Gains ÷ Budget estimé
+    const multiplicateur = total_gains / investissement;
+    
+    // Temps total économisé pour info
     const temps_total_economise = hoursPerWeek * employees * 52;
-    
-    // 2. Économies directes/an (€) = Temps total économisé × Taux horaire
-    const economies_directes = temps_total_economise * hourlyRate;
-    
-    // 3. Gains de croissance/an (€) = 30% × Temps total économisé × Taux horaire
-    const gains_croissance = 0.30 * temps_total_economise * hourlyRate;
-    
-    // 4. ROI Stratégique (%) = (Gains totaux ÷ Budget) × 100  
-    const roi_strategique = ((economies_directes + gains_croissance) / investissement) * 100;
-    
-    // 5. Multiplicateur (x) = (Économies directes + Gains) ÷ Budget
-    const multiplicateur = (economies_directes + gains_croissance) / investissement;
 
     return {
       economies_directes: Math.round(economies_directes),
@@ -690,7 +693,7 @@ const ROICalculatorPage = () => {
                               <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
                             </TooltipTrigger>
                             <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
-                              <p>Temps libéré réinvesti dans des tâches à plus forte valeur (30% par défaut).</p>
+                              <p>Temps libéré réinvesti dans des tâches à plus forte valeur (50% par défaut).</p>
                             </TooltipContent>
                           </UITooltip>
                         </TooltipProvider>
@@ -842,10 +845,10 @@ const ROICalculatorPage = () => {
                               style={{ color: '#B0B0B0' }}
                             >
                               <div><strong style={{ color: '#4A9EFF' }}>Formules utilisées :</strong></div>
-                              <div>• <strong>Économies Directes</strong> = Heures × Taux horaire × 52 semaines × Nb employés</div>
-                              <div>• <strong>Gains de Croissance</strong> = 30% × Temps économisé × Taux horaire</div>
-                              <div>• <strong>ROI (%)</strong> = (Gains totaux ÷ Budget initial) × 100</div>
-                              <div>• <strong>Multiplicateur</strong> = Gains totaux ÷ Budget initial</div>
+                              <div>• <strong>Économies Directes</strong> = Heures × Taux horaire × 52 × Nb employés</div>
+                              <div>• <strong>Gains de Croissance</strong> = Économies Directes × 0,5</div>
+                              <div>• <strong>ROI (%)</strong> = (Total Gains ÷ Budget) × 100</div>
+                              <div>• <strong>Multiplicateur</strong> = Total Gains ÷ Budget</div>
                             </div>
                             <p 
                               className="text-xs mt-3 italic"
