@@ -198,10 +198,10 @@ const Header = () => {
                 onClick={() => navigate('/contact')}
                 variant="cta"
                 size="lg"
-                className="px-8 py-4 text-lg group/cta"
+                className="px-6 py-3 text-base group/cta whitespace-nowrap"
               >
-                Obtenir un plan d'action personnalisé
-                <ExternalLink className="ml-3 h-5 w-5 transition-transform group-hover/cta:scale-110" />
+                Plan d'action personnalisé
+                <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover/cta:scale-110" />
               </Button>
             </div>
           </div>
@@ -343,10 +343,10 @@ const Header = () => {
                     }}
                     variant="cta"
                     size="lg"
-                    className="w-full px-6 py-2 text-sm font-medium"
-                  >
-                    Obtenir un plan d'action personnalisé
-                  </Button>
+                     className="w-full px-6 py-2 text-sm font-medium"
+                   >
+                     Plan d'action personnalisé
+                   </Button>
                 </div>
               </div>
             </div>
