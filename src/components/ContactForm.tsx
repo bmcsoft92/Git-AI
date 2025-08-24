@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -27,6 +27,16 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Mettre à jour automatiquement le message quand l'entreprise change
+  useEffect(() => {
+    if (formData.company && !formData.message.includes(formData.company)) {
+      setFormData(prev => ({
+        ...prev,
+        message: formData.company ? `Entreprise : ${formData.company}\n\n` : ""
+      }));
+    }
+  }, [formData.company]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -140,7 +150,7 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
                 id="message"
                 value={formData.message}
                 onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                placeholder="Décrivez votre projet ou vos questions..."
+                placeholder="👉 Décrivez brièvement votre projet ou vos besoins (ex : automatiser vos emails, optimiser votre facturation, gagner du temps sur vos tâches répétitives)."
                 required
                 rows={4}
               />
