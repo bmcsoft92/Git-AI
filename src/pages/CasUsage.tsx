@@ -10,15 +10,15 @@ const CasUsage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Cas d'usage de l'IA et de l'automatisation | Maia Elange";
+    document.title = "Cas d'usage Automatisation IA | Maia Elange";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Découvrez comment l\'IA transforme PME, ETI, associations et collectivités. Solutions d\'automatisation adaptées à chaque secteur avec ROI mesurable et conformité RGPD.');
+      metaDescription.setAttribute('content', 'Découvrez comment l\'automatisation IA s\'applique aux PME, ETI, associations et collectivités : devis, factures, CRM, inscriptions, demandes administratives. Maia Elange adapte ses solutions à chaque organisation.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Découvrez comment l\'IA transforme PME, ETI, associations et collectivités. Solutions d\'automatisation adaptées à chaque secteur avec ROI mesurable et conformité RGPD.');
+      metaDescription.setAttribute('content', 'Découvrez comment l\'automatisation IA s\'applique aux PME, ETI, associations et collectivités : devis, factures, CRM, inscriptions, demandes administratives. Maia Elange adapte ses solutions à chaque organisation.');
       document.head.appendChild(metaDescription);
     }
   }, []);
@@ -26,54 +26,58 @@ const CasUsage = () => {
   const casUsage = [
     {
       icon: Building,
-      title: "IA pour PME",
-      subtitle: "Automatisation sur-mesure pour petites entreprises",
-      description: "Solutions d'automatisation adaptées aux budgets et besoins spécifiques des PME. Gain de temps immédiat et ROI rapide.",
+      title: "PME artisanale",
+      subtitle: "Automatisation comptable et commerciale",
+      description: "Automatisation des devis, factures et relances de paiement.",
       benefits: [
-        "Automatisation des tâches administratives",
-        "Gestion de la relation client simplifiée",
-        "Optimisation des processus de vente",
-        "Reporting automatisé"
+        "Génération automatique des devis",
+        "Facturation automatisée",
+        "Relances de paiement programmées",
+        "Suivi de trésorerie simplifié"
       ],
+      gain: "Gain attendu : moins de temps administratif et meilleure trésorerie.",
       ctaText: "Tester mon ROI"
     },
     {
       icon: TrendingUp,
-      title: "IA pour ETI",
-      subtitle: "Automatisations scalables pour la croissance",
-      description: "Déploiements complexes multi-départements avec intégrations avancées. Performance et scalabilité garanties.",
+      title: "ETI industrielle",
+      subtitle: "Optimisation commerciale et reporting",
+      description: "Intégration CRM + reporting automatisé pour le suivi des équipes commerciales.",
       benefits: [
-        "Intégration multi-systèmes",
-        "Workflows complexes automatisés",
-        "Analytics prédictifs avancés",
-        "Déploiement par étapes"
+        "Synchronisation CRM automatique",
+        "Tableaux de bord en temps réel",
+        "Suivi performance équipes",
+        "Reporting commercial automatisé"
       ],
+      gain: "Gain attendu : meilleure visibilité sur les ventes et pilotage simplifié.",
       ctaText: "Tester mon ROI"
     },
     {
       icon: Heart,
-      title: "IA pour Associations",
-      subtitle: "Automatisation pour le secteur associatif",
-      description: "Solutions adaptées aux contraintes budgétaires des associations avec focus sur l'efficacité opérationnelle.",
+      title: "Association",
+      subtitle: "Gestion automatisée des membres",
+      description: "Gestion automatisée des inscriptions, relances email et suivi des bénévoles.",
       benefits: [
-        "Gestion automatisée des adhérents",
-        "Communication digitale optimisée",
-        "Processus de dons simplifiés",
-        "Reporting pour subventions"
+        "Inscriptions en ligne automatiques",
+        "Relances email programmées",
+        "Suivi des bénévoles actifs",
+        "Communication ciblée par groupes"
       ],
+      gain: "Gain attendu : plus de temps pour les missions sociales et moins de tâches répétitives.",
       ctaText: "Tester mon ROI"
     },
     {
       icon: MapPin,
-      title: "IA pour Collectivités",
-      subtitle: "Modernisation des services publics",
-      description: "Automatisation des processus administratifs publics avec respect des normes RGPD et sécurité renforcée.",
+      title: "Collectivité locale",
+      subtitle: "Digitalisation des services publics",
+      description: "Digitalisation des demandes administratives simples et automatisation des réponses.",
       benefits: [
-        "Dématérialisation des démarches",
-        "Traitement automatisé des demandes",
-        "Amélioration de l'accueil citoyen",
-        "Conformité RGPD garantie"
+        "Demandes en ligne 24h/24",
+        "Réponses automatiques standardisées",
+        "Suivi des dossiers citoyens",
+        "Réduction de la charge agents"
       ],
+      gain: "Gain attendu : meilleure expérience citoyenne et réduction de la charge des agents.",
       ctaText: "Tester mon ROI"
     }
   ];
@@ -96,12 +100,12 @@ const CasUsage = () => {
             {/* Titre principal H1 */}
             <div className="text-center mb-16">
               <h1 className="text-3xl lg:text-5xl font-bold text-heading mb-6">
-                Cas d'usage de l'IA et de{" "}
-                <span className="text-primary">l'automatisation</span>
+                Cas d'usage : Comment l'automatisation IA{" "}
+                <span className="text-primary">s'adapte à chaque organisation</span>
               </h1>
               <p className="text-lg text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                Découvrez comment nos solutions d'automatisation s'adaptent aux besoins spécifiques 
-                de chaque secteur, de la PME à la grande organisation.
+                Chaque organisation est unique. Voici quelques exemples concrets de situations où 
+                l'automatisation IA apporte des gains immédiats de productivité, de temps et de clarté.
               </p>
             </div>
 
@@ -131,13 +135,19 @@ const CasUsage = () => {
                     </CardHeader>
                     
                     <CardContent>
-                      <div className="space-y-3 mb-6">
+                      <div className="space-y-3 mb-4">
                         {cas.benefits.map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-3">
                             <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
                             <span className="text-sm text-text-secondary">{benefit}</span>
                           </div>
                         ))}
+                      </div>
+                      
+                      <div className="mb-6 p-3 bg-primary/10 rounded-lg border border-primary/20">
+                        <p className="text-sm font-medium text-primary">
+                          {cas.gain}
+                        </p>
                       </div>
                       
                       <Button 
@@ -159,11 +169,10 @@ const CasUsage = () => {
               <Card className="bg-gradient-to-br from-cta-primary/10 to-primary/10 backdrop-blur-sm border border-primary/30 p-8">
                 <div className="max-w-3xl mx-auto">
                   <h2 className="text-3xl font-bold text-heading mb-4">
-                    Votre secteur n'est pas listé ?
+                    Et votre organisation ?
                   </h2>
                   <p className="text-lg text-text-secondary mb-8 leading-relaxed">
-                    Chaque organisation est unique. Discutons de vos besoins spécifiques 
-                    et créons ensemble la solution d'automatisation adaptée à votre contexte.
+                    Parlons de vos besoins et créons ensemble un plan d'action adapté à votre contexte.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button 
