@@ -19,15 +19,15 @@ const Contact = () => {
   });
 
   useEffect(() => {
-    document.title = "Contactez Maia Elange | Automatisation IA sur-mesure";
+    document.title = "Contact | Maia Elange";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Contactez Maia Elange pour vos projets d\'automatisation IA. Consultation gratuite, devis sur-mesure et accompagnement expert. Réponse sous 24h.');
+      metaDescription.setAttribute('content', 'Contactez Maia Elange pour discuter de vos besoins en automatisation IA. Planifiez un échange direct ou demandez un plan d\'action personnalisé.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Contactez Maia Elange pour vos projets d\'automatisation IA. Consultation gratuite, devis sur-mesure et accompagnement expert. Réponse sous 24h.');
+      metaDescription.setAttribute('content', 'Contactez Maia Elange pour discuter de vos besoins en automatisation IA. Planifiez un échange direct ou demandez un plan d\'action personnalisé.');
       document.head.appendChild(metaDescription);
     }
   }, []);

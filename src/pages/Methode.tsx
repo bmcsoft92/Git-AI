@@ -5,16 +5,16 @@ import Services from "@/components/Services";
 const Methode = () => {
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = "Notre Méthode : Diagnostic & ROI Mesurable | Maia Elange";
+    document.title = "Notre Méthode | Du Diagnostic à la Performance Mesurable";
     
     // Update or create meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Découvrez la méthode Maia Elange : diagnostic stratégique, conception sur-mesure, déploiement progressif et suivi post-implémentation. Une approche claire, crédible et alignée RGPD pour maximiser le ROI des organisations.');
+      metaDescription.setAttribute('content', 'Une approche structurée : diagnostic, stratégie sur-mesure, intégration progressive et suivi. Maia Elange vous apporte clarté et ROI observable.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Découvrez la méthode Maia Elange : diagnostic stratégique, conception sur-mesure, déploiement progressif et suivi post-implémentation. Une approche claire, crédible et alignée RGPD pour maximiser le ROI des organisations.');
+      metaDescription.setAttribute('content', 'Une approche structurée : diagnostic, stratégie sur-mesure, intégration progressive et suivi. Maia Elange vous apporte clarté et ROI observable.');
       document.head.appendChild(metaDescription);
     }
   }, []);

@@ -9,16 +9,16 @@ import AutomationCTA from "@/components/AutomationCTA";
 const Index = () => {
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = "Maia Elange | L'IA + l'Humain au service de votre organisation";
+    document.title = "Maia Elange | L'IA + l'Humain au service des organisations";
     
     // Update or create meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Découvrez comment Maia Elange connecte vos outils existants (Google Workspace, Outlook, Salesforce, Slack, Teams, LinkedIn…) à ses solutions d\'automatisation. Des intégrations fluides, évolutives et sans refonte technique.');
+      metaDescription.setAttribute('content', 'Maia Elange aide les organisations à réduire leurs coûts et augmenter leur impact grâce à des systèmes d\'automatisation simples, mesurables et conformes.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Découvrez comment Maia Elange connecte vos outils existants (Google Workspace, Outlook, Salesforce, Slack, Teams, LinkedIn…) à ses solutions d\'automatisation. Des intégrations fluides, évolutives et sans refonte technique.');
+      metaDescription.setAttribute('content', 'Maia Elange aide les organisations à réduire leurs coûts et augmenter leur impact grâce à des systèmes d\'automatisation simples, mesurables et conformes.');
       document.head.appendChild(metaDescription);
     }
   }, []);

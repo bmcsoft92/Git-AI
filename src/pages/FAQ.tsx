@@ -11,15 +11,15 @@ const FAQ = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "FAQ – Vos questions sur l'automatisation et l'IA | Maia Elange";
+    document.title = "FAQ Automatisation IA | Maia Elange";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'FAQ Maia Elange : tout savoir sur l\'automatisation et l\'IA. Découvrez combien ça coûte, combien de temps ça prend, l\'impact pour vos équipes, la sécurité RGPD et le support après déploiement.');
+      metaDescription.setAttribute('content', 'Toutes les réponses claires sur l\'automatisation IA : sécurité, coûts, délais, outils compatibles, support après déploiement.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'FAQ Maia Elange : tout savoir sur l\'automatisation et l\'IA. Découvrez combien ça coûte, combien de temps ça prend, l\'impact pour vos équipes, la sécurité RGPD et le support après déploiement.');
+      metaDescription.setAttribute('content', 'Toutes les réponses claires sur l\'automatisation IA : sécurité, coûts, délais, outils compatibles, support après déploiement.');
       document.head.appendChild(metaDescription);
     }
 
