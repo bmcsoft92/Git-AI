@@ -286,40 +286,35 @@ const ROICalculatorPage = () => {
     if (hoursPerWeek <= 0 || hourlyRate <= 0 || employees <= 0 || investissement <= 0) {
       return {
         economies_directes: 0,
-        economies_semaine: 0,
-        economies_mois: 0,
-        gains_indirects: 0,
-        investissement: 0,
+        gains_croissance: 0,
         roi_strategique: 0,
-        gain_total: 0
+        multiplicateur: 0,
+        temps_total_economise: 0
       };
     }
     
-    // Heures annuelles totales économisées (formule directe)
-    const heures_annuelles_totales = hoursPerWeek * 46 * employees;
+    // Nouvelles formules selon les spécifications
+    // 1. Temps total économisé = Heures/semaine × Nb employés × 52
+    const temps_total_economise = hoursPerWeek * employees * 52;
     
-    // Économies Directes (formule standard)
-    const economies_directes = heures_annuelles_totales * hourlyRate;
+    // 2. Économies directes/an (€) = Temps total économisé × Taux horaire
+    const economies_directes = temps_total_economise * hourlyRate;
     
-    // Phase 2 - Levier 2 : Gains de Croissance (25% du temps réinvesti à plus forte valeur)
-    const heures_reinvesties = heures_annuelles_totales * 0.25;
-    const gains_indirects = heures_reinvesties * (hourlyRate * 1.5);
+    // 3. Gains de croissance/an (€) = 30% × Temps total économisé × Taux horaire
+    const gains_croissance = 0.30 * temps_total_economise * hourlyRate;
     
-    // Calculs par période pour le graphique (basés sur les économies directes)
-    const economies_semaine = Math.round((economies_directes / 46) * 100) / 100;
-    const economies_mois = Math.round((economies_directes / 12) * 100) / 100;
+    // 4. ROI Stratégique (%) = (Économies directes + Gains – Budget) ÷ Budget × 100
+    const roi_strategique = ((economies_directes + gains_croissance - investissement) / investissement) * 100;
     
-    const gain_total = economies_directes + gains_indirects;
-    const roi_strategique = ((gain_total - investissement) / investissement) * 100;
+    // 5. Multiplicateur (x) = (Économies directes + Gains) ÷ Budget
+    const multiplicateur = (economies_directes + gains_croissance) / investissement;
 
     return {
       economies_directes: Math.round(economies_directes),
-      economies_semaine,
-      economies_mois,
-      gains_indirects: Math.round(gains_indirects),
-      investissement: Math.round(investissement),
+      gains_croissance: Math.round(gains_croissance),
       roi_strategique: Math.round(roi_strategique),
-      gain_total: Math.round(gain_total)
+      multiplicateur: Math.round(multiplicateur * 10) / 10, // Une décimale pour le multiplicateur
+      temps_total_economise: Math.round(temps_total_economise)
     };
   };
 
@@ -448,7 +443,7 @@ const ROICalculatorPage = () => {
                             <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
                           </TooltipTrigger>
                           <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
-                            <p>Nombre moyen d'heures de tâches répétitives que vous aimeriez automatiser (emails, facturation, CRM, rendez-vous…).</p>
+                            <p>Nombre d'heures économisées chaque semaine grâce à l'automatisation.</p>
                           </TooltipContent>
                         </UITooltip>
                       </TooltipProvider>
@@ -484,7 +479,7 @@ const ROICalculatorPage = () => {
                             <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
                           </TooltipTrigger>
                           <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
-                            <p>Coût horaire moyen d'un employé, incluant salaires et charges sociales.</p>
+                            <p>Valeur moyenne du temps pour votre organisation (salaire + charges).</p>
                           </TooltipContent>
                         </UITooltip>
                       </TooltipProvider>
@@ -520,7 +515,7 @@ const ROICalculatorPage = () => {
                             <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
                           </TooltipTrigger>
                           <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
-                            <p>Combien de personnes effectuent ces tâches actuellement.</p>
+                            <p>Nombre de collaborateurs concernés par ce gain de temps.</p>
                           </TooltipContent>
                         </UITooltip>
                       </TooltipProvider>
@@ -548,7 +543,7 @@ const ROICalculatorPage = () => {
                         className="block text-sm font-semibold h-5 flex items-center"
                         style={{ color: '#F5F5F5' }}
                       >
-                        Budget estimé
+                        Budget estimé (€)
                       </Label>
                       <TooltipProvider>
                         <UITooltip>
@@ -556,7 +551,7 @@ const ROICalculatorPage = () => {
                             <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
                           </TooltipTrigger>
                           <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
-                            <p>Montant prévu pour mettre en place la solution (adaptable selon la taille du projet).</p>
+                            <p>Investissement initial estimé dans l'automatisation.</p>
                           </TooltipContent>
                         </UITooltip>
                       </TooltipProvider>
@@ -650,22 +645,31 @@ const ROICalculatorPage = () => {
                   </div>
 
                   {/* Métriques principales */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
                     <div 
                       className="text-center p-6 rounded-xl"
                       style={{ backgroundColor: 'rgba(15, 127, 123, 0.15)' }}
                     >
-                      <div 
-                        className="text-4xl font-bold mb-2"
-                        style={{ color: '#0F7F7B' }}
-                      >
-                        {results.economies_directes.toLocaleString('fr-FR')}€
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <div 
+                          className="text-4xl font-bold"
+                          style={{ color: '#0F7F7B' }}
+                        >
+                          {results.economies_directes.toLocaleString('fr-FR')}€
+                        </div>
+                        <TooltipProvider>
+                          <UITooltip>
+                            <TooltipTrigger asChild>
+                              <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
+                            </TooltipTrigger>
+                            <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
+                              <p>Évaluation en euros du temps économisé sur une année.</p>
+                            </TooltipContent>
+                          </UITooltip>
+                        </TooltipProvider>
                       </div>
                       <div className="text-sm font-medium" style={{ color: '#F5F5F5' }}>
                         Économies Directes / an
-                      </div>
-                      <div className="text-xs mt-1 opacity-70" style={{ color: '#B0B0B0' }}>
-                        Temps économisé valorisé
                       </div>
                     </div>
 
@@ -673,17 +677,26 @@ const ROICalculatorPage = () => {
                       className="text-center p-6 rounded-xl"
                       style={{ backgroundColor: 'rgba(255, 140, 66, 0.15)' }}
                     >
-                      <div 
-                        className="text-4xl font-bold mb-2"
-                        style={{ color: '#FF8C42' }}
-                      >
-                        {results.gains_indirects.toLocaleString('fr-FR')}€
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <div 
+                          className="text-4xl font-bold"
+                          style={{ color: '#FF8C42' }}
+                        >
+                          {results.gains_croissance.toLocaleString('fr-FR')}€
+                        </div>
+                        <TooltipProvider>
+                          <UITooltip>
+                            <TooltipTrigger asChild>
+                              <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
+                            </TooltipTrigger>
+                            <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
+                              <p>Temps libéré réinvesti dans des tâches à plus forte valeur (30% par défaut).</p>
+                            </TooltipContent>
+                          </UITooltip>
+                        </TooltipProvider>
                       </div>
                       <div className="text-sm font-medium" style={{ color: '#F5F5F5' }}>
                         Gains de Croissance / an
-                      </div>
-                      <div className="text-xs mt-1 opacity-70" style={{ color: '#B0B0B0' }}>
-                        Temps réinvesti à plus forte valeur
                       </div>
                     </div>
 
@@ -691,17 +704,53 @@ const ROICalculatorPage = () => {
                       className="text-center p-6 rounded-xl"
                       style={{ backgroundColor: 'rgba(74, 158, 255, 0.15)' }}
                     >
-                      <div 
-                        className="text-4xl font-bold mb-2"
-                        style={{ color: '#4A9EFF' }}
-                      >
-                        {results.roi_strategique}%
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <div 
+                          className="text-4xl font-bold"
+                          style={{ color: '#4A9EFF' }}
+                        >
+                          {results.roi_strategique}%
+                        </div>
+                        <TooltipProvider>
+                          <UITooltip>
+                            <TooltipTrigger asChild>
+                              <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
+                            </TooltipTrigger>
+                            <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
+                              <p>Retour sur investissement = (économies + gains – budget) ÷ budget.</p>
+                            </TooltipContent>
+                          </UITooltip>
+                        </TooltipProvider>
                       </div>
                       <div className="text-sm font-medium" style={{ color: '#F5F5F5' }}>
                         ROI Stratégique
                       </div>
-                      <div className="text-xs mt-1 opacity-70" style={{ color: '#B0B0B0' }}>
-                        Retour sur investissement total
+                    </div>
+
+                    <div 
+                      className="text-center p-6 rounded-xl"
+                      style={{ backgroundColor: 'rgba(34, 197, 94, 0.15)' }}
+                    >
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <div 
+                          className="text-4xl font-bold"
+                          style={{ color: '#22C55E' }}
+                        >
+                          {results.multiplicateur}x
+                        </div>
+                        <TooltipProvider>
+                          <UITooltip>
+                            <TooltipTrigger asChild>
+                              <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
+                            </TooltipTrigger>
+                            <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
+                              <p>Facteur de rentabilité : combien de fois votre investissement est récupéré.</p>
+                            </TooltipContent>
+                          </UITooltip>
+                        </TooltipProvider>
+                      </div>
+                      <div className="text-sm font-medium" style={{ color: '#F5F5F5' }}>
+                        Multiplicateur
                       </div>
                     </div>
                   </div>
@@ -719,9 +768,9 @@ const ROICalculatorPage = () => {
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart
                           data={[
-                            { periode: 'Semaine', economies: results.economies_semaine },
-                            { periode: 'Mois', economies: results.economies_mois },
-                            { periode: 'Année', economies: results.economies_directes }
+                            { periode: 'Semaine', economies: Math.round((results.economies_directes + results.gains_croissance) / 52) },
+                            { periode: 'Mois', economies: Math.round((results.economies_directes + results.gains_croissance) / 12) },
+                            { periode: 'Année', economies: results.economies_directes + results.gains_croissance }
                           ]}
                           margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
                         >
@@ -824,7 +873,7 @@ const ROICalculatorPage = () => {
                         className="text-2xl font-bold mb-1"
                         style={{ color: '#0F7F7B' }}
                       >
-                        {results.economies_semaine.toLocaleString('fr-FR')}€
+                        {Math.round((results.economies_directes + results.gains_croissance) / 52).toLocaleString('fr-FR')}€
                       </div>
                       <div className="text-sm font-medium" style={{ color: '#F5F5F5' }}>
                         Par semaine
@@ -843,7 +892,7 @@ const ROICalculatorPage = () => {
                         className="text-2xl font-bold mb-1"
                         style={{ color: '#FF8C42' }}
                       >
-                        {results.economies_mois.toLocaleString('fr-FR')}€
+                        {Math.round((results.economies_directes + results.gains_croissance) / 12).toLocaleString('fr-FR')}€
                       </div>
                       <div className="text-sm font-medium" style={{ color: '#F5F5F5' }}>
                         Par mois
@@ -862,7 +911,7 @@ const ROICalculatorPage = () => {
                         className="text-2xl font-bold mb-1"
                         style={{ color: '#4A9EFF' }}
                       >
-                        {results.gain_total.toLocaleString('fr-FR')}€
+                        {(results.economies_directes + results.gains_croissance).toLocaleString('fr-FR')}€
                       </div>
                       <div className="text-sm font-medium" style={{ color: '#F5F5F5' }}>
                         Gain total/an
@@ -881,7 +930,7 @@ const ROICalculatorPage = () => {
                         className="text-2xl font-bold mb-1"
                         style={{ color: '#22C55E' }}
                       >
-                        {Math.round((results.gain_total / results.investissement) * 10) / 10}x
+                        {results.multiplicateur}x
                       </div>
                       <div className="text-sm font-medium" style={{ color: '#F5F5F5' }}>
                         Multiplicateur
