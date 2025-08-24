@@ -149,11 +149,15 @@ const Integrations = () => {
           </div>
           <Button 
             onClick={() => navigate('/roi-calculator')}
-            className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 rounded-lg
-                     transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
+            variant="cta"
+            size="lg"
+            className="px-8 py-4 text-lg font-semibold group/cta transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
           >
             Vérifier la compatibilité de vos outils
           </Button>
+          <p className="text-xs text-text-secondary/70 mt-2 italic">
+            Vérification simple, sans engagement, basée sur vos outils actuels.
+          </p>
         </div>
       </div>
     </section>
