@@ -317,7 +317,10 @@ const ROICalculatorPage = () => {
       gains_croissance: Math.round(gains_croissance),
       roi_strategique: Math.round(roi_strategique),
       multiplicateur: Math.round(multiplicateur * 100) / 100, // Deux décimales pour plus de précision
-      temps_total_economise: Math.round(temps_total_economise)
+      temps_total_economise: Math.round(temps_total_economise),
+      // Versions plafonnées pour l'affichage
+      roi_affiche: roi_strategique > 300 ? "300+" : Math.round(roi_strategique).toString(),
+      multiplicateur_affiche: multiplicateur > 3 ? "3+" : (Math.round(multiplicateur * 100) / 100).toString()
     };
   };
 
@@ -745,54 +748,60 @@ const ROICalculatorPage = () => {
                       className="text-center p-6 rounded-xl"
                       style={{ backgroundColor: 'rgba(74, 158, 255, 0.15)' }}
                     >
-                      <div className="flex items-center justify-center gap-2 mb-2">
-                        <div 
-                          className="text-4xl font-bold"
-                          style={{ color: '#4A9EFF' }}
-                        >
-                          {results.roi_strategique}%
-                        </div>
-                        <TooltipProvider>
-                          <UITooltip>
-                            <TooltipTrigger asChild>
-                              <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
-                            </TooltipTrigger>
-                            <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
-                              <p>Retour sur investissement = (économies + gains – budget) ÷ budget.</p>
-                            </TooltipContent>
-                          </UITooltip>
-                        </TooltipProvider>
-                      </div>
-                      <div className="text-sm font-medium" style={{ color: '#F5F5F5' }}>
-                        ROI Stratégique
-                      </div>
+                       <div className="flex items-center justify-center gap-2 mb-2">
+                         <div 
+                           className="text-4xl font-bold"
+                           style={{ color: '#4A9EFF' }}
+                         >
+                           {results.roi_affiche}%
+                         </div>
+                         <TooltipProvider>
+                           <UITooltip>
+                             <TooltipTrigger asChild>
+                               <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
+                             </TooltipTrigger>
+                             <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
+                               <p>Retour sur investissement = (Total Gains ÷ Budget) × 100.</p>
+                             </TooltipContent>
+                           </UITooltip>
+                         </TooltipProvider>
+                       </div>
+                       <div className="text-sm font-medium mb-2" style={{ color: '#F5F5F5' }}>
+                         ROI Stratégique
+                       </div>
+                       <div className="text-xs italic" style={{ color: '#B0B0B0' }}>
+                         ⚠️ Ces résultats sont des estimations indicatives, calculées à partir des données saisies. Les résultats réels peuvent varier selon votre contexte.
+                       </div>
                     </div>
 
                     <div 
                       className="text-center p-6 rounded-xl"
                       style={{ backgroundColor: 'rgba(34, 197, 94, 0.15)' }}
                     >
-                      <div className="flex items-center justify-center gap-2 mb-2">
-                        <div 
-                          className="text-4xl font-bold"
-                          style={{ color: '#22C55E' }}
-                        >
-                          {results.multiplicateur}x
-                        </div>
-                        <TooltipProvider>
-                          <UITooltip>
-                            <TooltipTrigger asChild>
-                              <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
-                            </TooltipTrigger>
-                            <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
-                              <p>Facteur de rentabilité : combien de fois votre investissement est récupéré.</p>
-                            </TooltipContent>
-                          </UITooltip>
-                        </TooltipProvider>
-                      </div>
-                      <div className="text-sm font-medium" style={{ color: '#F5F5F5' }}>
-                        Multiplicateur
-                      </div>
+                       <div className="flex items-center justify-center gap-2 mb-2">
+                         <div 
+                           className="text-4xl font-bold"
+                           style={{ color: '#22C55E' }}
+                         >
+                           {results.multiplicateur_affiche}x
+                         </div>
+                         <TooltipProvider>
+                           <UITooltip>
+                             <TooltipTrigger asChild>
+                               <HelpCircle className="h-4 w-4 opacity-60 cursor-help" style={{ color: '#F5F5F5' }} />
+                             </TooltipTrigger>
+                             <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
+                               <p>Facteur de rentabilité : combien de fois votre investissement est récupéré.</p>
+                             </TooltipContent>
+                           </UITooltip>
+                         </TooltipProvider>
+                       </div>
+                       <div className="text-sm font-medium mb-2" style={{ color: '#F5F5F5' }}>
+                         Multiplicateur
+                       </div>
+                       <div className="text-xs italic" style={{ color: '#B0B0B0' }}>
+                         ⚠️ Ces résultats sont des estimations indicatives, calculées à partir des données saisies. Les résultats réels peuvent varier selon votre contexte.
+                       </div>
                     </div>
                   </div>
 
