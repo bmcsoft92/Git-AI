@@ -1674,7 +1674,7 @@ const ROICalculatorPage = () => {
                               className="text-2xl font-semibold text-center mb-8"
                               style={{ color: '#F5F5F5' }}
                             >
-                              🎯 Dernière étape : vos objectifs
+                              🎉 Votre diagnostic personnalisé est prêt
                             </h3>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
@@ -1802,23 +1802,32 @@ const ROICalculatorPage = () => {
                               </p>
                             </div>
 
-                            {/* Résumé dynamique personnalisé */}
+                            {/* Message final personnalisé pour l'envoi par email */}
                             {diagnosticData.nom && currentStep === 6 && (
                               <div 
-                                className="mt-8 p-6 rounded-xl text-center"
+                                className="mt-8 p-8 rounded-xl text-center"
                                 style={{ 
-                                  backgroundColor: 'rgba(74, 158, 255, 0.1)',
-                                  border: '1px solid rgba(74, 158, 255, 0.3)'
+                                  backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                                  border: '2px solid rgba(34, 197, 94, 0.3)'
                                 }}
                               >
-                                <h4 className="text-lg font-semibold mb-2" style={{ color: '#4A9EFF' }}>
-                                  ✨ Merci {diagnosticData.nom}
-                                </h4>
-                                <p className="text-sm leading-relaxed" style={{ color: '#F5F5F5' }}>
-                                  Voici vos 3 chantiers prioritaires identifiés. 
-                                  <br />
-                                  <span className="font-medium">Cliquez pour recevoir votre rapport personnalisé complet.</span>
-                                </p>
+                                <div className="mb-4">
+                                  <div className="text-3xl mb-3">📧</div>
+                                  <h4 className="text-xl font-bold mb-3" style={{ color: '#22C55E' }}>
+                                    Merci {diagnosticData.nom} !
+                                  </h4>
+                                </div>
+                                <div className="space-y-3">
+                                  <p className="text-base leading-relaxed font-medium" style={{ color: '#F5F5F5' }}>
+                                    Votre rapport complet est en cours de génération.
+                                  </p>
+                                  <p className="text-base leading-relaxed" style={{ color: '#F5F5F5' }}>
+                                    <span className="font-semibold">Vous allez le recevoir dans les prochaines minutes directement par email 📩</span>
+                                  </p>
+                                  <p className="text-sm mt-4 opacity-80" style={{ color: '#F5F5F5' }}>
+                                    💡 Vérifiez vos spams si vous ne le voyez pas dans votre boîte de réception
+                                  </p>
+                                </div>
                               </div>
                             )}
                           </div>
@@ -1853,7 +1862,7 @@ const ROICalculatorPage = () => {
                               }}
                             >
                               {currentStep === 6 ? (
-                                isAnalyzing ? 'Analyse en cours...' : 'Voir mes Résultats & Recevoir mon Rapport'
+                                isAnalyzing ? 'Génération en cours...' : 'Confirmer & Recevoir mon Rapport par Email'
                               ) : 'Suivant'}
                             </Button>
                           </div>
