@@ -203,7 +203,7 @@ const Blog = () => {
                       size="lg"
                       className="px-8 py-4 text-lg border-primary/30"
                     >
-                      Parler à un expert
+                      Obtenir un plan d'action personnalisé
                       <Target className="ml-3 h-5 w-5" />
                     </Button>
                   </div>

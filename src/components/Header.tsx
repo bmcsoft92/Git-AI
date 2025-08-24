@@ -184,7 +184,7 @@ const Header = () => {
                 onClick={handleContactClick}
                 className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white px-6 py-2"
               >
-                Parler à un expert
+                Obtenir un plan d'action personnalisé
               </Button>
             </div>
           </div>
@@ -315,7 +315,7 @@ const Header = () => {
                     onClick={handleContactClick}
                     className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white w-full"
                   >
-                    Parler à un expert
+                    Obtenir un plan d'action personnalisé
                   </Button>
                 </div>
               </div>

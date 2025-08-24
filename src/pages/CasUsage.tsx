@@ -35,7 +35,7 @@ const CasUsage = () => {
         "Optimisation des processus de vente",
         "Reporting automatisé"
       ],
-      ctaText: "Découvrir les solutions PME"
+      ctaText: "Tester mon ROI"
     },
     {
       icon: TrendingUp,
@@ -48,7 +48,7 @@ const CasUsage = () => {
         "Analytics prédictifs avancés",
         "Déploiement par étapes"
       ],
-      ctaText: "Explorer les solutions ETI"
+      ctaText: "Tester mon ROI"
     },
     {
       icon: Heart,
@@ -61,7 +61,7 @@ const CasUsage = () => {
         "Processus de dons simplifiés",
         "Reporting pour subventions"
       ],
-      ctaText: "Solutions pour associations"
+      ctaText: "Tester mon ROI"
     },
     {
       icon: MapPin,
@@ -74,7 +74,7 @@ const CasUsage = () => {
         "Amélioration de l'accueil citoyen",
         "Conformité RGPD garantie"
       ],
-      ctaText: "Solutions pour collectivités"
+      ctaText: "Tester mon ROI"
     }
   ];
 
@@ -172,7 +172,7 @@ const CasUsage = () => {
                       size="lg"
                       className="px-8 py-4 text-lg group/cta"
                     >
-                      Évaluer mon potentiel ROI
+                      Tester mon ROI
                       <Target className="ml-3 h-5 w-5 transition-transform group-hover/cta:scale-110" />
                     </Button>
                     <Button 
@@ -186,7 +186,7 @@ const CasUsage = () => {
                       size="lg"
                       className="px-8 py-4 text-lg border-primary/30"
                     >
-                      Discuter de mon projet
+                      Obtenir un plan d'action personnalisé
                       <ArrowRight className="ml-3 h-5 w-5" />
                     </Button>
                   </div>

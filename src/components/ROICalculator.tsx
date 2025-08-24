@@ -185,7 +185,7 @@ const ROICalculator = () => {
                     variant="default" 
                     className="bg-cta-primary hover:bg-cta-primary/90 btn-cta-hover flex-1"
                   >
-                    Diagnostic Gratuit
+                    Obtenir un plan d'action personnalisé
                   </Button>
                   <Button 
                     variant="outline" 

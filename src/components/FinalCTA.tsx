@@ -47,7 +47,7 @@ const FinalCTA = () => {
               size="lg" 
               className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground px-8 py-4 text-lg"
             >
-              Parler à un expert
+              Obtenir un plan d'action personnalisé
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
@@ -55,7 +55,7 @@ const FinalCTA = () => {
               size="lg" 
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg"
             >
-              Calculer mon ROI
+              Tester mon ROI
             </Button>
           </div>
 

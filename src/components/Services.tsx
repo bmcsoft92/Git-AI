@@ -44,7 +44,7 @@ const Services = () => {
       title: "Libérez 15h/Semaine par Employé",
       subtitle: "Efficacité Opérationnelle Maximisée",
       description: "Éliminez les tâches répétitives qui freinent votre équipe. Nos automatisations permettent à vos collaborateurs de se concentrer sur l'innovation et les missions à forte valeur ajoutée.",
-      ctaText: "Découvrir mes gains de temps",
+      ctaText: "Tester mon ROI",
       ctaAction: () => navigate("/calculateur-roi"),
       services: [
         { name: "Gestion de Projet Automatisée", icon: Briefcase, description: "Workflows intelligents" },
@@ -59,7 +59,7 @@ const Services = () => {
       title: "Multipliez par 3 votre Portée Digitale",
       subtitle: "Impact Marketing Décuplé",
       description: "Déployez des campagnes intelligentes pilotées par la data en temps réel. Automatisation complète de vos réseaux sociaux et reporting prédictif pour maximiser votre ROI marketing.",
-      ctaText: "Voir mon potentiel marketing",
+      ctaText: "Tester mon ROI",
       ctaAction: () => navigate("/calculateur-roi"),
       services: [
         { name: "Social Media Automation", icon: Users, description: "Publication et engagement automatisés" },

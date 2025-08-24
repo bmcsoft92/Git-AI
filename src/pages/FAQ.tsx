@@ -227,7 +227,7 @@ const FAQ = () => {
                       size="lg"
                       className="px-8 py-4 text-lg group/cta"
                     >
-                      Calculer mon ROI
+                      Tester mon ROI
                       <TrendingUp className="ml-3 h-5 w-5 transition-transform group-hover/cta:scale-110" />
                     </Button>
                     <Button 
@@ -241,7 +241,7 @@ const FAQ = () => {
                       size="lg"
                       className="px-8 py-4 text-lg border-primary/30"
                     >
-                      Poser une question
+                      Obtenir un plan d'action personnalisé
                       <ArrowRight className="ml-3 h-5 w-5" />
                     </Button>
                   </div>

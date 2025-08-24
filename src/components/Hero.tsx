@@ -53,7 +53,7 @@ const Hero = () => {
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                Parler à un expert
+                Obtenir un plan d'action personnalisé
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <div className="flex flex-col items-center gap-2">
@@ -65,7 +65,7 @@ const Hero = () => {
                     navigate('/calculateur-roi');
                   }}
                 >
-                  Calculer mon ROI
+                  Tester mon ROI
                 </Button>
                 <span className="text-xs text-text-secondary/80 italic">
                   Résultat instantané en 30 secondes
