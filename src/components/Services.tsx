@@ -349,7 +349,7 @@ const Services = () => {
               </div>
               <div className="text-left">
                 <div className="font-bold text-heading text-lg">Technologies Maîtrisées</div>
-                <div className="text-text-secondary text-sm">Make, Zapier, IA, CRM, API... + 200 intégrations</div>
+                <div className="text-text-secondary text-sm">N8N, Make et Zapier, utilisées par des milliers d'organisations dans le monde</div>
               </div>
             </div>
           </Card>
