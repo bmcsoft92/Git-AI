@@ -7,7 +7,7 @@ const Footer = () => {
   const navigate = useNavigate();
 
   const handleContactClick = () => {
-    navigate('/contact');
+    window.location.href = '/contact';
   };
 
   return (
