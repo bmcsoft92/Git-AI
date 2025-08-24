@@ -150,7 +150,7 @@ const Services = () => {
 
         {/* Strategic Pillars with Enhanced CTAs */}
         <div className="mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {strategicPillars.map((pillar) => {
               const Icon = pillar.icon;
               const isActive = activeTab === pillar.id;
@@ -165,41 +165,36 @@ const Services = () => {
                   }`}
                   onClick={() => setActiveTab(pillar.id)}
                 >
-                  <div className="relative h-48 mb-4">
-                    <img 
-                      src={pillar.image}
-                      alt={`Illustration pour ${pillar.title}`}
-                      className="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
-                      style={{
-                        filter: isActive ? 'brightness(1.1)' : 'brightness(0.8)',
-                      }}
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t transition-all duration-300 ${
-                      isActive 
-                        ? 'from-primary/20 via-transparent to-transparent' 
-                        : 'from-background/60 via-transparent to-transparent group-hover:from-primary/30'
-                    }`} />
-                    <div className="absolute top-4 right-4">
-                      <div className={`p-3 rounded-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110 ${
-                        isActive 
-                          ? 'bg-primary/40 shadow-lg shadow-primary/20' 
-                          : 'bg-background/40 group-hover:bg-primary/30 group-hover:shadow-md group-hover:shadow-primary/15'
-                      }`}>
-                        <Icon className={`h-6 w-6 transition-all duration-300 ${
-                          isActive 
-                            ? 'text-white drop-shadow-md' 
-                            : 'text-primary group-hover:text-white group-hover:drop-shadow-sm'
-                        }`} 
-                        strokeWidth={1.5}
-                        style={{
-                          filter: 'drop-shadow(0 0 0.5px currentColor)',
-                          shapeRendering: 'geometricPrecision'
-                        }}
-                        />
-                      </div>
-                    </div>
+                  {/* Premium Visual Element */}
+                  <div className="absolute top-4 right-4 opacity-20">
+                    {pillar.id === 'growth' && (
+                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <path d="M8 28L16 20L24 24L32 12" stroke="currentColor" strokeWidth="2" className="text-primary"/>
+                        <circle cx="32" cy="12" r="2" fill="currentColor" className="text-primary"/>
+                        <circle cx="24" cy="24" r="2" fill="currentColor" className="text-primary"/>
+                        <circle cx="16" cy="20" r="2" fill="currentColor" className="text-primary"/>
+                      </svg>
+                    )}
+                    {pillar.id === 'efficiency' && (
+                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="12" stroke="currentColor" strokeWidth="2" className="text-primary"/>
+                        <path d="M20 8V20L28 24" stroke="currentColor" strokeWidth="2" className="text-primary"/>
+                      </svg>
+                    )}
+                    {pillar.id === 'marketing' && (
+                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="3" fill="currentColor" className="text-primary"/>
+                        <circle cx="12" cy="12" r="2" fill="currentColor" className="text-primary/60"/>
+                        <circle cx="28" cy="12" r="2" fill="currentColor" className="text-primary/60"/>
+                        <circle cx="32" cy="28" r="2" fill="currentColor" className="text-primary/60"/>
+                        <line x1="20" y1="20" x2="12" y2="12" stroke="currentColor" strokeWidth="1" className="text-primary/40"/>
+                        <line x1="20" y1="20" x2="28" y2="12" stroke="currentColor" strokeWidth="1" className="text-primary/40"/>
+                        <line x1="20" y1="20" x2="32" y2="28" stroke="currentColor" strokeWidth="1" className="text-primary/40"/>
+                      </svg>
+                    )}
                   </div>
-                  <CardHeader className="text-center pb-4 pt-0">
+                  
+                  <CardHeader className="text-center pb-4 pt-6">
                     <div className="mb-2 text-xs font-medium text-primary uppercase tracking-wide">
                       {pillar.subtitle}
                     </div>
