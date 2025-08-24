@@ -12,3 +12,16 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://votre-domaine.com/sitemap.xml
+
+# Pages importantes
+Allow: /
+Allow: /solutions
+Allow: /methode
+Allow: /cas-usage
+Allow: /faq
+Allow: /contact
+Allow: /blog
+Allow: /calculateur-roi

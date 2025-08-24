@@ -117,12 +117,19 @@ const Header = () => {
                   onClick={() => setIsOutilsOpen(!isOutilsOpen)}
                   className="nav-link text-text-secondary hover:text-primary transition-colors font-medium flex items-center space-x-1"
                 >
-                  <span>Outils</span>
+                  <span>Ressources</span>
                   <ChevronDown className={`h-4 w-4 transition-transform ${isOutilsOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {isOutilsOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-lg py-2 z-50">
+                  <div className="absolute top-full left-0 mt-2 w-56 bg-card border border-border rounded-lg shadow-lg py-2 z-50">
+                    <Link 
+                      to="/cas-usage" 
+                      className="block px-4 py-2 text-sm text-text-secondary hover:text-primary hover:bg-muted transition-colors"
+                      onClick={() => setIsOutilsOpen(false)}
+                    >
+                      Cas d'usage par secteur
+                    </Link>
                     <Link 
                       to="/calculateur-roi" 
                       className="block px-4 py-2 text-sm text-text-secondary hover:text-primary hover:bg-muted transition-colors"
@@ -137,25 +144,27 @@ const Header = () => {
                     >
                       CRM
                     </Link>
+                    <Link 
+                      to="/blog" 
+                      className="block px-4 py-2 text-sm text-text-secondary hover:text-primary hover:bg-muted transition-colors"
+                      onClick={() => setIsOutilsOpen(false)}
+                    >
+                      Blog & Guides
+                    </Link>
                   </div>
                 )}
               </div>
               
-              <a 
-                href="#integrations" 
-                onClick={handleIntegrationsClick} 
-                className="nav-link text-text-secondary hover:text-primary transition-colors"
-              >
-                Intégrations
-              </a>
-              
-              <a 
-                href="#faq" 
-                onClick={handleFAQClick} 
-                className="nav-link text-text-secondary hover:text-primary transition-colors"
+              <Link 
+                to="/faq" 
+                className={`nav-link transition-colors ${
+                  isActive('/faq') 
+                    ? 'text-primary font-medium' 
+                    : 'text-text-secondary hover:text-primary'
+                }`}
               >
                 FAQ
-              </a>
+              </Link>
             </div>
 
             {/* Séparateur visuel */}
@@ -243,8 +252,15 @@ const Header = () => {
               {/* Groupe 2: Outils & Ressources */}
               <div className="space-y-4">
                 <div className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
-                  Outils & Ressources
+                  Ressources & Outils
                 </div>
+                <Link 
+                  to="/cas-usage" 
+                  className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Cas d'usage par secteur
+                </Link>
                 <Link 
                   to="/calculateur-roi" 
                   className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
@@ -259,19 +275,26 @@ const Header = () => {
                 >
                   CRM
                 </Link>
+                <Link 
+                  to="/blog" 
+                  className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Blog & Guides
+                </Link>
+                <Link 
+                  to="/faq" 
+                  className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  FAQ
+                </Link>
                 <a 
                   href="#integrations" 
                   onClick={handleIntegrationsClick} 
                   className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
                 >
                   Intégrations
-                </a>
-                <a 
-                  href="#faq" 
-                  onClick={handleFAQClick} 
-                  className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
-                >
-                  FAQ
                 </a>
               </div>
 
