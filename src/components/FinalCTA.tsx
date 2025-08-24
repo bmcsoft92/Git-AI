@@ -64,9 +64,6 @@ const FinalCTA = () => {
           {/* Garanties */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <Badge variant="outline" className="text-success border-success/30 bg-success/10 px-4 py-2">
-              ✓ Sans engagement
-            </Badge>
-            <Badge variant="outline" className="text-success border-success/30 bg-success/10 px-4 py-2">
               ✓ Facturation au temps passé
             </Badge>
             <Badge variant="outline" className="text-success border-success/30 bg-success/10 px-4 py-2">

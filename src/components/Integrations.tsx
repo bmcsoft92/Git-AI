@@ -156,7 +156,7 @@ const Integrations = () => {
             Vérifier la compatibilité de vos outils
           </Button>
           <p className="text-xs text-text-secondary/70 mt-2 italic">
-            Vérification simple, sans engagement, basée sur vos outils actuels.
+            Vérification simple basée sur vos outils actuels.
           </p>
         </div>
       </div>

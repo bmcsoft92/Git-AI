@@ -553,7 +553,7 @@ const ROICalculatorPage = () => {
                     </UITooltip>
                   </TooltipProvider>
                   <p className="mt-4 text-sm opacity-80" style={{ color: '#F5F5F5' }}>
-                    Résultat instantané • Sans engagement
+                    Résultat instantané
                   </p>
                 </div>
               </CardContent>
@@ -875,7 +875,7 @@ const ROICalculatorPage = () => {
                       Continuer vers le diagnostic détaillé
                     </Button>
                     <p className="mt-4 text-sm opacity-80" style={{ color: '#F5F5F5' }}>
-                      Diagnostic personnalisé • Sans engagement • 3 minutes
+                      Diagnostic personnalisé • 3 minutes
                     </p>
                   </div>
                 </CardContent>

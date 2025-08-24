@@ -15,11 +15,11 @@ const Blog = () => {
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Découvrez nos guides pratiques sur l\'automatisation IA : calcul de ROI, meilleures pratiques, cas d\'usage concrets. Ressources gratuites pour optimiser vos processus.');
+      metaDescription.setAttribute('content', 'Découvrez nos guides pratiques sur l\'automatisation IA : calcul de ROI, meilleures pratiques, cas d\'usage concrets. Ressources pour optimiser vos processus.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Découvrez nos guides pratiques sur l\'automatisation IA : calcul de ROI, meilleures pratiques, cas d\'usage concrets. Ressources gratuites pour optimiser vos processus.');
+      metaDescription.setAttribute('content', 'Découvrez nos guides pratiques sur l\'automatisation IA : calcul de ROI, meilleures pratiques, cas d\'usage concrets. Ressources pour optimiser vos processus.');
       document.head.appendChild(metaDescription);
     }
   }, []);

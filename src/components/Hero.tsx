@@ -74,9 +74,6 @@ const Hero = () => {
             {/* Garanties */}
             <div className="flex flex-wrap gap-4 mt-6 animate-fade-in-up-delay-2 justify-center">
               <Badge variant="outline" className="text-success border-success/30 bg-success/10">
-                ✓ Sans engagement
-              </Badge>
-              <Badge variant="outline" className="text-success border-success/30 bg-success/10">
                 ✓ Facturation au temps passé
               </Badge>
               <Badge variant="outline" className="text-success border-success/30 bg-success/10">

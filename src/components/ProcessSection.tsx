@@ -445,7 +445,7 @@ const ProcessSection = () => {
               </div>
               
               <p className="text-sm pt-2" style={{ color: '#F5F5F5', opacity: 0.8 }}>
-                Sans engagement, juste une première étape claire pour avancer.
+                Une première étape claire pour avancer.
               </p>
             </div>
           </div>

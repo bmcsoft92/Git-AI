@@ -235,10 +235,6 @@ const Contact = () => {
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
                         <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
-                        <span className="text-sm text-text-secondary">Consultation gratuite et sans engagement</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
                         <span className="text-sm text-text-secondary">Réponse sous 24h garantie</span>
                       </div>
                       <div className="flex items-center gap-3">
