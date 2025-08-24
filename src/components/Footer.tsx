@@ -197,7 +197,7 @@ const Footer = () => {
                   <div>
                     <p className="text-xs text-text-secondary mb-1">LinkedIn</p>
                     <a 
-                      href="#" 
+                      href="https://www.linkedin.com/company/maia-elange" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-primary hover:text-cta-primary transition-colors font-medium text-sm"

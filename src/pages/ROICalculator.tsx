@@ -194,16 +194,12 @@ const ROICalculatorPage = () => {
         userPhone: "" // Pas de téléphone dans le formulaire actuel
       };
 
-      console.log("Sending analysis data:", analysisData);
-
       // Appeler l'edge function d'analyse
       const { data: analysisResponse, error: analysisError } = await supabase.functions.invoke('analyze-roi-data', {
         body: analysisData
       });
 
       if (analysisError) throw analysisError;
-
-      console.log("Analysis response:", analysisResponse);
 
       // Envoyer l'email avec les résultats
       const emailData = {
