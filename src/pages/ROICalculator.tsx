@@ -1258,9 +1258,9 @@ const ROICalculatorPage = () => {
                             </div>
                             
                             {/* Mention légale RGPD Étape 1 */}
-                            <div className="mt-4 text-center">
-                              <p className="text-xs text-gray-400 italic">
-                                *Vos données sont utilisées uniquement pour générer votre diagnostic. Elles ne seront jamais partagées. Vous pouvez demander leur suppression à contact@maiaelange.fr.*
+                            <div className="mt-6 flex justify-center">
+                              <p className="text-xs text-gray-400 italic max-w-md text-center leading-relaxed sm:text-sm">
+                                *Données utilisées uniquement pour le diagnostic, jamais partagées.*
                               </p>
                             </div>
                           </div>
@@ -1389,9 +1389,9 @@ const ROICalculatorPage = () => {
                             </div>
                             
                             {/* Mention légale RGPD Étape 2 */}
-                            <div className="mt-4 text-center">
-                              <p className="text-xs text-gray-400 italic">
-                                *Réponses strictement confidentielles, utilisées uniquement pour générer votre plan personnalisé.*
+                            <div className="mt-6 flex justify-center">
+                              <p className="text-xs text-gray-400 italic max-w-md text-center leading-relaxed sm:text-sm">
+                                *Réponses confidentielles pour votre plan personnalisé.*
                               </p>
                             </div>
                           </div>
@@ -1414,7 +1414,7 @@ const ROICalculatorPage = () => {
                                 Sélectionnez tous les processus que vous aimeriez automatiser * :
                               </Label>
                               
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
                                 {[
                                   'Gestion des emails et communications',
                                   'Facturation et devis automatiques', 
@@ -1429,17 +1429,19 @@ const ROICalculatorPage = () => {
                                   'Service client et support',
                                   'Génération de leads'
                                 ].map((processus) => (
-                                  <label key={processus} className="flex items-center space-x-3 p-3 rounded-lg cursor-pointer hover:bg-blue-900/20 transition-colors">
-                                    <input
-                                      type="checkbox"
-                                      checked={diagnosticData.processus_prioritaires.includes(processus)}
-                                      onChange={(e) => handleCheckboxChange('processus_prioritaires', processus, e.target.checked)}
-                                      className="w-5 h-5 rounded border-2 border-blue-400 text-blue-600 focus:ring-blue-500"
-                                    />
-                                    <span className="text-sm font-medium" style={{ color: '#F5F5F5' }}>
-                                      {processus}
-                                    </span>
-                                  </label>
+                                  <div key={processus} className="flex items-start">
+                                    <label className="flex items-center space-x-3 p-3 rounded-lg cursor-pointer hover:bg-blue-900/20 transition-colors w-full">
+                                      <input
+                                        type="checkbox"
+                                        checked={diagnosticData.processus_prioritaires.includes(processus)}
+                                        onChange={(e) => handleCheckboxChange('processus_prioritaires', processus, e.target.checked)}
+                                        className="w-5 h-5 rounded border-2 border-blue-400 text-blue-600 focus:ring-blue-500 flex-shrink-0"
+                                      />
+                                      <span className="text-sm font-medium leading-tight" style={{ color: '#F5F5F5' }}>
+                                        {processus}
+                                      </span>
+                                    </label>
+                                  </div>
                                 ))}
                               </div>
                               
@@ -1474,9 +1476,9 @@ const ROICalculatorPage = () => {
                             </div>
                             
                             {/* Mention légale RGPD Étape 3 */}
-                            <div className="mt-4 text-center">
-                              <p className="text-xs text-gray-400 italic">
-                                *Ces informations servent uniquement à identifier les intégrations possibles. Aucun accès direct à vos outils n'est demandé.*
+                            <div className="mt-6 flex justify-center">
+                              <p className="text-xs text-gray-400 italic max-w-md text-center leading-relaxed sm:text-sm">
+                                *Informations pour identifier les intégrations. Aucun accès direct demandé.*
                               </p>
                             </div>
                           </div>
@@ -1567,9 +1569,9 @@ const ROICalculatorPage = () => {
                             </div>
                             
                             {/* Mention légale RGPD Étape 4 */}
-                            <div className="mt-4 text-center">
-                              <p className="text-xs text-gray-400 italic">
-                                *Vos réponses ne servent qu'à établir des scénarios types. Elles ne constituent pas un audit technique.*
+                            <div className="mt-6 flex justify-center">
+                              <p className="text-xs text-gray-400 italic max-w-md text-center leading-relaxed sm:text-sm">
+                                *Données pour scénarios types uniquement, pas d'audit technique.*
                               </p>
                             </div>
                           </div>
@@ -1652,9 +1654,9 @@ const ROICalculatorPage = () => {
                             </div>
                             
                             {/* Mention légale RGPD Étape 5 */}
-                            <div className="mt-4 text-center">
-                              <p className="text-xs text-gray-400 italic">
-                                *Ces données sont indicatives et ne constituent pas un engagement.*
+                            <div className="mt-6 flex justify-center">
+                              <p className="text-xs text-gray-400 italic max-w-md text-center leading-relaxed sm:text-sm">
+                                *Données indicatives, sans engagement.*
                               </p>
                             </div>
                           </div>
@@ -1788,11 +1790,31 @@ const ROICalculatorPage = () => {
                             </div>
                             
                             {/* Mention légale RGPD Étape 6 */}
-                            <div className="mt-4 text-center">
-                              <p className="text-xs text-gray-400 italic">
-                                *Les résultats sont des estimations basées sur vos réponses. Les gains réels peuvent varier. Vos données ne seront pas conservées au-delà de 3 ans.*
+                            <div className="mt-6 flex justify-center">
+                              <p className="text-xs text-gray-400 italic max-w-md text-center leading-relaxed sm:text-sm">
+                                *Estimations basées sur vos réponses. Conservation 3 ans maximum.*
                               </p>
                             </div>
+
+                            {/* Résumé dynamique personnalisé */}
+                            {diagnosticData.nom && currentStep === 6 && (
+                              <div 
+                                className="mt-8 p-6 rounded-xl text-center"
+                                style={{ 
+                                  backgroundColor: 'rgba(74, 158, 255, 0.1)',
+                                  border: '1px solid rgba(74, 158, 255, 0.3)'
+                                }}
+                              >
+                                <h4 className="text-lg font-semibold mb-2" style={{ color: '#4A9EFF' }}>
+                                  ✨ Merci {diagnosticData.nom}
+                                </h4>
+                                <p className="text-sm leading-relaxed" style={{ color: '#F5F5F5' }}>
+                                  Voici vos 3 chantiers prioritaires identifiés. 
+                                  <br />
+                                  <span className="font-medium">Cliquez pour recevoir votre rapport personnalisé complet.</span>
+                                </p>
+                              </div>
+                            )}
                           </div>
                         )}
 
