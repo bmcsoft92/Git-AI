@@ -118,7 +118,7 @@ const Blog = () => {
                       {article.category}
                     </Badge>
                   </div>
-                  <CardTitle className="text-2xl lg:text-3xl font-bold text-heading mb-4 hover:text-primary transition-colors cursor-pointer">
+                  <CardTitle className="text-2xl lg:text-3xl font-bold text-heading mb-4">
                     {article.title}
                   </CardTitle>
                   <p className="text-lg text-text-secondary leading-relaxed mb-6">
@@ -163,7 +163,7 @@ const Blog = () => {
                         {article.category}
                       </Badge>
                     </div>
-                    <CardTitle className="text-xl font-bold text-heading mb-3 group-hover:text-primary transition-colors cursor-pointer">
+                    <CardTitle className="text-xl font-bold text-heading mb-3">
                       {article.title}
                     </CardTitle>
                     <p className="text-text-secondary leading-relaxed mb-4">

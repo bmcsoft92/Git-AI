@@ -83,10 +83,10 @@ const Integrations = () => {
             return (
               <Card 
                 key={integration.id}
-                className="group cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] transform 
-                           hover:scale-[1.05] hover:-translate-y-3 hover:shadow-2xl
+                className="group transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] transform 
+                           hover:scale-[1.02] hover:-translate-y-1 hover:shadow-lg
                            bg-card/80 backdrop-blur-sm border border-border/30 
-                           hover:border-primary hover:shadow-primary/40 hover:bg-card/90
+                           hover:border-primary/60 hover:shadow-primary/20 hover:bg-card/90
                            animate-fade-in
                            relative overflow-hidden
                            before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/5 before:to-transparent 
