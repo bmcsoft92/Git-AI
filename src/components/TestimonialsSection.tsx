@@ -2,6 +2,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Users, Award, Target, Shield } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
+import testimonialBanking from "@/assets/testimonial-banking.jpg";
+import testimonialTelecom from "@/assets/testimonial-telecom.jpg";
+import testimonialFinance from "@/assets/testimonial-finance.jpg";
 
 const TestimonialsSection = () => {
   const stats = [
@@ -35,7 +38,7 @@ const TestimonialsSection = () => {
     {
       company: "BNP Paribas",
       sector: "Services Financiers",
-      logo: "🏛️", // Placeholder - en production, utiliser une vraie image
+      logo: testimonialBanking,
       quote: "L'IA conversationnelle de Maia Elange a transformé notre service client. 70% de réduction du temps de traitement des demandes.",
       author: "Claire Martin",
       position: "DSI",
@@ -44,7 +47,7 @@ const TestimonialsSection = () => {
     {
       company: "Orange Business",
       sector: "Télécommunications",
-      logo: "🟠", // Placeholder - en production, utiliser une vraie image
+      logo: testimonialTelecom,
       quote: "Leurs solutions d'automatisation des workflows nous ont permis d'optimiser nos opérations avec une efficacité remarquable.",
       author: "Thomas Dubois",
       position: "Directeur Opérations",
@@ -53,7 +56,7 @@ const TestimonialsSection = () => {
     {
       company: "Société Générale",
       sector: "Banking",
-      logo: "🔴", // Placeholder - en production, utiliser une vraie image
+      logo: testimonialFinance,
       quote: "L'IA décisionnelle a révolutionné notre processus d'analyse de risques. Des décisions plus rapides et plus précises.",
       author: "Sophie Chen",
       position: "Risk Manager",
@@ -108,7 +111,13 @@ const TestimonialsSection = () => {
                 <CardContent className="p-6">
                   {/* Header avec logo et entreprise */}
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="text-2xl">{testimonial.logo}</div>
+                    <div className="w-12 h-12 rounded-lg overflow-hidden bg-primary/10 flex items-center justify-center">
+                      <img 
+                        src={testimonial.logo}
+                        alt={`Logo ${testimonial.company}`}
+                        className="w-8 h-8 object-contain"
+                      />
+                    </div>
                     <div>
                       <div className="font-bold text-heading group-hover:text-primary transition-colors duration-300">
                         {testimonial.company}

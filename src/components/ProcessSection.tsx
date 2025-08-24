@@ -4,6 +4,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Search, Lightbulb, Rocket, TrendingUp, Sparkles, Check } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import processDiagnosis from "@/assets/process-diagnosis.jpg";
+import processStrategy from "@/assets/process-strategy.jpg";
+import processDeployment from "@/assets/process-deployment.jpg";
+import processMonitoring from "@/assets/process-monitoring.jpg";
 
 const ProcessSection = () => {
   const navigate = useNavigate();
@@ -25,6 +29,7 @@ const ProcessSection = () => {
       title: "Diagnostic & Analyse Stratégique",
       subtitle: "Analyse complète pour identifier jusqu'à 30% d'économies potentielles et de gains de productivité.",
       icon: Search,
+      image: processDiagnosis,
       color: "#0F7F7B",
       bgGradient: "linear-gradient(135deg, rgba(15, 127, 123, 0.15), rgba(15, 127, 123, 0.05))",
       iconBg: "rgba(15, 127, 123, 0.2)",
@@ -40,6 +45,7 @@ const ProcessSection = () => {
       title: "Stratégie & Conception Sur-Mesure",
       subtitle: "Un plan d'automatisation sur-mesure conçu pour générer un ROI rapide (souvent observable en 90 jours).",
       icon: Lightbulb,
+      image: processStrategy,
       color: "#D56A1F",
       bgGradient: "linear-gradient(135deg, rgba(213, 106, 31, 0.15), rgba(213, 106, 31, 0.05))",
       iconBg: "rgba(213, 106, 31, 0.2)",
@@ -55,6 +61,7 @@ const ProcessSection = () => {
       title: "Déploiement & Intégration",
       subtitle: "Mise en place progressive sans rupture opérationnelle, avec formation complète de vos équipes.",
       icon: Rocket,
+      image: processDeployment,
       color: "#2563EB",
       bgGradient: "linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(37, 99, 235, 0.05))",
       iconBg: "rgba(37, 99, 235, 0.2)",
@@ -70,6 +77,7 @@ const ProcessSection = () => {
       title: "Suivi & Optimisation Continue",
       subtitle: "Suivi trimestriel, ajustements stratégiques et optimisation continue pour garantir un ROI croissant dans le temps.",
       icon: TrendingUp,
+      image: processMonitoring,
       color: "#16A34A",
       bgGradient: "linear-gradient(135deg, rgba(22, 163, 74, 0.15), rgba(22, 163, 74, 0.05))",
       iconBg: "rgba(22, 163, 74, 0.2)",
@@ -157,6 +165,18 @@ const ProcessSection = () => {
                 }}
                 onClick={() => setSelectedPhase(index)}
               >
+                {/* Image d'illustration */}
+                <div className="absolute top-0 right-0 h-20 w-20 opacity-20 overflow-hidden">
+                  <img 
+                    src={phase.image}
+                    alt={`Illustration ${phase.title}`}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    style={{
+                      filter: `brightness(${selectedPhase === index ? '1.2' : '0.8'}) contrast(1.1)`
+                    }}
+                  />
+                </div>
+                
                 {/* Effet lumineux en arrière-plan */}
                 {selectedPhase === index && (
                   <div 
@@ -233,13 +253,26 @@ const ProcessSection = () => {
           <div className="lg:pl-8">
             <Card 
               key={animationKey}
-              className="h-full border-0 animate-fade-in"
+              className="h-full border-0 animate-fade-in relative overflow-hidden"
               style={{ 
                 backgroundColor: '#1F2937',
                 boxShadow: `0 20px 40px rgba(${parseInt(phases[selectedPhase].color.slice(1, 3), 16)}, ${parseInt(phases[selectedPhase].color.slice(3, 5), 16)}, ${parseInt(phases[selectedPhase].color.slice(5, 7), 16)}, 0.1)`
               }}
             >
-              <CardContent className="p-8">
+              {/* Image de fond avec overlay */}
+              <div className="absolute inset-0 overflow-hidden">
+                <img 
+                  src={phases[selectedPhase].image}
+                  alt={`Illustration ${phases[selectedPhase].title}`}
+                  className="w-full h-full object-cover opacity-10 transition-all duration-1000"
+                  style={{
+                    filter: 'brightness(0.6) contrast(1.2)'
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-background/80" />
+              </div>
+              
+              <CardContent className="p-8 relative z-10">
                 <div className="mb-6">
                   <div className="flex items-center space-x-3 mb-4">
                     {(() => {
