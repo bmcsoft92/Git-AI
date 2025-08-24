@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 
 const CGU = () => {
   useEffect(() => {
-    document.title = "Conditions Générales d'Utilisation | Maïa Elange";
+    document.title = "Conditions Générales d'Utilisation | Maia elange";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Conditions générales d\'utilisation de Maïa Elange. Utilisation du simulateur ROI, diagnostic automatisation et services d\'accompagnement.');
+      metaDescription.setAttribute('content', 'Conditions générales d\'utilisation de Maia elange. Utilisation du simulateur ROI, diagnostic automatisation et services d\'accompagnement.');
     }
   }, []);
 
@@ -29,7 +29,7 @@ const CGU = () => {
               
               <div className="space-y-4 text-text-secondary leading-relaxed">
                 <p>
-                  Le site Maïa Elange a pour objet de fournir des informations sur l'automatisation intelligente et de proposer les services suivants :
+                  Le site Maia elange a pour objet de fournir des informations sur l'automatisation intelligente et de proposer les services suivants :
                 </p>
                 <ul className="list-disc list-inside space-y-2 ml-4">
                   <li>Informations et conseils sur l'automatisation des processus</li>
@@ -83,7 +83,7 @@ const CGU = () => {
                   Ces outils sont conçus pour donner une première estimation et orientation. Seul un diagnostic personnalisé réalisé par nos experts peut aboutir à des recommandations précises et contractuelles.
                 </p>
                 <p>
-                  Maïa Elange ne saurait être tenue responsable des décisions prises par l'utilisateur sur la base des informations indicatives fournies par le site.
+                  Maia elange ne saurait être tenue responsable des décisions prises par l'utilisateur sur la base des informations indicatives fournies par le site.
                 </p>
               </div>
             </section>
@@ -94,7 +94,7 @@ const CGU = () => {
               
               <div className="space-y-4 text-text-secondary leading-relaxed">
                 <p>
-                  Maïa Elange se réserve le droit de modifier ces conditions générales d'utilisation à tout moment. 
+                  Maia elange se réserve le droit de modifier ces conditions générales d'utilisation à tout moment. 
                   Les nouvelles conditions seront applicables dès leur mise en ligne sur le site.
                 </p>
               </div>

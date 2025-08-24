@@ -12,7 +12,7 @@ const FAQ = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "FAQ Automatisation IA | Maïa Elange";
+    document.title = "FAQ Automatisation IA | Maia elange";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -109,7 +109,7 @@ const FAQ = () => {
     {
       icon: Shield,
       question: "C'est quoi une agence d'IA & d'automatisation ?",
-      answer: "Une agence comme Maïa Elange accompagne les organisations (PME, ETI, grandes structures, associations) dans l'identification et la mise en place d'automatisations concrètes. L'objectif est simple : réduire les tâches répétitives, améliorer la productivité et libérer du temps pour des missions à forte valeur ajoutée."
+      answer: "Une agence comme Maia elange accompagne les organisations (PME, ETI, grandes structures, associations) dans l'identification et la mise en place d'automatisations concrètes. L'objectif est simple : réduire les tâches répétitives, améliorer la productivité et libérer du temps pour des missions à forte valeur ajoutée."
     },
     {
       icon: TrendingUp,

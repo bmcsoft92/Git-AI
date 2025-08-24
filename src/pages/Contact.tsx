@@ -23,15 +23,15 @@ const Contact = () => {
   });
 
   useEffect(() => {
-    document.title = "Nous Contacter Directement | Maïa Elange";
+    document.title = "Nous Contacter Directement | Maia elange";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Contactez directement Maïa Elange pour vos projets d\'automatisation IA. Formulaire simple et sécurisé. Réponse sous 48h ouvrées garantie.');
+      metaDescription.setAttribute('content', 'Contactez directement Maia elange pour vos projets d\'automatisation IA. Formulaire simple et sécurisé. Réponse sous 48h ouvrées garantie.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Contactez directement Maïa Elange pour vos projets d\'automatisation IA. Formulaire simple et sécurisé. Réponse sous 48h ouvrées garantie.');
+      metaDescription.setAttribute('content', 'Contactez directement Maia elange pour vos projets d\'automatisation IA. Formulaire simple et sécurisé. Réponse sous 48h ouvrées garantie.');
       document.head.appendChild(metaDescription);
     }
   }, []);

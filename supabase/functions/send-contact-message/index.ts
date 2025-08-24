@@ -52,9 +52,9 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error("Failed to save contact message");
     }
 
-    // Send notification email to Maia Elange
+    // Send notification email to Maia elange
     await resend.emails.send({
-      from: "Maia Elange <contact@maiaelange.fr>",
+        from: "Maia elange <contact@maiaelange.fr>",
       to: ["contact@maiaelange.fr"],
       subject: `Nouveau message de contact - ${name}`,
       html: `
@@ -98,9 +98,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to client
     await resend.emails.send({
-      from: "Maia Elange <contact@maiaelange.fr>",
+      from: "Maia elange <contact@maiaelange.fr>",
       to: [email],
-      subject: "Nous avons bien reçu votre message – Maïa Elange",
+      subject: "Nous avons bien reçu votre message – Maia elange",
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; color: #333;">
           
@@ -143,7 +143,7 @@ const handler = async (req: Request): Promise<Response> => {
               À très bientôt,
             </p>
             <p style="color: #3b82f6; margin: 0; font-size: 16px; font-weight: 600;">
-              L'équipe Maïa Elange – Automatisation Intelligente & Transformation Digitale Premium
+              L'équipe Maia elange – Automatisation Intelligente & Transformation Digitale Premium
             </p>
           </div>
 

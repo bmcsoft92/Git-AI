@@ -68,7 +68,7 @@ const handler = async (req: Request): Promise<Response> => {
     await Promise.all([
       // Email to Maia Elange
       resend.emails.send({
-        from: "Maia Elange <contact@maiaelange.fr>",
+        from: "Maia elange <contact@maiaelange.fr>",
         to: ["contact@maiaelange.fr"],
         subject: "Nouvelle demande de rendez-vous – Action requise",
         html: `
@@ -107,9 +107,9 @@ const handler = async (req: Request): Promise<Response> => {
 
       // Confirmation email to client
       resend.emails.send({
-        from: "Maia Elange <contact@maiaelange.fr>",
+        from: "Maia elange <contact@maiaelange.fr>",
         to: [userEmail],
-        subject: "Votre demande de rendez-vous est bien enregistrée – Maïa Elange",
+        subject: "Votre demande de rendez-vous est bien enregistrée – Maia elange",
         html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; color: #333;">
             
@@ -172,7 +172,7 @@ const handler = async (req: Request): Promise<Response> => {
 
             <div style="text-align: center; padding: 20px 0; border-top: 1px solid #e2e8f0; margin-top: 40px;">
               <p style="color: #64748b; font-size: 13px; margin: 0 0 8px 0;">
-                <strong>Maïa Elange</strong> – Automatisation & Transformation Digitale
+                <strong>Maia elange</strong> – Automatisation & Transformation Digitale
               </p>
               <p style="color: #94a3b8; font-size: 12px; margin: 0; font-style: italic;">
                 Toutes les prestations sont établies sur devis personnalisé

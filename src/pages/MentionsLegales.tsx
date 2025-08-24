@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 
 const MentionsLegales = () => {
   useEffect(() => {
-    document.title = "Mentions Légales | Maïa Elange - Automatisation Intelligente & IA";
+    document.title = "Mentions Légales | Maia elange - Automatisation Intelligente & IA";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Mentions légales de Maïa Elange, spécialiste en automatisation intelligente et transformation digitale par IA. Conformité RGPD et informations légales.');
+      metaDescription.setAttribute('content', 'Mentions légales de Maia elange, spécialiste en automatisation intelligente et transformation digitale par IA. Conformité RGPD et informations légales.');
     }
   }, []);
   return (
@@ -25,7 +25,7 @@ const MentionsLegales = () => {
             <section>
               <h2 className="text-2xl font-bold text-heading mb-4">Dénomination sociale</h2>
               <div className="text-text-secondary space-y-2">
-                <p><strong>Dénomination sociale :</strong> Maïa Elange</p>
+                <p><strong>Dénomination sociale :</strong> Maia elange</p>
                 <p><strong>Statut :</strong> Entreprise Individuelle</p>
                 <p><strong>Responsable :</strong> Anne Carine Ndoh Mandjana</p>
                 <p><strong>Contact :</strong> contact@maiaelange.fr</p>
@@ -49,7 +49,7 @@ const MentionsLegales = () => {
             <section>
               <h2 className="text-2xl font-bold text-heading mb-4">Propriété intellectuelle</h2>
               <p className="text-text-secondary">
-                Tout le contenu (textes, images, graphismes, logo, code) est la propriété de Maïa Elange sauf mention contraire.
+                Tout le contenu (textes, images, graphismes, logo, code) est la propriété de Maia elange sauf mention contraire.
                 Toute reproduction est interdite sans autorisation.
               </p>
             </section>
@@ -57,7 +57,7 @@ const MentionsLegales = () => {
             <section>
               <h2 className="text-2xl font-bold text-heading mb-4">Responsabilité</h2>
               <p className="text-text-secondary">
-                Maïa Elange s'efforce de fournir une information fiable mais ne saurait être tenue responsable d'erreurs ou omissions, 
+                Maia elange s'efforce de fournir une information fiable mais ne saurait être tenue responsable d'erreurs ou omissions, 
                 ni des dommages liés à l'utilisation du site.
               </p>
             </section>

@@ -106,9 +106,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Envoyer l'email au client
     const clientEmailResponse = await resend.emails.send({
-      from: "Maia Elange <contact@maiaelange.fr>",
+        from: "Maia elange <contact@maiaelange.fr>",
       to: [userEmail],
-      subject: `🚀 Libérez ${Math.round(roiData.annual_savings/10000)}h/mois et économisez ${roiData.annual_savings.toLocaleString('fr-FR')}€/an - Maia Elange`,
+      subject: `🚀 Libérez ${Math.round(roiData.annual_savings/10000)}h/mois et économisez ${roiData.annual_savings.toLocaleString('fr-FR')}€/an - Maia elange`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -175,7 +175,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Envoyer une copie pour l'équipe Maia Elange
     const teamEmailResponse = await resend.emails.send({
-      from: "Maia Elange <contact@maiaelange.fr>",
+      from: "Maia elange <contact@maiaelange.fr>",
       to: ["contact@maiaelange.fr"],
       subject: `🚨 LEAD CHAUD ROI: ${roiData.annual_savings.toLocaleString('fr-FR')}€/an - ${userName || userEmail}`,
       html: `

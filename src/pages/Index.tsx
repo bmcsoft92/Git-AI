@@ -15,11 +15,11 @@ const Index = () => {
     // Update or create meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Maïa Elange aide les organisations à réduire leurs coûts et augmenter leur impact grâce à des systèmes d\'automatisation simples, mesurables et conformes.');
+      metaDescription.setAttribute('content', 'Maia elange aide les organisations à réduire leurs coûts et augmenter leur impact grâce à des systèmes d\'automatisation simples, mesurables et conformes.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Maïa Elange aide les organisations à réduire leurs coûts et augmenter leur impact grâce à des systèmes d\'automatisation simples, mesurables et conformes.');
+      metaDescription.setAttribute('content', 'Maia elange aide les organisations à réduire leurs coûts et augmenter leur impact grâce à des systèmes d\'automatisation simples, mesurables et conformes.');
       document.head.appendChild(metaDescription);
     }
   }, []);

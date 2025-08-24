@@ -6,10 +6,10 @@ import { AdminTestPanel } from "@/components/AdminTestPanel";
 const AdminTest = () => {
   useEffect(() => {
     // SEO pour la page de test admin
-    document.title = "Test Funnel Admin - Maïa Elange";
+    document.title = "Test Funnel Admin - Maia elange";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Panel de test administrateur pour vérifier le funnel utilisateur complet de Maïa Elange');
+      metaDescription.setAttribute('content', 'Panel de test administrateur pour vérifier le funnel utilisateur complet de Maia elange');
     }
   }, []);
 

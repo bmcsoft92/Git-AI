@@ -11,7 +11,7 @@ const Blog = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Blog et Guides IA | Ressources Automatisation | Maïa Elange";
+    document.title = "Blog et Guides IA | Ressources Automatisation | Maia elange";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {

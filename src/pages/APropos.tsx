@@ -11,15 +11,15 @@ const APropos = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "À propos de Maïa Elange | Automatisation Intelligente & Transformation Digitale";
+    document.title = "À propos de Maia elange | Automatisation Intelligente & Transformation Digitale";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Découvrez Maïa Elange : notre mission, vision et valeurs pour l\'automatisation intelligente et la transformation digitale des organisations.');
+      metaDescription.setAttribute('content', 'Découvrez Maia elange : notre mission, vision et valeurs pour l\'automatisation intelligente et la transformation digitale des organisations.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Découvrez Maïa Elange : notre mission, vision et valeurs pour l\'automatisation intelligente et la transformation digitale des organisations.');
+      metaDescription.setAttribute('content', 'Découvrez Maia elange : notre mission, vision et valeurs pour l\'automatisation intelligente et la transformation digitale des organisations.');
       document.head.appendChild(metaDescription);
     }
   }, []);
