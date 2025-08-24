@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 
 const PolitiqueConfidentialite = () => {
   useEffect(() => {
-    document.title = "Politique de Confidentialité RGPD | Maia Elange - Automatisation Intelligente";
+    document.title = "Politique de Confidentialité & Mentions Légales | Maia Elange";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Politique de confidentialité RGPD conforme de Maia Elange. Protection des données, droits d\'accès et suppression pour l\'automatisation intelligente et transformation digitale.');
+      metaDescription.setAttribute('content', 'Politique de confidentialité et mentions légales de Maia Elange. Cookies essentiels, protection RGPD et informations légales sur l\'automatisation intelligente.');
     }
   }, []);
   return (
@@ -18,69 +18,53 @@ const PolitiqueConfidentialite = () => {
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <h1 className="text-3xl lg:text-4xl font-bold text-heading mb-8">
-            Politique de confidentialité
+            Politique de Confidentialité & Mentions Légales
           </h1>
           
-          <div className="prose prose-lg max-w-none space-y-8">
-            <section>
-              <h2 className="text-2xl font-bold text-heading mb-4">1. Collecte des données</h2>
-              <p className="text-text-secondary">
-                Nous collectons uniquement les informations nécessaires via nos formulaires (nom, email, informations transmises volontairement).
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-bold text-heading mb-4">2. Finalité</h2>
-              <div className="text-text-secondary">
-                <p>Les données sont utilisées pour :</p>
-                <ul className="list-disc list-inside space-y-2 mt-2">
-                  <li>répondre aux demandes de contact,</li>
-                  <li>fournir des diagnostics et plans d'action,</li>
-                  <li>améliorer nos services.</li>
-                </ul>
+          <div className="space-y-12">
+            {/* Politique de Confidentialité */}
+            <section className="bg-card/80 backdrop-blur-sm border border-primary/20 rounded-lg p-8">
+              <h2 className="text-2xl font-bold text-heading mb-6">Politique de Confidentialité</h2>
+              
+              <div className="space-y-6 text-text-secondary leading-relaxed">
+                <p>
+                  Nous utilisons uniquement des cookies essentiels pour améliorer votre expérience de navigation.
+                </p>
+                
+                <p>
+                  Aucun cookie publicitaire ou de suivi tiers n'est utilisé.
+                </p>
+                
+                <p>
+                  Les informations que vous saisissez dans nos formulaires (diagnostic, contact, réservation) servent uniquement à répondre à vos demandes et établir des devis personnalisés.
+                </p>
+                
+                <p>
+                  Conformément au RGPD, vous pouvez demander à tout moment la suppression de vos données en nous écrivant à <strong className="text-primary">contact@maiaelange.fr</strong>.
+                </p>
               </div>
             </section>
 
-            <section>
-              <h2 className="text-2xl font-bold text-heading mb-4">3. Conservation</h2>
-              <p className="text-text-secondary">
-                Les données sont conservées pendant une durée maximale de 3 ans, sauf demande de suppression par l'utilisateur.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-bold text-heading mb-4">4. Partage</h2>
-              <p className="text-text-secondary">
-                Les données ne sont jamais vendues ni cédées. Elles peuvent être partagées uniquement avec nos prestataires techniques (hébergeur, outils d'automatisation).
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-bold text-heading mb-4">5. Sécurité</h2>
-              <p className="text-text-secondary">
-                Nous mettons en place des mesures de sécurité pour protéger vos données.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-bold text-heading mb-4">6. Droits des utilisateurs</h2>
-              <div className="text-text-secondary space-y-2">
-                <p>
-                  Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression de vos données.
-                </p>
-                <p className="font-medium">👉 Pour exercer vos droits : contact@maiaelange.fr</p>
-              </div>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-bold text-heading mb-4">7. Cookies</h2>
-              <div className="text-text-secondary space-y-2">
-                <p>
-                  Le site peut utiliser des cookies techniques et analytiques pour améliorer l'expérience utilisateur.
-                </p>
-                <p>
-                  Vous pouvez les refuser ou les gérer via votre navigateur.
-                </p>
+            {/* Mentions Légales */}
+            <section className="bg-card/80 backdrop-blur-sm border border-primary/20 rounded-lg p-8">
+              <h2 className="text-2xl font-bold text-heading mb-6">Mentions Légales</h2>
+              
+              <div className="space-y-4 text-text-secondary">
+                <div>
+                  <span className="font-semibold text-heading">Entreprise :</span> Maïa Elange – Entreprise Individuelle
+                </div>
+                
+                <div>
+                  <span className="font-semibold text-heading">Responsable de publication :</span> Anne Carine Mandjana
+                </div>
+                
+                <div>
+                  <span className="font-semibold text-heading">Email :</span> <span className="text-primary">contact@maiaelange.fr</span>
+                </div>
+                
+                <div>
+                  <span className="font-semibold text-heading">Hébergeur :</span> Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Chypre
+                </div>
               </div>
             </section>
           </div>
