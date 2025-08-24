@@ -16,9 +16,6 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import servicesGrowth from "@/assets/services-growth.jpg";
-import servicesEfficiency from "@/assets/services-efficiency.jpg";
-import servicesMarketing from "@/assets/services-marketing.jpg";
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState("growth");
@@ -28,7 +25,6 @@ const Services = () => {
     {
       id: "growth",
       icon: TrendingUp,
-      image: servicesGrowth,
       title: "Augmentez vos Ventes de +30%",
       subtitle: "Croissance Commerciale Accélérée",
       description: "Transformez votre processus commercial avec l'automatisation du suivi prospects, des relances et de la qualification. Résultat mesurable : +30% de conversions en 90 jours.",
@@ -45,7 +41,6 @@ const Services = () => {
     {
       id: "efficiency", 
       icon: Settings,
-      image: servicesEfficiency,
       title: "Libérez 15h/Semaine par Employé",
       subtitle: "Efficacité Opérationnelle Maximisée",
       description: "Éliminez les tâches répétitives qui freinent votre équipe. Nos automatisations permettent à vos collaborateurs de se concentrer sur l'innovation et les missions à forte valeur ajoutée.",
@@ -61,7 +56,6 @@ const Services = () => {
     {
       id: "marketing",
       icon: Target, 
-      image: servicesMarketing,
       title: "Multipliez par 3 votre Portée Digitale",
       subtitle: "Impact Marketing Décuplé",
       description: "Déployez des campagnes intelligentes pilotées par la data en temps réel. Automatisation complète de vos réseaux sociaux et reporting prédictif pour maximiser votre ROI marketing.",
@@ -158,37 +152,24 @@ const Services = () => {
               return (
                 <Card 
                   key={pillar.id}
-                  className={`group cursor-pointer transition-all duration-500 transform hover:scale-[1.02] overflow-hidden ${
+                  className={`group cursor-pointer transition-all duration-500 transform hover:scale-[1.02] ${
                     isActive 
                       ? 'bg-card/90 border-primary/60 shadow-xl shadow-primary/25 scale-[1.02]' 
                       : 'bg-card/50 border-border/50 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/15'
                   }`}
                   onClick={() => setActiveTab(pillar.id)}
                 >
-                  <div className="relative h-48 mb-4">
-                    <img 
-                      src={pillar.image}
-                      alt={`Illustration pour ${pillar.title}`}
-                      className="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
-                      style={{
-                        filter: isActive ? 'brightness(1.1)' : 'brightness(0.8)',
-                      }}
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t transition-all duration-300 ${
-                      isActive 
-                        ? 'from-primary/20 via-transparent to-transparent' 
-                        : 'from-background/60 via-transparent to-transparent group-hover:from-primary/30'
-                    }`} />
-                    <div className="absolute top-4 right-4">
-                      <div className={`p-3 rounded-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110 ${
+                  <CardHeader className="text-center pb-4">
+                    <div className="flex justify-center mb-4">
+                      <div className={`p-4 rounded-lg transition-all duration-300 group-hover:scale-110 ${
                         isActive 
-                          ? 'bg-primary/40 shadow-lg shadow-primary/20' 
-                          : 'bg-background/40 group-hover:bg-primary/30 group-hover:shadow-md group-hover:shadow-primary/15'
+                          ? 'bg-primary/25 shadow-lg shadow-primary/20' 
+                          : 'bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-md group-hover:shadow-primary/15'
                       }`}>
-                        <Icon className={`h-6 w-6 transition-all duration-300 ${
+                        <Icon className={`h-8 w-8 transition-all duration-300 ${
                           isActive 
-                            ? 'text-white drop-shadow-md' 
-                            : 'text-primary group-hover:text-white group-hover:drop-shadow-sm'
+                            ? 'text-primary drop-shadow-md' 
+                            : 'text-primary group-hover:text-primary group-hover:drop-shadow-sm'
                         }`} 
                         strokeWidth={1.5}
                         style={{
@@ -198,8 +179,6 @@ const Services = () => {
                         />
                       </div>
                     </div>
-                  </div>
-                  <CardHeader className="text-center pb-4 pt-0">
                     <div className="mb-2 text-xs font-medium text-primary uppercase tracking-wide">
                       {pillar.subtitle}
                     </div>
