@@ -316,7 +316,7 @@ const ROICalculatorPage = () => {
       economies_directes: Math.round(economies_directes),
       gains_croissance: Math.round(gains_croissance),
       roi_strategique: Math.round(roi_strategique),
-      multiplicateur: Math.round(multiplicateur * 10) / 10, // Une décimale pour le multiplicateur
+      multiplicateur: Math.round(multiplicateur * 100) / 100, // Deux décimales pour plus de précision
       temps_total_economise: Math.round(temps_total_economise)
     };
   };
@@ -892,12 +892,26 @@ const ROICalculatorPage = () => {
                               className="text-xs mt-3 italic"
                               style={{ color: '#B0B0B0' }}
                             >
-                              Ces chiffres sont indicatifs et varient selon votre contexte d'entreprise.
+                              Ces chiffres sont des estimations indicatives, calculées à partir des données saisies. Les résultats réels peuvent varier selon votre contexte.
                             </p>
                           </div>
                         </div>
                       </CardContent>
                     </Card>
+                  </div>
+
+                  {/* Mention explicite sous les résultats */}
+                  <div className="mb-8 text-center">
+                    <p 
+                      className="text-sm px-6 py-3 rounded-lg border"
+                      style={{ 
+                        color: '#B0B0B0',
+                        backgroundColor: 'rgba(74, 158, 255, 0.05)',
+                        borderColor: 'rgba(74, 158, 255, 0.2)'
+                      }}
+                    >
+                      ⚠️ Ces chiffres sont des estimations indicatives, calculées à partir des données saisies. Les résultats réels peuvent varier selon votre contexte.
+                    </p>
                   </div>
 
                   {/* Call to Action intermédiaire */}
