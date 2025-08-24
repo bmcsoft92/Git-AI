@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Shield, Euro, TrendingUp, Clock, ArrowRight } from "lucide-react";
+import { Shield, Euro, TrendingUp, Clock, ArrowRight, ArrowLeft, Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Footer from "@/components/Footer";
 
@@ -161,6 +161,28 @@ const FAQ = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background"></div>
           
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            {/* Navigation Buttons */}
+            <div className="flex justify-center gap-4 mb-8">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => navigate(-1)}
+                className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Retour
+              </Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => navigate('/')}
+                className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
+              >
+                <Home className="h-4 w-4" />
+                Accueil
+              </Button>
+            </div>
+
             {/* Badge */}
             <div className="flex justify-center mb-8">
               <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-primary/30 text-primary">
@@ -232,9 +254,7 @@ const FAQ = () => {
                       <TrendingUp className="ml-3 h-5 w-5 transition-transform group-hover/cta:scale-110" />
                     </Button>
                     <Button
-                      onClick={() => {
-                        window.location.href = '/contact';
-                      }}
+                      onClick={() => navigate('/contact')}
                       variant="outline"
                       size="lg"
                       className="px-8 py-4 text-lg border-primary/30"

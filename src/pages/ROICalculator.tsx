@@ -366,14 +366,26 @@ const ROICalculatorPage = () => {
       <Header />
       {/* Bouton de retour */}
       <div className="container mx-auto px-4 pt-4">
-        <Button 
-          onClick={() => navigate("/")}
-          variant="outline" 
-          className="mb-4"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Retour à l'accueil
-        </Button>
+        <div className="flex justify-center gap-4 mb-4">
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Retour
+          </Button>
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
+          >
+            <Home className="h-4 w-4" />
+            Accueil
+          </Button>
+        </div>
       </div>
       <main className="py-20">
         {/* Étape 1 - Simulateur ROI */}

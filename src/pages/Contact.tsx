@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft, Home } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +15,7 @@ import Footer from "@/components/Footer";
 
 const Contact = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nom: "",
     email: "",
@@ -97,6 +100,28 @@ const Contact = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background"></div>
           
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            {/* Navigation Buttons */}
+            <div className="flex justify-center gap-4 mb-8">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => navigate(-1)}
+                className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Retour
+              </Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => navigate('/')}
+                className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
+              >
+                <Home className="h-4 w-4" />
+                Accueil
+              </Button>
+            </div>
+
             {/* Badge */}
             <div className="flex justify-center mb-8">
               <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-primary/30 text-primary">
