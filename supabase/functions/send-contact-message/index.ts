@@ -131,7 +131,7 @@ const handler = async (req: Request): Promise<Response> => {
                 En attendant, n'hésitez pas à découvrir nos solutions :
               </p>
               <div style="text-align: center;">
-                <a href="/solutions" style="display: inline-block; background: #3b82f6; color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 500; transition: all 0.2s;">
+                <a href="https://maiaelange.fr/solutions" style="display: inline-block; background: #3b82f6; color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 500; transition: all 0.2s;">
                   Découvrir nos Solutions
                 </a>
               </div>

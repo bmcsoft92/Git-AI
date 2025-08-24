@@ -20,6 +20,7 @@ import CGU from "./pages/CGU";
 import CGV from "./pages/CGV";
 import AdminTest from "./pages/AdminTest";
 import NotFound from "./pages/NotFound";
+import Appointment from "./pages/Appointment";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/cgu" element={<CGU />} />
           <Route path="/cgv" element={<CGV />} />
           <Route path="/admin-test" element={<AdminTest />} />
+          <Route path="/appointment" element={<Appointment />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
