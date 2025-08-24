@@ -22,6 +22,86 @@ const FAQ = () => {
       metaDescription.setAttribute('content', 'FAQ Maia Elange : tout savoir sur l\'automatisation et l\'IA. Découvrez combien ça coûte, combien de temps ça prend, l\'impact pour vos équipes, la sécurité RGPD et le support après déploiement.');
       document.head.appendChild(metaDescription);
     }
+
+    // Add JSON-LD structured data for FAQ
+    const existingScript = document.querySelector('script[type="application/ld+json"]');
+    if (existingScript) {
+      existingScript.remove();
+    }
+    
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "C'est quoi une agence d'IA & d'automatisation ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Une agence d'IA & d'automatisation conçoit et déploie des systèmes qui permettent de réduire les tâches répétitives, d'améliorer la productivité et d'optimiser la croissance des organisations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce que l'automatisation IA exactement ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il s'agit de l'utilisation d'outils et d'intelligence artificielle pour automatiser des processus métiers comme la gestion des emails, la facturation, le CRM ou encore le suivi des projets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Devons-nous changer d'outils ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pas nécessairement. Nous nous adaptons aux outils existants (ex: CRM, ERP, messageries) et connectons vos systèmes pour maximiser leur efficacité sans rupture opérationnelle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps pour une première mise en production ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un premier système peut être mis en place en 2 à 4 semaines selon la complexité du projet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Et la sécurité/RGPD ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Toutes nos solutions sont alignées avec les standards européens en matière de protection des données (RGPD) et intègrent des bonnes pratiques de sécurité."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quel est l'impact pour les équipes ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'automatisation réduit les tâches répétitives, libère du temps pour des missions à forte valeur ajoutée et améliore le confort de travail."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien ça coûte ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le coût dépend de la complexité et du périmètre du projet. Nous proposons toujours un plan d'action personnalisé avec une estimation claire du ROI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Support après le déploiement ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, un support est prévu après la mise en place. Ensuite, le client peut choisir de nous confier de nouvelles automatisations selon ses besoins."
+          }
+        }
+      ]
+    });
+    document.head.appendChild(script);
   }, []);
 
   const faqData = [
