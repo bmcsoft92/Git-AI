@@ -99,6 +99,18 @@ const Header = () => {
               </Link>
               
               <Link 
+                to="/a-propos" 
+                className={`nav-link transition-colors font-medium ${
+                  isActive('/a-propos') 
+                    ? 'text-primary border-b-2 border-primary' 
+                    : 'text-text-secondary hover:text-primary'
+                }`}
+                onClick={() => setIsOutilsOpen(false)}
+              >
+                À propos
+              </Link>
+              
+              <Link 
                 to="/methode" 
                 className={`nav-link transition-colors font-medium ${
                   isActive('/methode') 
@@ -234,6 +246,17 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Solutions
+                </Link>
+                <Link 
+                  to="/a-propos" 
+                  className={`block nav-link transition-colors pl-4 ${
+                    isActive('/a-propos') 
+                      ? 'text-primary font-medium border-l-2 border-primary' 
+                      : 'text-text-secondary hover:text-primary'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  À propos
                 </Link>
                 <Link 
                   to="/methode" 

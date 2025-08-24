@@ -65,172 +65,29 @@ const APropos = () => {
             <div className="text-center mb-16">
               <h1 className="text-3xl lg:text-5xl font-bold text-heading mb-6">
                 À propos de{" "}
-                <span className="text-primary">Maia Elange</span>
+                <span className="text-primary">Maïa Elange</span>
               </h1>
-              <p className="text-lg text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                Une approche humaine de l'automatisation intelligente pour transformer 
-                durablement les organisations.
-              </p>
             </div>
 
-            <div className="max-w-6xl mx-auto space-y-16">
-              {/* Mission */}
+            <div className="max-w-4xl mx-auto">
               <Card className="bg-card/80 backdrop-blur-sm border border-primary/20">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl font-bold text-heading">
-                    <Target className="h-6 w-6 text-primary" />
-                    Notre Mission
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-lg text-text-secondary leading-relaxed mb-6">
-                    Accompagner les organisations dans leur transformation digitale en 
-                    démocratisant l'accès à l'intelligence artificielle et à l'automatisation.
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-3">
-                        <Zap className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                          <h4 className="font-semibold text-heading mb-1">Automatisation Intelligente</h4>
-                          <p className="text-sm text-text-secondary">
-                            Optimiser les processus répétitifs pour libérer le potentiel humain.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <Users className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                          <h4 className="font-semibold text-heading mb-1">Approche Humaine</h4>
-                          <p className="text-sm text-text-secondary">
-                            Placer l'humain au cœur de chaque solution technologique.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-3">
-                        <Shield className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                          <h4 className="font-semibold text-heading mb-1">Conformité RGPD</h4>
-                          <p className="text-sm text-text-secondary">
-                            Garantir la sécurité et la conformité de toutes nos solutions.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <Award className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                          <h4 className="font-semibold text-heading mb-1">Excellence Opérationnelle</h4>
-                          <p className="text-sm text-text-secondary">
-                            Délivrer des résultats mesurables et durables.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Vision */}
-              <Card className="bg-gradient-to-br from-primary/5 to-cta-primary/5 border border-primary/20">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl font-bold text-heading">
-                    <Eye className="h-6 w-6 text-primary" />
-                    Notre Vision
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-lg text-text-secondary leading-relaxed mb-6">
-                    Démocratiser l'intelligence artificielle pour que chaque organisation, 
-                    quelle que soit sa taille, puisse bénéficier des avantages de 
-                    l'automatisation intelligente.
-                  </p>
-                  <div className="bg-white/50 backdrop-blur-sm rounded-lg p-6 border border-primary/10">
-                    <h4 className="font-bold text-heading mb-4 text-center">
-                      L'IA + l'Humain au service des organisations
-                    </h4>
-                    <p className="text-text-secondary text-center leading-relaxed">
-                      Nous croyons en une technologie qui augmente les capacités humaines 
-                      plutôt que de les remplacer. Notre approche privilégie la collaboration 
-                      entre l'intelligence artificielle et l'expertise humaine pour créer 
-                      des solutions durables et éthiques.
+                <CardContent className="p-8 lg:p-12">
+                  <div className="space-y-6 text-lg text-text-secondary leading-relaxed">
+                    <p>
+                      Maïa Elange accompagne les entreprises à libérer du temps et à sécuriser leur croissance grâce à l'automatisation intelligente.
                     </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Valeurs */}
-              <Card className="bg-card/80 backdrop-blur-sm border border-primary/20">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl font-bold text-heading">
-                    <Award className="h-6 w-6 text-primary" />
-                    Nos Valeurs
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div className="text-center p-6 bg-gradient-to-br from-primary/10 to-transparent rounded-lg border border-primary/10">
-                      <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Shield className="h-6 w-6 text-primary" />
-                      </div>
-                      <h4 className="font-bold text-heading mb-2">Transparence</h4>
-                      <p className="text-sm text-text-secondary">
-                        Clarté totale sur nos méthodes, nos prix et nos résultats.
-                      </p>
-                    </div>
                     
-                    <div className="text-center p-6 bg-gradient-to-br from-cta-primary/10 to-transparent rounded-lg border border-cta-primary/10">
-                      <div className="w-12 h-12 bg-cta-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Users className="h-6 w-6 text-cta-primary" />
-                      </div>
-                      <h4 className="font-bold text-heading mb-2">Collaboration</h4>
-                      <p className="text-sm text-text-secondary">
-                        Travail en étroite collaboration avec vos équipes.
-                      </p>
-                    </div>
+                    <p>
+                      <span className="font-semibold text-heading">Notre mission :</span> transformer vos processus répétitifs en leviers de performance mesurable.
+                    </p>
                     
-                    <div className="text-center p-6 bg-gradient-to-br from-primary/10 to-transparent rounded-lg border border-primary/10">
-                      <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Zap className="h-6 w-6 text-primary" />
-                      </div>
-                      <h4 className="font-bold text-heading mb-2">Innovation</h4>
-                      <p className="text-sm text-text-secondary">
-                        Solutions sur mesure adaptées à vos enjeux spécifiques.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Notre Approche */}
-              <Card className="bg-gradient-to-br from-muted/50 to-card border border-primary/20">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-bold text-heading mb-6 text-center">
-                    Notre Approche Premium
-                  </h3>
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-primary mb-2">01</div>
-                      <h4 className="font-semibold text-heading mb-2">Analyse Personnalisée</h4>
-                      <p className="text-sm text-text-secondary">
-                        Audit approfondi de vos processus et identification des opportunités.
-                      </p>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-primary mb-2">02</div>
-                      <h4 className="font-semibold text-heading mb-2">Implémentation sur Mesure</h4>
-                      <p className="text-sm text-text-secondary">
-                        Développement et déploiement de solutions adaptées à votre contexte.
-                      </p>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-primary mb-2">03</div>
-                      <h4 className="font-semibold text-heading mb-2">Accompagnement Continu</h4>
-                      <p className="text-sm text-text-secondary">
-                        Support technique et optimisation continue de vos automatisations.
-                      </p>
-                    </div>
+                    <p>
+                      <span className="font-semibold text-heading">Notre approche :</span> pragmatique, sobre et premium – chaque projet est conçu sur-mesure et validé par un diagnostic ROI clair.
+                    </p>
+                    
+                    <p>
+                      Nous croyons en une transformation digitale alignée sur vos objectifs, vos équipes et vos résultats.
+                    </p>
                   </div>
                 </CardContent>
               </Card>
