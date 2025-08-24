@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -55,11 +56,62 @@ const Appointment = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Logique de soumission du rendez-vous
-    console.log("Rendez-vous planifié:", { selectedDate, selectedTime, formData });
-    // Afficher un message de confirmation ou rediriger
+    
+    if (!selectedDate || !selectedTime || !formData.firstName || !formData.lastName || !formData.email) {
+      return;
+    }
+
+    try {
+      console.log("📅 Submitting appointment...");
+      
+      // Créer la date complète
+      const dateStr = selectedDate.toISOString().split('T')[0]; // Format YYYY-MM-DD
+      const appointmentDateTime = new Date(`${dateStr}T${selectedTime}:00`);
+      
+      const appointmentData = {
+        userEmail: formData.email,
+        userName: `${formData.firstName} ${formData.lastName}`,
+        userPhone: formData.phone,
+        appointmentDate: appointmentDateTime.toISOString(),
+        appointmentType: "Consultation personnalisée",
+        notes: formData.message || undefined
+      };
+
+      console.log("📋 Sending appointment data:", appointmentData);
+
+      // Appel à la fonction edge
+      const { data, error } = await supabase.functions.invoke('book-appointment', {
+        body: appointmentData
+      });
+
+      if (error) {
+        console.error("❌ Error booking appointment:", error);
+        throw error;
+      }
+
+      console.log("✅ Appointment booked successfully:", data);
+      
+      // Rediriger vers une page de confirmation ou afficher un message
+      alert("✅ Rendez-vous confirmé ! Vous allez recevoir un email de confirmation.");
+      
+      // Réinitialiser le formulaire
+      setSelectedDate(undefined);
+      setSelectedTime(undefined);
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: ""
+      });
+
+    } catch (error) {
+      console.error("❌ Error:", error);
+      alert("❌ Erreur lors de la prise de rendez-vous. Veuillez réessayer.");
+    }
   };
 
   return (
