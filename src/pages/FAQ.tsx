@@ -15,11 +15,11 @@ const FAQ = () => {
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Toutes vos questions sur l\'automatisation IA : RGPD, sécurité, coût, ROI. Réponses d\'experts pour vous aider à prendre les bonnes décisions.');
+      metaDescription.setAttribute('content', 'FAQ Maia Elange : tout savoir sur l\'automatisation et l\'IA. Découvrez combien ça coûte, combien de temps ça prend, l\'impact pour vos équipes, la sécurité RGPD et le support après déploiement.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Toutes vos questions sur l\'automatisation IA : RGPD, sécurité, coût, ROI. Réponses d\'experts pour vous aider à prendre les bonnes décisions.');
+      metaDescription.setAttribute('content', 'FAQ Maia Elange : tout savoir sur l\'automatisation et l\'IA. Découvrez combien ça coûte, combien de temps ça prend, l\'impact pour vos équipes, la sécurité RGPD et le support après déploiement.');
       document.head.appendChild(metaDescription);
     }
   }, []);
