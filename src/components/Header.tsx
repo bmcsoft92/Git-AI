@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -196,9 +196,12 @@ const Header = () => {
               
               <Button
                 onClick={() => navigate('/contact')}
-                className="inline-flex items-center justify-center btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors"
+                variant="cta"
+                size="lg"
+                className="px-8 py-4 text-lg group/cta"
               >
                 Obtenir un plan d'action personnalisé
+                <ExternalLink className="ml-3 h-5 w-5 transition-transform group-hover/cta:scale-110" />
               </Button>
             </div>
           </div>
@@ -338,7 +341,9 @@ const Header = () => {
                       setIsMenuOpen(false);
                       navigate('/contact');
                     }}
-                    className="inline-flex items-center justify-center btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white w-full px-6 py-2 rounded-md text-sm font-medium transition-colors"
+                    variant="cta"
+                    size="lg"
+                    className="w-full px-6 py-2 text-sm font-medium"
                   >
                     Obtenir un plan d'action personnalisé
                   </Button>

@@ -211,12 +211,14 @@ const Footer = () => {
 
                 {/* CTA Button */}
                 <div className="mt-6 p-4 bg-gradient-to-br from-cta-primary/10 to-primary/10 rounded-lg border border-cta-primary/20">
-                  <Link 
-                    to="/contact"
-                    className="block text-center bg-cta-primary hover:bg-cta-primary/90 text-white px-4 py-3 rounded-lg text-sm font-medium transition-colors"
-                  >
-                    Obtenir un plan d'action personnalisé
-                  </Link>
+                <Button 
+                  onClick={() => navigate('/contact')}
+                  variant="cta"
+                  size="lg"
+                  className="w-full text-sm font-medium"
+                >
+                  Obtenir un plan d'action personnalisé
+                </Button>
                 </div>
 
                 {/* LinkedIn */}

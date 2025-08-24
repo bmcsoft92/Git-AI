@@ -102,12 +102,13 @@ export const AppointmentBooking = ({ calculationId, onClose, userInfo }: Appoint
 
   return (
     <Dialog open={true} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto p-4 sm:p-6">
         <DialogHeader>
           <div className="flex items-center justify-between">
-            <DialogTitle className="text-2xl font-bold flex items-center gap-2">
-              <Calendar className="h-6 w-6 text-primary" />
-              Réserver un Entretien
+            <DialogTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2">
+              <Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+              <span className="hidden sm:inline">Réserver un Entretien</span>
+              <span className="sm:hidden">Réservation</span>
             </DialogTitle>
             <Button variant="ghost" size="icon" onClick={onClose}>
               <X className="h-4 w-4" />
@@ -265,16 +266,23 @@ export const AppointmentBooking = ({ calculationId, onClose, userInfo }: Appoint
               </CardContent>
             </Card>
 
-            <div className="flex gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
                 type="submit" 
                 disabled={isSubmitting || !formData.userName || !formData.userEmail || !formData.appointmentDate || !formData.appointmentTime}
-                className="flex-1 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
+                variant="cta"
+                size="lg"
+                className="flex-1"
               >
                 {isSubmitting ? "Envoi en cours..." : "Réserver mon créneau"}
               </Button>
               
-              <Button type="button" variant="outline" onClick={onClose}>
+              <Button 
+                type="button" 
+                variant="outline" 
+                onClick={onClose}
+                className="sm:w-auto"
+              >
                 Annuler
               </Button>
             </div>
