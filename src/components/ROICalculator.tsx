@@ -4,8 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Calculator, TrendingUp, Clock, DollarSign } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ROICalculator = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     employees: 10,
     hourlyRate: 35,
@@ -182,7 +184,7 @@ const ROICalculator = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button 
-                    onClick={() => window.location.href = '/contact'}
+                    onClick={() => navigate('/contact')}
                     variant="default" 
                     className="bg-cta-primary hover:bg-cta-primary/90 btn-cta-hover flex-1"
                   >

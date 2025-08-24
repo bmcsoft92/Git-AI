@@ -425,7 +425,7 @@ const ProcessSection = () => {
                   boxShadow: '0 4px 20px rgba(15, 127, 123, 0.3)'
                 }}
                 onClick={() => {
-                  window.location.href = '/contact';
+                  navigate('/contact');
                 }}
               >
                 Obtenir un plan d'action personnalisé

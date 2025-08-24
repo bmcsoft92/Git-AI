@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOutilsOpen, setIsOutilsOpen] = useState(false);
   const location = useLocation();
@@ -182,7 +183,7 @@ const Header = () => {
               </Link>
               
               <Button
-                onClick={() => window.location.href = '/contact'}
+                onClick={() => navigate('/contact')}
                 className="inline-flex items-center justify-center btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 Obtenir un plan d'action personnalisé
@@ -312,7 +313,7 @@ const Header = () => {
                   <Button
                     onClick={() => {
                       setIsMenuOpen(false);
-                      window.location.href = '/contact';
+                      navigate('/contact');
                     }}
                     className="inline-flex items-center justify-center btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white w-full px-6 py-2 rounded-md text-sm font-medium transition-colors"
                   >
