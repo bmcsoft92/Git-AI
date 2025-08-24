@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import heroAiBg from "@/assets/hero-ai-brain-bg.jpg";
+import heroAiBg from "@/assets/hero-professional-ai.jpg";
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
@@ -16,25 +16,6 @@ const Hero = () => {
         className="absolute inset-0 w-full h-full object-cover opacity-20"
         loading="eager"
       />
-      
-      {/* IA + Human Visual Element */}
-      <div className="absolute top-1/2 right-8 transform -translate-y-1/2 opacity-10 hidden lg:block">
-        <svg width="200" height="300" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {/* Human silhouette */}
-          <path d="M70 80 C80 70, 90 70, 100 80 L100 120 C100 130, 90 140, 80 140 C70 140, 60 130, 60 120 Z" fill="currentColor" className="text-primary/40"/>
-          <circle cx="80" cy="60" r="15" fill="currentColor" className="text-primary/40"/>
-          
-          {/* AI Brain network */}
-          <circle cx="120" cy="60" r="3" fill="currentColor" className="text-primary"/>
-          <circle cx="140" cy="70" r="2" fill="currentColor" className="text-primary"/>
-          <circle cx="130" cy="85" r="2" fill="currentColor" className="text-primary"/>
-          <line x1="120" y1="60" x2="140" y2="70" stroke="currentColor" strokeWidth="1" className="text-primary/60"/>
-          <line x1="140" y1="70" x2="130" y2="85" stroke="currentColor" strokeWidth="1" className="text-primary/60"/>
-          
-          {/* Connection between human and AI */}
-          <line x1="95" y1="60" x2="120" y2="60" stroke="currentColor" strokeWidth="2" className="text-primary/50" strokeDasharray="5,5"/>
-        </svg>
-      </div>
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-16 animate-fade-in-up">

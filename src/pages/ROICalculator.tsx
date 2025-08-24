@@ -629,35 +629,6 @@ const ROICalculatorPage = () => {
                     >
                       🎯 Votre Potentiel d'Automatisation
                     </h2>
-                    
-                    {/* Premium ROI Visual */}
-                    <div className="flex justify-center mb-6">
-                      <svg width="200" height="120" viewBox="0 0 200 120" fill="none" className="opacity-80">
-                        {/* Investment bar */}
-                        <rect x="20" y="80" width="60" height="30" rx="4" fill="currentColor" className="text-primary/60"/>
-                        <text x="50" y="98" textAnchor="middle" className="fill-white text-xs font-medium">
-                          Investissement
-                        </text>
-                        
-                        {/* ROI bars */}
-                        <rect x="100" y="40" width="25" height="70" rx="4" fill="currentColor" className="text-success"/>
-                        <rect x="130" y="60" width="25" height="50" rx="4" fill="currentColor" className="text-success/80"/>
-                        <rect x="160" y="50" width="25" height="60" rx="4" fill="currentColor" className="text-success/70"/>
-                        
-                        {/* Arrow showing growth */}
-                        <path d="M85 65L95 65" stroke="currentColor" strokeWidth="2" className="text-primary"/>
-                        <path d="M92 62L95 65L92 68" stroke="currentColor" strokeWidth="2" className="text-primary"/>
-                        
-                        {/* ROI percentage */}
-                        <text x="140" y="25" textAnchor="middle" className="fill-success text-lg font-bold">
-                          {results.roi_affiche}%
-                        </text>
-                        <text x="140" y="15" textAnchor="middle" className="fill-white text-xs">
-                          ROI
-                        </text>
-                      </svg>
-                    </div>
-                    
                     <p 
                       className="text-lg max-w-2xl mx-auto leading-relaxed"
                       style={{ color: '#B0B0B0' }}

@@ -165,41 +165,6 @@ const ProcessSection = () => {
                 }}
                 onClick={() => setSelectedPhase(index)}
               >
-                {/* Premium Pictogram */}
-                <div className="absolute top-4 right-4 opacity-30">
-                  {index === 0 && ( // Diagnostic
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                      <circle cx="16" cy="12" r="8" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
-                      <path d="M16 18L20 22L26 16" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
-                      <circle cx="16" cy="12" r="3" fill="currentColor" className="text-primary/60"/>
-                    </svg>
-                  )}
-                  {index === 1 && ( // Stratégie
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                      <path d="M8 24L24 8M24 8H16M24 8V16" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
-                      <circle cx="8" cy="24" r="2" fill="currentColor" className="text-primary"/>
-                      <circle cx="24" cy="8" r="2" fill="currentColor" className="text-primary"/>
-                    </svg>
-                  )}
-                  {index === 2 && ( // Déploiement
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                      <path d="M16 4L20 14H12L16 4Z" fill="currentColor" className="text-primary"/>
-                      <circle cx="8" cy="20" r="2" fill="currentColor" className="text-primary/60"/>
-                      <circle cx="24" cy="20" r="2" fill="currentColor" className="text-primary/60"/>
-                      <circle cx="16" cy="28" r="2" fill="currentColor" className="text-primary/60"/>
-                      <line x1="16" y1="14" x2="8" y2="20" stroke="currentColor" strokeWidth="1" className="text-primary/40"/>
-                      <line x1="16" y1="14" x2="24" y2="20" stroke="currentColor" strokeWidth="1" className="text-primary/40"/>
-                      <line x1="16" y1="14" x2="16" y2="28" stroke="currentColor" strokeWidth="1" className="text-primary/40"/>
-                    </svg>
-                  )}
-                  {index === 3 && ( // Suivi
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                      <path d="M4 20L8 16L12 20L16 12L20 16L24 8L28 12" stroke="currentColor" strokeWidth="2" className="text-primary"/>
-                      <circle cx="28" cy="12" r="2" fill="currentColor" className="text-primary"/>
-                    </svg>
-                  )}
-                </div>
-                
                 {/* Effet lumineux en arrière-plan */}
                 {selectedPhase === index && (
                   <div 
@@ -282,37 +247,17 @@ const ProcessSection = () => {
                 boxShadow: `0 20px 40px rgba(${parseInt(phases[selectedPhase].color.slice(1, 3), 16)}, ${parseInt(phases[selectedPhase].color.slice(3, 5), 16)}, ${parseInt(phases[selectedPhase].color.slice(5, 7), 16)}, 0.1)`
               }}
             >
-              {/* Subtle background illustration */}
-              <div className="absolute inset-0 overflow-hidden opacity-5">
-                <svg className="w-full h-full" viewBox="0 0 400 300" fill="none">
-                  {selectedPhase === 0 && ( // Diagnostic pattern
-                    <>
-                      <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="2" className="text-primary"/>
-                      <circle cx="300" cy="200" r="30" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
-                      <path d="M100 100L300 200" stroke="currentColor" strokeWidth="1" className="text-primary/40"/>
-                    </>
-                  )}
-                  {selectedPhase === 1 && ( // Strategy pattern
-                    <>
-                      <path d="M50 250L200 100L350 150" stroke="currentColor" strokeWidth="2" className="text-primary"/>
-                      <circle cx="200" cy="100" r="6" fill="currentColor" className="text-primary"/>
-                    </>
-                  )}
-                  {selectedPhase === 2 && ( // Deployment pattern
-                    <>
-                      <rect x="100" y="100" width="200" height="100" rx="8" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
-                      <circle cx="150" cy="150" r="4" fill="currentColor" className="text-primary"/>
-                      <circle cx="200" cy="150" r="4" fill="currentColor" className="text-primary"/>
-                      <circle cx="250" cy="150" r="4" fill="currentColor" className="text-primary"/>
-                    </>
-                  )}
-                  {selectedPhase === 3 && ( // Monitoring pattern
-                    <>
-                      <path d="M50 200L100 150L150 180L200 120L250 140L300 100L350 120" stroke="currentColor" strokeWidth="2" className="text-primary"/>
-                      <circle cx="350" cy="120" r="4" fill="currentColor" className="text-primary"/>
-                    </>
-                  )}
-                </svg>
+              {/* Image de fond avec overlay */}
+              <div className="absolute inset-0 overflow-hidden">
+                <img 
+                  src={phases[selectedPhase].image}
+                  alt={`Illustration ${phases[selectedPhase].title}`}
+                  className="w-full h-full object-cover opacity-10 transition-all duration-1000"
+                  style={{
+                    filter: 'brightness(0.6) contrast(1.2)'
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-background/80" />
               </div>
               
               <CardContent className="p-8 relative z-10">
