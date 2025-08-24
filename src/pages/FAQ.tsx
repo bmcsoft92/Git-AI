@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Shield, Euro, TrendingUp, Clock, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Footer from "@/components/Footer";
 
 const FAQ = () => {
   const navigate = useNavigate();
@@ -249,37 +250,7 @@ const FAQ = () => {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer id="contact" className="relative bg-gradient-to-br from-card to-card/80 border-t border-border/50 overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cta-primary rounded-full blur-3xl"></div>
-        </div>
-        
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold text-heading mb-4">
-              Besoin d'informations supplémentaires ?
-            </h3>
-            <p className="text-text-secondary mb-6 max-w-2xl mx-auto">
-              Contactez-nous directement pour obtenir des réponses personnalisées 
-              à vos questions spécifiques.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <div className="flex items-center gap-2 text-text-secondary">
-                <span className="font-semibold text-primary">📧</span>
-                <a href="mailto:contact@maiaelange.fr" className="hover:text-primary transition-colors">
-                  contact@maiaelange.fr
-                </a>
-              </div>
-              <div className="hidden sm:block w-1 h-1 bg-text-secondary/50 rounded-full"></div>
-              <div className="text-sm text-text-secondary">
-                Réponse sous 24h • Consultation gratuite
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

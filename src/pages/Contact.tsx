@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { MapPin, Mail, Clock, Phone, ArrowRight, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import Footer from "@/components/Footer";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -256,6 +257,7 @@ const Contact = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 };
