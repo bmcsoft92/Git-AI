@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Search, Lightbulb, Rocket, TrendingUp, Sparkles, Check } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -432,30 +433,15 @@ const ProcessSection = () => {
               </button>
               
               <div className="pt-2">
-                <button
-                  className="px-6 py-3 text-base font-medium rounded-lg transition-all duration-300 hover:scale-105 border-2"
-                  style={{
-                    backgroundColor: 'transparent',
-                    color: '#F5F5F5',
-                    borderColor: '#F5F5F5',
-                    opacity: 0.8
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = 'rgba(245, 245, 245, 0.1)';
-                    e.currentTarget.style.opacity = '1';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                    e.currentTarget.style.opacity = '0.8';
-                  }}
-                  onClick={() => {
-                    // Placeholder pour redirection vers page/modale d'exemple
-                    console.log('Redirection vers exemple de plan d\'action');
-                    // TODO: Implémenter redirection vers page d'exemple
-                  }}
-                >
-                  Voir un exemple de plan d'action
-                </button>
+                  <Button 
+                    onClick={() => {
+                      window.location.href = "/roi-calculator";
+                    }}
+                    className="px-6 py-3 text-base font-medium rounded-lg transition-all duration-300 hover:scale-105 border-2 bg-transparent
+                             hover:bg-white/10 border-white text-white opacity-80 hover:opacity-100"
+                  >
+                    Tester mon ROI
+                  </Button>
               </div>
               
               <p className="text-sm pt-2" style={{ color: '#F5F5F5', opacity: 0.8 }}>

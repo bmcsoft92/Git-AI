@@ -178,7 +178,7 @@ const ROICalculator = () => {
                   Prêt à concrétiser ces économies ?
                 </h3>
                 <p className="text-text-secondary mb-4">
-                  Réservez votre diagnostic gratuit de 2h sur site
+                  Discutons de votre projet et créons ensemble votre plan d'action sur-mesure
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button 
@@ -191,7 +191,7 @@ const ROICalculator = () => {
                     variant="outline" 
                     className="border-primary text-primary hover:bg-primary hover:text-primary-foreground flex-1"
                   >
-                    Demander un devis
+                    Tester mon ROI
                   </Button>
                 </div>
               </CardContent>

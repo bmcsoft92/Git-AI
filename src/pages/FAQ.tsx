@@ -187,15 +187,15 @@ const FAQ = () => {
                     const Icon = faq.icon;
                     return (
                       <AccordionItem key={index} value={`item-${index}`} className="border-border/50">
-                        <AccordionTrigger className="text-left hover:no-underline hover:text-primary transition-colors">
-                          <div className="flex items-center gap-3">
-                            <div className="p-2 bg-primary/20 rounded-lg flex-shrink-0">
-                              <Icon className="h-5 w-5 text-primary" strokeWidth={1.5} />
-                            </div>
-                            <h3 className="font-semibold text-heading text-left">
-                              {faq.question}
-                            </h3>
-                          </div>
+                         <AccordionTrigger className="text-left hover:no-underline hover:text-primary transition-colors">
+                           <div className="flex items-center gap-3">
+                             <div className="p-2 bg-primary/20 rounded-lg flex-shrink-0">
+                               <Icon className="h-5 w-5 text-primary" strokeWidth={1.5} />
+                             </div>
+                             <h3 className="font-semibold text-heading text-left">
+                               {faq.question}
+                             </h3>
+                           </div>
                         </AccordionTrigger>
                         <AccordionContent className="pt-4 pb-2">
                           <p className="text-text-secondary leading-relaxed pl-12">
@@ -222,7 +222,7 @@ const FAQ = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button 
-                      onClick={() => navigate("/calculateur-roi")}
+                      onClick={() => navigate("/roi-calculator")}
                       variant="cta"
                       size="lg"
                       className="px-8 py-4 text-lg group/cta"
@@ -232,10 +232,7 @@ const FAQ = () => {
                     </Button>
                     <Button 
                       onClick={() => {
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth' });
-                        }
+                        window.location.href = "/#contact";
                       }}
                       variant="outline"
                       size="lg"
