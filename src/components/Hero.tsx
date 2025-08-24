@@ -25,14 +25,14 @@ const Hero = () => {
               </span>
             </div>
             
-            <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-heading mb-12 leading-tight">
+            <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-heading mb-8 lg:mb-12 leading-tight">
               L'IA + l'Humain
               <span className="text-primary block">
                 au service de votre organisation
               </span>
             </h1>
             
-            <p className="text-2xl lg:text-3xl text-text-secondary mb-12 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg lg:text-xl xl:text-2xl text-text-secondary mb-8 lg:mb-12 leading-relaxed max-w-4xl mx-auto">
               Nous concevons des systèmes d'automatisation <strong className="text-primary">simples, mesurables et conformes</strong>, permettant aux organisations de toutes tailles de <strong className="text-primary">réduire leurs coûts</strong> et d'<strong className="text-primary">augmenter leur impact</strong>.
             </p>
 
@@ -48,7 +48,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2 justify-center">
               <Button 
                 size="lg" 
-                className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground"
+                className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground px-6 py-4"
                 onClick={() => navigate('/contact')}
               >
                 Obtenir un plan d'action personnalisé
@@ -58,7 +58,7 @@ const Hero = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-4"
                   onClick={() => {
                     navigate('/calculateur-roi');
                   }}

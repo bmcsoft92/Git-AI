@@ -70,7 +70,7 @@ const Header = () => {
           </Link>
           
           {/* Navigation Desktop - Hiérarchie claire */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden xl:flex items-center space-x-8">
             
             {/* 1. Navigation Principale */}
             <div className="flex items-center space-x-6">
@@ -207,7 +207,7 @@ const Header = () => {
           </div>
 
           {/* Menu Mobile */}
-          <div className="lg:hidden">
+          <div className="xl:hidden">
             <Button
               variant="ghost"
               size="icon"
@@ -220,7 +220,7 @@ const Header = () => {
 
         {/* Navigation Mobile */}
         {isMenuOpen && (
-          <div className="lg:hidden py-6 border-t border-border mobile-menu-enter">
+          <div className="xl:hidden py-6 border-t border-border mobile-menu-enter">
             <div className="flex flex-col space-y-6">
               
               {/* Groupe 1: Navigation Principale */}
