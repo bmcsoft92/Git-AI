@@ -407,7 +407,7 @@ const ROICalculatorPage = () => {
                 className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed"
                 style={{ color: '#B0B0B0' }}
               >
-                Découvrez combien l'automatisation peut vous faire économiser et générer de revenus supplémentaires
+                <strong>Parcours novice :</strong> ROI rapide → Diagnostic personnalisé → Prise de rendez-vous
               </p>
             </div>
 
@@ -1040,10 +1040,28 @@ const ROICalculatorPage = () => {
                         boxShadow: '0 10px 30px rgba(255, 140, 66, 0.4)'
                       }}
                     >
-                      Continuer vers le diagnostic détaillé
+                       ÉTAPE 2 : Diagnostic personnalisé (optionnel)
                     </Button>
+                    <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+                      <Button
+                        onClick={() => navigate('/appointment')}
+                        variant="outline"
+                        size="lg"
+                        className="px-8 py-3 text-base border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                      >
+                        Prendre RDV directement
+                      </Button>
+                      <Button
+                        onClick={() => navigate('/contact')}
+                        variant="ghost"
+                        size="sm"
+                        className="text-primary/80 hover:text-primary"
+                      >
+                        Ou nous écrire
+                      </Button>
+                    </div>
                     <p className="mt-4 text-sm opacity-80" style={{ color: '#F5F5F5' }}>
-                      Diagnostic personnalisé • 3 minutes
+                      Le diagnostic approfondi vous donnera vos 3 chantiers prioritaires • 3 minutes
                     </p>
                   </div>
                 </CardContent>
@@ -1078,7 +1096,7 @@ const ROICalculatorPage = () => {
                               backgroundColor: 'rgba(255, 140, 66, 0.1)'
                             }}
                           >
-                            ÉTAPE 2 : DIAGNOSTIC PERSONNALISÉ
+                            ÉTAPE 2 : DIAGNOSTIC PERSONNALISÉ (Optionnel mais recommandé)
                           </Badge>
                           
                           <h2 

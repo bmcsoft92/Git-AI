@@ -46,28 +46,36 @@ const Hero = () => {
 
             
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2 justify-center">
-              <Button 
-                size="lg" 
-                className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground px-6 py-4"
-                onClick={() => navigate('/appointment')}
-              >
-                Obtenir un plan d'action personnalisé
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
               <div className="flex flex-col items-center gap-2">
+                <Button 
+                  size="lg" 
+                  className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground px-6 py-4"
+                  onClick={() => navigate('/calculateur-roi')}
+                >
+                  Calculer mon ROI
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <span className="text-xs text-text-secondary/80 italic">
+                  Parcours guidé : ROI → Diagnostic → Rendez-vous
+                </span>
+              </div>
+              <div className="flex flex-col gap-2">
                 <Button 
                   variant="outline" 
                   size="lg" 
                   className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-4"
-                  onClick={() => {
-                    navigate('/calculateur-roi');
-                  }}
+                  onClick={() => navigate('/appointment')}
                 >
-                  Tester mon ROI
+                  Prendre rendez-vous directement
                 </Button>
-                <span className="text-xs text-text-secondary/80 italic">
-                  Résultat instantané en 30 secondes
-                </span>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-text-secondary hover:text-primary"
+                  onClick={() => navigate('/contact')}
+                >
+                  Ou nous envoyer un message
+                </Button>
               </div>
             </div>
 
