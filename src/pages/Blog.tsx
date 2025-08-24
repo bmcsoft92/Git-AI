@@ -193,12 +193,9 @@ const Blog = () => {
                       Calculer mon ROI
                       <TrendingUp className="ml-3 h-5 w-5 transition-transform group-hover/cta:scale-110" />
                     </Button>
-                    <Button 
+                    <Button
                       onClick={() => {
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth' });
-                        }
+                        window.location.href = '/contact';
                       }}
                       variant="outline"
                       size="lg"

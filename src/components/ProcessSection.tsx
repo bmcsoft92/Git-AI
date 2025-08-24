@@ -423,10 +423,7 @@ const ProcessSection = () => {
                   boxShadow: '0 4px 20px rgba(15, 127, 123, 0.3)'
                 }}
                 onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
+                  window.location.href = '/contact';
                 }}
               >
                 Obtenir un plan d'action personnalisé
