@@ -54,10 +54,10 @@ const AdminTest = () => {
           <div className="max-w-4xl mx-auto mt-12">
             <div className="bg-blue-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-900 mb-4">📋 Instructions d'utilisation</h3>
-              <div className="space-y-3 text-blue-800">
+               <div className="space-y-3 text-blue-800">
                 <div className="flex items-start gap-3">
                   <span className="font-semibold min-w-[120px]">Test ROI :</span>
-                  <span>Vérifie l'analyse IA, l'email client avec recommandations, l'email interne équipe, et la création du lead CRM</span>
+                  <span>Vérifie l'analyse IA, l'email client avec recommandations, l'email interne équipe, et la création du lead CRM avec scoring automatique</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="font-semibold min-w-[120px]">Test RDV :</span>
@@ -69,7 +69,11 @@ const AdminTest = () => {
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="font-semibold min-w-[120px]">Test Complet :</span>
-                  <span>Lance les 3 tests séquentiellement pour vérifier l'ensemble du funnel</span>
+                  <span>Lance les 3 tests + vérification CRM automatique pour valider l'optimisation complète</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="font-semibold min-w-[120px]">Vérif CRM :</span>
+                  <span>Analyse les tables Supabase : scoring automatique (CHAUD/TIEDE/FROID), relations entre tables, détection doublons</span>
                 </div>
               </div>
             </div>
@@ -92,8 +96,11 @@ const AdminTest = () => {
                   <li>Fonctionnement des edge functions</li>
                   <li>Envoi des emails clients (via Resend)</li>
                   <li>Envoi des emails internes équipe</li>
-                  <li>Mise à jour du CRM (fonction upsert_lead)</li>
-                  <li>Sauvegarde en base de données</li>
+                  <li>Mise à jour du CRM (fonction upsert_lead avec scoring automatique)</li>
+                  <li>Sauvegarde en base de données (leads, roi_calculations, appointments, contact_messages)</li>
+                  <li>Vérification scoring automatique (CHAUD/TIEDE/FROID selon budget et ROI)</li>
+                  <li>Contrôle relations entre tables via lead_id</li>
+                  <li>Détection et prévention des doublons d'email</li>
                   <li>Gestion des erreurs et temps de réponse</li>
                 </ul>
               </div>
