@@ -303,8 +303,8 @@ const ROICalculatorPage = () => {
     // 3. Gains de croissance/an (€) = 30% × Temps total économisé × Taux horaire
     const gains_croissance = 0.30 * temps_total_economise * hourlyRate;
     
-    // 4. ROI Stratégique (%) = (Économies directes + Gains – Budget) ÷ Budget × 100
-    const roi_strategique = ((economies_directes + gains_croissance - investissement) / investissement) * 100;
+    // 4. ROI Stratégique (%) = (Gains totaux ÷ Budget) × 100  
+    const roi_strategique = ((economies_directes + gains_croissance) / investissement) * 100;
     
     // 5. Multiplicateur (x) = (Économies directes + Gains) ÷ Budget
     const multiplicateur = (economies_directes + gains_croissance) / investissement;
@@ -810,6 +810,53 @@ const ROICalculatorPage = () => {
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
+                  </div>
+
+                  {/* Bloc explicatif des règles de calcul */}
+                  <div className="mb-8 mx-auto max-w-4xl">
+                    <Card 
+                      className="border-0 shadow-lg"
+                      style={{ 
+                        backgroundColor: 'rgba(74, 158, 255, 0.05)',
+                        border: '1px solid rgba(74, 158, 255, 0.2)'
+                      }}
+                    >
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-3">
+                          <div className="text-2xl">ℹ️</div>
+                          <div>
+                            <h4 
+                              className="text-lg font-semibold mb-3"
+                              style={{ color: '#F5F5F5' }}
+                            >
+                              Comment sont calculés vos résultats ?
+                            </h4>
+                            <p 
+                              className="text-sm mb-3 leading-relaxed"
+                              style={{ color: '#B0B0B0' }}
+                            >
+                              Les résultats sont des estimations calculées à partir des données que vous avez saisies.
+                            </p>
+                            <div 
+                              className="text-sm space-y-2"
+                              style={{ color: '#B0B0B0' }}
+                            >
+                              <div><strong style={{ color: '#4A9EFF' }}>Formules utilisées :</strong></div>
+                              <div>• <strong>Économies Directes</strong> = Heures × Taux horaire × 52 semaines × Nb employés</div>
+                              <div>• <strong>Gains de Croissance</strong> = 30% × Temps économisé × Taux horaire</div>
+                              <div>• <strong>ROI (%)</strong> = (Gains totaux ÷ Budget initial) × 100</div>
+                              <div>• <strong>Multiplicateur</strong> = Gains totaux ÷ Budget initial</div>
+                            </div>
+                            <p 
+                              className="text-xs mt-3 italic"
+                              style={{ color: '#B0B0B0' }}
+                            >
+                              Ces chiffres sont indicatifs et varient selon votre contexte d'entreprise.
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
 
                   {/* Call to Action intermédiaire */}
