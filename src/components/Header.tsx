@@ -181,12 +181,12 @@ const Header = () => {
                 Contact
               </Link>
               
-              <Button 
-                onClick={() => window.location.href = '/contact'}
-                className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white px-6 py-2"
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 Obtenir un plan d'action personnalisé
-              </Button>
+              </Link>
             </div>
           </div>
 
@@ -309,15 +309,13 @@ const Header = () => {
                   Contact
                 </Link>
                 <div className="px-4">
-                  <Button 
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      window.location.href = '/contact';
-                    }}
-                    className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white w-full"
+                  <Link
+                    to="/contact"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="inline-flex items-center justify-center btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white w-full px-6 py-2 rounded-md text-sm font-medium transition-colors"
                   >
                     Obtenir un plan d'action personnalisé
-                  </Button>
+                  </Link>
                 </div>
               </div>
             </div>

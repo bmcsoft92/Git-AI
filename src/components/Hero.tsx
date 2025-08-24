@@ -49,9 +49,7 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground"
-                onClick={() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => navigate('/contact')}
               >
                 Obtenir un plan d'action personnalisé
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
