@@ -33,6 +33,18 @@ const handler = async (req: Request): Promise<Response> => {
     const { calculationId, userEmail, userName, roiData, diagnosticData, recommendations }: ROIEmailRequest = await req.json();
 
     console.log("Sending ROI email to:", userEmail);
+    
+    // Validation basique de l'email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(userEmail)) {
+      console.error("Invalid email format:", userEmail);
+      throw new Error(`Format d'email invalide: ${userEmail}`);
+    }
+
+    // Vérification des domaines Gmail
+    if (userEmail.includes('@gmail.') && !userEmail.includes('@gmail.com')) {
+      console.warn("Suspicious Gmail domain detected:", userEmail);
+    }
 
     // Icons pour les recommandations
     const getRecommendationIcon = (title: string) => {
@@ -274,7 +286,20 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     console.log("Client email sent successfully:", clientEmailResponse);
+    
+    // Vérifier s'il y a eu une erreur dans l'envoi client
+    if (clientEmailResponse.error) {
+      console.error("Error sending client email:", clientEmailResponse.error);
+      throw new Error(`Erreur envoi email client: ${clientEmailResponse.error.message}`);
+    }
+    
     console.log("Team email sent successfully:", teamEmailResponse);
+    
+    // Vérifier s'il y a eu une erreur dans l'envoi équipe
+    if (teamEmailResponse.error) {
+      console.error("Error sending team email:", teamEmailResponse.error);
+      // Ne pas faire échouer si seulement l'email équipe a un problème
+    }
 
     return new Response(JSON.stringify({ 
       success: true, 
