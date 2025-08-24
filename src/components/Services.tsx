@@ -28,8 +28,6 @@ const Services = () => {
       title: "Augmentez vos Ventes de +30%",
       subtitle: "Croissance Commerciale Accélérée",
       description: "Transformez votre processus commercial avec l'automatisation du suivi prospects, des relances et de la qualification. Résultat mesurable : +30% de conversions en 90 jours.",
-      ctaText: "Tester mon ROI sur les ventes",
-      ctaAction: () => navigate("/calculateur-roi"),
       services: [
         { name: "Génération de Leads Qualifiés", icon: Target, description: "Automatisation capture & scoring" },
         { name: "CRM Intelligent & Suivi", icon: BarChart3, description: "Suivi automatisé des opportunités" },
@@ -44,8 +42,6 @@ const Services = () => {
       title: "Libérez 15h/Semaine par Employé",
       subtitle: "Efficacité Opérationnelle Maximisée",
       description: "Éliminez les tâches répétitives qui freinent votre équipe. Nos automatisations permettent à vos collaborateurs de se concentrer sur l'innovation et les missions à forte valeur ajoutée.",
-      ctaText: "Tester mon ROI",
-      ctaAction: () => navigate("/calculateur-roi"),
       services: [
         { name: "Gestion de Projet Automatisée", icon: Briefcase, description: "Workflows intelligents" },
         { name: "Recrutement & Onboarding", icon: Users, description: "Processus RH optimisés" },
@@ -59,8 +55,6 @@ const Services = () => {
       title: "Multipliez par 3 votre Portée Digitale",
       subtitle: "Impact Marketing Décuplé",
       description: "Déployez des campagnes intelligentes pilotées par la data en temps réel. Automatisation complète de vos réseaux sociaux et reporting prédictif pour maximiser votre ROI marketing.",
-      ctaText: "Tester mon ROI",
-      ctaAction: () => navigate("/calculateur-roi"),
       services: [
         { name: "Social Media Automation", icon: Users, description: "Publication et engagement automatisés" },
         { name: "Analytics Prédictifs", icon: BarChart3, description: "Insights temps réel & prédictions" }
@@ -196,21 +190,9 @@ const Services = () => {
                     </h2>
                   </CardHeader>
                   <CardContent className="text-center pt-0 pb-6">
-                    <p className="text-sm text-text-secondary leading-relaxed group-hover:text-text-secondary/90 mb-6">
+                    <p className="text-sm text-text-secondary leading-relaxed group-hover:text-text-secondary/90">
                       {pillar.description}
                     </p>
-                    <Button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        pillar.ctaAction();
-                      }}
-                      variant="cta"
-                      size="sm"
-                      className="w-full group/btn hover-scale"
-                    >
-                      {pillar.ctaText}
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                    </Button>
                   </CardContent>
                 </Card>
               );
@@ -244,7 +226,7 @@ const Services = () => {
                   </h3>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
                     {pillar.services.map((service, index) => {
                       const ServiceIcon = service.icon;
                       return (
@@ -257,18 +239,29 @@ const Services = () => {
                             animationDelay: `${index * 100}ms`
                           }}
                         >
-                          <div className="flex items-start gap-3">
-                            <div className="p-2 bg-primary/15 rounded-lg group-hover/service:bg-primary/25 transition-colors">
-                              <ServiceIcon className="h-5 w-5 text-primary" strokeWidth={1.5} />
+                          <div className="flex flex-col h-full">
+                            <div className="flex items-start gap-3 mb-3">
+                              <div className="p-2 bg-primary/15 rounded-lg group-hover/service:bg-primary/25 transition-colors">
+                                <ServiceIcon className="h-5 w-5 text-primary" strokeWidth={1.5} />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h4 className="font-semibold text-heading text-sm mb-1 group-hover/service:text-primary transition-colors">
+                                  {service.name}
+                                </h4>
+                                <p className="text-xs text-text-secondary leading-relaxed">
+                                  {service.description}
+                                </p>
+                              </div>
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <h4 className="font-semibold text-heading text-sm mb-1 group-hover/service:text-primary transition-colors">
-                                {service.name}
-                              </h4>
-                              <p className="text-xs text-text-secondary leading-relaxed">
-                                {service.description}
-                              </p>
-                            </div>
+                            <Button
+                              onClick={() => navigate('/appointment')}
+                              variant="outline"
+                              size="sm"
+                              className="w-full mt-auto text-xs border-primary/30 hover:bg-primary/10 group/btn"
+                            >
+                              Me faire accompagner
+                              <ArrowRight className="ml-2 h-3 w-3 transition-transform group-hover/btn:translate-x-1" />
+                            </Button>
                           </div>
                         </Card>
                       );
