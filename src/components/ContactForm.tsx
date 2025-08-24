@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { X } from "lucide-react";
+import { X, Mail, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { useUserData } from "@/hooks/useUserData";
 
 interface ContactFormProps {
   onClose: () => void;
@@ -18,6 +19,7 @@ interface ContactFormProps {
 }
 
 export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
+  const [emailInput, setEmailInput] = useState(userInfo?.email || "");
   const [formData, setFormData] = useState({
     name: userInfo?.name || "",
     email: userInfo?.email || "",
@@ -28,6 +30,24 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Utiliser le hook pour récupérer les données utilisateur
+  const { userData, isLoading: isLoadingUserData, fetchUserData } = useUserData(userInfo?.email);
+
+  // Auto-remplir les champs quand les données utilisateur sont récupérées
+  useEffect(() => {
+    if (userData && !userInfo) { // Seulement si pas déjà pré-rempli par userInfo
+      console.log("🔄 Auto-filling contact form with user data:", userData);
+      
+      setFormData(prev => ({
+        ...prev,
+        name: userData.name,
+        email: userData.email,
+        phone: userData.phone || prev.phone,
+        company: userData.company || prev.company
+      }));
+    }
+  }, [userData, userInfo]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,6 +109,50 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
         </CardHeader>
         
         <CardContent>
+          {/* Section de récupération automatique des données (si pas déjà pré-rempli) */}
+          {!userInfo && !userData && !isLoadingUserData && (
+            <div className="mb-6 p-4 bg-gradient-to-br from-primary/5 to-cta-primary/5 border border-primary/20 rounded-lg">
+              <h4 className="flex items-center gap-2 text-heading font-semibold mb-3">
+                <Mail className="h-4 w-4 text-primary" />
+                Avez-vous déjà fait un diagnostic avec nous ?
+              </h4>
+              <p className="text-sm text-text-secondary mb-3">
+                Si oui, nous pouvons pré-remplir vos informations automatiquement.
+              </p>
+              <div className="flex gap-2">
+                <Input
+                  type="email"
+                  placeholder="Votre email"
+                  value={emailInput}
+                  onChange={(e) => setEmailInput(e.target.value)}
+                  className="flex-1 text-sm"
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => fetchUserData(emailInput)}
+                  disabled={!emailInput.includes('@') || isLoadingUserData}
+                >
+                  {isLoadingUserData ? "..." : "Récupérer"}
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Affichage des données récupérées */}
+          {userData && !userInfo && (
+            <div className="mb-6 p-4 bg-gradient-to-br from-success/5 to-success/10 border border-success/30 rounded-lg">
+              <h4 className="flex items-center gap-2 text-success font-semibold mb-2">
+                <CheckCircle className="h-4 w-4" />
+                Données récupérées
+              </h4>
+              <p className="text-xs text-text-secondary">
+                💡 Vos informations ont été pré-remplies depuis votre diagnostic ROI.
+              </p>
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>

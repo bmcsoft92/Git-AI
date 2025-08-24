@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { useUserData } from "@/hooks/useUserData";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -19,16 +20,44 @@ import { cn } from "@/lib/utils";
 
 const Appointment = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const emailParam = searchParams.get('email'); // Pour récupérer l'email depuis l'URL si fourni
+  
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [selectedTime, setSelectedTime] = useState<string>();
+  const [emailInput, setEmailInput] = useState(emailParam || ""); // Champ email pour la recherche
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
+    email: emailParam || "",
     phone: "",
     company: "",
     message: ""
   });
+
+  // Utiliser le hook pour récupérer les données utilisateur
+  const { userData, isLoading: isLoadingUserData, fetchUserData } = useUserData();
+
+  // Auto-remplir les champs quand les données utilisateur sont récupérées
+  useEffect(() => {
+    if (userData) {
+      console.log("🔄 Auto-filling form with user data:", userData);
+      
+      // Extraire prénom et nom du nom complet
+      const nameParts = userData.name.split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+
+      setFormData(prev => ({
+        ...prev,
+        firstName: firstName,
+        lastName: lastName,
+        email: userData.email,
+        phone: userData.phone,
+        company: userData.company
+      }));
+    }
+  }, [userData]);
 
   useEffect(() => {
     document.title = "Prendre Rendez-vous | Maia Elange";
@@ -42,7 +71,13 @@ const Appointment = () => {
       metaDescription.setAttribute('content', 'Planifiez votre rendez-vous avec nos experts en automatisation IA. Consultation pour évaluer vos besoins et créer votre plan d\'action personnalisé.');
       document.head.appendChild(metaDescription);
     }
-  }, []);
+
+    // Si un email est fourni dans l'URL, le récupérer automatiquement
+    if (emailParam) {
+      setEmailInput(emailParam);
+      fetchUserData(emailParam);
+    }
+  }, [emailParam, fetchUserData]);
 
   const timeSlots = [
     "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
@@ -165,6 +200,81 @@ const Appointment = () => {
 
             {/* Formulaire de rendez-vous */}
             <div className="max-w-4xl mx-auto">
+              
+              {/* Section de récupération automatique des données */}
+              {!userData && !isLoadingUserData && (
+                <Card className="mb-8 bg-gradient-to-br from-primary/5 to-cta-primary/5 border border-primary/20">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-heading">
+                      <Mail className="h-5 w-5 text-primary" />
+                      Avez-vous déjà fait un diagnostic avec nous ?
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-text-secondary mb-4">
+                      Si vous avez déjà utilisé notre calculateur ROI, nous pouvons pré-remplir vos informations automatiquement.
+                    </p>
+                    <div className="flex gap-3">
+                      <Input
+                        type="email"
+                        placeholder="Saisissez votre email"
+                        value={emailInput}
+                        onChange={(e) => setEmailInput(e.target.value)}
+                        className="flex-1"
+                      />
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => fetchUserData(emailInput)}
+                        disabled={!emailInput.includes('@') || isLoadingUserData}
+                        className="whitespace-nowrap"
+                      >
+                        {isLoadingUserData ? "Recherche..." : "Récupérer mes infos"}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Affichage des données récupérées */}
+              {userData && (
+                <Card className="mb-8 bg-gradient-to-br from-success/5 to-success/10 border border-success/30">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-success">
+                      <CheckCircle className="h-5 w-5" />
+                      Informations récupérées automatiquement
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <span className="font-semibold text-heading">Nom :</span> {userData.name}
+                      </div>
+                      <div>
+                        <span className="font-semibold text-heading">Email :</span> {userData.email}
+                      </div>
+                      {userData.phone && (
+                        <div>
+                          <span className="font-semibold text-heading">Téléphone :</span> {userData.phone}
+                        </div>
+                      )}
+                      {userData.company && (
+                        <div>
+                          <span className="font-semibold text-heading">Entreprise :</span> {userData.company}
+                        </div>
+                      )}
+                    </div>
+                    {userData.lastROICalculation && (
+                      <div className="mt-4 pt-4 border-t border-success/20">
+                        <p className="text-xs text-text-secondary">
+                          💡 Basé sur votre diagnostic ROI du {new Date(userData.lastROICalculation.created_at).toLocaleDateString('fr-FR')}
+                        </p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              )}
+
               <form onSubmit={handleSubmit} className="grid lg:grid-cols-2 gap-8">
                 
                 {/* Colonne gauche - Sélection date et heure */}

@@ -6,6 +6,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Calendar, Target, TrendingUp, Clock, DollarSign, HelpCircle } from "lucide-react";
 import { AppointmentBooking } from "./AppointmentBooking";
 import { ContactForm } from "./ContactForm";
+import { useNavigate } from "react-router-dom";
 
 interface ROIResultsProps {
   calculationId: string;
@@ -30,6 +31,7 @@ interface ROIResultsProps {
 }
 
 export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }: ROIResultsProps) => {
+  const navigate = useNavigate();
   const [showBooking, setShowBooking] = useState(false);
   const [showContact, setShowContact] = useState(false);
 
@@ -199,7 +201,11 @@ export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
             size="lg" 
-            onClick={() => setShowBooking(true)}
+            onClick={() => {
+              // Rediriger vers /appointment avec l'email en paramètre
+              const appointmentUrl = `/appointment${userInfo.email ? `?email=${encodeURIComponent(userInfo.email)}` : ''}`;
+              navigate(appointmentUrl);
+            }}
             className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
           >
             <Calendar className="mr-2 h-5 w-5" />
