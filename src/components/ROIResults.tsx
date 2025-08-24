@@ -33,15 +33,25 @@ export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }
   const [showContact, setShowContact] = useState(false);
 
   const priorityColors = {
-    1: "bg-gradient-to-r from-green-500 to-emerald-600",
-    2: "bg-gradient-to-r from-blue-500 to-blue-600", 
-    3: "bg-gradient-to-r from-purple-500 to-purple-600"
+    1: "bg-gradient-to-r from-primary to-primary/80",
+    2: "bg-gradient-to-r from-primary/80 to-primary/60", 
+    3: "bg-gradient-to-r from-primary/60 to-primary/40"
   };
 
   const priorityLabels = {
-    1: "PRIORITÉ HAUTE",
-    2: "PRIORITÉ MOYENNE",
+    1: "PRIORITÉ MAXIMALE",
+    2: "PRIORITÉ ÉLEVÉE",
     3: "PRIORITÉ STANDARD"
+  };
+
+  const getRecommendationIcon = (title: string) => {
+    if (title.toLowerCase().includes('email') || title.toLowerCase().includes('communication')) return '📧';
+    if (title.toLowerCase().includes('crm') || title.toLowerCase().includes('client')) return '👥';
+    if (title.toLowerCase().includes('reporting') || title.toLowerCase().includes('tableau')) return '📊';
+    if (title.toLowerCase().includes('comptab') || title.toLowerCase().includes('finance')) return '💰';
+    if (title.toLowerCase().includes('stock') || title.toLowerCase().includes('inventaire')) return '📦';
+    if (title.toLowerCase().includes('marketing') || title.toLowerCase().includes('lead')) return '🎯';
+    return '⚡';
   };
 
   return (
@@ -55,14 +65,17 @@ export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }
           Basé sur vos données, voici vos 3 chantiers d'automatisation prioritaires pour maximiser votre ROI
         </p>
         
-        <div className="flex flex-wrap justify-center gap-6 mt-6">
+        <div className="flex flex-wrap justify-center gap-8 mt-8">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="flex items-center gap-2 bg-background/50 px-4 py-2 rounded-lg border cursor-help">
-                  <DollarSign className="h-5 w-5 text-green-600" />
-                  <span className="font-semibold">{roiData.annual_savings.toLocaleString('fr-FR')}€ d'économies/an</span>
-                  <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                <div className="flex items-center gap-3 bg-primary/10 px-6 py-4 rounded-xl border border-primary/20 cursor-help hover:bg-primary/15 transition-colors">
+                  <DollarSign className="h-6 w-6 text-primary" />
+                  <div className="text-left">
+                    <div className="font-bold text-2xl text-primary">{roiData.annual_savings.toLocaleString('fr-FR')}€</div>
+                    <div className="text-sm text-primary/80">d'économies annuelles</div>
+                  </div>
+                  <HelpCircle className="h-4 w-4 text-primary/60" />
                 </div>
               </TooltipTrigger>
               <TooltipContent className="max-w-xs p-4">
@@ -80,10 +93,13 @@ export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="flex items-center gap-2 bg-background/50 px-4 py-2 rounded-lg border cursor-help">
-                  <TrendingUp className="h-5 w-5 text-primary" />
-                  <span className="font-semibold">{roiData.roi_percentage}% de ROI</span>
-                  <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                <div className="flex items-center gap-3 bg-primary/10 px-6 py-4 rounded-xl border border-primary/20 cursor-help hover:bg-primary/15 transition-colors">
+                  <TrendingUp className="h-6 w-6 text-primary" />
+                  <div className="text-left">
+                    <div className="font-bold text-2xl text-primary">{roiData.roi_percentage}%</div>
+                    <div className="text-sm text-primary/80">de ROI</div>
+                  </div>
+                  <HelpCircle className="h-4 w-4 text-primary/60" />
                 </div>
               </TooltipTrigger>
               <TooltipContent className="max-w-xs p-4">
@@ -107,53 +123,61 @@ export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }
         </h2>
         
         {recommendations.map((rec, index) => (
-          <Card key={index} className="overflow-hidden border-l-4 border-l-primary hover:shadow-lg transition-all duration-300">
+          <Card key={index} className="overflow-hidden border-l-4 border-l-primary hover:shadow-xl transition-all duration-300 card-hover">
             <CardHeader className="pb-4">
               <div className="flex items-start justify-between">
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <Badge 
-                      className={`${priorityColors[rec.priority as keyof typeof priorityColors]} text-white font-medium px-3 py-1`}
+                      className={`${priorityColors[rec.priority as keyof typeof priorityColors]} text-white font-semibold px-4 py-2 shadow-lg`}
                     >
                       {priorityLabels[rec.priority as keyof typeof priorityLabels]}
                     </Badge>
-                    <span className="text-2xl font-bold text-primary">#{rec.priority}</span>
+                    <span className="text-3xl font-bold text-primary">#{rec.priority}</span>
                   </div>
-                  <CardTitle className="text-xl text-primary">
-                    {rec.title}
-                  </CardTitle>
+                  <div className="flex items-center gap-3">
+                    <div className="text-4xl">{getRecommendationIcon(rec.title)}</div>
+                    <CardTitle className="text-xl text-primary leading-tight">
+                      {rec.title}
+                    </CardTitle>
+                  </div>
                 </div>
-                <Target className="h-8 w-8 text-primary/40" />
               </div>
             </CardHeader>
             
-            <CardContent className="space-y-4">
-              <p className="text-foreground leading-relaxed">
+            <CardContent className="space-y-6">
+              <p className="text-foreground leading-relaxed text-base">
                 {rec.description}
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-muted/30 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-green-600" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 bg-primary/5 rounded-xl border border-primary/10">
+                <div className="text-center space-y-2">
+                  <div className="flex items-center justify-center">
+                    <TrendingUp className="h-6 w-6 text-primary" />
+                  </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">ROI Estimé</p>
-                    <p className="font-semibold text-green-600">{rec.estimatedROI}</p>
+                    <p className="text-sm font-medium text-primary">ROI Estimé</p>
+                    <p className="font-bold text-primary text-lg">{rec.estimatedROI}</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-blue-600" />
+                <div className="text-center space-y-2">
+                  <div className="flex items-center justify-center">
+                    <Clock className="h-6 w-6 text-primary" />
+                  </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Délai</p>
-                    <p className="font-semibold text-blue-600">{rec.timeline}</p>
+                    <p className="text-sm font-medium text-primary">Délai</p>
+                    <p className="font-bold text-primary text-lg">{rec.timeline}</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-2">
-                  <Target className="h-5 w-5 text-purple-600" />
+                <div className="text-center space-y-2">
+                  <div className="flex items-center justify-center">
+                    <Target className="h-6 w-6 text-primary" />
+                  </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Impact</p>
-                    <p className="font-semibold text-purple-600">{rec.impact}</p>
+                    <p className="text-sm font-medium text-primary">Impact</p>
+                    <p className="font-bold text-primary text-lg">Élevé</p>
                   </div>
                 </div>
               </div>
