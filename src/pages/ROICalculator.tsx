@@ -762,7 +762,7 @@ const ROICalculatorPage = () => {
                           className="text-xl font-bold"
                           style={{ color: '#4A9EFF' }}
                         >
-                          👉 Pour {parseFloat(formData.investissement).toLocaleString('fr-FR')} € investis, vous récupérez {(results.economies_directes + results.gains_croissance).toLocaleString('fr-FR')} € par an.
+                          👉 Pour {parseFloat(formData.investissement || "0").toLocaleString('fr-FR')} € investis, vous récupérez {(results.economies_directes + results.gains_croissance).toLocaleString('fr-FR')} € par an.
                         </div>
                       </CardContent>
                     </Card>
