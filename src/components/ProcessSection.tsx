@@ -22,7 +22,9 @@ const ProcessSection = () => {
       title: "Diagnostic & Analyse Stratégique",
       subtitle: "Analyse complète pour identifier jusqu'à 30% d'économies potentielles et de gains de productivité.",
       icon: Search,
-      color: "#D56A1F",
+      color: "#0F7F7B",
+      bgGradient: "linear-gradient(135deg, rgba(15, 127, 123, 0.15), rgba(15, 127, 123, 0.05))",
+      iconBg: "rgba(15, 127, 123, 0.2)",
       details: {
         title: "Diagnostic & Analyse Stratégique",
         description: "Analyse complète pour identifier jusqu'à 30% d'économies potentielles et de gains de productivité.",
@@ -36,6 +38,8 @@ const ProcessSection = () => {
       subtitle: "Un plan d'automatisation sur-mesure conçu pour générer un ROI rapide (souvent observable en 90 jours).",
       icon: Lightbulb,
       color: "#D56A1F",
+      bgGradient: "linear-gradient(135deg, rgba(213, 106, 31, 0.15), rgba(213, 106, 31, 0.05))",
+      iconBg: "rgba(213, 106, 31, 0.2)",
       details: {
         title: "Stratégie & Conception Sur-Mesure",
         description: "Un plan d'automatisation sur-mesure conçu pour générer un ROI rapide (souvent observable en 90 jours).",
@@ -48,7 +52,9 @@ const ProcessSection = () => {
       title: "Déploiement & Intégration",
       subtitle: "Mise en place progressive sans rupture opérationnelle, avec formation complète de vos équipes.",
       icon: Rocket,
-      color: "#D56A1F",
+      color: "#2563EB",
+      bgGradient: "linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(37, 99, 235, 0.05))",
+      iconBg: "rgba(37, 99, 235, 0.2)",
       details: {
         title: "Déploiement & Intégration",
         description: "Mise en place progressive sans rupture opérationnelle, avec formation complète de vos équipes.",
@@ -61,7 +67,9 @@ const ProcessSection = () => {
       title: "Suivi & Optimisation Continue",
       subtitle: "Suivi trimestriel, ajustements stratégiques et optimisation continue pour garantir un ROI croissant dans le temps.",
       icon: TrendingUp,
-      color: "#D56A1F",
+      color: "#16A34A",
+      bgGradient: "linear-gradient(135deg, rgba(22, 163, 74, 0.15), rgba(22, 163, 74, 0.05))",
+      iconBg: "rgba(22, 163, 74, 0.2)",
       details: {
         title: "Suivi & Optimisation Continue",
         description: "Suivi trimestriel, ajustements stratégiques et optimisation continue pour garantir un ROI croissant dans le temps.",
@@ -129,28 +137,44 @@ const ProcessSection = () => {
             {phases.map((phase, index) => (
               <Card 
                 key={index}
-                className={`cursor-pointer transition-all duration-500 hover:scale-[1.03] border-0 hover-scale group ${
+                className={`cursor-pointer transition-all duration-500 hover:scale-[1.03] border-0 hover-scale group relative overflow-hidden ${
                   selectedPhase === index ? 'ring-2 animate-scale-in' : ''
                 }`}
                 style={{ 
-                  backgroundColor: '#1F2937',
+                  background: selectedPhase === index 
+                    ? `${phase.bgGradient}, #1F2937`
+                    : '#1F2937',
                   borderColor: selectedPhase === index ? phase.color : 'transparent',
                   boxShadow: selectedPhase === index 
-                    ? `0 8px 25px rgba(${parseInt(phase.color.slice(1, 3), 16)}, ${parseInt(phase.color.slice(3, 5), 16)}, ${parseInt(phase.color.slice(5, 7), 16)}, 0.2)` 
-                    : '0 4px 15px rgba(0, 0, 0, 0.1)',
-                  transform: selectedPhase === index ? 'translateY(-2px)' : 'translateY(0)',
-                  animationDelay: `${index * 0.1}s`
+                    ? `0 12px 30px rgba(${parseInt(phase.color.slice(1, 3), 16)}, ${parseInt(phase.color.slice(3, 5), 16)}, ${parseInt(phase.color.slice(5, 7), 16)}, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)` 
+                    : '0 6px 20px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1)',
+                  transform: selectedPhase === index ? 'translateY(-4px)' : 'translateY(0)',
+                  animationDelay: `${index * 0.1}s`,
+                  border: `1px solid ${selectedPhase === index ? phase.color + '40' : 'rgba(255, 255, 255, 0.1)'}`
                 }}
                 onClick={() => setSelectedPhase(index)}
               >
-                <CardContent className="p-6 flex items-center space-x-4">
+                {/* Effet lumineux en arrière-plan */}
+                {selectedPhase === index && (
                   <div 
-                    className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold transition-all duration-500 group-hover:rotate-12"
+                    className="absolute inset-0 opacity-30 animate-pulse"
+                    style={{
+                      background: `radial-gradient(circle at 50% 50%, ${phase.color}20, transparent 70%)`
+                    }}
+                  />
+                )}
+                
+                <CardContent className="p-6 flex items-center space-x-4 relative z-10">
+                  <div 
+                    className="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold transition-all duration-500 group-hover:rotate-12 shadow-lg"
                     style={{ 
-                      backgroundColor: selectedPhase === index ? phase.color : 'rgba(15, 127, 123, 0.2)',
-                      color: selectedPhase === index ? '#F5F5F5' : '#0F7F7B',
-                      boxShadow: selectedPhase === index ? `0 0 20px ${phase.color}40` : 'none',
-                      animation: selectedPhase === index ? 'pulse 2s infinite' : 'none'
+                      backgroundColor: selectedPhase === index ? phase.color : phase.iconBg,
+                      color: selectedPhase === index ? '#F5F5F5' : phase.color,
+                      boxShadow: selectedPhase === index 
+                        ? `0 0 25px ${phase.color}60, 0 4px 15px ${phase.color}30` 
+                        : `0 2px 10px ${phase.color}20`,
+                      animation: selectedPhase === index ? 'pulse 2s infinite' : 'none',
+                      border: `2px solid ${selectedPhase === index ? phase.color : phase.color + '40'}`
                     }}
                   >
                     {phase.number}
@@ -160,14 +184,18 @@ const ProcessSection = () => {
                     <h3 
                       className="text-xl font-semibold mb-1 transition-colors duration-300"
                       style={{ 
-                        color: selectedPhase === index ? '#0F7F7B' : '#F5F5F5'
+                        color: selectedPhase === index ? phase.color : '#F5F5F5',
+                        textShadow: selectedPhase === index ? `0 0 10px ${phase.color}40` : 'none'
                       }}
                     >
                       {phase.title}
                     </h3>
                     <p 
                       className="text-sm leading-relaxed transition-opacity duration-300 group-hover:opacity-90"
-                      style={{ color: '#F5F5F5' }}
+                      style={{ 
+                        color: selectedPhase === index ? '#F5F5F5' : 'rgba(245, 245, 245, 0.8)',
+                        textShadow: selectedPhase === index ? '0 1px 2px rgba(0,0,0,0.3)' : 'none'
+                      }}
                     >
                       {phase.subtitle}
                     </p>
@@ -176,13 +204,21 @@ const ProcessSection = () => {
                   {(() => {
                     const Icon = phase.icon;
                     return (
-                      <Icon 
-                        className="flex-shrink-0 h-6 w-6 transition-all duration-300 group-hover:scale-110"
-                        style={{ 
-                          color: selectedPhase === index ? '#0F7F7B' : '#F5F5F5',
-                          filter: selectedPhase === index ? `drop-shadow(0 0 8px ${phase.color}80)` : 'none'
+                      <div 
+                        className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                        style={{
+                          backgroundColor: selectedPhase === index ? phase.color + '20' : 'rgba(255, 255, 255, 0.05)',
+                          border: `1px solid ${selectedPhase === index ? phase.color + '40' : 'rgba(255, 255, 255, 0.1)'}`
                         }}
-                      />
+                      >
+                        <Icon 
+                          className="h-6 w-6 transition-all duration-300"
+                          style={{ 
+                            color: selectedPhase === index ? phase.color : '#F5F5F5',
+                            filter: selectedPhase === index ? `drop-shadow(0 0 8px ${phase.color}80)` : 'none'
+                          }}
+                        />
+                      </div>
                     );
                   })()}
                 </CardContent>
@@ -360,7 +396,7 @@ const ProcessSection = () => {
             </Badge>
             
             <p className="text-lg leading-relaxed" style={{ color: '#F5F5F5' }}>
-              Nous maîtrisons des solutions leaders comme n8n, Make et Zapier, utilisées par des milliers d'organisations dans le monde. 
+              Nous maîtrisons des solutions leaders comme N8N, Make et Zapier, utilisées par des milliers d'organisations dans le monde. 
               Ces outils nous permettent de connecter vos systèmes et de créer des automatisations adaptées à vos besoins réels.
             </p>
           </div>
@@ -395,7 +431,34 @@ const ProcessSection = () => {
                 Obtenir un plan d'action personnalisé
               </button>
               
-              <p className="text-sm" style={{ color: '#F5F5F5', opacity: 0.8 }}>
+              <div className="pt-2">
+                <button
+                  className="px-6 py-3 text-base font-medium rounded-lg transition-all duration-300 hover:scale-105 border-2"
+                  style={{
+                    backgroundColor: 'transparent',
+                    color: '#F5F5F5',
+                    borderColor: '#F5F5F5',
+                    opacity: 0.8
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(245, 245, 245, 0.1)';
+                    e.currentTarget.style.opacity = '1';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.opacity = '0.8';
+                  }}
+                  onClick={() => {
+                    // Placeholder pour redirection vers page/modale d'exemple
+                    console.log('Redirection vers exemple de plan d\'action');
+                    // TODO: Implémenter redirection vers page d'exemple
+                  }}
+                >
+                  Voir un exemple de plan d'action
+                </button>
+              </div>
+              
+              <p className="text-sm pt-2" style={{ color: '#F5F5F5', opacity: 0.8 }}>
                 Sans engagement, juste une première étape claire pour avancer.
               </p>
             </div>
