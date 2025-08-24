@@ -138,6 +138,7 @@ export type Database = {
           notes: string | null
           phone: string | null
           roi_potential: number | null
+          score: string | null
           source: string | null
           status: Database["public"]["Enums"]["lead_status"]
           team_size: string | null
@@ -156,6 +157,7 @@ export type Database = {
           notes?: string | null
           phone?: string | null
           roi_potential?: number | null
+          score?: string | null
           source?: string | null
           status?: Database["public"]["Enums"]["lead_status"]
           team_size?: string | null
@@ -174,6 +176,7 @@ export type Database = {
           notes?: string | null
           phone?: string | null
           roi_potential?: number | null
+          score?: string | null
           source?: string | null
           status?: Database["public"]["Enums"]["lead_status"]
           team_size?: string | null
@@ -281,18 +284,39 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      upsert_lead: {
+      calculate_lead_score: {
         Args: {
           p_annual_savings?: number
-          p_business_type?: string
-          p_company?: string
-          p_email: string
-          p_name?: string
-          p_phone?: string
+          p_budget_range?: string
           p_roi_potential?: number
-          p_status?: Database["public"]["Enums"]["lead_status"]
-          p_team_size?: string
         }
+        Returns: string
+      }
+      upsert_lead: {
+        Args:
+          | {
+              p_annual_savings?: number
+              p_budget_range?: string
+              p_business_type?: string
+              p_company?: string
+              p_email: string
+              p_name?: string
+              p_phone?: string
+              p_roi_potential?: number
+              p_status?: Database["public"]["Enums"]["lead_status"]
+              p_team_size?: string
+            }
+          | {
+              p_annual_savings?: number
+              p_business_type?: string
+              p_company?: string
+              p_email: string
+              p_name?: string
+              p_phone?: string
+              p_roi_potential?: number
+              p_status?: Database["public"]["Enums"]["lead_status"]
+              p_team_size?: string
+            }
         Returns: string
       }
     }
