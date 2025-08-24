@@ -1487,7 +1487,7 @@ const ROICalculatorPage = () => {
                                   className="block text-sm font-semibold mb-3"
                                   style={{ color: '#F5F5F5' }}
                                 >
-                                  Heures par semaine consacrées aux tâches répétitives *
+                                  Heures par semaine consacrées aux tâches répétitives
                                 </Label>
                                 <Input
                                   id="heures_repetitives"
@@ -1516,7 +1516,7 @@ const ROICalculatorPage = () => {
                                   className="block text-sm font-semibold mb-3"
                                   style={{ color: '#F5F5F5' }}
                                 >
-                                  Coût horaire moyen chargé (€) *
+                                  Coût horaire moyen<br />chargé (€)
                                 </Label>
                                 <Input
                                   id="cout_horaire"
