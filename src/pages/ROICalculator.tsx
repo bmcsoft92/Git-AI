@@ -1677,11 +1677,11 @@ const ROICalculatorPage = () => {
                               🎉 Votre diagnostic personnalisé est prêt
                             </h3>
                             
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-                              <div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                              <div className="flex flex-col">
                                 <Label 
                                   htmlFor="delai" 
-                                  className="block text-sm font-semibold mb-3"
+                                  className="block text-sm font-semibold mb-3 min-h-[40px] flex items-end"
                                   style={{ color: '#F5F5F5' }}
                                 >
                                   Dans quel délai souhaitez-vous automatiser ? *
@@ -1709,17 +1709,19 @@ const ROICalculatorPage = () => {
                                     <SelectItem value="exploring">J'explore les possibilités</SelectItem>
                                   </SelectContent>
                                 </Select>
-                                {hasFieldError('delai') && (
-                                  <p className="text-red-400 text-sm mt-2 font-semibold">
-                                    ⚠️ OBLIGATOIRE : Sélectionnez un délai
-                                  </p>
-                                )}
+                                <div className="min-h-[28px] flex items-start">
+                                  {hasFieldError('delai') && (
+                                    <p className="text-red-400 text-sm mt-2 font-semibold">
+                                      ⚠️ OBLIGATOIRE : Sélectionnez un délai
+                                    </p>
+                                  )}
+                                </div>
                               </div>
 
-                              <div>
+                              <div className="flex flex-col">
                                 <Label 
                                   htmlFor="budget_annuel" 
-                                  className="block text-sm font-semibold mb-3"
+                                  className="block text-sm font-semibold mb-3 min-h-[40px] flex items-end"
                                   style={{ color: '#F5F5F5' }}
                                 >
                                   Budget annuel envisagé pour l'automatisation ? *
@@ -1748,11 +1750,13 @@ const ROICalculatorPage = () => {
                                     <SelectItem value="depends-roi">Ça dépend du ROI démontré</SelectItem>
                                   </SelectContent>
                                 </Select>
-                                {hasFieldError('budget_annuel') && (
-                                  <p className="text-red-400 text-sm mt-2 font-semibold">
-                                    ⚠️ OBLIGATOIRE : Sélectionnez un budget
-                                  </p>
-                                )}
+                                <div className="min-h-[28px] flex items-start">
+                                  {hasFieldError('budget_annuel') && (
+                                    <p className="text-red-400 text-sm mt-2 font-semibold">
+                                      ⚠️ OBLIGATOIRE : Sélectionnez un budget
+                                    </p>
+                                  )}
+                                </div>
                               </div>
                             </div>
 
