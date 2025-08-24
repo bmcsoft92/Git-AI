@@ -9,21 +9,13 @@ const Hero = () => {
 
   return (
     <section className="relative bg-background overflow-hidden min-h-screen flex items-center">
-      {/* Subtle AI Network Pattern Background */}
-      <div className="absolute inset-0 opacity-5">
-        <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="network" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-              <circle cx="20" cy="20" r="2" fill="currentColor" className="text-primary"/>
-              <circle cx="80" cy="30" r="1.5" fill="currentColor" className="text-primary"/>
-              <circle cx="50" cy="70" r="1" fill="currentColor" className="text-primary"/>
-              <line x1="20" y1="20" x2="80" y2="30" stroke="currentColor" strokeWidth="0.5" className="text-primary/30"/>
-              <line x1="20" y1="20" x2="50" y2="70" stroke="currentColor" strokeWidth="0.5" className="text-primary/30"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#network)" />
-        </svg>
-      </div>
+      {/* Optimized AI Background with proper alt text */}
+      <img 
+        src={heroAiBg}
+        alt="Réseau de neurones représentant l'intelligence artificielle au service des entreprises"
+        className="absolute inset-0 w-full h-full object-cover opacity-20"
+        loading="eager"
+      />
       
       {/* IA + Human Visual Element */}
       <div className="absolute top-1/2 right-8 transform -translate-y-1/2 opacity-10 hidden lg:block">
