@@ -19,20 +19,19 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     nom: "",
     email: "",
-    entreprise: "",
     message: ""
   });
 
   useEffect(() => {
-    document.title = "Contact | Maia Elange";
+    document.title = "Nous Contacter Directement | Maia Elange";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Contactez Maia Elange pour discuter de vos besoins en automatisation IA. Planifiez un échange direct ou demandez un plan d\'action personnalisé.');
+      metaDescription.setAttribute('content', 'Contactez directement Maia Elange pour vos projets d\'automatisation IA. Formulaire simple et sécurisé. Réponse sous 48h ouvrées garantie.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Contactez Maia Elange pour discuter de vos besoins en automatisation IA. Planifiez un échange direct ou demandez un plan d\'action personnalisé.');
+      metaDescription.setAttribute('content', 'Contactez directement Maia Elange pour vos projets d\'automatisation IA. Formulaire simple et sécurisé. Réponse sous 48h ouvrées garantie.');
       document.head.appendChild(metaDescription);
     }
   }, []);
@@ -55,7 +54,7 @@ const Contact = () => {
         body: {
           name: formData.nom,
           email: formData.email,
-          company: formData.entreprise,
+          company: "",
           message: formData.message,
           source: 'contact_page'
         }
@@ -65,14 +64,13 @@ const Contact = () => {
 
       toast({
         title: "Message envoyé !",
-        description: "Nous vous répondrons dans les 24h. Merci pour votre intérêt.",
+        description: "Nous vous répondrons sous 48h ouvrées. Merci pour votre intérêt.",
       });
 
       // Reset du formulaire
       setFormData({
         nom: "",
         email: "",
-        entreprise: "",
         message: ""
       });
     } catch (error) {
@@ -132,12 +130,11 @@ const Contact = () => {
             {/* Titre principal H1 */}
             <div className="text-center mb-16">
               <h1 className="text-3xl lg:text-5xl font-bold text-heading mb-6">
-                Contactez{" "}
-                <span className="text-primary">Maia Elange</span>
+                Nous Contacter{" "}
+                <span className="text-primary">Directement</span>
               </h1>
               <p className="text-lg text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                Discutons de vos besoins en automatisation. Notre équipe d'experts 
-                vous accompagne de l'analyse à la mise en œuvre.
+                Un projet d'automatisation en tête ? Contactez-nous directement via ce formulaire simple et sécurisé.
               </p>
             </div>
 
@@ -155,7 +152,7 @@ const Contact = () => {
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-4">
                       <div className="space-y-2">
                         <Label htmlFor="nom">Nom complet *</Label>
                         <Input
@@ -166,6 +163,7 @@ const Contact = () => {
                           required
                         />
                       </div>
+                      
                       <div className="space-y-2">
                         <Label htmlFor="email">Email *</Label>
                         <Input
@@ -177,28 +175,18 @@ const Contact = () => {
                           required
                         />
                       </div>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="entreprise">Entreprise / Organisation</Label>
-                      <Input
-                        id="entreprise"
-                        value={formData.entreprise}
-                        onChange={(e) => handleInputChange("entreprise", e.target.value)}
-                        placeholder="Nom de votre organisation"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea
-                        id="message"
-                        value={formData.message}
-                        onChange={(e) => handleInputChange("message", e.target.value)}
-                        placeholder="Décrivez votre projet, vos besoins en automatisation, vos objectifs..."
-                        rows={6}
-                        required
-                      />
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="message">Message *</Label>
+                        <Textarea
+                          id="message"
+                          value={formData.message}
+                          onChange={(e) => handleInputChange("message", e.target.value)}
+                          placeholder="Décrivez votre projet, vos besoins en automatisation, vos objectifs..."
+                          rows={6}
+                          required
+                        />
+                      </div>
                     </div>
                     
                     <Button 
@@ -207,14 +195,20 @@ const Contact = () => {
                       size="lg"
                       className="w-full group/cta"
                     >
-                      Envoyer le message
+                      Envoyer mon message
                       <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover/cta:translate-x-1" />
                     </Button>
                     
-                    <p className="text-sm text-text-secondary text-center">
-                      En soumettant ce formulaire, vous acceptez d'être recontacté par Maia Elange 
-                      concernant votre demande. Vos données sont traitées selon notre politique de confidentialité.
-                    </p>
+                    <div className="space-y-3 text-center">
+                      <p className="text-sm text-primary font-medium">
+                        📞 Réponse sous 48h ouvrées
+                      </p>
+                      
+                      <p className="text-xs text-text-secondary">
+                        Vos données sont utilisées uniquement pour répondre à votre message.<br />
+                        Elles ne seront jamais partagées.
+                      </p>
+                    </div>
                   </form>
                 </CardContent>
               </Card>
@@ -281,7 +275,7 @@ const Contact = () => {
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
                         <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
-                        <span className="text-sm text-text-secondary">Réponse sous 24h garantie</span>
+                        <span className="text-sm text-text-secondary">Réponse sous 48h ouvrées</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
