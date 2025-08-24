@@ -27,28 +27,48 @@ const FAQ = () => {
   const faqData = [
     {
       icon: Shield,
-      question: "Nos données sont-elles en sécurité avec vos solutions d'automatisation ?",
-      answer: "Absolument. Toutes nos solutions respectent le RGPD et les standards européens de sécurité. Nous utilisons des hébergeurs certifiés ISO 27001, chiffrement des données en transit et au repos, et mise en place de politiques d'accès strictes. Vos données restent sous votre contrôle total."
-    },
-    {
-      icon: Euro,
-      question: "Quel est le coût d'une solution d'automatisation sur-mesure ?",
-      answer: "Le coût varie selon la complexité de vos processus et le périmètre d'automatisation. Pour une PME, comptez entre 5 000€ et 25 000€. Pour une ETI, entre 15 000€ et 75 000€. Nous proposons systématiquement un diagnostic gratuit avec estimation budgétaire précise avant tout engagement."
+      question: "C'est quoi une agence d'IA & d'automatisation ?",
+      answer: "Une agence comme Maia Elange accompagne les organisations (PME, ETI, grandes structures, associations) dans l'identification et la mise en place d'automatisations concrètes. L'objectif est simple : réduire les tâches répétitives, améliorer la productivité et libérer du temps pour des missions à forte valeur ajoutée."
     },
     {
       icon: TrendingUp,
-      question: "Quel ROI puis-je attendre de l'automatisation ?",
-      answer: "Nos clients observent généralement un ROI positif en 3 à 6 mois. Les gains moyens : +30% d'efficacité opérationnelle, -50% de temps sur les tâches répétitives, +20% de satisfaction client. Notre simulateur ROI vous donne une estimation personnalisée en quelques minutes."
+      question: "Qu'est-ce que l'automatisation IA exactement ?",
+      answer: "C'est l'utilisation combinée de logiciels et d'intelligence artificielle pour exécuter automatiquement des tâches répétitives (emails, suivi clients, reporting, etc.). L'IA ne remplace pas l'humain : elle agit comme un assistant intelligent qui accélère vos processus."
+    },
+    {
+      icon: Euro,
+      question: "Devons-nous changer d'outils ?",
+      answer: "Pas nécessairement. Nous privilégions toujours l'intégration à vos outils existants (CRM, ERP, logiciels métiers…). Nous connectons vos systèmes actuels grâce à des solutions comme Make, Zapier ou n8n. Si un changement d'outil est conseillé, nous vous accompagnons dans la décision."
     },
     {
       icon: Clock,
-      question: "Combien de temps faut-il pour déployer une solution ?",
-      answer: "Le délai dépend de la complexité : 2-4 semaines pour des automatisations simples, 6-12 semaines pour des projets complexes multi-systèmes. Nous privilégions une approche progressive avec des gains rapides dès les premières semaines, puis optimisation continue."
+      question: "Combien de temps pour une première mise en production ?",
+      answer: "En moyenne, entre 2 et 6 semaines selon la complexité. Un premier prototype peut être opérationnel très rapidement (souvent sous 15 jours) pour vous permettre de mesurer l'impact sans attendre."
     },
     {
       icon: Shield,
-      question: "Comment garantissez-vous la conformité RGPD de vos solutions ?",
-      answer: "Nous intégrons le RGPD dès la conception : privacy by design, minimisation des données, pseudonymisation automatique, gestion des consentements, et documentation complète des traitements. Audit de conformité inclus dans chaque projet avec certification à la clé."
+      question: "Et la sécurité / RGPD ?",
+      answer: "Tous nos déploiements respectent les standards européens (RGPD). Nous privilégions des solutions sécurisées et conformes, hébergées dans l'UE lorsque c'est possible. La confidentialité de vos données reste une priorité."
+    },
+    {
+      icon: TrendingUp,
+      question: "Quel est l'impact pour les équipes ?",
+      answer: "L'automatisation ne remplace pas vos collaborateurs : elle les soulage des tâches chronophages. Cela améliore leur efficacité, réduit le stress et libère du temps pour des activités stratégiques. Nous incluons toujours vos équipes dans la phase de conception et de formation."
+    },
+    {
+      icon: Euro,
+      question: "Combien ça coûte ?",
+      answer: "Le coût dépend du périmètre du projet. Nous travaillons avec un modèle flexible : diagnostic et prototype accessible, puis extension progressive selon vos besoins et budget. Cela permet d'obtenir rapidement des résultats mesurables sans investissement lourd initial."
+    },
+    {
+      icon: TrendingUp,
+      question: "Comment mesurez-vous le succès ?",
+      answer: "Nous définissons avec vous des indicateurs clairs (ex. temps gagné, coût réduit, taux de conversion augmenté). Chaque projet inclut un tableau de bord pour suivre le ROI et les gains obtenus."
+    },
+    {
+      icon: Shield,
+      question: "Y a-t-il un support après le déploiement ?",
+      answer: "Oui, nous proposons un suivi post-projet pour sécuriser la mise en place et ajuster si nécessaire. Ensuite, vous choisissez : soit garder l'autonomie complète, soit nous solliciter ponctuellement pour de nouvelles optimisations."
     }
   ];
 
