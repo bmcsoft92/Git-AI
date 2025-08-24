@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Search, Lightbulb, Rocket, TrendingUp, Sparkles, Check } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProcessSection = () => {
+  const navigate = useNavigate();
   const [selectedPhase, setSelectedPhase] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
@@ -431,9 +433,7 @@ const ProcessSection = () => {
               
               <div className="pt-2">
                   <Button 
-                    onClick={() => {
-                      window.location.href = "/roi-calculator";
-                    }}
+                    onClick={() => navigate("/calculateur-roi")}
                     className="px-6 py-3 text-base font-medium rounded-lg transition-all duration-300 hover:scale-105 border-2 bg-transparent
                              hover:bg-white/10 border-white text-white opacity-80 hover:opacity-100"
                   >

@@ -245,7 +245,7 @@ const FAQ = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button 
-                      onClick={() => navigate("/roi-calculator")}
+                      onClick={() => navigate("/calculateur-roi")}
                       variant="cta"
                       size="lg"
                       className="px-8 py-4 text-lg group/cta"

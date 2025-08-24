@@ -148,7 +148,7 @@ const Integrations = () => {
             </p>
           </div>
           <Button 
-            onClick={() => navigate('/roi-calculator')}
+            onClick={() => navigate('/calculateur-roi')}
             variant="cta"
             size="lg"
             className="px-8 py-4 text-lg font-semibold group/cta transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"

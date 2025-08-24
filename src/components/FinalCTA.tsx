@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const FinalCTA = () => {
+  const navigate = useNavigate();
   const contactMethods = [
     {
       icon: Phone,
@@ -55,7 +57,7 @@ const FinalCTA = () => {
               variant="outline" 
               size="lg" 
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg"
-              onClick={() => window.location.href = '/calculateur-roi'}
+              onClick={() => navigate('/calculateur-roi')}
             >
               Tester mon ROI
             </Button>
