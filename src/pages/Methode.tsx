@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
-import Services from "@/components/Services";
+import ProcessSection from "@/components/ProcessSection";
 import Footer from "@/components/Footer";
 
 const Methode = () => {
@@ -24,7 +24,7 @@ const Methode = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <Services />
+        <ProcessSection />
       </main>
       <Footer />
     </div>
