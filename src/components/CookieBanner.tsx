@@ -10,12 +10,30 @@ const CookieBanner = () => {
   useEffect(() => {
     // Vérifier si l'utilisateur a déjà accepté les cookies
     const cookieConsent = localStorage.getItem('cookieConsent');
+    const cookieDeferred = localStorage.getItem('cookieConsentDeferred');
+    
     if (!cookieConsent) {
-      // Afficher le bandeau après un délai pour une meilleure UX
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, 2000);
-      return () => clearTimeout(timer);
+      // Si pas de report ou si le délai est écoulé
+      let shouldShow = true;
+      
+      if (cookieDeferred) {
+        const deferredUntil = new Date(cookieDeferred);
+        const now = new Date();
+        if (now < deferredUntil) {
+          shouldShow = false;
+        } else {
+          // Le délai est écoulé, supprimer l'entrée
+          localStorage.removeItem('cookieConsentDeferred');
+        }
+      }
+      
+      if (shouldShow) {
+        // Afficher le bandeau après un délai pour une meilleure UX
+        const timer = setTimeout(() => {
+          setIsVisible(true);
+        }, 2000);
+        return () => clearTimeout(timer);
+      }
     }
   }, []);
 
@@ -27,13 +45,10 @@ const CookieBanner = () => {
 
   const handleClose = () => {
     setIsVisible(false);
-    // Réafficher dans 24h si pas accepté
-    setTimeout(() => {
-      const cookieConsent = localStorage.getItem('cookieConsent');
-      if (!cookieConsent) {
-        setIsVisible(true);
-      }
-    }, 24 * 60 * 60 * 1000); // 24 heures
+    // Marquer comme "refusé temporairement" pour 24h
+    const tomorrow = new Date();
+    tomorrow.setHours(tomorrow.getHours() + 24);
+    localStorage.setItem('cookieConsentDeferred', tomorrow.toISOString());
   };
 
   if (!isVisible) return null;
