@@ -14,11 +14,11 @@ const Index = () => {
     // Update or create meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Maia Elange aide les organisations à automatiser leurs processus avec des solutions simples, mesurables et conformes au RGPD. Découvrez notre diagnostic ROI instantané et nos méthodes d\'automatisation alignées sur les standards européens.');
+      metaDescription.setAttribute('content', 'Découvrez comment Maia Elange connecte vos outils existants (Google Workspace, Outlook, Salesforce, Slack, Teams, LinkedIn…) à ses solutions d\'automatisation. Des intégrations fluides, évolutives et sans refonte technique.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Maia Elange aide les organisations à automatiser leurs processus avec des solutions simples, mesurables et conformes au RGPD. Découvrez notre diagnostic ROI instantané et nos méthodes d\'automatisation alignées sur les standards européens.');
+      metaDescription.setAttribute('content', 'Découvrez comment Maia Elange connecte vos outils existants (Google Workspace, Outlook, Salesforce, Slack, Teams, LinkedIn…) à ses solutions d\'automatisation. Des intégrations fluides, évolutives et sans refonte technique.');
       document.head.appendChild(metaDescription);
     }
   }, []);
