@@ -768,20 +768,6 @@ const ROICalculatorPage = () => {
                     </Card>
                   </div>
 
-                  {/* Disclaimer de transparence */}
-                  <div className="mb-8 text-center">
-                    <p 
-                      className="text-xs px-4 py-2 rounded-md"
-                      style={{ 
-                        color: '#B0B0B0',
-                        backgroundColor: 'rgba(74, 158, 255, 0.05)',
-                        border: '1px solid rgba(74, 158, 255, 0.2)'
-                      }}
-                    >
-                      ⚠️ Ces résultats sont basés sur vos données estimatives et servent de projection indicative. Les résultats réels peuvent varier selon votre contexte.
-                    </p>
-                  </div>
-
                   {/* Graphique évolutif */}
                   <div className="mb-10">
                     <h3 
