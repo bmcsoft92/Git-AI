@@ -647,6 +647,44 @@ const ROICalculatorPage = () => {
                     </p>
                   </div>
 
+                  {/* Total Gains - Métrique principale mise en évidence */}
+                  <div className="mb-8">
+                    <Card 
+                      className="max-w-md mx-auto border-0 shadow-xl"
+                      style={{ 
+                        backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                        border: '2px solid #22C55E'
+                      }}
+                    >
+                      <CardContent className="p-8 text-center">
+                        <div className="flex items-center justify-center gap-3 mb-3">
+                          <div 
+                            className="text-5xl font-bold"
+                            style={{ color: '#22C55E' }}
+                          >
+                            {(results.economies_directes + results.gains_croissance).toLocaleString('fr-FR')}€
+                          </div>
+                          <TooltipProvider>
+                            <UITooltip>
+                              <TooltipTrigger asChild>
+                                <HelpCircle className="h-5 w-5 opacity-70 cursor-help" style={{ color: '#F5F5F5' }} />
+                              </TooltipTrigger>
+                              <TooltipContent side="top" className="max-w-xs bg-gray-900 text-white p-3 rounded-lg border-0 z-50">
+                                <p>Total des bénéfices annuels : Économies Directes + Gains de Croissance</p>
+                              </TooltipContent>
+                            </UITooltip>
+                          </TooltipProvider>
+                        </div>
+                        <div className="text-lg font-semibold mb-1" style={{ color: '#F5F5F5' }}>
+                          🎯 Total Gains par an
+                        </div>
+                        <div className="text-sm opacity-80" style={{ color: '#B0B0B0' }}>
+                          Bénéfices totaux de l'automatisation
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+
                   {/* Métriques principales */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
                     <div 
