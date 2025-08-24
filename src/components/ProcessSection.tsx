@@ -165,18 +165,6 @@ const ProcessSection = () => {
                 }}
                 onClick={() => setSelectedPhase(index)}
               >
-                {/* Image d'illustration centrée */}
-                <div className="absolute top-4 left-1/2 transform -translate-x-1/2 h-16 w-16 opacity-30 overflow-hidden rounded-lg">
-                  <img 
-                    src={phase.image}
-                    alt={`Illustration ${phase.title}`}
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-                    style={{
-                      filter: `brightness(${selectedPhase === index ? '1.4' : '1.0'}) contrast(1.2)`
-                    }}
-                  />
-                </div>
-                
                 {/* Effet lumineux en arrière-plan */}
                 {selectedPhase === index && (
                   <div 
@@ -187,48 +175,25 @@ const ProcessSection = () => {
                   />
                 )}
                 
-                <CardContent className="p-6 relative z-10">
-                  <div className="text-center mb-4">
-                    <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold transition-all duration-500 group-hover:rotate-12 shadow-lg mx-auto mb-3"
-                      style={{ 
-                        backgroundColor: selectedPhase === index ? phase.color : phase.iconBg,
-                        color: selectedPhase === index ? '#F5F5F5' : phase.color,
-                        boxShadow: selectedPhase === index 
-                          ? `0 0 25px ${phase.color}60, 0 4px 15px ${phase.color}30` 
-                          : `0 2px 10px ${phase.color}20`,
-                        animation: selectedPhase === index ? 'pulse 2s infinite' : 'none',
-                        border: `2px solid ${selectedPhase === index ? phase.color : phase.color + '40'}`
-                      }}
-                    >
-                      {phase.number}
-                    </div>
-                    
-                    {(() => {
-                      const Icon = phase.icon;
-                      return (
-                        <div 
-                          className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 mx-auto"
-                          style={{
-                            backgroundColor: selectedPhase === index ? phase.color + '25' : 'rgba(255, 255, 255, 0.08)',
-                            border: `1px solid ${selectedPhase === index ? phase.color + '50' : 'rgba(255, 255, 255, 0.15)'}`
-                          }}
-                        >
-                          <Icon 
-                            className="h-7 w-7 transition-all duration-300"
-                            style={{ 
-                              color: selectedPhase === index ? phase.color : '#F5F5F5',
-                              filter: selectedPhase === index ? `drop-shadow(0 0 8px ${phase.color}80)` : 'none'
-                            }}
-                          />
-                        </div>
-                      );
-                    })()}
+                <CardContent className="p-6 flex items-center space-x-4 relative z-10">
+                  <div 
+                    className="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold transition-all duration-500 group-hover:rotate-12 shadow-lg"
+                    style={{ 
+                      backgroundColor: selectedPhase === index ? phase.color : phase.iconBg,
+                      color: selectedPhase === index ? '#F5F5F5' : phase.color,
+                      boxShadow: selectedPhase === index 
+                        ? `0 0 25px ${phase.color}60, 0 4px 15px ${phase.color}30` 
+                        : `0 2px 10px ${phase.color}20`,
+                      animation: selectedPhase === index ? 'pulse 2s infinite' : 'none',
+                      border: `2px solid ${selectedPhase === index ? phase.color : phase.color + '40'}`
+                    }}
+                  >
+                    {phase.number}
                   </div>
                   
-                  <div className="text-center">
+                  <div className="flex-1 min-w-0">
                     <h3 
-                      className="text-xl font-semibold mb-2 transition-colors duration-300"
+                      className="text-xl font-semibold mb-1 transition-colors duration-300"
                       style={{ 
                         color: selectedPhase === index ? phase.color : '#F5F5F5',
                         textShadow: selectedPhase === index ? `0 0 10px ${phase.color}40` : 'none'
@@ -246,6 +211,27 @@ const ProcessSection = () => {
                       {phase.subtitle}
                     </p>
                   </div>
+                  
+                  {(() => {
+                    const Icon = phase.icon;
+                    return (
+                      <div 
+                        className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                        style={{
+                          backgroundColor: selectedPhase === index ? phase.color + '20' : 'rgba(255, 255, 255, 0.05)',
+                          border: `1px solid ${selectedPhase === index ? phase.color + '40' : 'rgba(255, 255, 255, 0.1)'}`
+                        }}
+                      >
+                        <Icon 
+                          className="h-6 w-6 transition-all duration-300"
+                          style={{ 
+                            color: selectedPhase === index ? phase.color : '#F5F5F5',
+                            filter: selectedPhase === index ? `drop-shadow(0 0 8px ${phase.color}80)` : 'none'
+                          }}
+                        />
+                      </div>
+                    );
+                  })()}
                 </CardContent>
               </Card>
             ))}
