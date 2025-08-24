@@ -194,31 +194,12 @@ const ROICalculatorPage = () => {
         userPhone: "" // Pas de téléphone dans le formulaire actuel
       };
 
-      // Appeler l'edge function d'analyse
+      // Appeler l'edge function d'analyse qui se charge aussi de l'envoi d'email
       const { data: analysisResponse, error: analysisError } = await supabase.functions.invoke('analyze-roi-data', {
         body: analysisData
       });
 
       if (analysisError) throw analysisError;
-
-      // Envoyer l'email avec les résultats
-      const emailData = {
-        calculationId: analysisResponse.calculationId,
-        userEmail: diagnosticData.email,
-        userName: diagnosticData.nom,
-        roiData: analysisData.roiData,
-        diagnosticData: analysisData.diagnosticData,
-        recommendations: analysisResponse.recommendations
-      };
-
-      const { error: emailError } = await supabase.functions.invoke('send-roi-email', {
-        body: emailData
-      });
-
-      if (emailError) {
-        console.error("Email error:", emailError);
-        // Continue même si l'email échoue
-      }
 
       // Sauvegarder les résultats et afficher
       setAnalysisResults({
