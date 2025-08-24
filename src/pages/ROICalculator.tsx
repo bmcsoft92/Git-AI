@@ -759,16 +759,10 @@ const ROICalculatorPage = () => {
                           💰 Retour sur investissement
                         </div>
                         <div 
-                          className="text-xl font-bold mb-2"
+                          className="text-xl font-bold"
                           style={{ color: '#4A9EFF' }}
                         >
                           👉 Pour {parseFloat(formData.investissement).toLocaleString('fr-FR')} € investis, vous récupérez {(results.economies_directes + results.gains_croissance).toLocaleString('fr-FR')} € par an.
-                        </div>
-                        <div 
-                          className="text-lg font-semibold"
-                          style={{ color: '#4A9EFF' }}
-                        >
-                          👉 Chaque 1 € investi génère {Math.round(((results.economies_directes + results.gains_croissance) / parseFloat(formData.investissement)) * 100) / 100} € de gains par an.
                         </div>
                       </CardContent>
                     </Card>
@@ -864,12 +858,6 @@ const ROICalculatorPage = () => {
                             >
                               Comment sont calculés vos résultats ?
                             </h4>
-                            <p 
-                              className="text-sm mb-3 leading-relaxed"
-                              style={{ color: '#B0B0B0' }}
-                            >
-                              Les résultats sont des estimations calculées à partir des données que vous avez saisies.
-                            </p>
                             <div 
                               className="text-sm space-y-2"
                               style={{ color: '#B0B0B0' }}
