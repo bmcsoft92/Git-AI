@@ -74,6 +74,17 @@ const Header = () => {
             {/* 1. Navigation Principale */}
             <div className="flex items-center space-x-6">
               <Link 
+                to="/" 
+                className={`nav-link transition-colors font-medium ${
+                  isActive('/') 
+                    ? 'text-primary border-b-2 border-primary' 
+                    : 'text-text-secondary hover:text-primary'
+                }`}
+              >
+                Accueil
+              </Link>
+              
+              <Link 
                 to="/solutions" 
                 className={`nav-link transition-colors font-medium ${
                   isActive('/solutions') 
@@ -189,8 +200,19 @@ const Header = () => {
               {/* Groupe 1: Navigation Principale */}
               <div className="space-y-4">
                 <div className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
-                  Solutions & Méthode
+                  Navigation Principale
                 </div>
+                <Link 
+                  to="/" 
+                  className={`block nav-link transition-colors pl-4 ${
+                    isActive('/') 
+                      ? 'text-primary font-medium border-l-2 border-primary' 
+                      : 'text-text-secondary hover:text-primary'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Accueil
+                </Link>
                 <Link 
                   to="/solutions" 
                   className={`block nav-link transition-colors pl-4 ${
