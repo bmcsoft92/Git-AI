@@ -11,7 +11,7 @@ const Blog = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Blog et Guides IA | Ressources Automatisation | Maia Elange";
+    document.title = "Blog et Guides IA | Ressources Automatisation | Maïa Elange";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -29,7 +29,7 @@ const Blog = () => {
       id: 1,
       title: "Comment calculer son ROI avec l'automatisation ?",
       excerpt: "Guide complet pour évaluer le retour sur investissement de vos projets d'automatisation. Méthodes, outils et exemples concrets.",
-      author: "Équipe Maia Elange",
+      author: "Équipe Maïa Elange",
       date: "15 Janvier 2025",
       readTime: "8 min",
       category: "ROI & Finance",
@@ -39,7 +39,7 @@ const Blog = () => {
       id: 2,
       title: "10 processus à automatiser en priorité dans votre PME",
       excerpt: "Découvrez les processus qui génèrent le plus de gains rapides : facturation, suivi client, gestion des stocks...",
-      author: "Équipe Maia Elange",
+      author: "Équipe Maïa Elange",
       date: "10 Janvier 2025",
       readTime: "6 min",
       category: "Guides Pratiques",
@@ -49,7 +49,7 @@ const Blog = () => {
       id: 3,
       title: "RGPD et automatisation : ce qu'il faut savoir",
       excerpt: "Guide complet pour automatiser vos processus tout en respectant la réglementation européenne sur les données personnelles.",
-      author: "Équipe Maia Elange",
+      author: "Équipe Maïa Elange",
       date: "5 Janvier 2025",
       readTime: "12 min",
       category: "Conformité",

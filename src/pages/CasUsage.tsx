@@ -11,15 +11,15 @@ const CasUsage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Cas d'usage Automatisation IA | Maia Elange";
+    document.title = "Cas d'usage Automatisation IA | Maïa Elange";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Découvrez comment l\'automatisation IA s\'applique aux PME, ETI, associations et collectivités : devis, factures, CRM, inscriptions, demandes administratives. Maia Elange adapte ses solutions à chaque organisation.');
+      metaDescription.setAttribute('content', 'Découvrez comment l\'automatisation IA s\'applique aux PME, ETI, associations et collectivités : devis, factures, CRM, inscriptions, demandes administratives. Maïa Elange adapte ses solutions à chaque organisation.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Découvrez comment l\'automatisation IA s\'applique aux PME, ETI, associations et collectivités : devis, factures, CRM, inscriptions, demandes administratives. Maia Elange adapte ses solutions à chaque organisation.');
+      metaDescription.setAttribute('content', 'Découvrez comment l\'automatisation IA s\'applique aux PME, ETI, associations et collectivités : devis, factures, CRM, inscriptions, demandes administratives. Maïa Elange adapte ses solutions à chaque organisation.');
       document.head.appendChild(metaDescription);
     }
   }, []);

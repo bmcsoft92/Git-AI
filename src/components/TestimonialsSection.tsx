@@ -36,7 +36,7 @@ const TestimonialsSection = () => {
       company: "BNP Paribas",
       sector: "Services Financiers",
       logo: "🏛️", // Placeholder - en production, utiliser une vraie image
-      quote: "L'IA conversationnelle de Maia Elange a transformé notre service client. 70% de réduction du temps de traitement des demandes.",
+      quote: "L'IA conversationnelle de Maïa Elange a transformé notre service client. 70% de réduction du temps de traitement des demandes.",
       author: "Claire Martin",
       position: "DSI",
       results: "+70% efficacité"

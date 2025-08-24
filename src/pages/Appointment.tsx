@@ -60,7 +60,7 @@ const Appointment = () => {
   }, [userData]);
 
   useEffect(() => {
-    document.title = "Prendre Rendez-vous | Maia Elange";
+    document.title = "Prendre Rendez-vous | Maïa Elange";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {

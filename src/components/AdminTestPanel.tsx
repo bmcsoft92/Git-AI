@@ -318,7 +318,7 @@ export const AdminTestPanel = () => {
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">
             <Mail className="h-5 w-5" />
-            Panel Test Funnel Utilisateur - Maia Elange
+            Panel Test Funnel Utilisateur - Maïa Elange
           </CardTitle>
           <Badge variant="outline">Admin Only</Badge>
         </div>

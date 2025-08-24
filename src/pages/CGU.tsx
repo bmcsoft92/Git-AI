@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 
 const CGU = () => {
   useEffect(() => {
-    document.title = "Conditions Générales d'Utilisation | Maia Elange";
+    document.title = "Conditions Générales d'Utilisation | Maïa Elange";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Conditions générales d\'utilisation de Maia Elange. Utilisation du simulateur ROI, diagnostic automatisation et services d\'accompagnement.');
+      metaDescription.setAttribute('content', 'Conditions générales d\'utilisation de Maïa Elange. Utilisation du simulateur ROI, diagnostic automatisation et services d\'accompagnement.');
     }
   }, []);
 

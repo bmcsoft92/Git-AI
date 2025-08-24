@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 
 const PolitiqueConfidentialite = () => {
   useEffect(() => {
-    document.title = "Politique de Confidentialité & Mentions Légales | Maia Elange";
+    document.title = "Politique de Confidentialité & Mentions Légales | Maïa Elange";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Politique de confidentialité et mentions légales de Maia Elange. Cookies essentiels, protection RGPD et informations légales sur l\'automatisation intelligente.');
+      metaDescription.setAttribute('content', 'Politique de confidentialité et mentions légales de Maïa Elange. Cookies essentiels, protection RGPD et informations légales sur l\'automatisation intelligente.');
     }
   }, []);
   return (

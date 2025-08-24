@@ -15,11 +15,11 @@ const Methode = () => {
     // Update or create meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Une approche structurée : diagnostic, stratégie sur-mesure, intégration progressive et suivi. Maia Elange vous apporte clarté et ROI observable.');
+      metaDescription.setAttribute('content', 'Une approche structurée : diagnostic, stratégie sur-mesure, intégration progressive et suivi. Maïa Elange vous apporte clarté et ROI observable.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Une approche structurée : diagnostic, stratégie sur-mesure, intégration progressive et suivi. Maia Elange vous apporte clarté et ROI observable.');
+      metaDescription.setAttribute('content', 'Une approche structurée : diagnostic, stratégie sur-mesure, intégration progressive et suivi. Maïa Elange vous apporte clarté et ROI observable.');
       document.head.appendChild(metaDescription);
     }
   }, []);

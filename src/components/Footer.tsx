@@ -26,7 +26,7 @@ const Footer = () => {
                 Prêt à passer à l'action ?
               </h2>
               <p className="text-lg text-text-secondary mb-8 leading-relaxed">
-                Discutons de vos besoins et voyons comment Maia Élange peut s'intégrer à vos opérations.
+                Discutons de vos besoins et voyons comment Maïa Élange peut s'intégrer à vos opérations.
               </p>
               <Button 
                 onClick={handleContactClick}
@@ -57,12 +57,12 @@ const Footer = () => {
               <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/20 to-cta-primary/20 backdrop-blur-sm border border-primary/20 shadow-lg">
                 <img 
                   src="/lovable-uploads/6464ae76-963f-4a08-96fb-19127780a208.png" 
-                  alt="Logo Maia Elange - Agence d'automatisation IA et d'intelligence artificielle" 
+                  alt="Logo Maïa Elange - Agence d'automatisation IA et d'intelligence artificielle" 
                   className="w-8 h-8 rounded-lg" 
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-heading">Maia Élange</h3>
+              <h3 className="text-2xl font-bold text-heading">Maïa Élange</h3>
             </div>
             <p className="text-lg font-medium text-primary mb-2">
               L'IA + l'Humain au service des organisations
@@ -250,7 +250,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="text-center">
             <div className="text-sm text-text-secondary font-medium mb-2">
-              © 2025 Maia Élange – Tous droits réservés.
+              © 2025 Maïa Élange – Tous droits réservés.
             </div>
             <div className="text-xs text-text-secondary/80">
               Fait avec ❤️ pour l'automatisation intelligente

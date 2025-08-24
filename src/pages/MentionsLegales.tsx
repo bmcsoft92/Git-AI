@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 
 const MentionsLegales = () => {
   useEffect(() => {
-    document.title = "Mentions Légales | Maia Elange - Automatisation Intelligente & IA";
+    document.title = "Mentions Légales | Maïa Elange - Automatisation Intelligente & IA";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Mentions légales de Maia Elange, spécialiste en automatisation intelligente et transformation digitale par IA. Conformité RGPD et informations légales.');
+      metaDescription.setAttribute('content', 'Mentions légales de Maïa Elange, spécialiste en automatisation intelligente et transformation digitale par IA. Conformité RGPD et informations légales.');
     }
   }, []);
   return (

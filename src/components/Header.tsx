@@ -61,11 +61,11 @@ const Header = () => {
               <div className="w-16 h-16 rounded-lg flex items-center justify-center glow-hover">
                 <img 
                   src="/lovable-uploads/6464ae76-963f-4a08-96fb-19127780a208.png" 
-                  alt="Maia Elange Logo" 
+                  alt="Maïa Elange Logo" 
                   className="w-full h-full rounded-lg transition-transform duration-300 hover:scale-110" 
                 />
               </div>
-              <h1 className="text-2xl font-bold text-heading">Maia Elange</h1>
+              <h1 className="text-2xl font-bold text-heading">Maïa Elange</h1>
             </div>
           </Link>
           

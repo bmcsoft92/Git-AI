@@ -10,7 +10,7 @@ const Solutions = () => {
   const navigate = useNavigate();
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = "Solutions d'Automatisation IA | Maia Elange";
+    document.title = "Solutions d'Automatisation IA | Maïa Elange";
     
     // Update or create meta description
     let metaDescription = document.querySelector('meta[name="description"]');

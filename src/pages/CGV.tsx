@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 
 const CGV = () => {
   useEffect(() => {
-    document.title = "Conditions Générales de Vente | Maia Elange";
+    document.title = "Conditions Générales de Vente | Maïa Elange";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Conditions générales de vente de Maia Elange. Modalités de devis, paiement et prestations d\'automatisation intelligente.');
+      metaDescription.setAttribute('content', 'Conditions générales de vente de Maïa Elange. Modalités de devis, paiement et prestations d\'automatisation intelligente.');
     }
   }, []);
 
