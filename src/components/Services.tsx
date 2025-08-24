@@ -108,14 +108,14 @@ const Services = () => {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Badge SOLUTIONS */}
-        <div className="flex justify-center mb-8">
-          <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-primary/30 text-primary">
+        <div className="flex justify-center mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-primary/30 text-primary hover-scale">
             SOLUTIONS
           </Badge>
         </div>
 
         {/* Main Title - H1 for SEO */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-fade-in" style={{ animationDelay: '0.3s' }}>
           <h1 className="text-3xl lg:text-5xl font-bold text-heading mb-6">
             Des Solutions Conçues pour Vos{" "}
             <span className="text-primary">Objectifs Stratégiques</span>
@@ -130,7 +130,11 @@ const Services = () => {
             {businessSizes.map((size, index) => {
               const Icon = size.icon;
               return (
-                <div key={index} className="flex items-center gap-3 bg-card/50 backdrop-blur-sm rounded-lg px-4 py-3 border border-primary/20">
+                <div 
+                  key={index} 
+                  className="flex items-center gap-3 bg-card/50 backdrop-blur-sm rounded-lg px-4 py-3 border border-primary/20 hover-scale animate-fade-in"
+                  style={{ animationDelay: `${0.4 + index * 0.1}s` }}
+                >
                   <Icon className="h-5 w-5 text-primary" strokeWidth={1.5} />
                   <div className="text-left">
                     <div className="font-semibold text-heading text-sm">{size.label}</div>
@@ -145,19 +149,20 @@ const Services = () => {
         {/* Strategic Pillars with Enhanced CTAs */}
         <div className="mb-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            {strategicPillars.map((pillar) => {
+            {strategicPillars.map((pillar, index) => {
               const Icon = pillar.icon;
               const isActive = activeTab === pillar.id;
               
               return (
                 <Card 
                   key={pillar.id}
-                  className={`group cursor-pointer transition-all duration-500 transform hover:scale-[1.02] ${
+                  className={`group cursor-pointer transition-all duration-500 transform hover:scale-[1.02] animate-fade-in ${
                     isActive 
                       ? 'bg-card/90 border-primary/60 shadow-xl shadow-primary/25 scale-[1.02]' 
                       : 'bg-card/50 border-border/50 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/15'
                   }`}
                   onClick={() => setActiveTab(pillar.id)}
+                  style={{ animationDelay: `${0.7 + index * 0.15}s` }}
                 >
                   <CardHeader className="text-center pb-4">
                     <div className="flex justify-center mb-4">
@@ -201,7 +206,7 @@ const Services = () => {
                       }}
                       variant="cta"
                       size="sm"
-                      className="w-full group/btn"
+                      className="w-full group/btn hover-scale"
                     >
                       {pillar.ctaText}
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
@@ -218,8 +223,8 @@ const Services = () => {
               key={pillar.id}
               className={`overflow-hidden transition-all duration-500 ease-in-out ${
                 activeTab === pillar.id 
-                  ? 'max-h-[800px] opacity-100 translate-y-0' 
-                  : 'max-h-0 opacity-0 -translate-y-4'
+                  ? 'max-h-[800px] opacity-100 translate-y-0 animate-accordion-down' 
+                  : 'max-h-0 opacity-0 -translate-y-4 animate-accordion-up'
               }`}
             >
               <Card className="bg-gradient-to-br from-card/80 to-card/60 backdrop-blur-sm border border-primary/20 shadow-xl shadow-primary/10">
@@ -247,7 +252,7 @@ const Services = () => {
                           key={index}
                           className="p-4 bg-background/80 backdrop-blur-sm border border-primary/15 
                                    hover:bg-background/90 hover:border-primary/25 hover:shadow-lg hover:shadow-primary/10
-                                   transition-all duration-300 group/service"
+                                   transition-all duration-300 group/service hover-scale animate-fade-in"
                           style={{
                             animationDelay: `${index * 100}ms`
                           }}
@@ -277,7 +282,7 @@ const Services = () => {
 
         {/* Process Section for Trust Building */}
         <div className="mb-20">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in" style={{ animationDelay: '1.2s' }}>
             <h2 className="text-3xl font-bold text-heading mb-4">
               Notre Méthode : Du Diagnostic à la <span className="text-primary">Performance Mesurable</span>
             </h2>
@@ -290,7 +295,11 @@ const Services = () => {
             {processSteps.map((step, index) => {
               const StepIcon = step.icon;
               return (
-                <Card key={index} className="text-center p-6 bg-card/60 backdrop-blur-sm border border-primary/20 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 group/step">
+                <Card 
+                  key={index} 
+                  className="text-center p-6 bg-card/60 backdrop-blur-sm border border-primary/20 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 group/step hover-scale animate-fade-in"
+                  style={{ animationDelay: `${1.3 + index * 0.1}s` }}
+                >
                   <div className="flex flex-col items-center">
                     <div className="relative mb-4">
                       <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center group-hover/step:bg-primary/30 transition-colors">
@@ -310,7 +319,7 @@ const Services = () => {
         </div>
 
         {/* Global CTA Section */}
-        <div className="mb-20">
+        <div className="mb-20 animate-fade-in" style={{ animationDelay: '1.7s' }}>
           <Card className="bg-gradient-to-br from-cta-primary/10 to-primary/10 backdrop-blur-sm border border-primary/30 p-8 text-center">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold text-heading mb-4">
@@ -323,7 +332,7 @@ const Services = () => {
                 onClick={() => navigate('/appointment')}
                 variant="cta"
                 size="lg"
-                className="px-8 py-4 text-lg group/cta"
+                className="px-8 py-4 text-lg group/cta hover-scale"
               >
                 Obtenir un plan d'action personnalisé
                 <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover/cta:translate-x-1" />
@@ -336,8 +345,8 @@ const Services = () => {
         </div>
 
         {/* Expertise Badge */}
-        <div className="text-center">
-          <Card className="inline-block p-6 bg-gradient-to-r from-primary/10 to-cta-primary/10 backdrop-blur-sm border border-primary/20">
+        <div className="text-center animate-fade-in" style={{ animationDelay: '1.9s' }}>
+          <Card className="inline-block p-6 bg-gradient-to-r from-primary/10 to-cta-primary/10 backdrop-blur-sm border border-primary/20 hover-scale">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-primary/20 rounded-full">
                 <Zap className="h-6 w-6 text-primary" strokeWidth={1.5} />

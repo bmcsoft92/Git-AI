@@ -25,15 +25,15 @@ const Solutions = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background animate-fade-in">
       <Header />
-      <div className="container mx-auto px-4 pt-4">
+      <div className="container mx-auto px-4 pt-4 animate-fade-in" style={{ animationDelay: '0.1s' }}>
         <div className="flex justify-center gap-4 mb-8">
           <Button 
             variant="outline" 
             size="sm" 
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
+            className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10 hover-scale"
           >
             <ArrowLeft className="h-4 w-4" />
             Retour
@@ -42,7 +42,7 @@ const Solutions = () => {
             variant="outline" 
             size="sm" 
             onClick={() => navigate('/')}
-            className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10"
+            className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/10 hover-scale"
           >
             <Home className="h-4 w-4" />
             Accueil
