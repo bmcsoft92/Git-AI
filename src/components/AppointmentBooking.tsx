@@ -27,11 +27,12 @@ export const AppointmentBooking = ({ calculationId, onClose, userInfo }: Appoint
     appointmentDate: "",
     appointmentTime: "",
     appointmentType: "consultation",
-    notes: ""
+    notes: "",
+    consent: false
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -40,6 +41,12 @@ export const AppointmentBooking = ({ calculationId, onClose, userInfo }: Appoint
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!formData.consent) {
+      toast.error("Vous devez accepter le traitement de vos données pour réserver un rendez-vous.");
+      return;
+    }
+    
     setIsSubmitting(true);
 
     try {
@@ -266,10 +273,38 @@ export const AppointmentBooking = ({ calculationId, onClose, userInfo }: Appoint
               </CardContent>
             </Card>
 
+            {/* Consentement RGPD obligatoire */}
+            <Card>
+              <CardContent className="pt-6">
+                <div className="space-y-3 p-4 bg-muted/30 rounded-lg border border-primary/20">
+                  <div className="flex items-start space-x-3">
+                    <input
+                      id="appointment-consent"
+                      type="checkbox"
+                      checked={formData.consent}
+                      onChange={(e) => handleInputChange("consent", e.target.checked)}
+                      className="w-5 h-5 rounded border-2 border-primary text-primary focus:ring-primary cursor-pointer mt-0.5"
+                      required
+                    />
+                    <label 
+                      htmlFor="appointment-consent"
+                      className="text-sm cursor-pointer leading-relaxed font-medium text-text"
+                    >
+                      J'accepte que mes données soient traitées pour la réservation de ce rendez-vous. *
+                    </label>
+                  </div>
+                  <p className="text-xs text-text-secondary/70 ml-8">
+                    Vos données sont utilisées uniquement dans le cadre de ce rendez-vous. Elles ne seront jamais partagées. 
+                    Conservation max 3 ans.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
                 type="submit" 
-                disabled={isSubmitting || !formData.userName || !formData.userEmail || !formData.appointmentDate || !formData.appointmentTime}
+                disabled={isSubmitting || !formData.userName || !formData.userEmail || !formData.appointmentDate || !formData.appointmentTime || !formData.consent}
                 variant="cta"
                 size="lg"
                 className="flex-1"
