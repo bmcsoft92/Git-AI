@@ -1684,7 +1684,7 @@ const ROICalculatorPage = () => {
                                   className="block text-sm font-semibold mb-3 min-h-[40px] flex items-end"
                                   style={{ color: '#F5F5F5' }}
                                 >
-                                  Dans quel délai souhaitez-vous automatiser ? *
+                                  Dans quel délai souhaitez-vous automatiser ?
                                 </Label>
                                 <Select
                                   value={diagnosticData.delai}
@@ -1724,7 +1724,7 @@ const ROICalculatorPage = () => {
                                   className="block text-sm font-semibold mb-3 min-h-[40px] flex items-end"
                                   style={{ color: '#F5F5F5' }}
                                 >
-                                  Budget annuel envisagé pour l'automatisation ? *
+                                  Budget annuel envisagé pour l'automatisation ?
                                 </Label>
                                 <Select
                                   value={diagnosticData.budget_annuel}
