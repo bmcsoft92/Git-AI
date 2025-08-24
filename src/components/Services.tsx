@@ -348,7 +348,7 @@ const Services = () => {
                 <Zap className="h-6 w-6 text-primary" strokeWidth={1.5} />
               </div>
               <div className="text-left">
-                <div className="font-bold text-heading text-lg">Technologies Maîtrisées</div>
+                <div className="font-bold text-heading text-lg text-center">Technologies Maîtrisées</div>
                 <div className="text-text-secondary text-sm text-center">Nous maîtrisons des solutions leaders comme n8n, Make et Zapier, utilisées par des milliers d'organisations dans le monde. Ces outils nous permettent de connecter vos systèmes et de créer des automatisations adaptées à vos besoins réels.</div>
               </div>
             </div>
