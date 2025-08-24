@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calculator, TrendingUp, Clock, DollarSign } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Calculator, TrendingUp, Clock, DollarSign, HelpCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const ROICalculator = () => {
@@ -12,7 +13,8 @@ const ROICalculator = () => {
     employees: 10,
     hourlyRate: 35,
     hoursPerWeek: 40,
-    automationPercentage: 30
+    automationPercentage: 30,
+    budget: 25000
   });
   const [showResults, setShowResults] = useState(false);
 
@@ -29,7 +31,7 @@ const ROICalculator = () => {
     const automatedHours = (formData.hoursPerWeek * formData.automationPercentage) / 100;
     const weeklySavings = formData.employees * formData.hourlyRate * automatedHours;
     const annualSavings = weeklySavings * 52;
-    const implementationCost = 25000; // Coût moyen d'implémentation
+    const implementationCost = formData.budget;
     const roi = ((annualSavings - implementationCost) / implementationCost) * 100;
 
     return {
@@ -44,8 +46,9 @@ const ROICalculator = () => {
   const results = calculateROI();
 
   return (
-    <section className="py-20 bg-card">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <TooltipProvider>
+      <section className="py-20 bg-card">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-heading mb-4">
             Calculez votre ROI
@@ -66,23 +69,44 @@ const ROICalculator = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <Label htmlFor="employees" className="text-heading font-semibold">
-                  Nombre d'employés
-                </Label>
+                <div className="flex items-center gap-2 mb-2">
+                  <Label htmlFor="hoursPerWeek" className="text-heading font-semibold">
+                    Heures/semaine à automatiser
+                  </Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <HelpCircle className="h-4 w-4 text-text-secondary" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs">Nombre moyen d'heures de tâches répétitives que vous aimeriez automatiser (emails, facturation, CRM, rendez-vous…).</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
-                  id="employees"
+                  id="hoursPerWeek"
                   type="number"
-                  value={formData.employees}
-                  onChange={(e) => handleInputChange('employees', e.target.value)}
+                  value={formData.hoursPerWeek}
+                  onChange={(e) => handleInputChange('hoursPerWeek', e.target.value)}
                   className="mt-1 bg-background border-border text-foreground"
                   min="1"
+                  max="50"
                 />
               </div>
 
               <div>
-                <Label htmlFor="hourlyRate" className="text-heading font-semibold">
-                  Coût horaire moyen (€)
-                </Label>
+                <div className="flex items-center gap-2 mb-2">
+                  <Label htmlFor="hourlyRate" className="text-heading font-semibold">
+                    Taux horaire (€)
+                  </Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <HelpCircle className="h-4 w-4 text-text-secondary" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs">Coût horaire moyen d'un employé, incluant salaires et charges sociales.</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
                   id="hourlyRate"
                   type="number"
@@ -94,41 +118,64 @@ const ROICalculator = () => {
               </div>
 
               <div>
-                <Label htmlFor="hoursPerWeek" className="text-heading font-semibold">
-                  Heures travaillées par semaine
-                </Label>
+                <div className="flex items-center gap-2 mb-2">
+                  <Label htmlFor="employees" className="text-heading font-semibold">
+                    Nombre d'employés concernés
+                  </Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <HelpCircle className="h-4 w-4 text-text-secondary" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs">Combien de personnes effectuent ces tâches actuellement.</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
-                  id="hoursPerWeek"
+                  id="employees"
                   type="number"
-                  value={formData.hoursPerWeek}
-                  onChange={(e) => handleInputChange('hoursPerWeek', e.target.value)}
+                  value={formData.employees}
+                  onChange={(e) => handleInputChange('employees', e.target.value)}
                   className="mt-1 bg-background border-border text-foreground"
-                  min="20"
-                  max="50"
+                  min="1"
                 />
               </div>
 
               <div>
-                <Label htmlFor="automationPercentage" className="text-heading font-semibold">
-                  % de tâches automatisables
-                </Label>
+                <div className="flex items-center gap-2 mb-2">
+                  <Label htmlFor="budget" className="text-heading font-semibold">
+                    Budget estimé
+                  </Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <HelpCircle className="h-4 w-4 text-text-secondary" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs">Montant prévu pour mettre en place la solution (adaptable selon la taille du projet).</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
-                  id="automationPercentage"
+                  id="budget"
                   type="number"
-                  value={formData.automationPercentage}
-                  onChange={(e) => handleInputChange('automationPercentage', e.target.value)}
+                  value={formData.budget}
+                  onChange={(e) => handleInputChange('budget', e.target.value)}
                   className="mt-1 bg-background border-border text-foreground"
-                  min="10"
-                  max="80"
+                  min="5000"
                 />
               </div>
 
-              <Button 
-                onClick={() => setShowResults(true)}
-                className="w-full bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground btn-cta-hover"
-              >
-                Calculer mon ROI
-              </Button>
+              <div className="space-y-3">
+                <Button 
+                  onClick={() => setShowResults(true)}
+                  className="w-full bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground btn-cta-hover"
+                >
+                  Découvrir mon ROI
+                </Button>
+                <p className="text-sm text-text-secondary text-center">
+                  Le calcul est basé sur vos économies de temps estimées × votre coût horaire × le nombre d'employés, comparé à votre budget initial.
+                </p>
+              </div>
             </CardContent>
           </Card>
 
@@ -200,9 +247,10 @@ const ROICalculator = () => {
               </CardContent>
             </Card>
           </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </TooltipProvider>
   );
 };
 
