@@ -122,11 +122,8 @@ const handler = async (req: Request): Promise<Response> => {
           <!-- Container principal -->
           <div style="max-width: 700px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.15);">
             
-            <!-- Header avec logo et branding premium -->
-            <div style="background: linear-gradient(135deg, #0F7F7B 0%, #15A5A0 100%); padding: 40px 30px; text-align: center; position: relative;">
-              <div style="background: rgba(255,255,255,0.1); width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px);">
-                <div style="color: #ffffff; font-size: 32px; font-weight: 800;">M</div>
-              </div>
+            <!-- Header premium sobre -->
+            <div style="background: linear-gradient(135deg, #0F7F7B 0%, #15A5A0 100%); padding: 40px 30px; text-align: center;">
               <h1 style="color: #ffffff; font-size: 28px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: -0.5px;">MAIA ELANGE</h1>
               <p style="color: rgba(255,255,255,0.9); font-size: 14px; margin: 0; font-weight: 500;">Automatisation Intelligente Premium</p>
             </div>
@@ -154,16 +151,14 @@ const handler = async (req: Request): Promise<Response> => {
               <h3 style="color: #ffffff; font-size: 28px; font-weight: 700; margin: 0 0 15px 0;">🚀 Transformez votre entreprise maintenant</h3>
               <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0 0 25px 0; line-height: 1.5;">Libérez <strong>${Math.round((roiData.annual_savings/52)/40)}h par semaine</strong> de tâches répétitives.<br>Réinvestissez ce temps dans la croissance de votre entreprise.</p>
               
+              <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0 0 25px 0; line-height: 1.5;">
+                👉 Passez à l'action dès maintenant avec un plan adapté à vos besoins. Toutes les prestations sont réalisées sur devis.
+              </p>
+              
               <a href="https://maiaelange.fr/contact" 
                  style="display: inline-block; background: #ffffff; color: #0F7F7B; padding: 18px 35px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 18px; margin: 15px 0; box-shadow: 0 8px 25px rgba(0,0,0,0.15); transition: all 0.3s ease; border: 2px solid transparent;">
-                📅 Audit Gratuit de 30min
+                Demander un devis personnalisé
               </a>
-              
-              <div style="margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.8);">
-                <div style="margin: 5px 0;">✅ Consultation strategy personnalisée</div>
-                <div style="margin: 5px 0;">✅ Plan d'action concret et prioritisé</div>
-                <div style="margin: 5px 0;">✅ Estimation précise des gains</div>
-              </div>
             </div>
 
             <!-- Footer premium -->
