@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { MapPin, Mail, Clock, Phone, ArrowRight, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import Footer from "@/components/Footer";
 
 const Contact = () => {
@@ -33,7 +34,7 @@ const Contact = () => {
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validation simple
@@ -46,19 +47,39 @@ const Contact = () => {
       return;
     }
 
-    // Simulation d'envoi
-    toast({
-      title: "Message envoyé !",
-      description: "Nous vous répondrons dans les 24h. Merci pour votre intérêt.",
-    });
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-message', {
+        body: {
+          name: formData.nom,
+          email: formData.email,
+          company: formData.entreprise,
+          message: formData.message,
+          source: 'contact_page'
+        }
+      });
 
-    // Reset du formulaire
-    setFormData({
-      nom: "",
-      email: "",
-      entreprise: "",
-      message: ""
-    });
+      if (error) throw error;
+
+      toast({
+        title: "Message envoyé !",
+        description: "Nous vous répondrons dans les 24h. Merci pour votre intérêt.",
+      });
+
+      // Reset du formulaire
+      setFormData({
+        nom: "",
+        email: "",
+        entreprise: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error('Error sending contact message:', error);
+      toast({
+        title: "Erreur",
+        description: "Erreur lors de l'envoi du message. Veuillez réessayer.",
+        variant: "destructive"
+      });
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {

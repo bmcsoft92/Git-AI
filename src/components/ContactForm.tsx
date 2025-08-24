@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ContactFormProps {
   onClose: () => void;
@@ -31,13 +32,32 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
     setIsSubmitting(true);
 
     try {
-      // Ici vous pouvez ajouter l'appel à votre API d'envoi d'email
-      // Pour l'instant, on simule l'envoi
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const { data, error } = await supabase.functions.invoke('send-contact-message', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          message: formData.message,
+          source: 'contact_modal'
+        }
+      });
+
+      if (error) throw error;
       
-      toast.success("Votre message a été envoyé avec succès !");
+      toast.success("Votre message a été envoyé avec succès ! Nous vous répondrons sous 24h.");
       onClose();
+      
+      // Reset form
+      setFormData({
+        name: userInfo?.name || "",
+        email: userInfo?.email || "",
+        phone: "",
+        company: "",
+        message: ""
+      });
     } catch (error) {
+      console.error('Error sending contact message:', error);
       toast.error("Erreur lors de l'envoi du message. Veuillez réessayer.");
     } finally {
       setIsSubmitting(false);
