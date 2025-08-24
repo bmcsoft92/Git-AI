@@ -195,7 +195,7 @@ const Header = () => {
               </Link>
               
               <Button
-                onClick={() => navigate('/contact')}
+                onClick={() => navigate('/appointment')}
                 variant="cta"
                 size="lg"
                 className="px-6 py-3 text-base group/cta whitespace-nowrap"
@@ -339,7 +339,7 @@ const Header = () => {
                   <Button
                     onClick={() => {
                       setIsMenuOpen(false);
-                      navigate('/contact');
+                      navigate('/appointment');
                     }}
                     variant="cta"
                     size="lg"

@@ -216,7 +216,7 @@ const Blog = () => {
                       <TrendingUp className="ml-3 h-5 w-5 transition-transform group-hover/cta:scale-110" />
                     </Button>
                     <Button
-                      onClick={() => navigate('/contact')}
+                      onClick={() => navigate('/appointment')}
                       variant="outline"
                       size="lg"
                       className="px-8 py-4 text-lg border-primary/30"

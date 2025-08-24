@@ -233,7 +233,7 @@ const ROICalculator = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button 
-                    onClick={() => navigate('/contact')}
+                    onClick={() => navigate('/appointment')}
                     variant="default" 
                     className="bg-cta-primary hover:bg-cta-primary/90 btn-cta-hover flex-1"
                   >

@@ -320,7 +320,7 @@ const Services = () => {
                 Discutons de vos objectifs et créons ensemble un plan d'action sur-mesure pour maximiser votre ROI
               </p>
               <Button 
-                onClick={() => navigate('/contact')}
+                onClick={() => navigate('/appointment')}
                 variant="cta"
                 size="lg"
                 className="px-8 py-4 text-lg group/cta"

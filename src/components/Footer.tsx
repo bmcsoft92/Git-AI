@@ -7,7 +7,7 @@ const Footer = () => {
   const navigate = useNavigate();
 
   const handleContactClick = () => {
-    window.location.href = '/contact';
+    window.location.href = '/appointment';
   };
 
   return (
@@ -212,7 +212,7 @@ const Footer = () => {
                 {/* CTA Button */}
                 <div className="mt-6 p-4 bg-gradient-to-br from-cta-primary/10 to-primary/10 rounded-lg border border-cta-primary/20">
                 <Button 
-                  onClick={() => navigate('/contact')}
+                  onClick={() => navigate('/appointment')}
                   variant="cta"
                   size="lg"
                   className="w-full text-sm font-medium"
