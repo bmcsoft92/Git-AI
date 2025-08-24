@@ -1,32 +1,16 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOutilsOpen, setIsOutilsOpen] = useState(false);
+  const location = useLocation();
 
   const handleHomeClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    setIsMenuOpen(false); // Fermer le menu mobile si ouvert
-  };
-
-  const handleSolutionsClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const solutionsSection = document.getElementById('solutions');
-    if (solutionsSection) {
-      solutionsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false); // Fermer le menu mobile si ouvert
-  };
-
-  const handleIntegrationsClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const integrationsSection = document.getElementById('integrations');
-    if (integrationsSection) {
-      integrationsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false); // Fermer le menu mobile si ouvert
+    setIsMenuOpen(false);
   };
 
   const handleContactClick = (e: React.MouseEvent) => {
@@ -35,23 +19,43 @@ const Header = () => {
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
-    setIsMenuOpen(false); // Fermer le menu mobile si ouvert
+    setIsMenuOpen(false);
   };
 
-  const handleSimulateurClick = (e: React.MouseEvent) => {
+  const handleIntegrationsClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    const simulateurSection = document.getElementById('simulateur');
-    if (simulateurSection) {
-      simulateurSection.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname !== '/') {
+      window.location.href = '/#integrations';
+      return;
     }
-    setIsMenuOpen(false); // Fermer le menu mobile si ouvert
+    const integrationsSection = document.getElementById('integrations');
+    if (integrationsSection) {
+      integrationsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
   };
+
+  const handleFAQClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      window.location.href = '/#faq';
+      return;
+    }
+    const faqSection = document.getElementById('faq');
+    if (faqSection) {
+      faqSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header className="bg-card border-b border-border sticky top-0 z-50 backdrop-blur-sm bg-card/95">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
+          {/* Logo et Nom */}
+          <Link to="/" onClick={handleHomeClick} className="flex items-center">
             <div className="flex items-center space-x-3">
               <div className="w-16 h-16 rounded-lg flex items-center justify-center glow-hover">
                 <img 
@@ -62,38 +66,111 @@ const Header = () => {
               </div>
               <h1 className="text-2xl font-bold text-heading">Maia Elange</h1>
             </div>
-          </div>
+          </Link>
           
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" onClick={handleHomeClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
-              Accueil
-            </Link>
-            <a href="#solutions" onClick={handleSolutionsClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
-              Solutions
-            </a>
-            <a href="#integrations" onClick={handleIntegrationsClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
-              Intégrations
-            </a>
-            <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
-              Méthode
-            </a>
-            <a href="#simulateur" onClick={handleSimulateurClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
-              Simulateur ROI
-            </a>
-            <a href="#faq" className="nav-link text-text-secondary hover:text-primary transition-colors">
-              FAQ
-            </a>
-            <a href="#contact" onClick={handleContactClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
-              Contact
-            </a>
-            <Button className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white">
-              Parler à un expert
-            </Button>
+          {/* Navigation Desktop - Hiérarchie claire */}
+          <div className="hidden lg:flex items-center space-x-8">
+            
+            {/* 1. Navigation Principale */}
+            <div className="flex items-center space-x-6">
+              <Link 
+                to="/solutions" 
+                className={`nav-link transition-colors font-medium ${
+                  isActive('/solutions') 
+                    ? 'text-primary border-b-2 border-primary' 
+                    : 'text-text-secondary hover:text-primary'
+                }`}
+              >
+                Solutions
+              </Link>
+              
+              <Link 
+                to="/methode" 
+                className={`nav-link transition-colors font-medium ${
+                  isActive('/methode') 
+                    ? 'text-primary border-b-2 border-primary' 
+                    : 'text-text-secondary hover:text-primary'
+                }`}
+              >
+                Méthode
+              </Link>
+            </div>
+
+            {/* Séparateur visuel */}
+            <div className="w-px h-6 bg-border"></div>
+
+            {/* 2. Outils & Ressources */}
+            <div className="flex items-center space-x-6">
+              <div className="relative">
+                <button 
+                  onClick={() => setIsOutilsOpen(!isOutilsOpen)}
+                  className="nav-link text-text-secondary hover:text-primary transition-colors font-medium flex items-center space-x-1"
+                >
+                  <span>Outils</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform ${isOutilsOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {isOutilsOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-lg py-2 z-50">
+                    <Link 
+                      to="/calculateur-roi" 
+                      className="block px-4 py-2 text-sm text-text-secondary hover:text-primary hover:bg-muted transition-colors"
+                      onClick={() => setIsOutilsOpen(false)}
+                    >
+                      Calculateur ROI
+                    </Link>
+                    <Link 
+                      to="/crm" 
+                      className="block px-4 py-2 text-sm text-text-secondary hover:text-primary hover:bg-muted transition-colors"
+                      onClick={() => setIsOutilsOpen(false)}
+                    >
+                      CRM
+                    </Link>
+                  </div>
+                )}
+              </div>
+              
+              <a 
+                href="#integrations" 
+                onClick={handleIntegrationsClick} 
+                className="nav-link text-text-secondary hover:text-primary transition-colors"
+              >
+                Intégrations
+              </a>
+              
+              <a 
+                href="#faq" 
+                onClick={handleFAQClick} 
+                className="nav-link text-text-secondary hover:text-primary transition-colors"
+              >
+                FAQ
+              </a>
+            </div>
+
+            {/* Séparateur visuel */}
+            <div className="w-px h-6 bg-border"></div>
+
+            {/* 3. Contact & CTA */}
+            <div className="flex items-center space-x-4">
+              <a 
+                href="#contact" 
+                onClick={handleContactClick} 
+                className="nav-link text-text-secondary hover:text-primary transition-colors"
+              >
+                Contact
+              </a>
+              
+              <Button 
+                onClick={handleContactClick}
+                className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white px-6 py-2"
+              >
+                Parler à un expert
+              </Button>
+            </div>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Menu Mobile */}
+          <div className="lg:hidden">
             <Button
               variant="ghost"
               size="icon"
@@ -104,38 +181,109 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Navigation Mobile */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border mobile-menu-enter">
-            <div className="flex flex-col space-y-4">
-              <Link to="/" onClick={handleHomeClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
-                Accueil
-              </Link>
-              <a href="#solutions" onClick={handleSolutionsClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
-                Solutions
-              </a>
-              <a href="#integrations" onClick={handleIntegrationsClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
-                Intégrations
-              </a>
-              <a href="#processus" className="nav-link text-text-secondary hover:text-primary transition-colors">
-                Méthode
-              </a>
-              <a href="#simulateur" onClick={handleSimulateurClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
-                Simulateur ROI
-              </a>
-              <a href="#faq" className="nav-link text-text-secondary hover:text-primary transition-colors">
-                FAQ
-              </a>
-              <a href="#contact" onClick={handleContactClick} className="nav-link text-text-secondary hover:text-primary transition-colors">
-                Contact
-              </a>
-              <div className="flex flex-col gap-2 pt-2">
-                <Button className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white">
-                  Parler à un expert
-                </Button>
+          <div className="lg:hidden py-6 border-t border-border mobile-menu-enter">
+            <div className="flex flex-col space-y-6">
+              
+              {/* Groupe 1: Navigation Principale */}
+              <div className="space-y-4">
+                <div className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
+                  Solutions & Méthode
+                </div>
+                <Link 
+                  to="/solutions" 
+                  className={`block nav-link transition-colors pl-4 ${
+                    isActive('/solutions') 
+                      ? 'text-primary font-medium border-l-2 border-primary' 
+                      : 'text-text-secondary hover:text-primary'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Solutions
+                </Link>
+                <Link 
+                  to="/methode" 
+                  className={`block nav-link transition-colors pl-4 ${
+                    isActive('/methode') 
+                      ? 'text-primary font-medium border-l-2 border-primary' 
+                      : 'text-text-secondary hover:text-primary'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Méthode
+                </Link>
+              </div>
+
+              {/* Séparateur */}
+              <div className="h-px bg-border"></div>
+
+              {/* Groupe 2: Outils & Ressources */}
+              <div className="space-y-4">
+                <div className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
+                  Outils & Ressources
+                </div>
+                <Link 
+                  to="/calculateur-roi" 
+                  className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Calculateur ROI
+                </Link>
+                <Link 
+                  to="/crm" 
+                  className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  CRM
+                </Link>
+                <a 
+                  href="#integrations" 
+                  onClick={handleIntegrationsClick} 
+                  className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
+                >
+                  Intégrations
+                </a>
+                <a 
+                  href="#faq" 
+                  onClick={handleFAQClick} 
+                  className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
+                >
+                  FAQ
+                </a>
+              </div>
+
+              {/* Séparateur */}
+              <div className="h-px bg-border"></div>
+
+              {/* Groupe 3: Contact & CTA */}
+              <div className="space-y-4">
+                <a 
+                  href="#contact" 
+                  onClick={handleContactClick} 
+                  className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
+                >
+                  Contact
+                </a>
+                <div className="px-4">
+                  <Button 
+                    onClick={handleContactClick}
+                    className="btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-white w-full"
+                  >
+                    Parler à un expert
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
+        )}
+
+        {/* Overlay pour fermer le dropdown Outils */}
+        {isOutilsOpen && (
+          <div 
+            className="fixed inset-0 z-40" 
+            onClick={() => setIsOutilsOpen(false)}
+          />
         )}
       </nav>
     </header>
