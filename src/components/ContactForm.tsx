@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -27,16 +27,6 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Mettre à jour automatiquement le message quand l'entreprise change
-  useEffect(() => {
-    if (formData.company && !formData.message.includes(formData.company)) {
-      setFormData(prev => ({
-        ...prev,
-        message: formData.company ? `Entreprise : ${formData.company}\n\n` : ""
-      }));
-    }
-  }, [formData.company]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
