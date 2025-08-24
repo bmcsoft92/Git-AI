@@ -692,12 +692,12 @@ const ROICalculatorPage = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div 
                       className="text-center p-6 rounded-xl"
-                      style={{ backgroundColor: 'rgba(15, 127, 123, 0.15)' }}
+                      style={{ backgroundColor: 'rgba(34, 197, 94, 0.15)' }}
                     >
                       <div className="flex items-center justify-center gap-2 mb-2">
                         <div 
                           className="text-4xl font-bold"
-                          style={{ color: '#0F7F7B' }}
+                          style={{ color: '#22C55E' }}
                         >
                           {results.economies_directes.toLocaleString('fr-FR')}€
                         </div>
@@ -759,13 +759,33 @@ const ROICalculatorPage = () => {
                           💰 Retour sur investissement
                         </div>
                         <div 
-                          className="text-xl font-bold"
+                          className="text-xl font-bold mb-2"
                           style={{ color: '#4A9EFF' }}
                         >
                           👉 Pour {parseFloat(formData.investissement).toLocaleString('fr-FR')} € investis, vous récupérez {(results.economies_directes + results.gains_croissance).toLocaleString('fr-FR')} € par an.
                         </div>
+                        <div 
+                          className="text-lg font-semibold"
+                          style={{ color: '#4A9EFF' }}
+                        >
+                          👉 Chaque 1 € investi génère {Math.round(((results.economies_directes + results.gains_croissance) / parseFloat(formData.investissement)) * 100) / 100} € de gains par an.
+                        </div>
                       </CardContent>
                     </Card>
+                  </div>
+
+                  {/* Disclaimer de transparence */}
+                  <div className="mb-8 text-center">
+                    <p 
+                      className="text-xs px-4 py-2 rounded-md"
+                      style={{ 
+                        color: '#B0B0B0',
+                        backgroundColor: 'rgba(74, 158, 255, 0.05)',
+                        border: '1px solid rgba(74, 158, 255, 0.2)'
+                      }}
+                    >
+                      ⚠️ Ces résultats sont basés sur vos données estimatives et servent de projection indicative. Les résultats réels peuvent varier selon votre contexte.
+                    </p>
                   </div>
 
                   {/* Graphique évolutif */}
