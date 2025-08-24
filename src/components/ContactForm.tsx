@@ -13,6 +13,7 @@ interface ContactFormProps {
   userInfo?: {
     name: string;
     email: string;
+    company?: string;
   };
 }
 
@@ -21,7 +22,7 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
     name: userInfo?.name || "",
     email: userInfo?.email || "",
     phone: "",
-    company: "",
+    company: userInfo?.company || "",
     message: "",
     consent: false
   });
@@ -60,7 +61,7 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
         name: userInfo?.name || "",
         email: userInfo?.email || "",
         phone: "",
-        company: "",
+        company: userInfo?.company || "",
         message: "",
         consent: false
       });
@@ -127,11 +128,12 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
             
             <div>
               <Label htmlFor="company">Entreprise</Label>
-              <Input
-                id="company"
-                value={formData.company}
-                onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
-              />
+                <Input
+                  id="company"
+                  value={formData.company}
+                  onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
+                  disabled={!!userInfo?.company}
+                />
             </div>
             
             <div>

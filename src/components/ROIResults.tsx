@@ -25,6 +25,7 @@ interface ROIResultsProps {
   userInfo: {
     name: string;
     email: string;
+    company: string;
   };
 }
 
@@ -220,7 +221,7 @@ export const ROIResults = ({ calculationId, recommendations, roiData, userInfo }
         <AppointmentBooking 
           calculationId={calculationId}
           onClose={() => setShowBooking(false)}
-          userInfo={userInfo}
+          userInfo={{ name: userInfo.name, email: userInfo.email }}
         />
       )}
       

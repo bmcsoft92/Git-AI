@@ -340,7 +340,8 @@ const ROICalculatorPage = () => {
             }}
             userInfo={{
               name: diagnosticData.nom,
-              email: diagnosticData.email
+              email: diagnosticData.email,
+              company: diagnosticData.organisation
             }}
           />
         </div>
