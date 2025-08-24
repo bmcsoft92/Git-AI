@@ -4,11 +4,11 @@ import Footer from "@/components/Footer";
 
 const PolitiqueConfidentialite = () => {
   useEffect(() => {
-    document.title = "Politique de Confidentialité | Maia Élange";
+    document.title = "Politique de Confidentialité RGPD | Maia Elange - Automatisation Intelligente";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Politique de confidentialité RGPD de Maia Élange. Protection et traitement des données personnelles en conformité européenne.');
+      metaDescription.setAttribute('content', 'Politique de confidentialité RGPD conforme de Maia Elange. Protection des données, droits d\'accès et suppression pour l\'automatisation intelligente et transformation digitale.');
     }
   }, []);
   return (

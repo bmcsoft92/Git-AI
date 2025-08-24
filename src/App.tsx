@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CookieBanner from "@/components/CookieBanner";
 import Index from "./pages/Index";
 import ROICalculatorPage from "./pages/ROICalculator";
 import CRM from "./pages/CRM";
@@ -12,6 +13,7 @@ import CasUsage from "./pages/CasUsage";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import APropos from "./pages/APropos";
 import MentionsLegales from "./pages/MentionsLegales";
 import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 import NotFound from "./pages/NotFound";
@@ -23,6 +25,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <CookieBanner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -34,6 +37,7 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/a-propos" element={<APropos />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
