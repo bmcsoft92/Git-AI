@@ -34,11 +34,11 @@ const Appointment = () => {
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Planifiez votre rendez-vous avec nos experts en automatisation IA. Consultation gratuite pour évaluer vos besoins et créer votre plan d\'action personnalisé.');
+      metaDescription.setAttribute('content', 'Planifiez votre rendez-vous avec nos experts en automatisation IA. Consultation pour évaluer vos besoins et créer votre plan d\'action personnalisé.');
     } else {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', 'Planifiez votre rendez-vous avec nos experts en automatisation IA. Consultation gratuite pour évaluer vos besoins et créer votre plan d\'action personnalisé.');
+      metaDescription.setAttribute('content', 'Planifiez votre rendez-vous avec nos experts en automatisation IA. Consultation pour évaluer vos besoins et créer votre plan d\'action personnalisé.');
       document.head.appendChild(metaDescription);
     }
   }, []);
@@ -103,7 +103,7 @@ const Appointment = () => {
             <div className="text-center mb-16">
               <h1 className="text-3xl lg:text-5xl font-bold text-heading mb-6">
                 Planifiez votre{" "}
-                <span className="text-primary">Consultation Gratuite</span>
+                <span className="text-primary">Consultation</span>
               </h1>
               <p className="text-lg text-text-secondary max-w-4xl mx-auto leading-relaxed">
                 Discutons de vos besoins et créons ensemble un plan d'action personnalisé 
@@ -188,7 +188,7 @@ const Appointment = () => {
                     <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
                       <div className="flex items-center gap-2 mb-2">
                         <CheckCircle className="h-5 w-5 text-primary" />
-                        <span className="font-semibold text-primary">Consultation gratuite</span>
+                        <span className="font-semibold text-primary">Consultation</span>
                       </div>
                       <p className="text-sm text-text-secondary">
                         Durée : 30-45 minutes • Visioconférence ou téléphone
@@ -326,7 +326,7 @@ const Appointment = () => {
                     <div className="p-3 bg-primary/20 rounded-lg w-fit mx-auto mb-3">
                       <CheckCircle className="h-6 w-6 text-primary" />
                     </div>
-                    <h3 className="font-semibold text-heading mb-2">Analyse gratuite</h3>
+                    <h3 className="font-semibold text-heading mb-2">Analyse personnalisée</h3>
                     <p className="text-sm text-text-secondary">Évaluation de vos processus actuels</p>
                   </div>
                   <div className="text-center">
