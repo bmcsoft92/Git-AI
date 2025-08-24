@@ -1256,6 +1256,13 @@ const ROICalculatorPage = () => {
                                 </SelectContent>
                               </Select>
                             </div>
+                            
+                            {/* Mention légale RGPD Étape 1 */}
+                            <div className="mt-4 text-center">
+                              <p className="text-xs text-gray-400 italic">
+                                *Vos données sont utilisées uniquement pour générer votre diagnostic. Elles ne seront jamais partagées. Vous pouvez demander leur suppression à contact@maiaelange.fr.*
+                              </p>
+                            </div>
                           </div>
                         )}
 
@@ -1380,6 +1387,13 @@ const ROICalculatorPage = () => {
                                 </p>
                               )}
                             </div>
+                            
+                            {/* Mention légale RGPD Étape 2 */}
+                            <div className="mt-4 text-center">
+                              <p className="text-xs text-gray-400 italic">
+                                *Réponses strictement confidentielles, utilisées uniquement pour générer votre plan personnalisé.*
+                              </p>
+                            </div>
                           </div>
                         )}
 
@@ -1457,6 +1471,13 @@ const ROICalculatorPage = () => {
                                   borderRadius: '8px'
                                 }}
                               />
+                            </div>
+                            
+                            {/* Mention légale RGPD Étape 3 */}
+                            <div className="mt-4 text-center">
+                              <p className="text-xs text-gray-400 italic">
+                                *Ces informations servent uniquement à identifier les intégrations possibles. Aucun accès direct à vos outils n'est demandé.*
+                              </p>
                             </div>
                           </div>
                         )}
@@ -1544,6 +1565,13 @@ const ROICalculatorPage = () => {
                                 </span>
                               </p>
                             </div>
+                            
+                            {/* Mention légale RGPD Étape 4 */}
+                            <div className="mt-4 text-center">
+                              <p className="text-xs text-gray-400 italic">
+                                *Vos réponses ne servent qu'à établir des scénarios types. Elles ne constituent pas un audit technique.*
+                              </p>
+                            </div>
                           </div>
                         )}
 
@@ -1621,6 +1649,13 @@ const ROICalculatorPage = () => {
                                   borderRadius: '8px'
                                 }}
                               />
+                            </div>
+                            
+                            {/* Mention légale RGPD Étape 5 */}
+                            <div className="mt-4 text-center">
+                              <p className="text-xs text-gray-400 italic">
+                                *Ces données sont indicatives et ne constituent pas un engagement.*
+                              </p>
                             </div>
                           </div>
                         )}
@@ -1749,6 +1784,13 @@ const ROICalculatorPage = () => {
                               )}
                               <p className="text-xs mt-2 opacity-70" style={{ color: '#F5F5F5' }}>
                                 En cochant cette case, vous acceptez que vos informations soient utilisées uniquement dans le cadre de ce diagnostic d'automatisation.
+                              </p>
+                            </div>
+                            
+                            {/* Mention légale RGPD Étape 6 */}
+                            <div className="mt-4 text-center">
+                              <p className="text-xs text-gray-400 italic">
+                                *Les résultats sont des estimations basées sur vos réponses. Les gains réels peuvent varier. Vos données ne seront pas conservées au-delà de 3 ans.*
                               </p>
                             </div>
                           </div>
