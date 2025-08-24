@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -6,6 +7,21 @@ import ProcessSection from "@/components/ProcessSection";
 import AutomationCTA from "@/components/AutomationCTA";
 
 const Index = () => {
+  useEffect(() => {
+    // Update page title and meta description for SEO
+    document.title = "Maia Elange | L'IA + l'Humain au service de votre organisation";
+    
+    // Update or create meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Maia Elange aide les organisations à automatiser leurs processus avec des solutions simples, mesurables et conformes au RGPD. Découvrez notre diagnostic ROI instantané et nos méthodes d\'automatisation alignées sur les standards européens.');
+    } else {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      metaDescription.setAttribute('content', 'Maia Elange aide les organisations à automatiser leurs processus avec des solutions simples, mesurables et conformes au RGPD. Découvrez notre diagnostic ROI instantané et nos méthodes d\'automatisation alignées sur les standards européens.');
+      document.head.appendChild(metaDescription);
+    }
+  }, []);
   return (
     <div className="min-h-screen bg-background">
       <Header />
