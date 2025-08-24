@@ -27,9 +27,9 @@ const MentionsLegales = () => {
               <div className="text-text-secondary space-y-2">
                 <p><strong>Dénomination sociale :</strong> Maïa Elange</p>
                 <p><strong>Statut :</strong> Entreprise Individuelle</p>
-                <p><strong>Adresse :</strong> [Placeholder – à compléter]</p>
+                <p><strong>Responsable :</strong> Anne Carine Ndoh Mandjana</p>
                 <p><strong>Contact :</strong> contact@maiaelange.fr</p>
-                <p><strong>Numéro SIREN :</strong> [Placeholder – à compléter]</p>
+                <p><strong>Forme juridique :</strong> Entreprise individuelle en cours d'immatriculation</p>
               </div>
             </section>
 

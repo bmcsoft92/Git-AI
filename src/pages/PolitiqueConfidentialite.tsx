@@ -32,6 +32,23 @@ const PolitiqueConfidentialite = () => {
                 </p>
                 
                 <p>
+                  <strong className="text-heading">Base légale :</strong> Le traitement de vos données personnelles repose sur votre consentement libre et éclairé lors de la soumission des formulaires.
+                </p>
+                
+                <p>
+                  <strong className="text-heading">Données collectées :</strong> Nom, prénom, email, téléphone, entreprise, informations sur vos processus métier (pour les diagnostics ROI uniquement).
+                </p>
+                
+                <p>
+                  <strong className="text-heading">Sous-traitants :</strong> Nous faisons appel aux sous-traitants suivants qui peuvent traiter vos données :
+                </p>
+                <ul className="list-disc list-inside ml-4 space-y-1">
+                  <li><strong>Supabase :</strong> Hébergement sécurisé de la base de données (Irlande, conformité RGPD)</li>
+                  <li><strong>Resend :</strong> Envoi des emails transactionnels (États-Unis, Privacy Shield)</li>
+                  <li><strong>Hostinger :</strong> Hébergement du site web (Union Européenne)</li>
+                </ul>
+                
+                <p>
                   <strong className="text-heading">Engagement :</strong> Vos données sont utilisées uniquement dans le cadre de nos services et ne sont jamais partagées avec des tiers à des fins commerciales.
                 </p>
                 
