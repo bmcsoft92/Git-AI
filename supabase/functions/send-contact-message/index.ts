@@ -100,50 +100,60 @@ const handler = async (req: Request): Promise<Response> => {
     await resend.emails.send({
       from: "Maia Elange <contact@maiaelange.fr>",
       to: [email],
-      subject: "Confirmation de réception de votre message - Maia Elange",
+      subject: "Nous avons bien reçu votre message – Maïa Elange",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h1 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
-            Message Bien Reçu !
-          </h1>
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; color: #333;">
           
-          <p>Bonjour ${name},</p>
+          <div style="text-align: center; margin-bottom: 40px;">
+            <h1 style="color: #2c3e50; font-size: 28px; font-weight: 600; margin: 0; letter-spacing: -0.5px;">
+              Message bien reçu
+            </h1>
+          </div>
           
-          <p>Nous avons bien reçu votre message et vous remercions pour votre intérêt pour nos solutions d'automatisation.</p>
-          
-          <div style="background: #e8f4fd; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #007bff; margin-top: 0;">Votre demande</h3>
-            <div style="background: white; padding: 15px; border-radius: 4px; border-left: 4px solid #007bff;">
-              "${message}"
+          <div style="background: linear-gradient(135deg, #f8fafb 0%, #f1f5f9 100%); border: 1px solid #e2e8f0; border-radius: 12px; padding: 32px; margin: 32px 0;">
+            <p style="font-size: 18px; margin: 0 0 24px 0; color: #1a202c;">
+              Bonjour <strong>${name.split(' ')[0] || name}</strong>,
+            </p>
+            
+            <p style="margin: 0 0 24px 0; color: #4a5568; font-size: 16px;">
+              Merci beaucoup pour votre message 🙏. Nous l'avons bien reçu et notre équipe reviendra vers vous sous <strong>48h ouvrées</strong>.
+            </p>
+
+            <div style="background: white; border-radius: 8px; padding: 24px; border-left: 4px solid #3b82f6; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin: 24px 0;">
+              <h3 style="color: #1a202c; margin: 0 0 12px 0; font-size: 16px; font-weight: 600;">Votre message :</h3>
+              <p style="color: #64748b; margin: 0; font-style: italic; line-height: 1.5;">
+                "${message}"
+              </p>
+            </div>
+
+            <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 20px; margin: 24px 0;">
+              <p style="margin: 0 0 16px 0; color: #0369a1; font-size: 16px; font-weight: 500;">
+                En attendant, n'hésitez pas à découvrir nos solutions :
+              </p>
+              <div style="text-align: center;">
+                <a href="/solutions" style="display: inline-block; background: #3b82f6; color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 500; transition: all 0.2s;">
+                  Découvrir nos Solutions
+                </a>
+              </div>
             </div>
           </div>
 
-          <div style="background: #28a745; color: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: white; margin-top: 0;">✅ Prochaines étapes</h3>
-            <p><strong>Notre équipe vous recontactera sous 24h</strong> pour :</p>
-            <ul style="margin: 10px 0; padding-left: 20px;">
-              <li>Analyser vos besoins spécifiques</li>
-              <li>Vous proposer des solutions adaptées</li>
-              <li>Planifier un échange personnalisé</li>
-            </ul>
-            <p style="margin: 15px 0 0 0;">Merci pour votre confiance !</p>
+          <div style="text-align: center; margin: 32px 0; padding: 24px 0; border-top: 1px solid #e2e8f0;">
+            <p style="color: #1a202c; margin: 0 0 8px 0; font-size: 16px;">
+              À très bientôt,
+            </p>
+            <p style="color: #3b82f6; margin: 0; font-size: 16px; font-weight: 600;">
+              L'équipe Maïa Elange – Automatisation Intelligente & Transformation Digitale Premium
+            </p>
           </div>
 
-          <p>En attendant, n'hésitez pas à :</p>
-          <ul>
-            <li>Tester notre <a href="https://votre-domaine.com/calculateur-roi" style="color: #007bff;">calculateur ROI</a></li>
-            <li>Découvrir nos <a href="https://votre-domaine.com/cas-usage" style="color: #007bff;">cas d'usage</a> par secteur</li>
-          </ul>
-
-          <p>Si vous avez des questions urgentes, contactez-nous directement à <a href="mailto:contact@maiaelange.fr">contact@maiaelange.fr</a></p>
-          
-          <p>À bientôt,<br>
-          <strong>L'équipe Maia Elange</strong></p>
-          
-          <div style="color: #666; font-size: 12px; margin-top: 30px; text-align: center; border-top: 1px solid #ddd; padding-top: 20px;">
-            Maia Elange - L'IA + l'Humain au service des organisations<br>
-            contact@maiaelange.fr
+          <div style="text-align: center; padding: 20px 0; border-top: 1px solid #e2e8f0;">
+            <p style="color: #94a3b8; font-size: 12px; margin: 0; font-style: italic;">
+              Vos données sont utilisées uniquement pour répondre à votre message.<br />
+              Elles ne seront jamais partagées.
+            </p>
           </div>
+          
         </div>
       `,
     });
