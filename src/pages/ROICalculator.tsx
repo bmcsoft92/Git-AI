@@ -742,53 +742,8 @@ const ROICalculatorPage = () => {
                       }}
                     >
                       <CardContent className="p-6 text-center">
-                        <div className="flex items-center justify-center gap-3 mb-3">
-                          <div className="text-lg font-semibold" style={{ color: '#F5F5F5' }}>
-                            💰 Retour sur investissement
-                          </div>
-                          <div 
-                            className="text-2xl font-bold px-3 py-1 rounded-lg"
-                            style={{ 
-                              color: '#22C55E',
-                              backgroundColor: 'rgba(34, 197, 94, 0.1)',
-                              border: '1px solid rgba(34, 197, 94, 0.3)'
-                            }}
-                          >
-                            {Math.round(results.roi_strategique)}%
-                          </div>
-                          <TooltipProvider>
-                            <UITooltip>
-                              <TooltipTrigger>
-                                <div 
-                                  className="w-5 h-5 rounded-full flex items-center justify-center cursor-help"
-                                  style={{ 
-                                    backgroundColor: 'rgba(74, 158, 255, 0.2)',
-                                    border: '1px solid #4A9EFF'
-                                  }}
-                                >
-                                  <span className="text-xs" style={{ color: '#4A9EFF' }}>?</span>
-                                </div>
-                              </TooltipTrigger>
-                              <TooltipContent 
-                                className="max-w-sm p-4"
-                                style={{ 
-                                  backgroundColor: '#1f2937',
-                                  border: '1px solid #4A9EFF',
-                                  color: '#f3f4f6'
-                                }}
-                              >
-                                <div className="text-sm space-y-2">
-                                  <div className="font-semibold">Le ROI est calculé avec la formule :</div>
-                                  <div className="font-mono text-xs bg-gray-800 p-2 rounded">
-                                    ROI (%) = ((Gains Totaux – Budget Investi) ÷ Budget Investi) × 100
-                                  </div>
-                                  <div className="text-xs opacity-80">
-                                    Exemple : ({(results.economies_directes + results.gains_croissance).toLocaleString('fr-FR')} – {parseFloat(formData.investissement || "0").toLocaleString('fr-FR')}) ÷ {parseFloat(formData.investissement || "0").toLocaleString('fr-FR')} × 100 = {Math.round(results.roi_strategique)}%
-                                  </div>
-                                </div>
-                              </TooltipContent>
-                            </UITooltip>
-                          </TooltipProvider>
+                        <div className="text-lg font-semibold mb-3" style={{ color: '#F5F5F5' }}>
+                          💰 Retour sur investissement
                         </div>
                         <div 
                           className="text-xl font-bold"
