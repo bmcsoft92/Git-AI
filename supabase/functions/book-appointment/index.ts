@@ -103,43 +103,72 @@ const handler = async (req: Request): Promise<Response> => {
       resend.emails.send({
         from: "Maia Elange <contact@maiaelange.fr>",
         to: [userEmail],
-        subject: "Confirmation de votre demande de rendez-vous - Maia Elange",
+        subject: "Votre réservation est confirmée – Entretien Personnalisé Maïa Elange",
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h1 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
-              Demande de Rendez-vous Reçue
-            </h1>
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; color: #333;">
             
-            <p>Bonjour ${userName},</p>
+            <div style="text-align: center; margin-bottom: 40px;">
+              <h1 style="color: #2c3e50; font-size: 28px; font-weight: 600; margin: 0; letter-spacing: -0.5px;">
+                Votre entretien est confirmé
+              </h1>
+            </div>
             
-            <p>Nous avons bien reçu votre demande de rendez-vous pour le <strong>${formattedDate}</strong>.</p>
-            
-            <div style="background: #e8f4fd; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <h3 style="color: #007bff; margin-top: 0;">Récapitulatif</h3>
-              <p><strong>Type de consultation:</strong> ${appointmentType}</p>
-              <p><strong>Date demandée:</strong> ${formattedDate}</p>
+            <div style="background: linear-gradient(135deg, #f8fafb 0%, #f1f5f9 100%); border: 1px solid #e2e8f0; border-radius: 12px; padding: 32px; margin: 32px 0;">
+              <p style="font-size: 18px; margin: 0 0 24px 0; color: #1a202c;">
+                Bonjour <strong>${userName.split(' ')[0] || userName}</strong>,
+              </p>
+              
+              <p style="margin: 0 0 24px 0; color: #4a5568; font-size: 16px;">
+                Votre entretien personnalisé est confirmé. Voici les détails de votre rendez-vous :
+              </p>
+
+              <div style="background: white; border-radius: 8px; padding: 24px; border-left: 4px solid #3b82f6; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                <div style="display: grid; gap: 16px;">
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="color: #6b7280; font-weight: 500; min-width: 80px;">📅 Date :</span>
+                    <span style="color: #1a202c; font-weight: 600;">${new Date(appointmentDate).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="color: #6b7280; font-weight: 500; min-width: 80px;">🕐 Heure :</span>
+                    <span style="color: #1a202c; font-weight: 600;">${new Date(appointmentDate).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="color: #6b7280; font-weight: 500; min-width: 80px;">⏱️ Durée :</span>
+                    <span style="color: #1a202c; font-weight: 600;">à définir ensemble</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="color: #6b7280; font-weight: 500; min-width: 80px;">💼 Type :</span>
+                    <span style="color: #1a202c; font-weight: 600;">Entretien Personnalisé</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div style="background: #d4edda; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <h3 style="color: #155724; margin-top: 0;">✅ Prochaines étapes</h3>
-              <p><strong>Notre équipe vous recontactera sous 24h</strong> pour :</p>
-              <ul>
-                <li>Confirmer votre créneau de rendez-vous</li>
-                <li>Vous envoyer le lien de connexion</li>
-                <li>Préparer votre consultation personnalisée</li>
+            <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 20px; margin: 24px 0;">
+              <h3 style="color: #0369a1; margin: 0 0 12px 0; font-size: 16px; font-weight: 600;">📋 Prochaines étapes</h3>
+              <ul style="margin: 0; padding-left: 20px; color: #475569;">
+                <li style="margin-bottom: 8px;">Confirmation de votre créneau sous 24h</li>
+                <li style="margin-bottom: 8px;">Envoi du lien de visioconférence</li>
+                <li style="margin-bottom: 0;">Préparation personnalisée de votre entretien</li>
               </ul>
-              <p>Merci pour votre confiance !</p>
             </div>
 
-            <p>Si vous avez des questions urgentes, n'hésitez pas à nous contacter directement à <a href="mailto:contact@maiaelange.fr">contact@maiaelange.fr</a></p>
-            
-            <p>À bientôt,<br>
-            <strong>L'équipe Maia Elange</strong></p>
-            
-            <div style="color: #666; font-size: 12px; margin-top: 30px; text-align: center; border-top: 1px solid #ddd; padding-top: 20px;">
-              Maia Elange - Automatisation & Transformation Digitale<br>
-              contact@maiaelange.fr
+            <div style="text-align: center; margin: 32px 0;">
+              <p style="color: #64748b; font-size: 14px; margin: 0;">
+                Pour toute question, contactez-nous à 
+                <a href="mailto:contact@maiaelange.fr" style="color: #3b82f6; text-decoration: none;">contact@maiaelange.fr</a>
+              </p>
             </div>
+
+            <div style="text-align: center; padding: 20px 0; border-top: 1px solid #e2e8f0; margin-top: 40px;">
+              <p style="color: #64748b; font-size: 13px; margin: 0 0 8px 0;">
+                <strong>Maïa Elange</strong> – Automatisation & Transformation Digitale
+              </p>
+              <p style="color: #94a3b8; font-size: 12px; margin: 0; font-style: italic;">
+                Toutes les prestations sont établies sur devis personnalisé
+              </p>
+            </div>
+            
           </div>
         `,
       })
