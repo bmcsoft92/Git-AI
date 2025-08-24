@@ -24,6 +24,12 @@ const CookieBanner = () => {
     setIsVisible(false);
   };
 
+  const handleRefuse = () => {
+    localStorage.setItem('cookieConsent', 'refused');
+    localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    setIsVisible(false);
+  };
+
   const handleClose = () => {
     setIsVisible(false);
   };
@@ -57,19 +63,29 @@ const CookieBanner = () => {
             </Button>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-2">
-            <Button
-              onClick={handleAccept}
-              size="sm"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground flex-1"
-            >
-              Accepter
-            </Button>
-            <Link to="/politique-confidentialite">
+          <div className="flex flex-col gap-2 mb-3">
+            <div className="flex flex-col sm:flex-row gap-2">
               <Button
+                onClick={handleAccept}
+                size="sm"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground flex-1"
+              >
+                Accepter les cookies
+              </Button>
+              <Button
+                onClick={handleRefuse}
                 variant="outline"
                 size="sm"
-                className="w-full sm:w-auto text-xs border-primary/30 text-primary hover:bg-primary/10"
+                className="flex-1 border-destructive/50 text-destructive hover:bg-destructive/10"
+              >
+                Refuser les cookies
+              </Button>
+            </div>
+            <Link to="/politique-confidentialite" className="self-center">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-xs text-text-secondary hover:text-heading h-auto p-1"
               >
                 En savoir plus
               </Button>
