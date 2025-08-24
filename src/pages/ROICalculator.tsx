@@ -433,7 +433,7 @@ const ROICalculatorPage = () => {
               }}
             >
               <CardContent className="p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 mb-8 items-start">
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
                       <Label 
@@ -689,7 +689,7 @@ const ROICalculatorPage = () => {
                   </div>
 
                   {/* Métriques principales simplifiées */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 items-start">
                     <div 
                       className="text-center p-6 rounded-xl"
                       style={{ backgroundColor: 'rgba(34, 197, 94, 0.15)' }}
@@ -928,7 +928,7 @@ const ROICalculatorPage = () => {
                   </div>
 
                   {/* Métriques détaillées en grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 items-start">
                     <div 
                       className="text-center p-6 rounded-xl border"
                       style={{ 
@@ -1493,8 +1493,8 @@ const ROICalculatorPage = () => {
                               ⏱️ Impact temps et coûts
                             </h3>
                             
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                              <div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                              <div className="space-y-3 h-full">
                                 <Label 
                                   htmlFor="heures_repetitives" 
                                   className="block text-sm font-semibold mb-3"
@@ -1523,7 +1523,7 @@ const ROICalculatorPage = () => {
                                 )}
                               </div>
 
-                              <div>
+                              <div className="space-y-3 h-full">
                                 <Label 
                                   htmlFor="cout_horaire" 
                                   className="block text-sm font-semibold mb-3"
@@ -1671,7 +1671,7 @@ const ROICalculatorPage = () => {
                               🎯 Dernière étape : vos objectifs
                             </h3>
                             
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                               <div>
                                 <Label 
                                   htmlFor="delai" 
