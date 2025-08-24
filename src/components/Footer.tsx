@@ -150,25 +150,18 @@ const Footer = () => {
                 {[
                   { name: "Mentions légales", href: "/mentions-legales" },
                   { name: "Politique de confidentialité", href: "/politique-confidentialite" },
-                  { name: "CGU / CGV", href: "#", disabled: true }
+                  { name: "CGU", href: "/cgu" },
+                  { name: "CGV", href: "/cgv", note: "(bientôt)" }
                 ].map((item, index) => (
                   <li key={index}>
                     <Link 
                       to={item.href} 
-                      className={`transition-all duration-300 group flex items-center space-x-2 text-sm ${
-                        item.disabled 
-                          ? 'text-text-secondary/50 cursor-not-allowed' 
-                          : 'text-text-secondary hover:text-primary'
-                      }`}
+                      className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2 text-sm"
                     >
-                      <span className={`w-1 h-1 rounded-full transition-all duration-300 ${
-                        item.disabled 
-                          ? 'bg-primary/30' 
-                          : 'bg-primary/50 group-hover:bg-primary group-hover:scale-150'
-                      }`}></span>
-                      <span className={item.disabled ? '' : 'group-hover:translate-x-1 transition-transform duration-300'}>
+                      <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">
                         {item.name}
-                        {item.disabled && <span className="ml-1 text-xs">(bientôt)</span>}
+                        {item.note && <span className="ml-1 text-xs text-text-secondary/70">{item.note}</span>}
                       </span>
                     </Link>
                   </li>

@@ -23,33 +23,33 @@ const MentionsLegales = () => {
           
           <div className="prose prose-lg max-w-none space-y-8">
             <section>
-              <h2 className="text-2xl font-bold text-heading mb-4">Éditeur du site</h2>
+              <h2 className="text-2xl font-bold text-heading mb-4">Dénomination sociale</h2>
               <div className="text-text-secondary space-y-2">
-                <p>Maia Élange – Entreprise Individuelle</p>
-                <p>Dirigeante : Anne-Carine Mandjana</p>
-                <p>Adresse de l'établissement principal : 60 rue François Ier, 75008 Paris</p>
-                <p>Immatriculée au RCS de Paris sous le numéro 944 929 660</p>
-                <p>Email : contact@maiaelange.fr</p>
+                <p><strong>Dénomination sociale :</strong> Maïa Elange</p>
+                <p><strong>Statut :</strong> Entreprise Individuelle</p>
+                <p><strong>Adresse :</strong> [Placeholder – à compléter]</p>
+                <p><strong>Contact :</strong> contact@maiaelange.fr</p>
+                <p><strong>Numéro SIREN :</strong> [Placeholder – à compléter]</p>
               </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-heading mb-4">Directrice de la publication</h2>
-              <p className="text-text-secondary">Anne-Carine Mandjana</p>
+              <h2 className="text-2xl font-bold text-heading mb-4">Responsable de publication</h2>
+              <p className="text-text-secondary">Anne Carine (CEO)</p>
             </section>
 
             <section>
               <h2 className="text-2xl font-bold text-heading mb-4">Hébergement</h2>
               <div className="text-text-secondary space-y-2">
-                <p>Site hébergé par Hostinger International Ltd.</p>
-                <p>61 Lordou Vironos, 6023 Larnaca, Chypre</p>
+                <p><strong>Hébergeur :</strong> Hostinger</p>
+                <p><strong>Site web :</strong> <a href="https://www.hostinger.fr" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.hostinger.fr</a></p>
               </div>
             </section>
 
             <section>
               <h2 className="text-2xl font-bold text-heading mb-4">Propriété intellectuelle</h2>
               <p className="text-text-secondary">
-                Tout le contenu (textes, images, graphismes, logo, code) est la propriété de Maia Élange sauf mention contraire.
+                Tout le contenu (textes, images, graphismes, logo, code) est la propriété de Maïa Elange sauf mention contraire.
                 Toute reproduction est interdite sans autorisation.
               </p>
             </section>
@@ -57,7 +57,7 @@ const MentionsLegales = () => {
             <section>
               <h2 className="text-2xl font-bold text-heading mb-4">Responsabilité</h2>
               <p className="text-text-secondary">
-                Maia Élange s'efforce de fournir une information fiable mais ne saurait être tenue responsable d'erreurs ou omissions, 
+                Maïa Elange s'efforce de fournir une information fiable mais ne saurait être tenue responsable d'erreurs ou omissions, 
                 ni des dommages liés à l'utilisation du site.
               </p>
             </section>

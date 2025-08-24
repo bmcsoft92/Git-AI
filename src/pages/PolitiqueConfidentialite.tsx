@@ -28,19 +28,27 @@ const PolitiqueConfidentialite = () => {
               
               <div className="space-y-6 text-text-secondary leading-relaxed">
                 <p>
-                  Nous utilisons uniquement des cookies essentiels pour améliorer votre expérience de navigation.
+                  <strong className="text-heading">Utilisation des données :</strong> Les informations collectées via nos formulaires (diagnostic ROI, prise de contact, réservation d'entretien) sont utilisées uniquement pour répondre à vos demandes et établir des devis personnalisés.
                 </p>
                 
                 <p>
-                  Aucun cookie publicitaire ou de suivi tiers n'est utilisé.
+                  <strong className="text-heading">Engagement :</strong> Vos données sont utilisées uniquement dans le cadre de nos services et ne sont jamais partagées avec des tiers à des fins commerciales.
                 </p>
                 
                 <p>
-                  Les informations que vous saisissez dans nos formulaires (diagnostic, contact, réservation) servent uniquement à répondre à vos demandes et établir des devis personnalisés.
+                  <strong className="text-heading">Durée de conservation :</strong> Vos données sont conservées pour une durée maximale de 3 ans, sauf demande de suppression de votre part.
                 </p>
                 
                 <p>
-                  Conformément au RGPD, vous pouvez demander à tout moment la suppression de vos données en nous écrivant à <strong className="text-primary">contact@maiaelange.fr</strong>.
+                  <strong className="text-heading">Vos droits RGPD :</strong> Conformément au Règlement Général sur la Protection des Données, vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles.
+                </p>
+                
+                <p>
+                  <strong className="text-heading">Cookies :</strong> Nous utilisons uniquement des cookies essentiels pour le bon fonctionnement du site. Aucun cookie publicitaire ou de suivi tiers n'est utilisé.
+                </p>
+                
+                <p className="bg-primary/10 p-4 rounded-lg">
+                  <strong className="text-primary">Pour exercer vos droits :</strong> Contactez-nous à <strong className="text-primary">contact@maiaelange.fr</strong>
                 </p>
               </div>
             </section>
