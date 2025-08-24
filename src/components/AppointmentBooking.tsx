@@ -237,11 +237,11 @@ export const AppointmentBooking = ({ calculationId, onClose, userInfo }: Appoint
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="consultation">Consultation Stratégique (30 min)</SelectItem>
-                      <SelectItem value="diagnostic">Diagnostic Approfondi (45 min)</SelectItem>
-                      <SelectItem value="demo">Démonstration Solution (30 min)</SelectItem>
-                    </SelectContent>
+                     <SelectContent>
+                      <SelectItem value="consultation">Entretien Personnalisé</SelectItem>
+                      <SelectItem value="diagnostic">Diagnostic Approfondi</SelectItem>
+                      <SelectItem value="demo">Démonstration Solution</SelectItem>
+                     </SelectContent>
                   </Select>
                 </div>
               </CardContent>
@@ -271,7 +271,7 @@ export const AppointmentBooking = ({ calculationId, onClose, userInfo }: Appoint
                 disabled={isSubmitting || !formData.userName || !formData.userEmail || !formData.appointmentDate || !formData.appointmentTime}
                 className="flex-1 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
               >
-                {isSubmitting ? "Envoi en cours..." : "Confirmer la Demande"}
+                {isSubmitting ? "Envoi en cours..." : "Réserver mon créneau"}
               </Button>
               
               <Button type="button" variant="outline" onClick={onClose}>
@@ -287,6 +287,10 @@ export const AppointmentBooking = ({ calculationId, onClose, userInfo }: Appoint
               <li>Envoi du lien de visioconférence</li>
               <li>Préparation personnalisée de votre entretien</li>
             </ul>
+            
+            <div className="mt-4 pt-4 border-t border-muted text-xs text-center text-muted-foreground/80">
+              Toutes les prestations sont établies sur devis personnalisé
+            </div>
           </div>
         </div>
       </DialogContent>
