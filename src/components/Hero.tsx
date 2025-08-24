@@ -45,36 +45,32 @@ const Hero = () => {
             </div>
 
             
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2 justify-center">
-              <div className="flex flex-col items-center gap-2">
-                <Button 
-                  size="lg" 
-                  className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground px-6 py-4"
-                  onClick={() => navigate('/calculateur-roi')}
-                >
-                  Calculer mon ROI
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <span className="text-xs text-text-secondary/80 italic">
-                  Parcours guidé : ROI → Diagnostic → Rendez-vous
-                </span>
-              </div>
-              <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-6 animate-fade-in-up-delay-2 max-w-lg mx-auto">
+              <Button 
+                size="lg" 
+                className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground px-8 py-4 text-lg"
+                onClick={() => navigate('/calculateur-roi')}
+              >
+                Calculer mon ROI
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button 
                   variant="outline" 
-                  size="lg" 
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-4"
+                  size="default" 
+                  className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary px-6 py-3"
                   onClick={() => navigate('/appointment')}
                 >
-                  Prendre rendez-vous directement
+                  Prendre rendez-vous
                 </Button>
                 <Button 
                   variant="ghost" 
-                  size="sm" 
-                  className="text-text-secondary hover:text-primary"
+                  size="default" 
+                  className="text-text-secondary hover:text-primary hover:bg-primary/5 px-6 py-3"
                   onClick={() => navigate('/contact')}
                 >
-                  Ou nous envoyer un message
+                  Nous contacter
                 </Button>
               </div>
             </div>
