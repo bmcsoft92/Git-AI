@@ -12,7 +12,7 @@ import Header from "@/components/Header";
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { ROIResults } from '@/components/ROIResults';
-import { ArrowLeft, Home } from "lucide-react";
+import { ArrowLeft, Home, HelpCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const ROICalculatorPage = () => {
@@ -21,7 +21,7 @@ const ROICalculatorPage = () => {
     hoursPerWeek: "10",
     hourlyRate: "40",
     employees: "5",
-    investissement: "7500"
+    investissement: "5000"
   });
 
   const [showResults, setShowResults] = useState(false);
@@ -434,13 +434,25 @@ const ROICalculatorPage = () => {
               <CardContent className="p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 mb-8">
                   <div className="space-y-3">
-                    <Label 
-                      htmlFor="heures" 
-                      className="block text-sm font-semibold h-5 flex items-center"
-                      style={{ color: '#F5F5F5' }}
-                    >
-                      Heures/semaine à automatiser
-                    </Label>
+                    <div className="flex items-center gap-2">
+                      <Label 
+                        htmlFor="heures" 
+                        className="block text-sm font-semibold h-5 flex items-center"
+                        style={{ color: '#F5F5F5' }}
+                      >
+                        Heures/semaine à automatiser
+                      </Label>
+                      <TooltipProvider>
+                        <UITooltip>
+                          <TooltipTrigger>
+                            <HelpCircle className="h-4 w-4 opacity-60" style={{ color: '#F5F5F5' }} />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-xs">Nombre moyen d'heures de tâches répétitives que vous aimeriez automatiser (emails, facturation, CRM, rendez-vous…).</p>
+                          </TooltipContent>
+                        </UITooltip>
+                      </TooltipProvider>
+                    </div>
                     <Input
                       id="heures"
                       type="number"
@@ -458,13 +470,25 @@ const ROICalculatorPage = () => {
                   </div>
 
                   <div className="space-y-3">
-                    <Label 
-                      htmlFor="taux" 
-                      className="block text-sm font-semibold h-5 flex items-center"
-                      style={{ color: '#F5F5F5' }}
-                    >
-                      Taux horaire (€)
-                    </Label>
+                    <div className="flex items-center gap-2">
+                      <Label 
+                        htmlFor="taux" 
+                        className="block text-sm font-semibold h-5 flex items-center"
+                        style={{ color: '#F5F5F5' }}
+                      >
+                        Taux horaire (€)
+                      </Label>
+                      <TooltipProvider>
+                        <UITooltip>
+                          <TooltipTrigger>
+                            <HelpCircle className="h-4 w-4 opacity-60" style={{ color: '#F5F5F5' }} />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-xs">Coût horaire moyen d'un employé, incluant salaires et charges sociales.</p>
+                          </TooltipContent>
+                        </UITooltip>
+                      </TooltipProvider>
+                    </div>
                     <Input
                       id="taux"
                       type="number"
@@ -482,13 +506,25 @@ const ROICalculatorPage = () => {
                   </div>
 
                   <div className="space-y-3">
-                    <Label 
-                      htmlFor="employes" 
-                      className="block text-sm font-semibold h-5 flex items-center"
-                      style={{ color: '#F5F5F5' }}
-                    >
-                      Nombre d'employés concernés
-                    </Label>
+                    <div className="flex items-center gap-2">
+                      <Label 
+                        htmlFor="employes" 
+                        className="block text-sm font-semibold h-5 flex items-center"
+                        style={{ color: '#F5F5F5' }}
+                      >
+                        Nombre d'employés concernés
+                      </Label>
+                      <TooltipProvider>
+                        <UITooltip>
+                          <TooltipTrigger>
+                            <HelpCircle className="h-4 w-4 opacity-60" style={{ color: '#F5F5F5' }} />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-xs">Combien de personnes effectuent ces tâches actuellement.</p>
+                          </TooltipContent>
+                        </UITooltip>
+                      </TooltipProvider>
+                    </div>
                     <Input
                       id="employes"
                       type="number"
@@ -506,19 +542,32 @@ const ROICalculatorPage = () => {
                   </div>
 
                   <div className="space-y-3">
-                    <Label 
-                      htmlFor="investissement" 
-                      className="block text-sm font-semibold h-5 flex items-center"
-                      style={{ color: '#F5F5F5' }}
-                    >
-                      Investissement initial (€)
-                    </Label>
+                    <div className="flex items-center gap-2">
+                      <Label 
+                        htmlFor="investissement" 
+                        className="block text-sm font-semibold h-5 flex items-center"
+                        style={{ color: '#F5F5F5' }}
+                      >
+                        Budget estimé
+                      </Label>
+                      <TooltipProvider>
+                        <UITooltip>
+                          <TooltipTrigger>
+                            <HelpCircle className="h-4 w-4 opacity-60" style={{ color: '#F5F5F5' }} />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-xs">Montant prévu pour mettre en place la solution (adaptable selon la taille du projet).</p>
+                          </TooltipContent>
+                        </UITooltip>
+                      </TooltipProvider>
+                    </div>
                     <Input
                       id="investissement"
                       type="number"
                       value={formData.investissement}
                       onChange={(e) => handleInputChange('investissement', e.target.value)}
                       onFocus={handleInputFocus}
+                      placeholder="1 000 - 15 000"
                       className="text-lg font-bold text-center h-14"
                       style={{ 
                         backgroundColor: 'rgba(31, 41, 55, 0.8)',
@@ -527,6 +576,9 @@ const ROICalculatorPage = () => {
                         borderRadius: '8px'
                       }}
                     />
+                    <p className="text-xs opacity-60 mt-1" style={{ color: '#F5F5F5' }}>
+                      Fourchette réaliste : 1 000€ - 15 000€ (ajustable selon votre projet)
+                    </p>
                   </div>
                 </div>
 
@@ -545,7 +597,7 @@ const ROICalculatorPage = () => {
                             boxShadow: '0 8px 25px rgba(255, 140, 66, 0.4)'
                           }}
                         >
-                          Calculer mon ROI
+                          Découvrir mon ROI
                         </Button>
                       </TooltipTrigger>
                       <TooltipContent className="max-w-xs p-4">
@@ -561,6 +613,9 @@ const ROICalculatorPage = () => {
                     </UITooltip>
                   </TooltipProvider>
                   <p className="mt-4 text-sm opacity-80" style={{ color: '#F5F5F5' }}>
+                    Le calcul est basé sur vos économies de temps estimées × votre coût horaire × le nombre d'employés, comparé à votre budget initial.
+                  </p>
+                  <p className="mt-2 text-sm opacity-60" style={{ color: '#F5F5F5' }}>
                     Résultat instantané
                   </p>
                 </div>
