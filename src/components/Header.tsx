@@ -138,13 +138,6 @@ const Header = () => {
                       Calculateur ROI
                     </Link>
                     <Link 
-                      to="/crm" 
-                      className="block px-4 py-2 text-sm text-text-secondary hover:text-primary hover:bg-muted transition-colors"
-                      onClick={() => setIsOutilsOpen(false)}
-                    >
-                      CRM
-                    </Link>
-                    <Link 
                       to="/blog" 
                       className="block px-4 py-2 text-sm text-text-secondary hover:text-primary hover:bg-muted transition-colors"
                       onClick={() => setIsOutilsOpen(false)}
@@ -270,13 +263,6 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Calculateur ROI
-                </Link>
-                <Link 
-                  to="/crm" 
-                  className="block nav-link text-text-secondary hover:text-primary transition-colors pl-4"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  CRM
                 </Link>
                 <Link 
                   to="/blog" 
