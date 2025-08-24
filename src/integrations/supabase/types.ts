@@ -330,6 +330,8 @@ export type Database = {
         | "client_signe"
         | "perdu"
         | "rdv_en_attente_confirmation"
+        | "nouveau"
+        | "contact_recu"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -466,6 +468,8 @@ export const Constants = {
         "client_signe",
         "perdu",
         "rdv_en_attente_confirmation",
+        "nouveau",
+        "contact_recu",
       ],
     },
   },
