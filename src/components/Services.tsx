@@ -72,25 +72,25 @@ const Services = () => {
     {
       step: "01",
       title: "Diagnostic & Analyse Stratégique",
-      description: "Diagnostic complet de vos processus actuels et identification des opportunités d'automatisation les plus rentables.",
+      description: "Analyse complète pour identifier jusqu'à 30% d'économies potentielles et de gains de productivité.",
       icon: BarChart3
     },
     {
       step: "02", 
       title: "Stratégie & Conception Sur-Mesure",
-      description: "Élaboration d'un plan d'automatisation personnalisé avec ROI prévisible et roadmap de déploiement.",
+      description: "Un plan d'automatisation sur-mesure conçu pour générer un ROI rapide (souvent observable en 90 jours).",
       icon: Target
     },
     {
       step: "03",
-      title: "Développement & Intégration",
-      description: "Mise en place des solutions avec formation équipe et intégration progressive dans vos systèmes existants.",
+      title: "Déploiement & Intégration",
+      description: "Mise en place progressive sans rupture opérationnelle, avec formation complète de vos équipes.",
       icon: Settings
     },
     {
       step: "04",
-      title: "Suivi & Optimisation Continue",
-      description: "Monitoring des performances, ajustements et évolutions pour garantir un ROI croissant dans le temps.",
+      title: "Suivi Post-Implémentation",
+      description: "Un suivi après la mise en place du système pour s'assurer que tout fonctionne comme prévu. Possibilité d'identifier ensuite de nouvelles tâches à automatiser selon vos priorités.",
       icon: TrendingUp
     }
   ];
@@ -279,10 +279,10 @@ const Services = () => {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-heading mb-4">
-              Notre Méthode <span className="text-primary">Éprouvée</span>
+              Notre Méthode : Du Diagnostic à la <span className="text-primary">Performance Mesurable</span>
             </h2>
             <p className="text-text-secondary max-w-2xl mx-auto">
-              Un processus structuré et transparent pour garantir le succès de votre transformation digitale
+              Un processus structuré et transparent pour transformer vos opérations. Nous vous donnons la clarté et la feuille de route pour maximiser votre ROI.
             </p>
           </div>
 
@@ -349,7 +349,7 @@ const Services = () => {
               </div>
               <div className="text-left">
                 <div className="font-bold text-heading text-lg text-center">Technologies Maîtrisées</div>
-                <div className="text-text-secondary text-sm text-center">Nous maîtrisons des solutions leaders comme n8n, Make et Zapier, utilisées par des milliers d'organisations dans le monde. Ces outils nous permettent de connecter vos systèmes et de créer des automatisations adaptées à vos besoins réels.</div>
+                <div className="text-text-secondary text-sm text-center">Nous maîtrisons les solutions leaders comme n8n, Make et Zapier, utilisées par des milliers d'organisations. Cela nous permet de connecter vos outils existants et de créer des automatisations parfaitement adaptées à votre contexte.</div>
               </div>
             </div>
           </Card>
