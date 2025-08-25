@@ -45,32 +45,38 @@ const Hero = () => {
             </div>
 
             
-            <div className="flex flex-col gap-6 animate-fade-in-up-delay-2 max-w-lg mx-auto">
-              <Button 
-                size="lg" 
-                className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground px-8 py-4 text-lg"
-                onClick={() => navigate('/calculateur-roi')}
-              >
-                Calculer mon ROI
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="flex flex-col gap-6 animate-fade-in-up-delay-2 max-w-2xl mx-auto">
+              {/* Deux choix principaux à égalité */}
+              <div className="grid md:grid-cols-2 gap-4">
                 <Button 
-                  variant="outline" 
-                  size="default" 
-                  className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary px-6 py-3"
-                  onClick={() => navigate('/appointment')}
+                  size="lg" 
+                  className="group font-semibold btn-cta-hover bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground px-8 py-4 text-lg h-20 flex flex-col items-center justify-center"
+                  onClick={() => navigate('/calculateur-roi')}
                 >
-                  Prendre rendez-vous
+                  <span className="text-base font-semibold">Calculer mon ROI</span>
+                  <span className="text-sm opacity-90">Estimation rapide en 30s</span>
                 </Button>
+                
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="group font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg h-20 flex flex-col items-center justify-center"
+                  onClick={() => navigate('/diagnostic-personnalise')}
+                >
+                  <span className="text-base font-semibold">Diagnostic Personnalisé</span>
+                  <span className="text-sm opacity-90">3 recommandations ciblées</span>
+                </Button>
+              </div>
+              
+              {/* Action secondaire centrée */}
+              <div className="text-center">
                 <Button 
                   variant="ghost" 
                   size="default" 
                   className="text-text-secondary hover:text-primary hover:bg-primary/5 px-6 py-3"
                   onClick={() => navigate('/contact')}
                 >
-                  Nous contacter
+                  Ou nous contacter directement
                 </Button>
               </div>
             </div>

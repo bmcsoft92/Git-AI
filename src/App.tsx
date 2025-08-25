@@ -23,6 +23,7 @@ const PolitiqueConfidentialite = lazy(() => import("./pages/PolitiqueConfidentia
 const CGU = lazy(() => import("./pages/CGU"));
 const CGV = lazy(() => import("./pages/CGV"));
 const AdminTest = lazy(() => import("./pages/AdminTest"));
+const DiagnosticPersonnalise = lazy(() => import("./pages/DiagnosticPersonnalise"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Appointment = lazy(() => import("./pages/Appointment"));
 
@@ -112,6 +113,11 @@ const App = () => (
           <Route path="/admin-test" element={
             <Suspense fallback={<PageLoader />}>
               <AdminTest />
+            </Suspense>
+          } />
+          <Route path="/diagnostic-personnalise" element={
+            <Suspense fallback={<PageLoader />}>
+              <DiagnosticPersonnalise />
             </Suspense>
           } />
           <Route path="/appointment" element={

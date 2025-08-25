@@ -22,14 +22,13 @@ const AutomationCTA = () => {
                 className="text-4xl lg:text-5xl font-bold mb-8"
                 style={{ color: '#F5F5F5' }}
               >
-                Prêt à{' '}
+                Deux approches{' '}
                 <span 
                   className="relative inline-block"
                   style={{ color: '#FF8C42' }}
                 >
-                  automatiser
+                  complémentaires
                 </span>
-                {' '}?
               </h2>
 
               {/* Description */}
@@ -38,32 +37,47 @@ const AutomationCTA = () => {
                   className="text-lg lg:text-xl"
                   style={{ color: '#F5F5F5' }}
                 >
-                  10 questions pour évaluer rapidement votre potentiel d'automatisation.
-                </p>
-                <p 
-                  className="text-base lg:text-lg"
-                  style={{ color: '#F5F5F5' }}
-                >
-                  Recevez un récapitulatif par e-mail et une proposition d'actions prioritaires.
+                  Choisissez votre point d'entrée selon vos besoins
                 </p>
               </div>
 
-              {/* Bouton CTA */}
-              <Link to="/calculateur-roi">
-                <Button
-                  size="lg"
-                  className="group px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                  style={{
-                    backgroundColor: '#FF8C42',
-                    color: '#F5F5F5',
-                    borderRadius: '8px',
-                    boxShadow: '0 8px 25px rgba(255, 140, 66, 0.3)'
-                  }}
-                >
-                  Calculer votre ROI
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </Link>
+              {/* Double CTA */}
+              <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                <Link to="/calculateur-roi">
+                  <Button
+                    size="lg"
+                    className="group w-full px-6 py-6 text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl h-auto flex flex-col items-center justify-center"
+                    style={{
+                      backgroundColor: '#FF8C42',
+                      color: '#F5F5F5',
+                      borderRadius: '8px',
+                      boxShadow: '0 8px 25px rgba(255, 140, 66, 0.3)'
+                    }}
+                  >
+                    <span className="text-lg font-bold mb-1">Calculer mon ROI</span>
+                    <span className="text-sm opacity-90">Estimation rapide en 30 secondes</span>
+                    <ArrowRight className="mt-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+
+                <Link to="/diagnostic-personnalise">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="group w-full px-6 py-6 text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl h-auto flex flex-col items-center justify-center border-2"
+                    style={{
+                      borderColor: '#FF8C42',
+                      color: '#FF8C42',
+                      backgroundColor: 'transparent',
+                      borderRadius: '8px'
+                    }}
+                  >
+                    <span className="text-lg font-bold mb-1">Diagnostic Personnalisé</span>
+                    <span className="text-sm opacity-90">3 recommandations ciblées</span>
+                    <ArrowRight className="mt-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
 
               {/* Message de confiance */}
               <div className="mt-8 pt-6 border-t border-gray-600">
