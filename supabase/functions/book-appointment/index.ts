@@ -45,11 +45,16 @@ const handler = async (req: Request): Promise<Response> => {
         status: 'pending'
       })
       .select()
-      .single();
+      .maybeSingle();
 
     if (insertError) {
       console.error("Database insert error:", insertError);
       throw new Error("Failed to save appointment");
+    }
+
+    if (!appointmentData) {
+      console.error("No appointment data returned after insert");
+      throw new Error("Failed to get appointment data");
     }
 
     // Format date for email

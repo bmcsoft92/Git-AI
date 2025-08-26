@@ -20,7 +20,9 @@ serve(async (req) => {
 
   try {
     console.log('🚀 Edge Function analyze-roi-data démarrée')
+    
     const { heures, taux, employes, budget, userEmail, userName, diagnosticData } = await req.json()
+    console.log('📊 Données reçues:', { heures, taux, employes, budget, userEmail, userName })
 
     if (!heures || !taux || !employes) {
       return new Response(JSON.stringify({ error: "Données insuffisantes" }), {
@@ -78,11 +80,11 @@ serve(async (req) => {
             success_metrics: ['ROI', 'Temps économisé']
           })
           .select()
-          .single()
+          .maybeSingle()
 
         if (insertError) {
           console.error("Erreur sauvegarde:", insertError)
-        } else {
+        } else if (calculationData) {
           console.log("Données sauvegardées:", calculationData.id)
           
           // Créer le lead

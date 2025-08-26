@@ -43,11 +43,16 @@ const handler = async (req: Request): Promise<Response> => {
         status: 'nouveau'
       })
       .select()
-      .single();
+      .maybeSingle();
 
     if (insertError) {
       console.error("Database insert error:", insertError);
       throw new Error("Failed to save contact message");
+    }
+
+    if (!contactData) {
+      console.error("No contact data returned after insert");
+      throw new Error("Failed to get contact data");
     }
 
     // Get RESEND_API_KEY

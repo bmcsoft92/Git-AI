@@ -10,7 +10,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { TestFonction } from "@/components/TestFonction";
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { ArrowLeft, Home, ArrowRight, CheckCircle, Target } from "lucide-react";
@@ -583,11 +582,6 @@ const DiagnosticPersonnalise = () => {
             <p className="text-xl text-text-secondary max-w-3xl mx-auto">
               6 étapes pour obtenir des recommandations IA sur-mesure et un plan d'action personnalisé
             </p>
-          </div>
-
-          {/* Test de fonction temporaire */}
-          <div className="flex justify-center mb-8">
-            <TestFonction />
           </div>
 
           {/* Barre de progression */}
