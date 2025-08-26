@@ -176,18 +176,18 @@ const ROICalculatorPage = () => {
           roi_percentage: roiCalculation.roi_strategique
         },
         diagnosticData: {
-          team_size: diagnosticData.taille,
-          business_type: diagnosticData.secteur,
-          main_activities: diagnosticData.processus_prioritaires,
-          repetitive_tasks: diagnosticData.processus_prioritaires,
-          current_tools: diagnosticData.outils,
-          pain_points: [diagnosticData.tache_frustrante].filter(Boolean),
-          automation_goals: diagnosticData.processus_prioritaires,
-          timeline: diagnosticData.delai,
-          budget_range: diagnosticData.budget_annuel,
-          technical_level: "intermediate", // Valeur par défaut
-          priority_processes: diagnosticData.processus_prioritaires,
-          success_metrics: ["ROI", "time_savings", "efficiency"]
+          taille: diagnosticData.taille,
+          secteur: diagnosticData.secteur,
+          chiffre_affaires: diagnosticData.chiffre_affaires || "Non renseigné",
+          processus_prioritaires: diagnosticData.processus_prioritaires,
+          tache_frustrante: diagnosticData.tache_frustrante || "Diverses tâches administratives",
+          heures_repetitives: parseFloat(formData.hoursPerWeek) || 0,
+          cout_horaire: parseFloat(formData.hourlyRate) || 0,
+          outils: diagnosticData.outils,
+          autre_outil: diagnosticData.autre_outil || "",
+          delai: diagnosticData.delai,
+          budget_annuel: diagnosticData.budget_annuel,
+          organisation: diagnosticData.organisation || ""
         },
         userEmail: diagnosticData.email,
         userName: diagnosticData.nom,
