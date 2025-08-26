@@ -200,24 +200,15 @@ const CasUsage = () => {
                   <p className="text-lg text-text-secondary mb-8 leading-relaxed">
                     Parlons de vos besoins et créons ensemble un plan d'action adapté à votre contexte.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <div className="flex justify-center">
                     <Button 
                       onClick={() => navigate("/calculateur-roi")}
                       variant="cta"
                       size="lg"
-                      className="px-6 sm:px-8 py-4 text-base sm:text-lg group/cta"
+                      className="px-8 py-4 text-lg group/cta"
                     >
                       Tester mon ROI
                       <Target className="ml-3 h-5 w-5 transition-transform group-hover/cta:scale-110" />
-                    </Button>
-                    <Button
-                      onClick={() => navigate('/appointment')}
-                      variant="cta"
-                      size="lg"
-                      className="px-6 sm:px-8 py-4 text-base sm:text-lg"
-                    >
-                      Obtenir un plan d'action personnalisé
-                      <ArrowRight className="ml-3 h-5 w-5" />
                     </Button>
                   </div>
                 </div>
