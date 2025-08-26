@@ -93,17 +93,14 @@ export const CookieConsent = () => {
     // Exemple d'application des préférences
     if (prefs.analytics) {
       // Activer Google Analytics ou autres outils d'analyse
-      console.log('Analytics cookies enabled');
     } else {
       // Désactiver les cookies d'analyse
-      console.log('Analytics cookies disabled');
     }
     
     if (prefs.marketing) {
       // Activer les cookies marketing/publicitaires
-      console.log('Marketing cookies enabled');
     } else {
-      console.log('Marketing cookies disabled');
+      // Désactiver les cookies marketing
     }
   };
 

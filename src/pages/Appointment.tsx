@@ -41,7 +41,6 @@ const Appointment = () => {
   // Auto-remplir les champs quand les données utilisateur sont récupérées
   useEffect(() => {
     if (userData) {
-      console.log("🔄 Auto-filling form with user data:", userData);
       
       // Extraire prénom et nom du nom complet
       const nameParts = userData.name.split(' ');
@@ -99,8 +98,6 @@ const Appointment = () => {
     }
 
     try {
-      console.log("📅 Submitting appointment...");
-      
       // Créer la date complète
       const dateStr = selectedDate.toISOString().split('T')[0]; // Format YYYY-MM-DD
       const appointmentDateTime = new Date(`${dateStr}T${selectedTime}:00`);
@@ -114,8 +111,6 @@ const Appointment = () => {
         notes: formData.message || undefined
       };
 
-      console.log("📋 Sending appointment data:", appointmentData);
-
       // Appel à la fonction edge
       const { data, error } = await supabase.functions.invoke('book-appointment', {
         body: appointmentData
@@ -125,8 +120,6 @@ const Appointment = () => {
         console.error("❌ Error booking appointment:", error);
         throw error;
       }
-
-      console.log("✅ Appointment booked successfully:", data);
       
       // Rediriger vers une page de confirmation ou afficher un message
       alert("✅ Rendez-vous confirmé ! Vous allez recevoir un email de confirmation.");
@@ -144,7 +137,7 @@ const Appointment = () => {
       });
 
     } catch (error) {
-      console.error("❌ Error:", error);
+      console.error("Error:", error);
       alert("❌ Erreur lors de la prise de rendez-vous. Veuillez réessayer.");
     }
   };

@@ -21,7 +21,6 @@ export const useUserData = (email?: string) => {
   const fetchUserData = async (userEmail: string) => {
     setIsLoading(true);
     try {
-      console.log("🔍 Searching for user data with email:", userEmail);
 
       // Récupérer les données depuis roi_calculations (plus récent)
       const { data: roiData, error: roiError } = await supabase
@@ -36,8 +35,6 @@ export const useUserData = (email?: string) => {
         return;
       }
 
-      console.log("📊 ROI calculations found:", roiData);
-
       // Récupérer les données depuis leads si disponible
       const { data: leadData, error: leadError } = await supabase
         .from('leads')
@@ -49,8 +46,6 @@ export const useUserData = (email?: string) => {
       if (leadError) {
         console.error("Error fetching lead data:", leadError);
       }
-
-      console.log("👤 Lead data found:", leadData);
 
       // Combiner les données en priorisant roi_calculations puis leads
       if (roiData && roiData.length > 0) {
@@ -69,8 +64,6 @@ export const useUserData = (email?: string) => {
             created_at: roi.created_at
           }
         });
-
-        console.log("✅ User data compiled successfully");
       } else if (leadData && leadData.length > 0) {
         const lead = leadData[0];
         setUserData({
@@ -80,10 +73,7 @@ export const useUserData = (email?: string) => {
           company: lead.company || '',
           lastROICalculation: undefined
         });
-
-        console.log("✅ User data from leads only");
       } else {
-        console.log("❌ No user data found");
         setUserData(null);
       }
 

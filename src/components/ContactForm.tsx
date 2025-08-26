@@ -37,8 +37,6 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
   // Auto-remplir les champs quand les données utilisateur sont récupérées
   useEffect(() => {
     if (userData && !userInfo) { // Seulement si pas déjà pré-rempli par userInfo
-      console.log("🔄 Auto-filling contact form with user data:", userData);
-      
       setFormData(prev => ({
         ...prev,
         name: userData.name,
@@ -94,8 +92,8 @@ export const ContactForm = ({ onClose, userInfo }: ContactFormProps) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <Card className="w-full max-w-md max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={onClose}>
+      <Card className="w-full max-w-md max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         <CardHeader className="flex flex-row items-center justify-between pb-4">
           <CardTitle className="text-xl font-bold">Nous Contacter</CardTitle>
           <Button
