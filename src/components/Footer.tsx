@@ -209,17 +209,6 @@ const Footer = () => {
                   </div>
                 </div>
 
-                {/* CTA Button */}
-                <div className="mt-6 p-4 bg-gradient-to-br from-cta-primary/10 to-primary/10 rounded-lg border border-cta-primary/20">
-                <Button 
-                  onClick={() => navigate('/appointment')}
-                  variant="cta"
-                  size="lg"
-                  className="w-full text-sm font-medium"
-                >
-                  Obtenir un plan d'action personnalisé
-                </Button>
-                </div>
 
                 {/* LinkedIn */}
                 <div className="flex items-center space-x-3 group">
