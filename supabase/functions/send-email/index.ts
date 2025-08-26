@@ -7,12 +7,13 @@ const corsHeaders = {
 }
 
 serve(async (req) => {
-  // Handle CORS preflight requests
+  // Handle CORS preflight requests  
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders })
   }
 
   try {
+    console.log('📧 Edge Function send-email démarrée')
     const { email, subject, message } = await req.json()
 
     if (!email) {
