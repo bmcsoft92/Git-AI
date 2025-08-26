@@ -14,8 +14,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { ArrowLeft, Home, ArrowRight, CheckCircle, Target } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { TestResend } from '@/components/TestResend';
-import { SimpleTest } from '@/components/SimpleTest';
+import { TestEmail } from '@/components/TestEmail';
 
 const DiagnosticPersonnalise = () => {
   const navigate = useNavigate();
@@ -212,11 +211,13 @@ const DiagnosticPersonnalise = () => {
       
       const { data, error } = await supabase.functions.invoke('analyze-roi-data', {
         body: {
-          roiData,
-          diagnosticData,
+          heures: roiData.hours_per_week,
+          taux: roiData.hourly_rate,
+          employes: roiData.employees,
+          budget: roiData.investment,
           userEmail: diagnosticData.email,
           userName: diagnosticData.nom,
-          userPhone: null
+          diagnosticData
         }
       });
 
@@ -550,10 +551,9 @@ const DiagnosticPersonnalise = () => {
       
       <main className="py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Test Resend - À supprimer après test */}
-          <div className="mb-8 flex justify-center space-x-4">
-            <SimpleTest />
-            <TestResend />
+          {/* Test des nouvelles fonctions - À supprimer après validation */}
+          <div className="mb-8 flex justify-center">
+            <TestEmail />
           </div>
           
           {/* Navigation */}
