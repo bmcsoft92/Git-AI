@@ -206,14 +206,19 @@ const DiagnosticPersonnalise = () => {
         roi_percentage
       };
 
-      const { error } = await supabase.functions.invoke('analyze-roi-data', {
+      console.log('📊 Envoi des données:', { roiData, diagnosticData, userEmail: diagnosticData.email, userName: diagnosticData.nom });
+      
+      const { data, error } = await supabase.functions.invoke('analyze-roi-data', {
         body: {
           roiData,
           diagnosticData,
           userEmail: diagnosticData.email,
-          userName: diagnosticData.nom
+          userName: diagnosticData.nom,
+          userPhone: null
         }
       });
+
+      console.log('📨 Réponse reçue:', { data, error });
 
       if (error) throw error;
 
