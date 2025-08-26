@@ -37,15 +37,18 @@ const PageLoader = () => (
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <SkipNavigation />
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <CookieConsent />
-        <Routes>
+const App = () => {
+  console.log('App: Démarrage de l\'application...');
+  
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <SkipNavigation />
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <CookieConsent />
+          <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/calculateur-roi" element={
             <Suspense fallback={<PageLoader />}>
@@ -133,10 +136,11 @@ const App = () => (
               <NotFound />
             </Suspense>
           } />
-        </Routes>
+         </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
+}
 
 export default App;
