@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Integrations from "@/components/Integrations";
 import ProcessSection from "@/components/ProcessSection";
-import GuideIATPE from "@/components/GuideIATPE";
+import TeaseGuideIATPE from "@/components/TeaseGuideIATPE";
 import AutomationCTA from "@/components/AutomationCTA";
 import Footer from "@/components/Footer";
 import { CookieConsent } from "@/components/CookieConsent";
@@ -35,7 +35,7 @@ const Index = () => {
         <Services />
         <Integrations />
         <ProcessSection />
-        <GuideIATPE />
+        <TeaseGuideIATPE />
         <AutomationCTA />
       </main>
       <Footer />

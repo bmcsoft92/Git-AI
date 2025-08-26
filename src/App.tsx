@@ -25,6 +25,7 @@ const CGU = lazy(() => import("./pages/CGU"));
 const CGV = lazy(() => import("./pages/CGV"));
 const AdminTest = lazy(() => import("./pages/AdminTest"));
 const DiagnosticPersonnalise = lazy(() => import("./pages/DiagnosticPersonnalise"));
+const GuideIATPEPage = lazy(() => import("./pages/GuideIATPE"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Appointment = lazy(() => import("./pages/Appointment"));
 
@@ -126,6 +127,11 @@ const App = () => {
           <Route path="/appointment" element={
             <Suspense fallback={<PageLoader />}>
               <Appointment />
+            </Suspense>
+          } />
+          <Route path="/guide-ia-tpe" element={
+            <Suspense fallback={<PageLoader />}>
+              <GuideIATPEPage />
             </Suspense>
           } />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
