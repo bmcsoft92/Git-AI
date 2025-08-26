@@ -2,7 +2,168 @@ import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.56.0';
 
-const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
+// Fonction pour générer des recommandations basées sur des règles métier
+function generateRecommendations(diagnosticData: any, roiData: any) {
+  const recommendations = [];
+  
+  // Base de recommandations selon le secteur
+  const sectorRecommendations = {
+    'E-commerce': [
+      {
+        title: "Automatisation de la gestion des commandes",
+        description: "Mise en place d'un système automatisé pour traiter les commandes, gérer les stocks et synchroniser les inventaires.",
+        estimatedROI: "180% sur 6 mois",
+        timeline: "4-6 semaines",
+        impact: "Réduction de 70% des erreurs de commande",
+        priority: 1
+      },
+      {
+        title: "Chatbot de service client intelligent",
+        description: "Déploiement d'un assistant virtuel pour traiter automatiquement les demandes clients les plus fréquentes.",
+        estimatedROI: "150% sur 4 mois",
+        timeline: "3-4 semaines",
+        impact: "Réduction de 60% du volume de support",
+        priority: 2
+      }
+    ],
+    'Services': [
+      {
+        title: "Automatisation de la planification",
+        description: "Système automatisé de réservation et de gestion des créneaux avec synchronisation calendrier.",
+        estimatedROI: "160% sur 5 mois",
+        timeline: "3-5 semaines",
+        impact: "Gain de 40% sur la gestion du temps",
+        priority: 1
+      },
+      {
+        title: "Workflow de suivi client automatisé",
+        description: "Automatisation du suivi post-service avec relances et collecte de feedback.",
+        estimatedROI: "120% sur 3 mois",
+        timeline: "2-3 semaines",
+        impact: "Amélioration de 50% de la satisfaction client",
+        priority: 2
+      }
+    ],
+    'Manufacturing': [
+      {
+        title: "Automatisation du contrôle qualité",
+        description: "Système de monitoring automatique des process de production avec alertes en temps réel.",
+        estimatedROI: "200% sur 8 mois",
+        timeline: "6-8 semaines",
+        impact: "Réduction de 45% des défauts",
+        priority: 1
+      },
+      {
+        title: "Optimisation de la chaîne logistique",
+        description: "Automatisation du tracking des matières premières et gestion prédictive des stocks.",
+        estimatedROI: "175% sur 6 mois",
+        timeline: "4-6 semaines",
+        impact: "Réduction de 30% des coûts de stock",
+        priority: 2
+      }
+    ],
+    'default': [
+      {
+        title: "Automatisation de la gestion documentaire",
+        description: "Système de classement et archivage automatique des documents avec OCR et indexation.",
+        estimatedROI: "140% sur 4 mois",
+        timeline: "3-4 semaines",
+        impact: "Gain de 50% sur la recherche de documents",
+        priority: 1
+      },
+      {
+        title: "Dashboard de pilotage en temps réel",
+        description: "Création d'un tableau de bord automatisé consolidant toutes les métriques business importantes.",
+        estimatedROI: "130% sur 3 mois",
+        timeline: "2-4 semaines",
+        impact: "Amélioration de 40% de la prise de décision",
+        priority: 2
+      }
+    ]
+  };
+
+  // Recommandations spécifiques selon les processus prioritaires
+  const processRecommendations = {
+    'gestion-administrative': {
+      title: "Automatisation des processus administratifs",
+      description: "Digitalisation et automatisation complète des workflows administratifs avec validation électronique.",
+      estimatedROI: "160% sur 5 mois",
+      timeline: "4-5 semaines",
+      impact: "Réduction de 65% du temps administratif",
+      priority: 1
+    },
+    'relation-client': {
+      title: "CRM automatisé et personnalisé",
+      description: "Mise en place d'un CRM avec automatisation des relances, segmentation et campagnes personnalisées.",
+      estimatedROI: "180% sur 6 mois",
+      timeline: "4-6 semaines",
+      impact: "Augmentation de 35% du taux de conversion",
+      priority: 1
+    },
+    'production': {
+      title: "Optimisation des processus de production",
+      description: "Automatisation du monitoring production avec optimisation des rendements et maintenance prédictive.",
+      estimatedROI: "220% sur 8 mois",
+      timeline: "6-8 semaines",
+      impact: "Augmentation de 25% de la productivité",
+      priority: 1
+    }
+  };
+
+  // Sélectionner les recommandations selon le secteur
+  const sector = diagnosticData.secteur || 'default';
+  const sectorRecs = sectorRecommendations[sector] || sectorRecommendations['default'];
+  
+  // Ajouter une recommandation sectorielle
+  recommendations.push(sectorRecs[0]);
+
+  // Ajouter une recommandation basée sur les processus prioritaires
+  if (diagnosticData.processus_prioritaires && diagnosticData.processus_prioritaires.length > 0) {
+    const mainProcess = diagnosticData.processus_prioritaires[0];
+    if (processRecommendations[mainProcess]) {
+      recommendations.push(processRecommendations[mainProcess]);
+    } else {
+      recommendations.push(sectorRecs[1] || sectorRecommendations['default'][1]);
+    }
+  }
+
+  // Recommandation budgétaire adaptée
+  const budget = diagnosticData.budget_annuel;
+  let budgetRecommendation;
+  
+  if (budget === 'moins-10k') {
+    budgetRecommendation = {
+      title: "Solutions No-Code accessibles",
+      description: "Mise en place d'outils No-Code pour automatiser rapidement les tâches répétitives sans développement.",
+      estimatedROI: "120% sur 2 mois",
+      timeline: "2-3 semaines",
+      impact: "Quick wins immédiats sur l'efficacité",
+      priority: 3
+    };
+  } else if (budget === '10k-50k') {
+    budgetRecommendation = {
+      title: "Intégrations API et workflows avancés",
+      description: "Développement de connecteurs entre vos outils existants avec workflows automatisés personnalisés.",
+      estimatedROI: "155% sur 4 mois",
+      timeline: "4-6 semaines",
+      impact: "Synchronisation complète de l'écosystème",
+      priority: 3
+    };
+  } else {
+    budgetRecommendation = {
+      title: "Transformation digitale complète",
+      description: "Refonte globale des processus avec IA intégrée et analytics avancées pour une transformation complète.",
+      estimatedROI: "250% sur 12 mois",
+      timeline: "8-12 semaines",
+      impact: "Révolution des méthodes de travail",
+      priority: 3
+    };
+  }
+
+  recommendations.push(budgetRecommendation);
+
+  return recommendations;
+}
 const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
 const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
 
@@ -39,118 +200,11 @@ serve(async (req) => {
     const { roiData, diagnosticData, userEmail, userName, userPhone }: AnalyzeRequest = await req.json();
 
     console.log("Analyzing ROI data for:", userEmail);
+    console.log("Diagnostic data:", diagnosticData);
 
-    // Prepare the AI analysis prompt
-    const analysisPrompt = `
-En tant qu'expert en automatisation et transformation digitale, analysez ces données et générez exactement 3 recommandations prioritaires d'automatisation.
-
-DONNÉES ROI:
-- Heures par semaine: ${roiData.hours_per_week}h
-- Taux horaire: ${roiData.hourly_rate}€
-- Employés: ${roiData.employees}
-- Investissement: ${roiData.investment}€
-- Économies annuelles: ${roiData.annual_savings}€
-- ROI: ${roiData.roi_percentage}%
-
-DONNÉES DIAGNOSTIC:
-- Taille équipe: ${diagnosticData.taille}
-- Secteur: ${diagnosticData.secteur}
-- Chiffre d'affaires: ${diagnosticData.chiffre_affaires}
-- Processus prioritaires: ${diagnosticData.processus_prioritaires?.join(', ')}
-- Tâche frustrante: ${diagnosticData.tache_frustrante}
-- Heures répétitives/semaine: ${diagnosticData.heures_repetitives}h
-- Coût horaire: ${diagnosticData.cout_horaire}€
-- Outils actuels: ${diagnosticData.outils?.join(', ')}
-- Autre outil: ${diagnosticData.autre_outil}
-- Délai souhaité: ${diagnosticData.delai}
-- Budget annuel: ${diagnosticData.budget_annuel}
-
-INSTRUCTIONS:
-Générez exactement 3 recommandations en format JSON avec cette structure:
-{
-  "recommendations": [
-    {
-      "title": "Titre du chantier",
-      "description": "Description détaillée de la solution d'automatisation recommandée",
-      "estimatedROI": "ROI estimé avec pourcentage et délai",
-      "timeline": "Délai de mise en œuvre estimé",
-      "impact": "Impact concret sur l'entreprise",
-      "priority": 1
-    }
-  ]
-}
-
-Priorisez selon:
-1. ROI le plus élevé
-2. Facilité d'implémentation 
-3. Impact immédiat sur les processus métier
-
-Soyez spécifique et concret dans vos recommandations.
-`;
-
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${openAIApiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o-mini',
-        messages: [
-          { 
-            role: 'system', 
-            content: 'Tu es un expert consultant en automatisation et transformation digitale chez Maia Elange. Tu analyses les données ROI et diagnostic pour générer des recommandations précises et actionnables.' 
-          },
-          { role: 'user', content: analysisPrompt }
-        ],
-        max_tokens: 2000,
-        temperature: 0.7,
-      }),
-    });
-
-    const aiData = await response.json();
-    console.log("OpenAI response:", aiData);
-
-    let recommendations;
-    try {
-      const aiContent = aiData.choices[0].message.content;
-      const jsonMatch = aiContent.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        const parsedData = JSON.parse(jsonMatch[0]);
-        recommendations = parsedData.recommendations;
-      } else {
-        throw new Error("No valid JSON found in AI response");
-      }
-    } catch (parseError) {
-      console.error("Error parsing AI response:", parseError);
-      // Fallback recommendations
-      recommendations = [
-        {
-          title: "Automatisation de la Gestion des Emails",
-          description: "Mise en place d'un système de tri et réponse automatique des emails pour réduire le temps de traitement",
-          estimatedROI: "150% sur 6 mois",
-          timeline: "2-3 semaines",
-          impact: "Réduction de 60% du temps passé sur les emails",
-          priority: 1
-        },
-        {
-          title: "Automatisation des Processus de Facturation",
-          description: "Intégration d'un système de facturation automatique avec suivi des paiements",
-          estimatedROI: "200% sur 8 mois",
-          timeline: "4-6 semaines",
-          impact: "Élimination des erreurs de facturation et gain de temps significatif",
-          priority: 2
-        },
-        {
-          title: "Dashboard de Suivi en Temps Réel",
-          description: "Création d'un tableau de bord automatisé pour le suivi des KPIs business",
-          estimatedROI: "120% sur 4 mois",
-          timeline: "3-4 semaines",
-          impact: "Prise de décision accélérée et visibilité complète",
-          priority: 3
-        }
-      ];
-    }
+    // Générer les recommandations avec la logique locale
+    const recommendations = generateRecommendations(diagnosticData, roiData);
+    console.log("Generated recommendations:", recommendations);
 
     // Save to database
     const { data: calculationData, error: insertError } = await supabase
