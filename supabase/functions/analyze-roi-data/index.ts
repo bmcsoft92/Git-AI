@@ -14,19 +14,6 @@ const corsHeaders = {
   'Access-Control-Allow-Credentials': 'false',
 };
 
-// Types et interfaces
-interface RecommendationTemplate {
-  title: string;
-  description: string;
-  baseROI: number;
-  baseTimeline: string;
-  baseImpact: string;
-  sectors: string[];
-  processes: string[];
-  minBudget: number;
-  complexity: 'low' | 'medium' | 'high';
-}
-
 interface DiagnosticData {
   taille: string;
   secteur: string;
@@ -57,237 +44,66 @@ interface AnalyzeRequest {
   userPhone?: string;
 }
 
-// Base de données des recommandations avec scoring intelligent
-const RECOMMENDATION_TEMPLATES: RecommendationTemplate[] = [
-  {
-    title: "Automatisation de la gestion des commandes",
-    description: "Système automatisé pour traiter les commandes, gérer les stocks et synchroniser les inventaires en temps réel.",
-    baseROI: 180,
-    baseTimeline: "4-6 semaines",
-    baseImpact: "Réduction de 70% des erreurs",
-    sectors: ['E-commerce', 'Retail'],
-    processes: ['relation-client', 'gestion-administrative'],
-    minBudget: 15000,
-    complexity: 'medium'
-  },
+// Recommandations simplifiées et robustes
+const RECOMMENDATIONS = [
   {
     title: "CRM automatisé et personnalisé",
     description: "CRM avec automatisation des relances, segmentation intelligente et campagnes personnalisées basées sur l'IA.",
-    baseROI: 200,
-    baseTimeline: "4-6 semaines",
-    baseImpact: "Augmentation de 35% du taux de conversion",
-    sectors: ['Services', 'E-commerce', 'default'],
-    processes: ['relation-client', 'commercial'],
-    minBudget: 12000,
-    complexity: 'medium'
+    estimatedROI: "200% sur 6 mois",
+    timeline: "4-6 semaines",
+    impact: "Augmentation de 35% du taux de conversion",
+    priority: 1
   },
   {
     title: "Automatisation des processus administratifs",
     description: "Digitalisation complète des workflows administratifs avec validation électronique et traçabilité.",
-    baseROI: 160,
-    baseTimeline: "3-5 semaines",
-    baseImpact: "Réduction de 65% du temps administratif",
-    sectors: ['default'],
-    processes: ['gestion-administrative', 'comptabilite'],
-    minBudget: 8000,
-    complexity: 'low'
+    estimatedROI: "160% sur 4 mois",
+    timeline: "3-5 semaines",
+    impact: "Réduction de 65% du temps administratif",
+    priority: 2
   },
   {
     title: "Dashboard de pilotage intelligent",
     description: "Tableau de bord en temps réel avec analytics prédictives et alertes automatiques sur les KPIs critiques.",
-    baseROI: 140,
-    baseTimeline: "2-4 semaines",
-    baseImpact: "Amélioration de 50% de la prise de décision",
-    sectors: ['default'],
-    processes: ['gestion-administrative', 'production'],
-    minBudget: 5000,
-    complexity: 'low'
-  },
-  {
-    title: "Automatisation du contrôle qualité",
-    description: "Monitoring automatique des process avec IA de détection d'anomalies et maintenance prédictive.",
-    baseROI: 220,
-    baseTimeline: "6-8 semaines",
-    baseImpact: "Réduction de 45% des défauts",
-    sectors: ['Manufacturing', 'Production'],
-    processes: ['production', 'controle-qualite'],
-    minBudget: 25000,
-    complexity: 'high'
-  },
-  {
-    title: "Chatbot de service client intelligent",
-    description: "Assistant virtuel avec traitement automatique des demandes et escalade intelligente vers les humains.",
-    baseROI: 150,
-    baseTimeline: "3-4 semaines",
-    baseImpact: "Réduction de 60% du volume de support",
-    sectors: ['E-commerce', 'Services', 'default'],
-    processes: ['relation-client', 'support'],
-    minBudget: 7000,
-    complexity: 'medium'
-  },
-  {
-    title: "Solutions No-Code pour gains rapides",
-    description: "Automatisation des tâches répétitives avec des outils No-Code pour des résultats immédiats.",
-    baseROI: 120,
-    baseTimeline: "1-2 semaines",
-    baseImpact: "Quick wins immédiats",
-    sectors: ['default'],
-    processes: ['default'],
-    minBudget: 2000,
-    complexity: 'low'
-  },
-  {
-    title: "Transformation digitale complète",
-    description: "Refonte globale des processus avec IA intégrée, analytics avancées et workflows intelligents.",
-    baseROI: 300,
-    baseTimeline: "8-12 semaines",
-    baseImpact: "Révolution complète des méthodes de travail",
-    sectors: ['default'],
-    processes: ['default'],
-    minBudget: 50000,
-    complexity: 'high'
+    estimatedROI: "140% sur 3 mois",
+    timeline: "2-4 semaines",
+    impact: "Amélioration de 50% de la prise de décision",
+    priority: 3
   }
 ];
 
-// Utilitaires de scoring et calcul
-class RecommendationEngine {
-  static getBudgetRange(budget: string): number {
-    const budgetMap: Record<string, number> = {
-      'moins-10k': 5000,
-      '10k-50k': 25000,
-      '50k-plus': 100000,
-      'default': 15000
-    };
-    return budgetMap[budget] || budgetMap['default'];
-  }
-
-  static calculateAdaptiveROI(template: RecommendationTemplate, diagnosticData: DiagnosticData, roiData: any): number {
-    let adaptedROI = template.baseROI;
-    
-    // Ajustement selon les heures répétitives
-    const repetitiveHours = diagnosticData.heures_repetitives || 0;
-    if (repetitiveHours > 20) adaptedROI *= 1.3;
-    else if (repetitiveHours > 10) adaptedROI *= 1.15;
-    
-    // Ajustement selon le coût horaire
-    const hourlyRate = diagnosticData.cout_horaire || 0;
-    if (hourlyRate > 50) adaptedROI *= 1.2;
-    else if (hourlyRate > 30) adaptedROI *= 1.1;
-    
-    // Ajustement selon la complexité vs budget
-    const budget = this.getBudgetRange(diagnosticData.budget_annuel);
-    if (template.complexity === 'low' && budget < 10000) adaptedROI *= 1.1;
-    if (template.complexity === 'high' && budget > 50000) adaptedROI *= 1.2;
-    
-    return Math.round(adaptedROI);
-  }
-
-  static scoreRecommendation(template: RecommendationTemplate, diagnosticData: DiagnosticData): number {
-    let score = 0;
-    
-    // Score secteur (40%)
-    if (template.sectors.includes(diagnosticData.secteur) || template.sectors.includes('default')) {
-      score += template.sectors.includes(diagnosticData.secteur) ? 40 : 20;
-    }
-    
-    // Score processus (35%)
-    const processes = diagnosticData.processus_prioritaires || [];
-    const processMatch = processes.some(p => template.processes.includes(p));
-    if (processMatch) score += 35;
-    else if (template.processes.includes('default')) score += 15;
-    
-    // Score budget (20%)
-    const budget = this.getBudgetRange(diagnosticData.budget_annuel);
-    const budgetRatio = budget / template.minBudget;
-    if (budgetRatio >= 1) score += 20;
-    else if (budgetRatio >= 0.5) score += 10;
-    
-    // Score ROI potentiel (5%)
-    score += Math.min(template.baseROI / 40, 5);
-    
-    return score;
-  }
-}
-
-// Fonction principale optimisée
-function generateRecommendations(diagnosticData: DiagnosticData, roiData: any) {
-  // Scorer toutes les recommandations
-  const scoredTemplates = RECOMMENDATION_TEMPLATES
-    .map(template => ({
-      template,
-      score: RecommendationEngine.scoreRecommendation(template, diagnosticData),
-      adaptedROI: RecommendationEngine.calculateAdaptiveROI(template, diagnosticData, roiData)
-    }))
-    .sort((a, b) => b.score - a.score);
-
-  // Sélectionner les 3 meilleures avec diversité
-  const selectedRecommendations = [];
-  const usedComplexities = new Set();
-  
-  for (const item of scoredTemplates) {
-    if (selectedRecommendations.length >= 3) break;
-    
-    // Assurer la diversité de complexité
-    if (selectedRecommendations.length < 2 || !usedComplexities.has(item.template.complexity)) {
-      usedComplexities.add(item.template.complexity);
-      
-      selectedRecommendations.push({
-        title: item.template.title,
-        description: item.template.description,
-        estimatedROI: `${item.adaptedROI}% sur ${item.template.baseTimeline.split(' ').pop()}`,
-        timeline: item.template.baseTimeline,
-        impact: item.template.baseImpact,
-        priority: selectedRecommendations.length + 1
-      });
-    }
-  }
-  
-  // Compléter avec les meilleures si nécessaire
-  while (selectedRecommendations.length < 3) {
-    const remaining = scoredTemplates.find(item => 
-      !selectedRecommendations.some(rec => rec.title === item.template.title)
-    );
-    
-    if (remaining) {
-      selectedRecommendations.push({
-        title: remaining.template.title,
-        description: remaining.template.description,
-        estimatedROI: `${remaining.adaptedROI}% sur ${remaining.template.baseTimeline.split(' ').pop()}`,
-        timeline: remaining.template.baseTimeline,
-        impact: remaining.template.baseImpact,
-        priority: selectedRecommendations.length + 1
-      });
-    } else {
-      break;
-    }
-  }
-
-  return selectedRecommendations;
-}
-
-// Serveur principal
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const requestBody = await req.json();
-    const { roiData, diagnosticData, userEmail, userName, userPhone } = requestBody;
+    console.log("🚀 analyze-roi-data function called");
     
-    console.log("Analyzing ROI data for:", userEmail);
+    const requestBody = await req.json();
+    console.log("📨 Request received:", requestBody);
+    
+    const { roiData, diagnosticData, userEmail, userName, userPhone } = requestBody as AnalyzeRequest;
 
-    // Générer les recommandations avec la logique locale optimisée
-    const recommendations = generateRecommendations(diagnosticData, roiData);
-    console.log("Generated recommendations:", recommendations);
+    if (!userEmail || !roiData || !diagnosticData) {
+      throw new Error("Missing required fields");
+    }
 
-    // Save to database
+    console.log("✅ Data validation passed for:", userEmail);
+
+    // Générer les recommandations (simplifiées pour éviter les erreurs)
+    const recommendations = RECOMMENDATIONS;
+
+    console.log("📊 Generated recommendations:", recommendations);
+
+    // Sauvegarder dans la base de données
+    console.log("💾 Saving to database...");
     const { data: calculationData, error: insertError } = await supabase
       .from('roi_calculations')
       .insert({
         user_email: userEmail,
-        user_name: userName,
-        user_phone: userPhone,
+        user_name: userName || null,
+        user_phone: userPhone || null,
         hours_per_week: roiData.hours_per_week,
         hourly_rate: roiData.hourly_rate,
         employees: roiData.employees,
@@ -312,15 +128,14 @@ serve(async (req) => {
       .single();
 
     if (insertError) {
-      console.error("Database insert error:", insertError);
-      throw new Error("Failed to save analysis to database");
+      console.error("❌ Database insert error:", insertError);
+      throw new Error(`Database error: ${insertError.message}`);
     }
 
-    console.log("Analysis saved with ID:", calculationData.id);
+    console.log("✅ Data saved with ID:", calculationData.id);
 
-    // Créer ou mettre à jour le lead dans le CRM
-    console.log("Creating/updating lead in CRM...");
-    
+    // Créer le lead
+    console.log("👤 Creating lead...");
     const { data: leadData, error: leadError } = await supabase
       .rpc('upsert_lead', {
         p_email: userEmail,
@@ -336,17 +151,20 @@ serve(async (req) => {
       });
 
     if (leadError) {
-      console.error("Error creating/updating lead:", leadError);
+      console.error("❌ Lead creation error:", leadError);
     } else {
-      console.log("Lead created/updated with ID:", leadData);
+      console.log("✅ Lead created/updated with ID:", leadData);
       
       // Lier l'analyse ROI au lead
       await supabase
         .from('roi_calculations')
         .update({ lead_id: leadData })
         .eq('id', calculationData.id);
-      
-      // Envoyer l'email avec les recommandations via l'edge function
+    }
+
+    // Envoyer l'email
+    console.log("📧 Sending email...");
+    try {
       const { data: emailData, error: emailError } = await supabase.functions.invoke('send-roi-email', {
         body: {
           calculationId: calculationData.id,
@@ -359,13 +177,13 @@ serve(async (req) => {
       });
 
       if (emailError) {
-        console.error("Error sending email:", emailError);
+        console.error("❌ Email error:", emailError);
       } else {
-        console.log("Email sent successfully");
-        
-        // Mettre à jour le statut du lead après envoi de l'email (reste nouveau)
-        console.log("Email ROI sent successfully to lead:", userEmail);
+        console.log("✅ Email sent successfully");
       }
+    } catch (emailErr) {
+      console.error("❌ Email sending failed:", emailErr);
+      // Ne pas faire échouer toute la fonction si l'email échoue
     }
 
     return new Response(JSON.stringify({
@@ -377,7 +195,7 @@ serve(async (req) => {
     });
 
   } catch (error: any) {
-    console.error('Error in analyze-roi-data function:', error);
+    console.error('❌ Fatal error in analyze-roi-data function:', error);
     return new Response(JSON.stringify({ 
       error: error.message,
       details: "Failed to analyze ROI data"
