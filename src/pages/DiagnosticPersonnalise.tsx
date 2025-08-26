@@ -163,8 +163,56 @@ const DiagnosticPersonnalise = () => {
 
     setIsSubmitting(true);
     try {
+      // Calculer le nombre d'employés à partir de la taille d'équipe
+      const getEmployeeCount = (taille: string): number => {
+        switch (taille) {
+          case "1": return 1;
+          case "2-5": return 3;
+          case "6-20": return 13;
+          case "21-50": return 35;
+          case "51+": return 75;
+          default: return 1;
+        }
+      };
+
+      // Construire les données ROI à partir du diagnostic
+      const hours_per_week = parseFloat(diagnosticData.heures_repetitives) || 0;
+      const hourly_rate = parseFloat(diagnosticData.cout_horaire) || 0;
+      const employees = getEmployeeCount(diagnosticData.taille);
+      const annual_hours = hours_per_week * 52 * employees;
+      const annual_cost = annual_hours * hourly_rate;
+      
+      // Estimation de l'investissement basé sur le budget
+      const getInvestment = (budget: string): number => {
+        switch (budget) {
+          case "0-1000": return 500;
+          case "1000-5000": return 3000;
+          case "5000-15000": return 10000;
+          case "15000+": return 20000;
+          default: return 5000;
+        }
+      };
+
+      const investment = getInvestment(diagnosticData.budget_annuel);
+      const annual_savings = Math.max(0, annual_cost * 0.4); // Estimation 40% d'économies
+      const roi_percentage = investment > 0 ? ((annual_savings - investment) / investment) * 100 : 0;
+
+      const roiData = {
+        hours_per_week,
+        hourly_rate,
+        employees,
+        investment,
+        annual_savings,
+        roi_percentage
+      };
+
       const { error } = await supabase.functions.invoke('analyze-roi-data', {
-        body: { diagnosticData }
+        body: {
+          roiData,
+          diagnosticData,
+          userEmail: diagnosticData.email,
+          userName: diagnosticData.nom
+        }
       });
 
       if (error) throw error;
