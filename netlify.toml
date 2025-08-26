@@ -1,0 +1,85 @@
+# Configuration Netlify pour Maïa Élange
+# Headers de sécurité et optimisations
+
+[build]
+  # Commande de build
+  command = "npm run build"
+  # Dossier à publier
+  publish = "dist"
+
+# Headers de sécurité HTTP
+[[headers]]
+  # Appliquer à toutes les pages
+  for = "/*"
+  [headers.values]
+    # Sécurité de base
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff" 
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Content Security Policy stricte
+    Content-Security-Policy = '''
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https: blob:;
+      connect-src 'self' https://jyimtfbfntikeugqumxb.supabase.co wss://jyimtfbfntikeugqumxb.supabase.co;
+      worker-src 'self' blob:;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      frame-ancestors 'self';
+    '''
+    
+    # Permissions Policy
+    Permissions-Policy = "camera=(), microphone=(), geolocation=self, payment=()"
+    
+    # HSTS (HTTPS obligatoire)
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+# Headers spécifiques aux assets statiques
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    # Cache longue durée pour les assets avec hash
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Headers pour les polices
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Cross-Origin-Resource-Policy = "cross-origin"
+
+# Sitemap et robots
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=UTF-8"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=UTF-8"
+
+# Redirection www vers domaine principal (à adapter)
+[[redirects]]
+  from = "https://www.maiaelange.fr/*"
+  to = "https://maiaelange.fr/:splat"
+  status = 301
+  force = true
+
+# SPA fallback pour React Router
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Variables d'environnement (exemple)
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "development"
