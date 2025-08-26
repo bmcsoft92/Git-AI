@@ -87,6 +87,7 @@ const ROICalculatorPage = () => {
 
   // Validation des étapes
   const validateStep = (step: number): boolean => {
+    console.log(`🔍 Validating step ${step}`);
     const errors: string[] = [];
     
     switch (step) {
@@ -118,12 +119,16 @@ const ROICalculatorPage = () => {
         if (diagnosticData.outils.length === 0) errors.push("outils");
         break;
       case 6:
+        console.log("📝 Step 6 validation - consentement:", diagnosticData.consentement);
+        console.log("📝 Step 6 validation - delai:", diagnosticData.delai);
+        console.log("📝 Step 6 validation - budget_annuel:", diagnosticData.budget_annuel);
         if (!diagnosticData.consentement) errors.push("consentement");
         if (!diagnosticData.delai.trim()) errors.push("delai");
         if (!diagnosticData.budget_annuel.trim()) errors.push("budget_annuel");
         break;
     }
     
+    console.log(`🔍 Step ${step} validation errors:`, errors);
     setValidationErrors(errors);
     return errors.length === 0;
   };
@@ -141,13 +146,20 @@ const ROICalculatorPage = () => {
   };
 
   const handleNextStep = () => {
+    console.log("🚀 handleNextStep called, currentStep:", currentStep);
+    
     if (validateStep(currentStep)) {
+      console.log("✅ Step validation passed");
       if (currentStep < 6) {
+        console.log("➡️ Moving to next step");
         setCurrentStep(currentStep + 1);
       } else {
+        console.log("🏁 Final step - calling handleDiagnosticSubmit");
         // Soumission finale
         handleDiagnosticSubmit();
       }
+    } else {
+      console.log("❌ Step validation failed");
     }
   };
 
@@ -159,6 +171,10 @@ const ROICalculatorPage = () => {
   };
 
   const handleDiagnosticSubmit = async () => {
+    console.log("🔥 handleDiagnosticSubmit CALLED");
+    console.log("📊 FormData:", formData);
+    console.log("📋 DiagnosticData:", diagnosticData);
+    
     setIsAnalyzing(true);
     
     try {
@@ -194,10 +210,14 @@ const ROICalculatorPage = () => {
         userPhone: "" // Pas de téléphone dans le formulaire actuel
       };
 
+      console.log("📨 Calling analyze-roi-data function with:", analysisData);
+      
       // Appeler l'edge function d'analyse qui se charge aussi de l'envoi d'email
       const { data: analysisResponse, error: analysisError } = await supabase.functions.invoke('analyze-roi-data', {
         body: analysisData
       });
+
+      console.log("📥 Function response:", { analysisResponse, analysisError });
 
       if (analysisError) throw analysisError;
 
