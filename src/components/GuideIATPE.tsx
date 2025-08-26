@@ -76,7 +76,7 @@ const GuideIATPE = () => {
         <div className="text-center mb-16">
           <Badge className="mb-6 bg-success/10 text-success border-success/30">
             <BookOpen className="w-4 h-4 mr-2" />
-            GUIDE PRATIQUE GRATUIT
+            GUIDE PRATIQUE
           </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold text-heading mb-6">
             L'IA pour les TPE : <span className="text-primary">Par où Commencer ?</span>
