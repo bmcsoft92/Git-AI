@@ -179,20 +179,11 @@ const CasUsage = () => {
                         </p>
                       </div>
                       
-                      <div className="mb-6 p-3 bg-primary/10 rounded-lg border border-primary/20">
+                      <div className="p-3 bg-primary/10 rounded-lg border border-primary/20">
                         <p className="text-sm font-medium text-primary">
                           {cas.gain}
                         </p>
                       </div>
-                      
-                      <Button 
-                        onClick={() => navigate("/calculateur-roi")}
-                        variant="cta" 
-                        className="w-full group/btn"
-                      >
-                        {cas.ctaText}
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                      </Button>
                     </CardContent>
                   </Card>
                 );
