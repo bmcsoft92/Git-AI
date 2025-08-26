@@ -53,18 +53,17 @@ DONNÉES ROI:
 - ROI: ${roiData.roi_percentage}%
 
 DONNÉES DIAGNOSTIC:
-- Taille équipe: ${diagnosticData.team_size}
-- Type d'entreprise: ${diagnosticData.business_type}
-- Activités principales: ${diagnosticData.main_activities?.join(', ')}
-- Tâches répétitives: ${diagnosticData.repetitive_tasks?.join(', ')}
-- Outils actuels: ${diagnosticData.current_tools?.join(', ')}
-- Points de douleur: ${diagnosticData.pain_points?.join(', ')}
-- Objectifs d'automatisation: ${diagnosticData.automation_goals?.join(', ')}
-- Timeline: ${diagnosticData.timeline}
-- Budget: ${diagnosticData.budget_range}
-- Niveau technique: ${diagnosticData.technical_level}
-- Processus prioritaires: ${diagnosticData.priority_processes?.join(', ')}
-- Métriques de succès: ${diagnosticData.success_metrics?.join(', ')}
+- Taille équipe: ${diagnosticData.taille}
+- Secteur: ${diagnosticData.secteur}
+- Chiffre d'affaires: ${diagnosticData.chiffre_affaires}
+- Processus prioritaires: ${diagnosticData.processus_prioritaires?.join(', ')}
+- Tâche frustrante: ${diagnosticData.tache_frustrante}
+- Heures répétitives/semaine: ${diagnosticData.heures_repetitives}h
+- Coût horaire: ${diagnosticData.cout_horaire}€
+- Outils actuels: ${diagnosticData.outils?.join(', ')}
+- Autre outil: ${diagnosticData.autre_outil}
+- Délai souhaité: ${diagnosticData.delai}
+- Budget annuel: ${diagnosticData.budget_annuel}
 
 INSTRUCTIONS:
 Générez exactement 3 recommandations en format JSON avec cette structure:
@@ -166,18 +165,18 @@ Soyez spécifique et concret dans vos recommandations.
         investment: roiData.investment,
         annual_savings: roiData.annual_savings,
         roi_percentage: roiData.roi_percentage,
-        team_size: diagnosticData.team_size,
-        business_type: diagnosticData.business_type,
-        main_activities: diagnosticData.main_activities,
-        repetitive_tasks: diagnosticData.repetitive_tasks,
-        current_tools: diagnosticData.current_tools,
-        pain_points: diagnosticData.pain_points,
-        automation_goals: diagnosticData.automation_goals,
-        timeline: diagnosticData.timeline,
-        budget_range: diagnosticData.budget_range,
-        technical_level: diagnosticData.technical_level,
-        priority_processes: diagnosticData.priority_processes,
-        success_metrics: diagnosticData.success_metrics,
+        team_size: diagnosticData.taille,
+        business_type: diagnosticData.secteur,
+        main_activities: diagnosticData.processus_prioritaires,
+        repetitive_tasks: [diagnosticData.tache_frustrante].filter(Boolean),
+        current_tools: diagnosticData.outils,
+        pain_points: [diagnosticData.tache_frustrante].filter(Boolean),
+        automation_goals: diagnosticData.processus_prioritaires,
+        timeline: diagnosticData.delai,
+        budget_range: diagnosticData.budget_annuel,
+        technical_level: 'standard',
+        priority_processes: diagnosticData.processus_prioritaires,
+        success_metrics: ['ROI', 'Temps économisé'],
         priority_projects: recommendations
       })
       .select()
@@ -198,13 +197,13 @@ Soyez spécifique et concret dans vos recommandations.
         p_email: userEmail,
         p_name: userName || null,
         p_phone: userPhone || null,
-        p_company: null,
-        p_team_size: diagnosticData.team_size || null,
-        p_business_type: diagnosticData.business_type || null,
+        p_company: diagnosticData.organisation || null,
+        p_team_size: diagnosticData.taille || null,
+        p_business_type: diagnosticData.secteur || null,
         p_roi_potential: roiData.roi_percentage,
         p_annual_savings: roiData.annual_savings,
         p_status: 'nouveau',
-        p_budget_range: diagnosticData.budget_range || null
+        p_budget_range: diagnosticData.budget_annuel || null
       });
 
     if (leadError) {
