@@ -11,7 +11,6 @@ const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-  'Access-Control-Allow-Credentials': 'false',
 };
 
 interface DiagnosticData {
@@ -44,7 +43,6 @@ interface AnalyzeRequest {
   userPhone?: string;
 }
 
-// Recommandations simplifiées et robustes
 const RECOMMENDATIONS = [
   {
     title: "CRM automatisé et personnalisé",
@@ -78,26 +76,18 @@ serve(async (req) => {
   }
 
   try {
-    console.log("🚀 analyze-roi-data function called");
+    console.log("🚀 analyze-roi-data function started");
     
     const requestBody = await req.json();
-    console.log("📨 Request received:", requestBody);
-    
     const { roiData, diagnosticData, userEmail, userName, userPhone } = requestBody as AnalyzeRequest;
 
     if (!userEmail || !roiData || !diagnosticData) {
       throw new Error("Missing required fields");
     }
 
-    console.log("✅ Data validation passed for:", userEmail);
-
-    // Générer les recommandations (simplifiées pour éviter les erreurs)
-    const recommendations = RECOMMENDATIONS;
-
-    console.log("📊 Generated recommendations:", recommendations);
+    console.log("✅ Processing for:", userEmail);
 
     // Sauvegarder dans la base de données
-    console.log("💾 Saving to database...");
     const { data: calculationData, error: insertError } = await supabase
       .from('roi_calculations')
       .insert({
@@ -122,20 +112,17 @@ serve(async (req) => {
         technical_level: 'standard',
         priority_processes: diagnosticData.processus_prioritaires,
         success_metrics: ['ROI', 'Temps économisé'],
-        priority_projects: recommendations
+        priority_projects: RECOMMENDATIONS
       })
       .select()
       .single();
 
     if (insertError) {
-      console.error("❌ Database insert error:", insertError);
+      console.error("❌ Database error:", insertError);
       throw new Error(`Database error: ${insertError.message}`);
     }
 
-    console.log("✅ Data saved with ID:", calculationData.id);
-
     // Créer le lead
-    console.log("👤 Creating lead...");
     const { data: leadData, error: leadError } = await supabase
       .rpc('upsert_lead', {
         p_email: userEmail,
@@ -150,12 +137,7 @@ serve(async (req) => {
         p_budget_range: diagnosticData.budget_annuel || null
       });
 
-    if (leadError) {
-      console.error("❌ Lead creation error:", leadError);
-    } else {
-      console.log("✅ Lead created/updated with ID:", leadData);
-      
-      // Lier l'analyse ROI au lead
+    if (!leadError && leadData) {
       await supabase
         .from('roi_calculations')
         .update({ lead_id: leadData })
@@ -163,42 +145,34 @@ serve(async (req) => {
     }
 
     // Envoyer l'email
-    console.log("📧 Sending email...");
     try {
-      const { data: emailData, error: emailError } = await supabase.functions.invoke('send-roi-email', {
+      await supabase.functions.invoke('send-roi-email', {
         body: {
           calculationId: calculationData.id,
           userEmail,
           userName,
           roiData,
           diagnosticData,
-          recommendations
+          recommendations: RECOMMENDATIONS
         }
       });
-
-      if (emailError) {
-        console.error("❌ Email error:", emailError);
-      } else {
-        console.log("✅ Email sent successfully");
-      }
+      console.log("✅ Email sent");
     } catch (emailErr) {
-      console.error("❌ Email sending failed:", emailErr);
-      // Ne pas faire échouer toute la fonction si l'email échoue
+      console.error("❌ Email error:", emailErr);
     }
 
     return new Response(JSON.stringify({
       success: true,
       calculationId: calculationData.id,
-      recommendations: recommendations
+      recommendations: RECOMMENDATIONS
     }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
 
   } catch (error: any) {
-    console.error('❌ Fatal error in analyze-roi-data function:', error);
+    console.error('❌ Error:', error);
     return new Response(JSON.stringify({ 
-      error: error.message,
-      details: "Failed to analyze ROI data"
+      error: error.message
     }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

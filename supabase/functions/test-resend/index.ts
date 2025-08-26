@@ -25,11 +25,14 @@ serve(async (req) => {
     const emailResponse = await resend.emails.send({
       from: "Maia elange <onboarding@resend.dev>",
       to: [email],
-      subject: "Test Resend - Maia Elange",
+      subject: "✅ Test Resend réussi - Maia Elange",
       html: `
-        <h1>🚀 Test réussi !</h1>
-        <p>Resend fonctionne parfaitement.</p>
-        <p>Email envoyé le ${new Date().toLocaleString('fr-FR')}</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h1 style="color: #0F7F7B;">🚀 Test Resend réussi !</h1>
+          <p>Parfait ! Resend fonctionne maintenant correctement.</p>
+          <p><strong>Email envoyé le:</strong> ${new Date().toLocaleString('fr-FR')}</p>
+          <p>Vous pouvez maintenant utiliser le système d'envoi d'emails.</p>
+        </div>
       `,
     });
 
@@ -38,7 +41,7 @@ serve(async (req) => {
     return new Response(JSON.stringify({ 
       success: true, 
       emailId: emailResponse.data?.id,
-      message: "Email envoyé avec succès"
+      message: "Email de test envoyé avec succès !"
     }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });

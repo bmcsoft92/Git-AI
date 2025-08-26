@@ -13,17 +13,9 @@ serve(async (req) => {
   try {
     console.log("🧪 Simple test function called");
     
-    const resendKey = Deno.env.get("RESEND_API_KEY");
-    console.log("🔑 RESEND_API_KEY présente:", !!resendKey);
-    
-    if (resendKey) {
-      console.log("🔑 RESEND_API_KEY commence par:", resendKey.substring(0, 10) + "...");
-    }
-
     return new Response(JSON.stringify({ 
       success: true,
-      message: "Fonction simple OK",
-      hasResendKey: !!resendKey,
+      message: "Fonction simple OK - Edge functions fonctionnent !",
       timestamp: new Date().toISOString()
     }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
