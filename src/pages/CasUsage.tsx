@@ -36,6 +36,7 @@ const CasUsage = () => {
         "Relances de paiement programmées",
         "Suivi de trésorerie simplifié"
       ],
+      roiData: "Jusqu'à 90% de temps gagné sur la facturation",
       gain: "Gain attendu : moins de temps administratif et meilleure trésorerie.",
       ctaText: "Tester mon ROI"
     },
@@ -50,6 +51,7 @@ const CasUsage = () => {
         "Suivi performance équipes",
         "Reporting commercial automatisé"
       ],
+      roiData: "Reporting accéléré de 70%",
       gain: "Gain attendu : meilleure visibilité sur les ventes et pilotage simplifié.",
       ctaText: "Tester mon ROI"
     },
@@ -64,6 +66,7 @@ const CasUsage = () => {
         "Suivi des bénévoles actifs",
         "Communication ciblée par groupes"
       ],
+      roiData: "+30% de temps libéré pour les missions sociales",
       gain: "Gain attendu : plus de temps pour les missions sociales et moins de tâches répétitives.",
       ctaText: "Tester mon ROI"
     },
@@ -78,6 +81,7 @@ const CasUsage = () => {
         "Suivi des dossiers citoyens",
         "Réduction de la charge agents"
       ],
+      roiData: "Temps de traitement réduit de 60%",
       gain: "Gain attendu : meilleure expérience citoyenne et réduction de la charge des agents.",
       ctaText: "Tester mon ROI"
     }
@@ -123,8 +127,9 @@ const CasUsage = () => {
             {/* Titre principal H1 */}
             <div className="text-center mb-16">
               <h1 className="text-3xl lg:text-5xl font-bold text-heading mb-6">
-                Cas d'usage : Comment l'automatisation IA{" "}
-                <span className="text-primary">s'adapte à chaque organisation</span>
+                Découvrez comment l'IA{" "}
+                <span className="text-primary">booste la performance</span>{" "}
+                de chaque type d'organisation
               </h1>
               <p className="text-lg text-text-secondary max-w-4xl mx-auto leading-relaxed">
                 Chaque organisation est unique. Voici quelques exemples concrets de situations où 
@@ -166,6 +171,13 @@ const CasUsage = () => {
                           </div>
                         ))}
                       </div>
+
+                      {/* Chiffre ROI */}
+                      <div className="mb-4 p-3 bg-cta-primary/10 rounded-lg border border-cta-primary/30">
+                        <p className="text-sm font-bold text-cta-primary">
+                          📊 {cas.roiData}
+                        </p>
+                      </div>
                       
                       <div className="mb-6 p-3 bg-primary/10 rounded-lg border border-primary/20">
                         <p className="text-sm font-medium text-primary">
@@ -175,8 +187,8 @@ const CasUsage = () => {
                       
                       <Button 
                         onClick={() => navigate("/calculateur-roi")}
-                        variant="outline" 
-                        className="w-full group/btn border-primary/30 hover:bg-primary/10"
+                        variant="cta" 
+                        className="w-full group/btn"
                       >
                         {cas.ctaText}
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
@@ -202,16 +214,16 @@ const CasUsage = () => {
                       onClick={() => navigate("/calculateur-roi")}
                       variant="cta"
                       size="lg"
-                      className="px-8 py-4 text-lg group/cta"
+                      className="px-6 sm:px-8 py-4 text-base sm:text-lg group/cta"
                     >
                       Tester mon ROI
                       <Target className="ml-3 h-5 w-5 transition-transform group-hover/cta:scale-110" />
                     </Button>
                     <Button
                       onClick={() => navigate('/appointment')}
-                      variant="outline"
+                      variant="cta"
                       size="lg"
-                      className="px-8 py-4 text-lg border-primary/30"
+                      className="px-6 sm:px-8 py-4 text-base sm:text-lg"
                     >
                       Obtenir un plan d'action personnalisé
                       <ArrowRight className="ml-3 h-5 w-5" />
