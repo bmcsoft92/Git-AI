@@ -14,7 +14,6 @@ import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { ArrowLeft, Home, ArrowRight, CheckCircle, Target } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { TestEmail } from '@/components/TestEmail';
 
 const DiagnosticPersonnalise = () => {
   const navigate = useNavigate();
@@ -551,11 +550,6 @@ const DiagnosticPersonnalise = () => {
       
       <main className="py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Test des nouvelles fonctions - À supprimer après validation */}
-          <div className="mb-8 flex justify-center">
-            <TestEmail />
-          </div>
-          
           {/* Navigation */}
           <div className="flex justify-between items-center mb-8">
             <Button
