@@ -46,12 +46,15 @@ export default defineConfig(({ mode }) => ({
   // Headers de sécurité pour la production via Netlify/Vercel
   preview: {
     headers: {
-      'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://jyimtfbfntikeugqumxb.supabase.co",
+      'Content-Security-Policy': "default-src 'self' *.sandbox.lovable.dev; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com *.sandbox.lovable.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com *.sandbox.lovable.dev; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: *.sandbox.lovable.dev; connect-src 'self' https://jyimtfbfntikeugqumxb.supabase.co *.sandbox.lovable.dev wss: ws:",
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'SAMEORIGIN',
       'X-XSS-Protection': '1; mode=block',
       'Referrer-Policy': 'strict-origin-when-cross-origin',
       'Permissions-Policy': 'camera=(), microphone=(), geolocation=self',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     },
   },
 }));
