@@ -43,208 +43,95 @@ const Footer = () => {
       </section>
 
       {/* Footer */}
-      <footer className="relative bg-gradient-to-br from-card to-card/80 border-t border-border/50 overflow-hidden">
-        {/* Éléments décoratifs d'arrière-plan */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cta-primary rounded-full blur-3xl"></div>
-        </div>
-        
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Logo et baseline */}
+      <footer className="bg-card border-t border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          
+          {/* Bloc identité */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center space-x-3 mb-4">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/20 to-cta-primary/20 backdrop-blur-sm border border-primary/20 shadow-lg">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center">
                 <img 
                   src="/lovable-uploads/6464ae76-963f-4a08-96fb-19127780a208.png" 
-                  alt="Logo Maïa Elange - Agence d'automatisation IA et d'intelligence artificielle" 
-                  className="w-8 h-8 rounded-lg" 
+                  alt="Logo Maïa Elange" 
+                  className="w-12 h-12 rounded-lg" 
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-heading">Maia elange</h3>
+              <h3 className="text-2xl font-bold text-heading">Maïa Élange</h3>
             </div>
-            <p className="text-lg font-medium text-primary mb-2">
-              L'IA + l'Humain au service des organisations
-            </p>
-            <p className="text-sm text-text-secondary italic">
-              Systèmes d'automatisation simples, mesurables et conformes.
+            <p className="text-lg font-medium text-primary">
+              Automatisation simple, mesurable et conforme
             </p>
           </div>
 
-          {/* 4 Colonnes du Footer */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mb-8">
+          <div className="grid md:grid-cols-2 gap-12 mb-12">
             
-            {/* Colonne 1: Navigation principale */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-heading relative">
-                Navigation principale
-                <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
-              </h4>
-              <ul className="space-y-3">
-                {[
-                  { name: "Accueil", href: "/" },
-                  { name: "Solutions", href: "/solutions" },
-                  { name: "Méthode", href: "/methode" },
-                  { name: "Cas d'usage", href: "/cas-usage" },
-                  { name: "Calculateur ROI", href: "/calculateur-roi" },
-                  { name: "Blog & Guides", href: "/blog" }
-                ].map((item, index) => (
-                  <li key={index}>
-                    <Link 
-                      to={item.href} 
-                      className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2"
-                    >
-                      <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Colonne 2: Confiance */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-heading relative">
-                Confiance
-                <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
-              </h4>
-              <ul className="space-y-3">
-                {[
-                  { name: "À propos", href: "/a-propos" },
-                  { name: "FAQ", href: "/faq" },
-                  { name: "Contact", href: "/contact" }
-                ].map((item, index) => (
-                  <li key={index}>
-                    <Link 
-                      to={item.href} 
-                      className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2"
-                    >
-                      <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Colonne 3: Légal & conformité */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-heading relative">
-                Légal & Conformité
-                <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
-              </h4>
-              
-              {/* Élément de confiance RGPD */}
-              <div className="bg-gradient-to-br from-primary/10 to-cta-primary/10 rounded-lg p-3 mb-4">
-                <div className="flex items-center space-x-2 mb-1">
-                  <Shield className="h-4 w-4 text-primary" />
-                  <span className="text-xs font-semibold text-heading">RGPD ✅</span>
-                </div>
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  Conformité européenne garantie
+            {/* Bloc informations légales */}
+            <div>
+              <h4 className="text-lg font-semibold text-heading mb-6">Informations légales</h4>
+              <div className="space-y-3 text-sm text-text-secondary">
+                <p><strong className="text-heading">Nom commercial :</strong> Maia elange – Entreprise Individuelle</p>
+                <p><strong className="text-heading">SIREN :</strong> 944 929 660 R.C.S. Paris</p>
+                <p><strong className="text-heading">Adresse établissement principal :</strong><br />
+                   60 rue François Ier, 75008 Paris</p>
+                <p><strong className="text-heading">Email :</strong> 
+                   <a href="mailto:contact@maiaelange.fr" className="text-primary hover:text-cta-primary ml-1">
+                     contact@maiaelange.fr
+                   </a>
                 </p>
               </div>
-
-              <ul className="space-y-3">
-                {[
-                  { name: "Mentions légales", href: "/mentions-legales" },
-                  { name: "Politique de confidentialité", href: "/politique-confidentialite" },
-                  { name: "CGU", href: "/cgu" },
-                  { name: "CGV", href: "/cgv", note: "(bientôt)" }
-                ].map((item, index) => (
-                  <li key={index}>
-                    <Link 
-                      to={item.href} 
-                      className="text-text-secondary hover:text-primary transition-all duration-300 group flex items-center space-x-2 text-sm"
-                    >
-                      <span className="w-1 h-1 bg-primary/50 rounded-full group-hover:bg-primary group-hover:scale-150 transition-all duration-300"></span>
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">
-                        {item.name}
-                        {item.note && <span className="ml-1 text-xs text-text-secondary/70">{item.note}</span>}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
 
-            {/* Colonne 4: Call to Action */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-heading relative">
-                Prêt à commencer ?
-                <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-cta-primary rounded-full"></div>
-              </h4>
-              
+            {/* Bloc conformité */}
+            <div>
+              <h4 className="text-lg font-semibold text-heading mb-6">Conformité</h4>
               <div className="space-y-4">
-                {/* Email */}
-                <div className="flex items-center space-x-3 group">
-                  <div className="p-2 bg-primary/20 rounded-lg flex-shrink-0">
-                    <Mail className="h-4 w-4 text-primary" />
+                <div className="bg-success/10 border border-success/20 rounded-lg p-4">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Shield className="h-5 w-5 text-success" />
+                    <span className="font-semibold text-success">Conforme RGPD</span>
                   </div>
-                  <div>
-                    <p className="text-xs text-text-secondary mb-1">Email</p>
-                    <a 
-                      href="mailto:contact@maiaelange.fr" 
-                      className="text-primary hover:text-cta-primary transition-colors font-medium text-sm"
-                    >
-                      contact@maiaelange.fr
-                    </a>
-                  </div>
+                  <p className="text-sm text-text-secondary">
+                    Respect des normes européennes de protection des données
+                  </p>
                 </div>
-
-                {/* Calendly */}
-                <div className="flex items-center space-x-3 group">
-                  <div className="p-2 bg-primary/20 rounded-lg flex-shrink-0">
-                    <Calendar className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-text-secondary mb-1">Rendez-vous</p>
-                    <Link 
-                      to="/contact" 
-                      className="text-primary hover:text-cta-primary transition-colors font-medium text-sm"
-                    >
-                      Planifier un échange
-                    </Link>
-                  </div>
-                </div>
-
-
-                {/* LinkedIn */}
-                <div className="flex items-center space-x-3 group">
-                  <div className="p-2 bg-primary/20 rounded-lg flex-shrink-0">
-                    <Linkedin className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-text-secondary mb-1">LinkedIn</p>
-                    <a 
-                      href="https://www.linkedin.com/company/maia-elange" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-primary hover:text-cta-primary transition-colors font-medium text-sm"
-                    >
-                      Suivez-nous
-                    </a>
-                  </div>
+                
+                <div className="flex flex-col space-y-2 text-sm">
+                  <Link 
+                    to="/mentions-legales" 
+                    className="text-text-secondary hover:text-primary transition-colors"
+                  >
+                    Mentions légales
+                  </Link>
+                  <span className="text-text-secondary/50">•</span>
+                  <Link 
+                    to="/politique-confidentialite" 
+                    className="text-text-secondary hover:text-primary transition-colors"
+                  >
+                    Politique de confidentialité
+                  </Link>
+                  <span className="text-text-secondary/50">•</span>
+                  <Link 
+                    to="/cgu" 
+                    className="text-text-secondary hover:text-primary transition-colors"
+                  >
+                    Politique RGPD
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Séparateur élégant */}
-          <div className="my-8">
-            <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
-          </div>
-
-          {/* Copyright */}
-          <div className="text-center">
-            <div className="text-sm text-text-secondary font-medium mb-2">
-              © 2025 Maia elange – Tous droits réservés.
-            </div>
-            <div className="text-xs text-text-secondary/80">
-              Fait avec ❤️ pour l'automatisation intelligente
+          {/* Séparateur */}
+          <div className="border-t border-border pt-8">
+            {/* Bloc bas de page */}
+            <div className="text-center">
+              <p className="text-sm text-text-secondary">
+                © 2025 Maia elange – Tous droits réservés
+              </p>
             </div>
           </div>
+          
         </div>
       </footer>
     </>
