@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Integrations from "@/components/Integrations";
 import ProcessSection from "@/components/ProcessSection";
+import GuideIATPE from "@/components/GuideIATPE";
 import AutomationCTA from "@/components/AutomationCTA";
 import Footer from "@/components/Footer";
 import { CookieConsent } from "@/components/CookieConsent";
@@ -12,7 +13,7 @@ import { SkipNavigation } from "@/components/SkipNavigation";
 const Index = () => {
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = "Maïa Elange | L'IA + l'Humain au service des organisations";
+    document.title = "Maia elange | L'IA + l'Humain au service des organisations";
     
     // Update or create meta description
     let metaDescription = document.querySelector('meta[name="description"]');
@@ -34,6 +35,7 @@ const Index = () => {
         <Services />
         <Integrations />
         <ProcessSection />
+        <GuideIATPE />
         <AutomationCTA />
       </main>
       <Footer />

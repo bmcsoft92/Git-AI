@@ -189,15 +189,14 @@ const Contact = () => {
                       </div>
                     </div>
                     
-                    <Button 
-                      type="submit"
-                      variant="cta"
-                      size="lg"
-                      className="w-full group/cta"
-                    >
-                      Envoyer mon message
-                      <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover/cta:translate-x-1" />
-                    </Button>
+                     <Button 
+                       type="submit"
+                       className="w-full bg-cta-primary hover:bg-cta-primary/90 text-cta-primary-foreground font-semibold py-4 px-8 rounded-lg transition-all transform hover:scale-[1.02] btn-cta-hover group/cta"
+                       size="lg"
+                     >
+                       🚀 Demandez un diagnostic gratuit
+                       <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover/cta:translate-x-1" />
+                     </Button>
                     
                     <div className="space-y-3 text-center">
                       <p className="text-sm text-primary font-medium">

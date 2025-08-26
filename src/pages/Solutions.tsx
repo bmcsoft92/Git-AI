@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Services from "@/components/Services";
+import CasUsageConcrets from "@/components/CasUsageConcrets";
 import Footer from "@/components/Footer";
 import { ArrowLeft, Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -51,6 +52,7 @@ const Solutions = () => {
       </div>
       <main>
         <Services />
+        <CasUsageConcrets />
       </main>
       <Footer />
     </div>

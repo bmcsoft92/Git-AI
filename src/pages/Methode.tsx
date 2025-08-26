@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import ProcessSection from "@/components/ProcessSection";
+import MethodeEtapes from "@/components/MethodeEtapes";
 import Footer from "@/components/Footer";
 import { ArrowLeft, Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -51,6 +52,7 @@ const Methode = () => {
       </div>
       <main>
         <ProcessSection />
+        <MethodeEtapes />
       </main>
       <Footer />
     </div>
