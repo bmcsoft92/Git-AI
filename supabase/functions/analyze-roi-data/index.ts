@@ -272,10 +272,10 @@ serve(async (req) => {
   }
 
   try {
-    const { roiData, diagnosticData, userEmail, userName, userPhone }: AnalyzeRequest = await req.json();
-
+    const requestBody = await req.json();
+    const { roiData, diagnosticData, userEmail, userName, userPhone } = requestBody;
+    
     console.log("Analyzing ROI data for:", userEmail);
-    console.log("Diagnostic data:", diagnosticData);
 
     // Générer les recommandations avec la logique locale optimisée
     const recommendations = generateRecommendations(diagnosticData, roiData);
