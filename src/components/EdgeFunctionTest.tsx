@@ -7,6 +7,39 @@ import { toast } from '@/hooks/use-toast';
 export const EdgeFunctionTest = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<any>({});
+  const [simpleEmailTest, setSimpleEmailTest] = useState<any>({});
+
+  const testSimpleEmail = async () => {
+    setSimpleEmailTest({ loading: true });
+    
+    try {
+      console.log('📧 Test simple send-email');
+      const { data, error } = await supabase.functions.invoke('send-email', {
+        body: {
+          "name": "Test",
+          "email": "test@example.com", 
+          "message": "Message de test"
+        }
+      });
+
+      if (error) {
+        setSimpleEmailTest({ error, success: false });
+        toast({
+          title: "❌ Erreur",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else {
+        setSimpleEmailTest({ data, success: true });
+        toast({
+          title: "✅ Email envoyé",
+          description: "Test simple réussi",
+        });
+      }
+    } catch (err: any) {
+      setSimpleEmailTest({ error: err.message, success: false });
+    }
+  };
 
   const testFunctions = async () => {
     setIsLoading(true);
@@ -107,13 +140,35 @@ export const EdgeFunctionTest = () => {
         <CardTitle>🔧 Test Configuration Edge Functions</CardTitle>
       </CardHeader>
       <CardContent>
-        <Button 
-          onClick={testFunctions}
-          disabled={isLoading}
-          className="w-full mb-6"
-        >
-          {isLoading ? '⏳ Tests en cours...' : '🚀 Tester toutes les fonctions'}
-        </Button>
+        <div className="space-y-4 mb-6">
+          <Button 
+            onClick={testSimpleEmail}
+            disabled={simpleEmailTest.loading}
+            className="w-full"
+            variant="outline"
+          >
+            {simpleEmailTest.loading ? '⏳ Test email...' : '📧 Test Simple Email'}
+          </Button>
+          
+          {simpleEmailTest.success !== undefined && (
+            <div className={`p-4 rounded-lg border ${simpleEmailTest.success ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'}`}>
+              <div className={`font-semibold ${simpleEmailTest.success ? 'text-green-800' : 'text-red-800'}`}>
+                {simpleEmailTest.success ? '✅ Test réussi' : '❌ Test échoué'}
+              </div>
+              <pre className="text-xs mt-2">
+                {JSON.stringify(simpleEmailTest, null, 2)}
+              </pre>
+            </div>
+          )}
+          
+          <Button 
+            onClick={testFunctions}
+            disabled={isLoading}
+            className="w-full"
+          >
+            {isLoading ? '⏳ Tests en cours...' : '🚀 Tester toutes les fonctions'}
+          </Button>
+        </div>
 
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
