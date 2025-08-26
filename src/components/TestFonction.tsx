@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 export const TestFonction = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<any>(null);
+  const [emailTest, setEmailTest] = useState<any>(null);
 
   const testFunction = async () => {
     setIsLoading(true);
@@ -51,25 +52,88 @@ export const TestFonction = () => {
     }
   };
 
+  const testEmail = async () => {
+    setEmailTest({ loading: true });
+    
+    try {
+      console.log('📧 Test envoi email avec vraies données...');
+      
+      const { data, error } = await supabase.functions.invoke('analyze-roi-data', {
+        body: {
+          heures: 10,
+          taux: 75,
+          employes: 2,
+          budget: 15000,
+          userEmail: 'maia.elange@gmail.com', // Email réel pour test
+          userName: 'Test Maia',
+          diagnosticData: {
+            taille: '2-5',
+            secteur: 'Services B2B',
+            processus_prioritaires: ['Gestion des emails et communication', 'Administration et paperasse'],
+            delai: 'immediatement',
+            budget_annuel: '10k-15k',
+            organisation: 'Test Company'
+          }
+        }
+      });
+
+      console.log('📨 Résultat test email:', { data, error });
+      setEmailTest({ data, error, success: !error });
+
+      if (error) {
+        toast.error(`Erreur email: ${error.message}`);
+      } else {
+        toast.success('Email envoyé ! Vérifiez votre boîte de réception.');
+      }
+
+    } catch (err: any) {
+      console.error('❌ Erreur email:', err);
+      setEmailTest({ error: err.message, success: false });
+      toast.error(`Erreur email: ${err.message}`);
+    }
+  };
+
   return (
     <Card className="w-full max-w-md mb-8">
       <CardHeader>
         <CardTitle>🔧 Test Edge Function</CardTitle>
       </CardHeader>
       <CardContent>
-        <Button 
-          onClick={testFunction}
-          disabled={isLoading}
-          className="w-full mb-4"
-        >
-          {isLoading ? '⏳ Test...' : '🚀 Tester analyze-roi-data'}
-        </Button>
+        <div className="space-y-4">
+          <Button 
+            onClick={testFunction}
+            disabled={isLoading}
+            className="w-full"
+            variant="outline"
+          >
+            {isLoading ? '⏳ Test...' : '🚀 Test Calcul ROI'}
+          </Button>
+
+          <Button 
+            onClick={testEmail}
+            disabled={emailTest?.loading}
+            className="w-full"
+          >
+            {emailTest?.loading ? '📧 Envoi...' : '📧 Test Envoi Email'}
+          </Button>
+        </div>
 
         {result && (
-          <div className="p-4 bg-muted rounded-lg">
-            <h3 className="font-semibold mb-2">Résultat :</h3>
+          <div className="p-4 bg-muted rounded-lg mt-4">
+            <h3 className="font-semibold mb-2">Résultat Calcul :</h3>
             <pre className="text-xs whitespace-pre-wrap">
               {JSON.stringify(result, null, 2)}
+            </pre>
+          </div>
+        )}
+
+        {emailTest && (
+          <div className={`p-4 rounded-lg mt-4 ${emailTest.success ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
+            <h3 className={`font-semibold mb-2 ${emailTest.success ? 'text-green-800' : 'text-red-800'}`}>
+              {emailTest.success ? '✅ Test Email Réussi' : '❌ Test Email Échoué'}
+            </h3>
+            <pre className="text-xs whitespace-pre-wrap">
+              {JSON.stringify(emailTest, null, 2)}
             </pre>
           </div>
         )}
