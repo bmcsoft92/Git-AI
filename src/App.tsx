@@ -3,7 +3,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CookieBanner from "@/components/CookieBanner";
+import { CookieConsent } from "@/components/CookieConsent";
+import { SkipNavigation } from "@/components/SkipNavigation";
 // Performance: Lazy loading des composants pour réduire le bundle initial
 import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
@@ -39,10 +40,11 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <SkipNavigation />
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <CookieBanner />
+        <CookieConsent />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/calculateur-roi" element={

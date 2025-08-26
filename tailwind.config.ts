@@ -142,4 +142,26 @@ export default {
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
+	// Configuration purgeCSS pour optimiser la taille du bundle CSS
+	purge: {
+		enabled: process.env.NODE_ENV === 'production',
+		content: [
+			'./src/**/*.{js,jsx,ts,tsx}',
+			'./public/index.html',
+		],
+		options: {
+			safelist: [
+				// Classes essentielles à conserver même si non détectées
+				'animate-fade-in-up',
+				'animate-fade-in-up-delay',
+				'animate-fade-in-up-delay-2',
+				'animate-pulse-glow',
+				'animate-slide-down',
+				// Classes du thème sombre/clair
+				'dark',
+				// Classes dynamiques courantes
+				/^bg-/, /^text-/, /^border-/, /^hover:/, /^focus:/,
+			],
+		},
+	},
 } satisfies Config;

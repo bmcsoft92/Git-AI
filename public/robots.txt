@@ -1,27 +1,40 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
+# Robots.txt optimisé pour Maïa Élange
+# Mise à jour : 26/01/2025
 
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://votre-domaine.com/sitemap.xml
+# Ressources statiques autorisés
+Allow: /assets/
+Allow: /lovable-uploads/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.ico$
 
-# Pages importantes
-Allow: /
-Allow: /solutions
-Allow: /methode
-Allow: /cas-usage
-Allow: /faq
-Allow: /contact
-Allow: /blog
-Allow: /calculateur-roi
+# Bloquer les fichiers sensibles
+Disallow: /.env*
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /*.log$
+Disallow: /*.config.*$
+
+# Délai d'exploration respectueux
+Crawl-delay: 1
+
+# Sitemap principal
+Sitemap: https://maiaelange.fr/sitemap.xml
+
+# Pages stratégiques (référence pour les moteurs)
+# Accueil : /
+# Solutions : /solutions  
+# Méthode : /methode
+# Cas d'usage : /cas-usage
+# Calculateur ROI : /calculateur-roi
+# Contact : /contact
+# FAQ : /faq
