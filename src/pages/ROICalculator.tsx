@@ -1040,7 +1040,7 @@ const ROICalculatorPage = () => {
                         boxShadow: '0 10px 30px rgba(255, 140, 66, 0.4)'
                       }}
                     >
-                       ÉTAPE 2 : Diagnostic personnalisé (optionnel)
+                       ÉTAPE 2 : Diagnostic personnalisé
                     </Button>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
                       <Button
