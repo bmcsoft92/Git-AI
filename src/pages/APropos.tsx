@@ -64,8 +64,10 @@ const APropos = () => {
             {/* Titre principal H1 */}
             <div className="text-center mb-16">
               <h1 className="text-3xl lg:text-5xl font-bold text-heading mb-6">
-                À propos de{" "}
-                <span className="text-primary">Maïa Elange</span>
+                Rendre l'IA accessible, utile et conforme
+                <span className="text-primary block">
+                  pour toutes les organisations
+                </span>
               </h1>
             </div>
 

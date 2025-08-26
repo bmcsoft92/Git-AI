@@ -6,6 +6,8 @@ import Integrations from "@/components/Integrations";
 import ProcessSection from "@/components/ProcessSection";
 import AutomationCTA from "@/components/AutomationCTA";
 import Footer from "@/components/Footer";
+import { CookieConsent } from "@/components/CookieConsent";
+import { SkipNavigation } from "@/components/SkipNavigation";
 
 const Index = () => {
   useEffect(() => {
@@ -25,8 +27,9 @@ const Index = () => {
   }, []);
   return (
     <div className="min-h-screen bg-background">
+      <SkipNavigation />
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <Services />
         <Integrations />
@@ -34,6 +37,7 @@ const Index = () => {
         <AutomationCTA />
       </main>
       <Footer />
+      <CookieConsent />
     </div>
   );
 };

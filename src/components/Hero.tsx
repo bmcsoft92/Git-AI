@@ -32,7 +32,11 @@ const Hero = () => {
               </span>
             </h1>
             
-            <p className="text-lg lg:text-xl xl:text-2xl text-text-secondary mb-8 lg:mb-12 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg lg:text-xl xl:text-2xl text-text-secondary mb-6 lg:mb-8 leading-relaxed max-w-4xl mx-auto">
+              <strong className="text-heading">Maïa Élange accompagne les organisations dans l'automatisation intelligente, conforme et humaine.</strong>
+            </p>
+            
+            <p className="text-base lg:text-lg text-text-secondary mb-8 lg:mb-12 leading-relaxed max-w-4xl mx-auto">
               Nous concevons des systèmes d'automatisation <strong className="text-primary">simples, mesurables et conformes</strong>, permettant aux organisations de toutes tailles de <strong className="text-primary">réduire leurs coûts</strong> et d'<strong className="text-primary">augmenter leur impact</strong>.
             </p>
 
