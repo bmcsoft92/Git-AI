@@ -38,8 +38,6 @@ const PageLoader = () => (
 const queryClient = new QueryClient();
 
 const App = () => {
-  console.log('App: Démarrage de l\'application...');
-  
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -136,7 +134,7 @@ const App = () => {
               <NotFound />
             </Suspense>
           } />
-         </Routes>
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -16,8 +16,6 @@ const COOKIE_CONSENT_KEY = 'maia-elange-cookie-consent';
 const COOKIE_PREFERENCES_KEY = 'maia-elange-cookie-preferences';
 
 export const CookieConsent = () => {
-  console.log('CookieConsent: Composant en cours de chargement...');
-  
   const [showBanner, setShowBanner] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>({
@@ -28,25 +26,16 @@ export const CookieConsent = () => {
   });
 
   useEffect(() => {
-    console.log('CookieConsent: useEffect démarré');
-    try {
-      // Vérifier si l'utilisateur a déjà donné son consentement
-      const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-      const savedPreferences = localStorage.getItem(COOKIE_PREFERENCES_KEY);
-      
-      console.log('CookieConsent: Consentement existant:', !!consent);
-      
-      if (!consent) {
-        setShowBanner(true);
-        console.log('CookieConsent: Affichage du bandeau');
-      }
-      
-      if (savedPreferences) {
-        setPreferences(JSON.parse(savedPreferences));
-        console.log('CookieConsent: Préférences chargées');
-      }
-    } catch (error) {
-      console.error('CookieConsent: Erreur dans useEffect:', error);
+    // Vérifier si l'utilisateur a déjà donné son consentement
+    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+    const savedPreferences = localStorage.getItem(COOKIE_PREFERENCES_KEY);
+    
+    if (!consent) {
+      setShowBanner(true);
+    }
+    
+    if (savedPreferences) {
+      setPreferences(JSON.parse(savedPreferences));
     }
   }, []);
 
@@ -131,11 +120,13 @@ export const CookieConsent = () => {
 
   return (
     <>
-      {/* Overlay */}
-      <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-        onClick={() => setShowSettings(false)}
-      />
+      {/* Overlay - seulement quand les paramètres sont ouverts */}
+      {showSettings && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+          onClick={() => setShowSettings(false)}
+        />
+      )}
 
       {/* Bandeau principal */}
       {showBanner && !showSettings && (
