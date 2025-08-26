@@ -14,3 +14,6 @@ verify_jwt = false
 
 [functions.test-resend]
 verify_jwt = false
+
+[functions.simple-test]
+verify_jwt = false

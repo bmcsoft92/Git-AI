@@ -15,6 +15,7 @@ import { toast } from 'sonner';
 import { ArrowLeft, Home, ArrowRight, CheckCircle, Target } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { TestResend } from '@/components/TestResend';
+import { SimpleTest } from '@/components/SimpleTest';
 
 const DiagnosticPersonnalise = () => {
   const navigate = useNavigate();
@@ -550,7 +551,8 @@ const DiagnosticPersonnalise = () => {
       <main className="py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Test Resend - À supprimer après test */}
-          <div className="mb-8 flex justify-center">
+          <div className="mb-8 flex justify-center space-x-4">
+            <SimpleTest />
             <TestResend />
           </div>
           
