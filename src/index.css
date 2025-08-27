@@ -69,36 +69,6 @@ Conformité WCAG 2.1 AA garantie
     --sidebar-border: 180 15% 20%;
     --sidebar-ring: 178 85% 32%;
   }
-
-  .light {
-    /* Mode clair conservé mais non par défaut */
-    --background: 43 27% 95%;
-    --foreground: 180 26% 8%;
-    --card: 43 27% 98%;
-    --card-foreground: 180 26% 8%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 180 26% 8%;
-    --primary: 178 85% 32%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 43 15% 92%;
-    --secondary-foreground: 180 15% 35%;
-    --muted: 43 20% 90%;
-    --muted-foreground: 180 15% 35%;
-    --accent: 43 15% 92%;
-    --accent-foreground: 180 26% 8%;
-    --destructive: 349 100% 43%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 43 15% 85%;
-    --input: 43 15% 85%;
-    --ring: 178 85% 32%;
-    --cta-primary: 22 82% 52%;
-    --cta-primary-foreground: 0 0% 100%;
-    --success: 156 100% 33%;
-    --success-foreground: 0 0% 100%;
-    --heading: 180 26% 8%;
-    --text-primary: 180 26% 8%;
-    --text-secondary: 180 15% 35%;
-  }
 }
 
 @layer base {

@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
 export default {
-	darkMode: ["class"],
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -157,8 +156,6 @@ export default {
 				'animate-fade-in-up-delay-2',
 				'animate-pulse-glow',
 				'animate-slide-down',
-				// Classes du thème sombre/clair
-				'dark',
 				// Classes dynamiques courantes
 				/^bg-/, /^text-/, /^border-/, /^hover:/, /^focus:/,
 			],
