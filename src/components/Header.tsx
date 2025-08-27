@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -210,11 +211,14 @@ const Header = () => {
                 Plan d'action personnalisé
                 <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover/cta:scale-110" />
               </Button>
+              
+              <ThemeToggle />
             </div>
           </div>
 
           {/* Menu Mobile */}
-          <div className="xl:hidden">
+          <div className="xl:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"
